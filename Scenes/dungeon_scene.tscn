@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://c4ft8h8w1s764"]
+[gd_scene format=3 uid="uid://b6tgf3sahj577"]
 
-[node name="Control" type="Control"]
+[node name="DungeonScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
