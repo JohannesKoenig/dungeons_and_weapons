@@ -2,6 +2,7 @@ extends Node
 
 var SAFE_FILE_PREFIX = "save_file"
 
+
 func save_game(save_slot: int, save_name: String):
 	var save_game = FileAccess.open(_get_file_name(save_slot), FileAccess.WRITE)
 	var json_string = JSON.stringify({
@@ -28,6 +29,10 @@ func load_game(save_slot: int) -> SaveFile:
 	# Get the data from the JSON object
 	var save_data = json.get_data()
 	return SaveFile.from_values(save_data["name"], save_slot)
+
+
+func delete_game(save_file: SaveFile):
+	DirAccess.remove_absolute(_get_file_name(save_file.slot))
 
 
 func _get_file_name(save_slot: int) -> String:

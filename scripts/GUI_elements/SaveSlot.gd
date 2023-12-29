@@ -5,9 +5,13 @@ class_name SaveSlot
 @onready var name_label = $VBoxContainer/Name
 @onready var load_button = $VBoxContainer/HBoxContainer/Load
 @onready var delete_button = $VBoxContainer/HBoxContainer/Delete
-@onready var new_button = $VBoxContainer/HBoxContainer/New
 
+var game_saver: GameSaver
 var _save_file: SaveFile
+
+func _ready():
+	game_saver = $/root/GameSaver
+	_save_file_changed()
 
 func set_save_file(save_file: SaveFile):
 	_save_file = save_file
@@ -20,11 +24,13 @@ func _save_file_changed():
 		name_label.text = _save_file.name
 		load_button.visible = true
 		delete_button.visible = true
-		new_button.visibile = false
-	
 	else:
 		icon.texture = null
 		name_label.text = ""
 		load_button.visible = false
 		delete_button.visible = false
-		new_button.visibile = true
+
+
+func _on_delete_pressed():
+	game_saver.delete_game(_save_file)
+	set_save_file(null)
