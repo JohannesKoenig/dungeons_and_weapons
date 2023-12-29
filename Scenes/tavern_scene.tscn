@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://bq2f0w5we6e6k"]
+[gd_scene format=3 uid="uid://dnryumpdwkio8"]
 
-[node name="Control" type="Control"]
+[node name="TavernScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
