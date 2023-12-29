@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://cfrcpicqnk6bt"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back-button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -48.0
+offset_right = 76.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+
+[node name="save-button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -48.0
+offset_right = -14.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "SAVE"
+
+[node name="options" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.5
+offset_top = 20.0
+offset_right = 37.5
+offset_bottom = 53.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "OPTIONS"
+autowrap_mode = 2
+
+[node name="Audio" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -174.0
+offset_right = -31.0
+offset_bottom = -151.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Audio
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -74.0
+offset_right = -30.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ambient" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -124.0
+offset_right = -10.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ambient"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Combat" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -24.0
+offset_right = -15.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Combat"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -74.0
+offset_right = 252.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSlider3" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -24.0
+offset_right = 252.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSlider2" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -124.0
+offset_right = 252.0
+offset_bottom = -108.0
+grow_horizontal = 2
+grow_vertical = 2
