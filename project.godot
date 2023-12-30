@@ -21,8 +21,8 @@ GameSaver="*res://scripts/Autoloads/game_saver.gd"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=800
+window/size/viewport_width=1080
+window/size/viewport_height=1080
 window/stretch/mode="viewport"
 
 [input]
