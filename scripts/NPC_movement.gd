@@ -1,51 +1,40 @@
 extends CharacterBody2D
 
-
-const speed = 300.0
-var current_state = IDLE
+@onready var character = $Character
+@export var walking_distance = 30
+var current_state = DUNGEON
 var dir = Vector2.RIGHT
-var start_pos
+@export var start_position: Marker2D
+@export var door_target: Marker2D
+@export var dungeon_target: Marker2D
 
 enum {
-	IDLE,
-	NEW_DIR, 
-	MOVE
+	SPAWN,
+	DOOR, 
+	DUNGEON
 }
 
 func _ready():
-	randomize()
-	start_pos = position
+	_on_target_reached()
+	character.reached_target.connect(_on_target_reached)
 
 
-func _process(delta):
+func _on_target_reached():
+	print("target reached: %s" % current_state)
 	match current_state:
-		IDLE:
-			pass
-		NEW_DIR:
-			dir = choose([Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN])
-		MOVE:
-			move(delta)
-	
-	if current_state == 0:
-		$AnimationPlayer.play("idle")
-	elif current_state == 1:
-		$AnimationPlayer.play("idle")
-	elif current_state == 2:
-		if dir == Vector2.LEFT:
-			$AnimationPlayer.play("walk_left")	
-		else :
-			$AnimatedSprite2D.play("walk_right")
-	
-			
-			
-func move(delta):
-	position += dir * speed * delta
+		SPAWN:
+			character.move_to(door_target.position)
+			current_state = DOOR
+			return
+		DOOR:
+			character.move_to(dungeon_target.position)
+			current_state = DUNGEON
+			return
+		DUNGEON:
+			character.move_to(start_position.position)
+			current_state = SPAWN
+			return
 
 func choose(array):
 	array.shuffle()
 	return array[0]
-
-func _on_timer_timeout():
-	$Timer.wait_time = choose([0.5, 1, 1.5])
-	current_state = choose([IDLE, NEW_DIR, MOVE])
-	$Timer.start()
