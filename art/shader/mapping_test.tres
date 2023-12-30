@@ -1,0 +1,109 @@
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://c3v48sh65xxnb"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_dx3sr"]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_7r6nx"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(24, 24)]
+op_type = 0
+operator = 3
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_s6l0n"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(255, 255)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_os5eo"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(10, 10)]
+op_type = 0
+operator = 3
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_kpsgi"]
+parameter_name = "uv"
+texture_type = 1
+color_default = 2
+texture_filter = 1
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_bncu1"]
+parameter_name = "diffuse"
+texture_type = 1
+texture_filter = 1
+
+[sub_resource type="MeshTexture" id="MeshTexture_ibbp2"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_4nuon"]
+source = 5
+texture = SubResource("MeshTexture_ibbp2")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_or261"]
+expanded_output_ports = [0]
+source = 5
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler2D uv : source_color, hint_default_transparent, filter_nearest, repeat_disable;
+uniform sampler2D diffuse : source_color, filter_nearest;
+
+
+
+void fragment() {
+	vec4 n_out5p0;
+// Texture2D:5
+	n_out5p0 = texture(uv, UV);
+	float n_out5p1 = n_out5p0.r;
+	float n_out5p2 = n_out5p0.g;
+
+
+// VectorCompose:13
+	vec2 n_out13p0 = vec2(n_out5p1, n_out5p2);
+
+
+// VectorOp:16
+	vec2 n_in16p1 = vec2(10.00000, 10.00000);
+	vec2 n_out16p0 = n_out13p0 / n_in16p1;
+
+
+// VectorOp:14
+	vec2 n_in14p1 = vec2(24.00000, 24.00000);
+	vec2 n_out14p0 = n_out16p0 / n_in14p1;
+
+
+// VectorOp:15
+	vec2 n_in15p1 = vec2(255.00000, 255.00000);
+	vec2 n_out15p0 = n_out14p0 * n_in15p1;
+
+
+	vec4 n_out4p0;
+// Texture2D:4
+	n_out4p0 = texture(diffuse, n_out15p0);
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out4p0.xyz);
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1640, -40)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_kpsgi")
+nodes/fragment/2/position = Vector2(-1340, -280)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_bncu1")
+nodes/fragment/3/position = Vector2(-1340, 480)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_4nuon")
+nodes/fragment/4/position = Vector2(1220, 200)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_or261")
+nodes/fragment/5/position = Vector2(-720, -280)
+nodes/fragment/13/node = SubResource("VisualShaderNodeVectorCompose_dx3sr")
+nodes/fragment/13/position = Vector2(-260, -280)
+nodes/fragment/14/node = SubResource("VisualShaderNodeVectorOp_7r6nx")
+nodes/fragment/14/position = Vector2(620, -280)
+nodes/fragment/15/node = SubResource("VisualShaderNodeVectorOp_s6l0n")
+nodes/fragment/15/position = Vector2(960, -280)
+nodes/fragment/16/node = SubResource("VisualShaderNodeVectorOp_os5eo")
+nodes/fragment/16/position = Vector2(280, -240)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 2, 2, 0, 5, 2, 5, 1, 13, 0, 5, 2, 13, 1, 14, 0, 15, 0, 4, 0, 0, 0, 15, 0, 4, 0, 16, 0, 14, 0, 13, 0, 16, 0)
