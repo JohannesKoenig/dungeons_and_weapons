@@ -1,0 +1,64 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b7cxggxiumhyf"]
+
+[ext_resource type="FontFile" uid="uid://btphj1vw1bdty" path="res://fonts/minimal5x7/minimal5x7.otf" id="1_5ya70"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yggf0"]
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+expand_margin_left = 4.0
+expand_margin_top = 2.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_383cq"]
+bg_color = Color(0.498039, 0.458824, 0.47451, 0.364706)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+expand_margin_left = 4.0
+expand_margin_top = 2.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6fe4"]
+bg_color = Color(0.45098, 0.360784, 0.411765, 0.364706)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+expand_margin_left = 4.0
+expand_margin_top = 2.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmfvt"]
+bg_color = Color(0.670588, 0.568627, 0.623529, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+expand_margin_left = 4.0
+expand_margin_top = 2.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvq80"]
+bg_color = Color(0.219608, 0.164706, 0.196078, 0.364706)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+expand_margin_left = 4.0
+expand_margin_top = 2.0
+expand_margin_right = 4.0
+
+[resource]
+/font_sizes/font_size = 16
+/fonts/font = ExtResource("1_5ya70")
+Button/styles/disabled = SubResource("StyleBoxFlat_yggf0")
+Button/styles/focus = SubResource("StyleBoxFlat_383cq")
+Button/styles/hover = SubResource("StyleBoxFlat_i6fe4")
+Button/styles/normal = SubResource("StyleBoxFlat_bmfvt")
+Button/styles/pressed = SubResource("StyleBoxFlat_pvq80")
+Label/colors/font_color = Color(0.764706, 0.654902, 0.611765, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.137255)
+Label/font_sizes/font_size = 16

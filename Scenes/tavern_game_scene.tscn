@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5hbdaq5wmwn1"]
+[gd_scene load_steps=11 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Texture2D" uid="uid://baff6fb2jgy2j" path="res://art/sprites/tilesets/tavern_furniture.png" id="2_guppe"]
 [ext_resource type="Texture2D" uid="uid://2r5bnfjqkfsg" path="res://art/sprites/tilesets/tavern_door.png" id="3_cq6h3"]
+[ext_resource type="PackedScene" uid="uid://c1wruq1vniqxl" path="res://Scenes/tavern_scene.tscn" id="4_1ogd8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_17voc"]
 texture = ExtResource("1_4pst3")
@@ -120,3 +121,8 @@ layer_0/tile_data = PackedInt32Array(196613, 65537, 0, 262149, 65537, 1, 262150,
 tile_set = SubResource("TileSet_35sdu")
 format = 2
 layer_0/tile_data = PackedInt32Array(655369, 0, 0, 720905, 0, 1, 786441, 0, 2, 655370, 65536, 0, 720906, 65536, 1, 786442, 65536, 2, 655371, 131072, 0, 720907, 131072, 1, 786443, 131072, 2, 655372, 196608, 0, 720908, 196608, 1, 786444, 196608, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="TavernScene" parent="CanvasLayer" instance=ExtResource("4_1ogd8")]
