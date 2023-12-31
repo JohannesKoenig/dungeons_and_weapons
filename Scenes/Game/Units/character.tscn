@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/Game/Units/character.gd" id="1_qeh3e"]
 [ext_resource type="Shader" uid="uid://c3v48sh65xxnb" path="res://art/shader/mapping_test.tres" id="2_c55l4"]
-[ext_resource type="Texture2D" uid="uid://dxlx80ws2t0ys" path="res://art/sprites/character_commoner_skin.png" id="3_7kfoq"]
+[ext_resource type="Texture2D" path="res://art/sprites/character_commoner_skin.png" id="3_7kfoq"]
 [ext_resource type="Texture2D" uid="uid://1lj62kv7to5f" path="res://art/sprites/Character_uv.png" id="4_2gpmw"]
-[ext_resource type="Texture2D" uid="uid://v1ub3uvyf0qj" path="res://art/sprites/Character_walking.png" id="5_3u13q"]
+[ext_resource type="Texture2D" path="res://art/sprites/Character_walking.png" id="5_3u13q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmdnj"]
 shader = ExtResource("2_c55l4")
@@ -392,9 +392,8 @@ states/Walking/position = Vector2(672.857, 178.777)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_35sqe"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_d2ne3"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_vf8ik")]
 graph_offset = Vector2(150.697, 38.7224)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqan8"]
-radius = 5.0
-height = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7ets"]
+size = Vector2(9, 3)
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_qeh3e")
@@ -420,4 +419,5 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_mqan8")
+position = Vector2(-0.5, 5.5)
+shape = SubResource("RectangleShape2D_f7ets")
