@@ -1,0 +1,217 @@
+[gd_scene load_steps=13 format=3 uid="uid://ciolarlxwqmes"]
+
+[ext_resource type="Script" path="res://scripts/NPC_movement.gd" id="1_cinp1"]
+[ext_resource type="Texture2D" uid="uid://bmkjq11fwj1hg" path="res://art/sprites/Character model.png" id="2_a0k6j"]
+[ext_resource type="PackedScene" uid="uid://oynassojhlq3" path="res://Scenes/Game/Units/character.tscn" id="3_gr4se"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_032h3"]
+atlas = ExtResource("2_a0k6j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtwxv"]
+atlas = ExtResource("2_a0k6j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6s74"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_032h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtwxv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_032h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtwxv")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_032h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtwxv")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rurdg"]
+radius = 45.0
+height = 162.0
+
+[sub_resource type="Animation" id="Animation_rmnwy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_20lf4"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_g6fi0"]
+resource_name = "walk_left"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kwmyg"]
+resource_name = "walk_right"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0x3qw"]
+_data = {
+"RESET": SubResource("Animation_rmnwy"),
+"idle": SubResource("Animation_20lf4"),
+"walk_left": SubResource("Animation_g6fi0"),
+"walk_right": SubResource("Animation_kwmyg")
+}
+
+[node name="Node" type="Node"]
+
+[node name="NPC1" type="CharacterBody2D" parent="." node_paths=PackedStringArray("start_position", "door_target", "dungeon_target")]
+script = ExtResource("1_cinp1")
+walking_distance = 100
+start_position = NodePath("../start_position")
+door_target = NodePath("../door_target")
+dungeon_target = NodePath("../dungeon_target")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC1"]
+visible = false
+position = Vector2(531, 502)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_o6s74")
+animation = &"idle"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC1"]
+visible = false
+position = Vector2(533, 507)
+shape = SubResource("CapsuleShape2D_rurdg")
+
+[node name="Timer" type="Timer" parent="NPC1"]
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NPC1"]
+libraries = {
+"": SubResource("AnimationLibrary_0x3qw")
+}
+
+[node name="Character" parent="NPC1" instance=ExtResource("3_gr4se")]
+position = Vector2(1001, 1327)
+scale = Vector2(6, 6)
+target_delta = 5.0
+
+[node name="door_target" type="Marker2D" parent="."]
+position = Vector2(999, 1012)
+
+[node name="start_position" type="Marker2D" parent="."]
+position = Vector2(999, 1137)
+
+[node name="dungeon_target" type="Marker2D" parent="."]
+position = Vector2(975, 88)
+
+[connection signal="timeout" from="NPC1/Timer" to="NPC1" method="_on_timer_timeout"]

@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://crcrnrn77vm4a" path="res://art/sprites/title.png" id="1_dqhh5"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_qna3i"]
 [ext_resource type="Shader" uid="uid://c3v48sh65xxnb" path="res://art/shader/mapping_test.tres" id="3_37qkm"]
-[ext_resource type="Texture2D" uid="uid://b056p70i30tn2" path="res://art/sprites/texture_test.png" id="4_aoodw"]
-[ext_resource type="Texture2D" uid="uid://1lj62kv7to5f" path="res://art/sprites/Character_uv.png" id="5_h7yy3"]
+[ext_resource type="Texture2D" path="res://art/sprites/texture_test.png" id="4_aoodw"]
+[ext_resource type="Texture2D" path="res://art/sprites/Character_uv.png" id="5_h7yy3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soa64"]
 shader = ExtResource("3_37qkm")

@@ -1,24 +1,31 @@
-[gd_scene load_steps=17 format=3 uid="uid://oynassojhlq3"]
+[gd_scene load_steps=20 format=3 uid="uid://oynassojhlq3"]
 
 [ext_resource type="Script" path="res://scripts/Game/Units/character.gd" id="1_qeh3e"]
-[ext_resource type="Texture2D" uid="uid://bmkjq11fwj1hg" path="res://art/sprites/Character model.png" id="2_5idek"]
+[ext_resource type="Shader" uid="uid://c3v48sh65xxnb" path="res://art/shader/mapping_test.tres" id="2_c55l4"]
+[ext_resource type="Texture2D" path="res://art/sprites/texture_test.png" id="3_1cm56"]
+[ext_resource type="Texture2D" path="res://art/sprites/Character_uv.png" id="4_2gpmw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sdnl7"]
-atlas = ExtResource("2_5idek")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmdnj"]
+shader = ExtResource("2_c55l4")
+shader_parameter/uv = ExtResource("4_2gpmw")
+shader_parameter/diffuse = ExtResource("3_1cm56")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1mjx"]
+atlas = ExtResource("4_2gpmw")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_83gp0"]
-atlas = ExtResource("2_5idek")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wol8"]
+atlas = ExtResource("4_2gpmw")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_apoc8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sdnl7")
+"texture": SubResource("AtlasTexture_q1mjx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_83gp0")
+"texture": SubResource("AtlasTexture_4wol8")
 }],
 "loop": true,
 "name": &"idle",
@@ -50,47 +57,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_7ckma"]
-resource_name = "idle_right"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -146,6 +112,47 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_7ckma"]
+resource_name = "idle_right"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_txfwg"]
 _data = {
 "RESET": SubResource("Animation_nt3m7"),
@@ -188,6 +195,7 @@ height = 16.0
 script = ExtResource("1_qeh3e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_wmdnj")
 sprite_frames = SubResource("SpriteFrames_apoc8")
 animation = &"idle"
 
