@@ -43,4 +43,6 @@ func move_to(point: Vector2):
 
 func update_animation():
 	animation_tree.set("parameters/Idle/blend_position", view_direction)
+	animation_tree.set("parameters/Waling/blend_position", direction)
+
 
