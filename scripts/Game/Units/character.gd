@@ -13,10 +13,10 @@ var view_direction: Vector2 = Vector2.RIGHT
 var current_target_position: Vector2
 
 func _ready():
-	current_target_position = get_position()
+	current_target_position = global_position
 
 func _physics_process(delta):
-	var current_position = get_position()
+	var current_position = global_position
 	var current_direction = current_target_position - current_position
 	var current_distance = current_direction.length()
 	if current_distance > target_delta:
