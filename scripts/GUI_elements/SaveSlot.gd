@@ -1,6 +1,8 @@
 extends Control
 class_name SaveSlot
 
+signal on_load_pressed
+
 @onready var icon = $VBoxContainer/Icon
 @onready var name_label = $VBoxContainer/Name
 @onready var load_button = $VBoxContainer/HBoxContainer/Load
@@ -34,3 +36,8 @@ func _save_file_changed():
 func _on_delete_pressed():
 	game_saver.delete_game(_save_file)
 	set_save_file(null)
+
+
+func _on_load_pressed():
+	get_tree().change_scene_to_file("res://Scenes/tavern_game_scene.tscn")
+

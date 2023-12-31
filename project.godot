@@ -21,9 +21,15 @@ GameSaver="*res://scripts/Autoloads/game_saver.gd"
 
 [display]
 
-window/size/viewport_width=1080
-window/size/viewport_height=1080
+window/size/viewport_width=256
+window/size/viewport_height=256
+window/size/mode=2
 window/stretch/mode="viewport"
+
+[gui]
+
+theme/custom="res://themes/default_theme.tres"
+theme/custom_font="res://fonts/minimal5x7/minimal5x7.otf"
 
 [input]
 

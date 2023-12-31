@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://jelxxyo0sgiy"]
+[gd_scene load_steps=5 format=3 uid="uid://jelxxyo0sgiy"]
 
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_14v1d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4t1f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjd4l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eusn3"]
 
@@ -20,12 +24,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -69.5
-offset_right = 142.0
-offset_bottom = 69.5
+offset_left = -115.0
+offset_top = -120.0
+offset_right = 115.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x4t1f")
 
 [node name="Audio" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -71,12 +80,17 @@ text = "Combat"
 layout_mode = 2
 size_flags_vertical = 4
 
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rjd4l")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="save-button" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "SAVE"
+text = "Save"
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -85,7 +99,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_eusn3")
 
 [node name="back-button" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "BACK"
+text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/save-button" to="." method="_on_savebutton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/back-button" to="." method="_on_backbutton_pressed"]
