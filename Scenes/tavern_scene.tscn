@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1wruq1vniqxl"]
+[gd_scene load_steps=4 format=3 uid="uid://c1wruq1vniqxl"]
 
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="1_i1q3x"]
+[ext_resource type="Texture2D" uid="uid://dc7n8s67r7kwm" path="res://art/sprites/icons/coin.png" id="1_vp7g8"]
 [ext_resource type="Texture2D" uid="uid://bxns8sdk2ug6y" path="res://art/sprites/icons/options_icon.png" id="2_b1a5n"]
 
 [node name="TavernScene" type="Control"]
@@ -33,6 +34,10 @@ theme_override_font_sizes/font_size = 16
 text = "100"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="coin_icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_vp7g8")
 
 [node name="daytime" type="Label" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 2.08165e-12)
