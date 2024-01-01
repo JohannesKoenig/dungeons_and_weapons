@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpmnvee3ssjvm"]
+
+[ext_resource type="Script" path="res://Scenes/Game/NPC_spawner.gd" id="1_86rys"]
+
+[node name="NpcSpawner" type="Node2D"]
+script = ExtResource("1_86rys")
+spawn_window_duration = 3.0

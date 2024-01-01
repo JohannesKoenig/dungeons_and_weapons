@@ -3,7 +3,10 @@ class_name Character
 
 @export var target_delta = 1.0
 @export var speed = 300.0
+@export var texture: Texture2D
 @onready var animation_tree = $AnimationTree
+@onready var animated_sprite = $AnimatedSprite2D
+
 
 var interaction_controller: InteractionController
 signal reached_target
@@ -22,6 +25,14 @@ var current_target_position: Vector2
 func _ready():
 	current_target_position = global_position
 	interaction_controller = get_node("/root/InteractionController")
+	animated_sprite.material.set_shader_parameter("diffuse", texture)
+
+
+func set_texture(texture: Texture2D):
+	self.texture = texture
+	animated_sprite.material = animated_sprite.material.duplicate()
+	animated_sprite.material.set_shader_parameter("diffuse", texture)
+
 
 func _physics_process(delta):
 	var current_position = global_position

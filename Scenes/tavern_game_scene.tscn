@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=15 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
+[ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
 [ext_resource type="Texture2D" uid="uid://baff6fb2jgy2j" path="res://art/sprites/tilesets/tavern_furniture.png" id="2_guppe"]
 [ext_resource type="Texture2D" uid="uid://2r5bnfjqkfsg" path="res://art/sprites/tilesets/tavern_door.png" id="3_cq6h3"]
 [ext_resource type="PackedScene" uid="uid://c1wruq1vniqxl" path="res://Scenes/tavern_scene.tscn" id="4_1ogd8"]
-[ext_resource type="PackedScene" uid="uid://ciolarlxwqmes" path="res://Scenes/NPC_movement.tscn" id="5_5i3hi"]
 [ext_resource type="PackedScene" uid="uid://cqq4ym0fxsu8t" path="res://Scenes/Game/Items/Interactable.tscn" id="6_ev1l8"]
+[ext_resource type="PackedScene" uid="uid://dpmnvee3ssjvm" path="res://Scenes/Game/NPC_spawner.tscn" id="6_ypesp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_17voc"]
 texture = ExtResource("1_4pst3")
@@ -187,8 +188,8 @@ texture = ExtResource("1_4pst3")
 12:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_f1irb"]
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 2
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_17voc")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ms7km"]
@@ -256,8 +257,8 @@ texture = ExtResource("2_guppe")
 2:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_lgjjn"]
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 2
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_ms7km")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kxx4"]
@@ -302,14 +303,15 @@ texture = ExtResource("3_cq6h3")
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -7.5625, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_35sdu"]
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 2
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_6kxx4")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wu8u"]
 size = Vector2(14, 16)
 
 [node name="TavernGameScene" type="Node2D"]
+script = ExtResource("1_tl1ne")
 
 [node name="Floor" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_f1irb")
@@ -332,24 +334,8 @@ follow_viewport_enabled = true
 
 [node name="TavernScene" parent="CanvasLayer" instance=ExtResource("4_1ogd8")]
 
-[node name="NPC_Movement" parent="." node_paths=PackedStringArray("spawn_position", "door_position", "dungeon_position", "hallway_position", "despawn_position", "store_position", "counter_position", "shelve_1_1_position", "shelve_1_2_position", "shelve_1_3_position", "shelve_2_1_position", "shelve_2_2_position", "shelve_2_3_position") instance=ExtResource("5_5i3hi")]
-position = Vector2(181, 306)
-spawn_position = NodePath("../SpawnPoint")
-door_position = NodePath("../DoorPoint")
-dungeon_position = NodePath("../DungeonPoint")
-hallway_position = NodePath("../HallwayPoint")
-despawn_position = NodePath("../DespawnPoint")
-store_position = NodePath("../StorePoint")
-counter_position = NodePath("../CounterPoint")
-shelve_1_1_position = NodePath("../Shelve1Point1")
-shelve_1_2_position = NodePath("../Shelve1Point2")
-shelve_1_3_position = NodePath("../Shelve1Point3")
-shelve_2_1_position = NodePath("../Shelve2Point1")
-shelve_2_2_position = NodePath("../Shelve2Point2")
-shelve_2_3_position = NodePath("../Shelve2Point3")
-
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(178, 290)
+position = Vector2(177, 240)
 
 [node name="DoorPoint" type="Marker2D" parent="."]
 position = Vector2(176, 215)
@@ -395,3 +381,7 @@ position = Vector2(72, 152)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/Area2D"]
 position = Vector2(15, 9)
 shape = SubResource("RectangleShape2D_4wu8u")
+
+[node name="NpcSpawner" parent="." instance=ExtResource("6_ypesp")]
+position = Vector2(177, 281)
+spawn_window_duration = 20.0
