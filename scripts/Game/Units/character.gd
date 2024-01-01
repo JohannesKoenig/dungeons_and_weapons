@@ -8,6 +8,12 @@ class_name Character
 signal reached_target
 var reached_target_emitted = false
 
+var current_state = IDLE
+enum {
+	WALKING,
+	IDLE
+}
+
 var direction: Vector2 = Vector2.ZERO
 var view_direction: Vector2 = Vector2.RIGHT
 var current_target_position: Vector2
@@ -28,11 +34,11 @@ func _physics_process(delta):
 	else:
 		if not reached_target_emitted:
 			reached_target_emitted = true
+			current_state = IDLE
 			reached_target.emit()
-		
-		
 
 func _move(movement_direction: Vector2):
+	current_state = WALKING
 	direction = movement_direction.normalized()
 	if direction != Vector2.ZERO:
 		view_direction = direction
@@ -42,5 +48,7 @@ func move_to(point: Vector2):
 	reached_target_emitted = false
 
 func update_animation():
-	animation_tree.set("parameters/Idle/blend_position", view_direction)
+	animation_tree.set("parameters/Idle/blend_position", Vector2(view_direction.x, 0.0))
+	animation_tree.set("parameters/Walking/blend_position", direction)
+
 
