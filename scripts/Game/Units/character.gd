@@ -2,9 +2,10 @@ extends CharacterBody2D
 class_name Character
 
 @export var target_delta = 1.0
-
 @export var speed = 300.0
 @onready var animation_tree = $AnimationTree
+
+var interaction_controller: InteractionController
 signal reached_target
 var reached_target_emitted = false
 
@@ -20,6 +21,7 @@ var current_target_position: Vector2
 
 func _ready():
 	current_target_position = global_position
+	interaction_controller = get_node("/root/InteractionController")
 
 func _physics_process(delta):
 	var current_position = global_position
@@ -50,5 +52,3 @@ func move_to(point: Vector2):
 func update_animation():
 	animation_tree.set("parameters/Idle/blend_position", Vector2(view_direction.x, 0.0))
 	animation_tree.set("parameters/Walking/blend_position", direction)
-
-

@@ -15,7 +15,6 @@ func _ready():
 	if game_saver:
 		var save_files = _load_save_files()
 		for save_file in save_files:
-			print(save_file)
 			_on_save_file_loaded(save_file)
 		
 
@@ -28,8 +27,6 @@ func _load_save_files() -> Array:
 func _on_save_file_loaded(save_file: SaveFile):
 	if save_file:
 		var slot = save_file.slot
-		print(slot)
-		print(save_file.name)
 		match slot:
 			1:
 				save_slot_1.set_save_file(save_file)
