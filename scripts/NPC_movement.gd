@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var character = $Character
+var character_model: CharacterModel
+var ai_path_markers: AiPathMarkers
 
 # enum for general behaviour
 var general_behaviour: int
@@ -13,19 +15,6 @@ var action_sequence_index: int = 0
 
 var target_shelve: Array
 var dir = Vector2.RIGHT
-@export var spawn_position: Marker2D
-@export var door_position: Marker2D
-@export var dungeon_position: Marker2D
-@export var hallway_position: Marker2D
-@export var despawn_position: Marker2D
-@export var store_position: Marker2D
-@export var counter_position: Marker2D
-@export var shelve_1_1_position: Marker2D
-@export var shelve_1_2_position: Marker2D
-@export var shelve_1_3_position: Marker2D
-@export var shelve_2_1_position: Marker2D
-@export var shelve_2_2_position: Marker2D
-@export var shelve_2_3_position: Marker2D
 
 # general behaviour
 enum {
@@ -73,10 +62,17 @@ func get_action_sequence() -> Array:
 
 
 func _ready():
-	# TODO: remove this test
-	set_general_behaviour_shop([1,3])
-	_on_target_reached()
+	ai_path_markers = get_node("/root/AiPathMarkers")
+	var texture = load(character_model.texture)
+	character.set_texture(texture)
+	var instructions = character_model.instructions
+	match instructions["general_behaviour"]:
+		"SHOP":
+			set_general_behaviour_shop(instructions["target_shelve"])
+		"ONLY_DUNGEON":
+			set_general_behaviour_only_dungeon()
 	character.reached_target.connect(_on_target_reached)
+	_on_target_reached()
 
 
 func _on_target_reached():
@@ -116,18 +112,19 @@ func _get_shelve_enum(shelve: Array) -> int:
 
 func _get_position_by_action_state(action_state: int) -> Vector2:
 	var position_dict = {
-		SPAWN: spawn_position,
-		DOOR: door_position,
-		HALLWAY: hallway_position,
-		DUNGEON: dungeon_position,
-		DESPAWN: despawn_position,
-		STORE: store_position,
-		COUNTER: counter_position,
-		SHELVE_1_1: shelve_1_1_position,
-		SHELVE_1_2: shelve_1_2_position,
-		SHELVE_1_3: shelve_1_3_position,
-		SHELVE_2_1:shelve_2_1_position,
-		SHELVE_2_2: shelve_2_2_position,
-		SHELVE_2_3: shelve_2_3_position,
+		SPAWN: "spawn_position",
+		DOOR: "door_position",
+		HALLWAY: "hallway_position",
+		DUNGEON: "dungeon_position",
+		DESPAWN: "despawn_position",
+		STORE: "store_position",
+		COUNTER: "counter_position",
+		SHELVE_1_1: "shelve_1_1_position",
+		SHELVE_1_2: "shelve_1_2_position",
+		SHELVE_1_3: "shelve_1_3_position",
+		SHELVE_2_1:"shelve_2_1_position",
+		SHELVE_2_2: "shelve_2_2_position",
+		SHELVE_2_3: "shelve_2_3_position",
 	}
-	return position_dict[action_state].position
+	var marker = ai_path_markers.position_register[position_dict[action_state]]
+	return marker.position

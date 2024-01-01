@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameSaver="*res://scripts/Autoloads/game_saver.gd"
-InteractionController="*res://interaction_controller.gd"
+InteractionController="*res://scripts/Autoloads/interaction_controller.gd"
+AiPathMarkers="*res://scripts/Autoloads/ai_path_markers.gd"
 
 [display]
 
