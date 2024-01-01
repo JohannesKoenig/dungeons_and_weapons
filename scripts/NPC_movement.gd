@@ -70,7 +70,7 @@ func get_action_sequence() -> Array:
 		ONLY_DUNGEON:
 			return [SPAWN, DOOR, HALLWAY, DUNGEON, DESPAWN]
 	return []
-	
+
 
 func _ready():
 	# TODO: remove this test
@@ -90,8 +90,7 @@ func _on_target_reached():
 func choose(array):
 	array.shuffle()
 	return array[0]
-	
-	
+
 
 func _get_shelve_enum(shelve: Array) -> int:
 	var i = shelve[0]
