@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://mkl1ivf2pshi"]
+
+[ext_resource type="Texture2D" uid="uid://dkv6q0qyhqf0" path="res://art/sprites/tavern_door_animation.png" id="1_rwli4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mipmo"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75k6u"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2vni"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eh6k"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3anj"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnaxw"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q6xv"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueaku"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qx3e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mipmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75k6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2vni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eh6k")
+}],
+"loop": false,
+"name": &"close",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3anj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnaxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q6xv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueaku")
+}],
+"loop": false,
+"name": &"open",
+"speed": 8.0
+}]
+
+[node name="TavernDoor" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5qx3e")
+animation = &"close"
+frame = 3
+frame_progress = 1.0
