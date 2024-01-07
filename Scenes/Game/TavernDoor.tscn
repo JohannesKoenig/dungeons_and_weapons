@@ -1,0 +1,234 @@
+[gd_scene load_steps=26 format=3 uid="uid://mkl1ivf2pshi"]
+
+[ext_resource type="Script" path="res://scripts/Game/TavernDoor.gd" id="1_7qtlc"]
+[ext_resource type="Texture2D" uid="uid://dkv6q0qyhqf0" path="res://art/sprites/tavern_door_animation.png" id="1_rwli4"]
+[ext_resource type="Texture2D" uid="uid://2r5bnfjqkfsg" path="res://art/sprites/tilesets/tavern_door.png" id="2_6p4q5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mipmo"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75k6u"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2vni"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eh6k"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3anj"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnaxw"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q6xv"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueaku"]
+atlas = ExtResource("1_rwli4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qx3e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mipmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75k6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2vni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eh6k")
+}],
+"loop": false,
+"name": &"close",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3anj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnaxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q6xv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueaku")
+}],
+"loop": false,
+"name": &"open",
+"speed": 8.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_an2r7"]
+texture = ExtResource("2_6p4q5")
+0:0/size_in_atlas = Vector2i(4, 3)
+0:0/0 = 0
+0:0/0/y_sort_origin = 23
+
+[sub_resource type="TileSet" id="TileSet_vl1lw"]
+sources/0 = SubResource("TileSetAtlasSource_an2r7")
+
+[sub_resource type="Animation" id="Animation_b8ido"]
+resource_name = "open"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"open"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_17v80"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"open"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jcwud"]
+resource_name = "close"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"close"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lts5n"]
+_data = {
+"RESET": SubResource("Animation_17v80"),
+"close": SubResource("Animation_jcwud"),
+"open": SubResource("Animation_b8ido")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wdyvd"]
+animation = &"close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ggfdx"]
+animation = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oxilt"]
+advance_mode = 2
+advance_expression = "is_open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t540a"]
+advance_mode = 2
+advance_expression = "!is_open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2ch0p"]
+advance_mode = 2
+advance_expression = "is_open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ukxfd"]
+advance_mode = 2
+advance_expression = "!is_open"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_au3kx"]
+states/close/node = SubResource("AnimationNodeAnimation_wdyvd")
+states/close/position = Vector2(573, 73.5)
+states/open/node = SubResource("AnimationNodeAnimation_ggfdx")
+states/open/position = Vector2(392, 248)
+transitions = ["Start", "open", SubResource("AnimationNodeStateMachineTransition_oxilt"), "open", "close", SubResource("AnimationNodeStateMachineTransition_t540a"), "close", "open", SubResource("AnimationNodeStateMachineTransition_2ch0p"), "Start", "close", SubResource("AnimationNodeStateMachineTransition_ukxfd")]
+
+[node name="TavernDoor" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_7qtlc")
+
+[node name="Door" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(2.08165e-12, 13.76)
+sprite_frames = SubResource("SpriteFrames_5qx3e")
+animation = &"open"
+offset = Vector2(2.08165e-12, -13.76)
+
+[node name="Wall" type="TileMap" parent="."]
+y_sort_enabled = true
+position = Vector2(8, 2.08165e-12)
+tile_set = SubResource("TileSet_vl1lw")
+format = 2
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(-1, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lts5n")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lts5n")
+}
+tree_root = SubResource("AnimationNodeStateMachine_au3kx")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
