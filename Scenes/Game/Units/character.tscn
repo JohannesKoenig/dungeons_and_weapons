@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://oynassojhlq3"]
+[gd_scene load_steps=32 format=3 uid="uid://oynassojhlq3"]
 
 [ext_resource type="Script" path="res://scripts/Game/Units/character.gd" id="1_qeh3e"]
 [ext_resource type="Material" uid="uid://crqpbylxx3ay1" path="res://art/shader/Game/Units/character.tres" id="2_vys2b"]
 [ext_resource type="Texture2D" uid="uid://1lj62kv7to5f" path="res://art/sprites/Character_uv.png" id="4_2gpmw"]
 [ext_resource type="Texture2D" uid="uid://v1ub3uvyf0qj" path="res://art/sprites/Character_walking.png" id="5_3u13q"]
+[ext_resource type="PackedScene" path="res://Scenes/Game/InventoryComponent.tscn" id="5_r505x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q1mjx"]
 atlas = ExtResource("4_2gpmw")
@@ -390,13 +391,17 @@ graph_offset = Vector2(150.697, 38.7224)
 size = Vector2(9, 3)
 
 [node name="Character" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_mask = 2
 script = ExtResource("1_qeh3e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 material = ExtResource("2_vys2b")
+position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_apoc8")
 animation = &"idle"
+offset = Vector2(2.08165e-12, -6)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {
@@ -414,5 +419,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 5.5)
+position = Vector2(2.08165e-12, 0.5)
 shape = SubResource("RectangleShape2D_f7ets")
+
+[node name="InventoryComponent" parent="." instance=ExtResource("5_r505x")]

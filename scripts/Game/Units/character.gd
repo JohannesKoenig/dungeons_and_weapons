@@ -4,6 +4,8 @@ class_name Character
 @export var target_delta = 1.0
 @export var speed = 300.0
 @export var texture: Texture2D
+@export var manual_movement = false
+
 @onready var animation_tree = $AnimationTree
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -23,6 +25,7 @@ var view_direction: Vector2 = Vector2.RIGHT
 var current_target_position: Vector2
 
 func _ready():
+	set_texture(self.texture)
 	current_target_position = global_position
 	interaction_controller = get_node("/root/InteractionController")
 	animated_sprite.material.set_shader_parameter("diffuse", texture)
@@ -35,22 +38,28 @@ func set_texture(texture: Texture2D):
 
 
 func _physics_process(delta):
-	var current_position = global_position
-	var current_direction = current_target_position - current_position
-	var current_distance = current_direction.length()
-	if current_distance > target_delta:
-		_move(current_target_position - current_position)
+	if manual_movement:
 		velocity.x = direction.x * speed
 		velocity.y = direction.y * speed
 		move_and_slide()
 		update_animation()
 	else:
-		if not reached_target_emitted:
-			reached_target_emitted = true
-			current_state = IDLE
-			reached_target.emit()
+		var current_position = global_position
+		var current_direction = current_target_position - current_position
+		var current_distance = current_direction.length()
+		if current_distance > target_delta:
+			move(current_target_position - current_position)
+			velocity.x = direction.x * speed
+			velocity.y = direction.y * speed
+			move_and_slide()
+			update_animation()
+		else:
+			if not reached_target_emitted:
+				reached_target_emitted = true
+				current_state = IDLE
+				reached_target.emit()
 
-func _move(movement_direction: Vector2):
+func move(movement_direction: Vector2):
 	current_state = WALKING
 	direction = movement_direction.normalized()
 	if direction != Vector2.ZERO:

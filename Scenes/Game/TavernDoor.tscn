@@ -75,18 +75,9 @@ animations = [{
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_an2r7"]
 texture = ExtResource("2_6p4q5")
+0:0/size_in_atlas = Vector2i(4, 3)
 0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
+0:0/0/y_sort_origin = 23
 
 [sub_resource type="TileSet" id="TileSet_vl1lw"]
 sources/0 = SubResource("TileSetAtlasSource_an2r7")
@@ -211,16 +202,23 @@ states/open/position = Vector2(392, 248)
 transitions = ["Start", "open", SubResource("AnimationNodeStateMachineTransition_oxilt"), "open", "close", SubResource("AnimationNodeStateMachineTransition_t540a"), "close", "open", SubResource("AnimationNodeStateMachineTransition_2ch0p"), "Start", "close", SubResource("AnimationNodeStateMachineTransition_ukxfd")]
 
 [node name="TavernDoor" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_7qtlc")
 
 [node name="Door" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(2.08165e-12, 13.76)
 sprite_frames = SubResource("SpriteFrames_5qx3e")
 animation = &"open"
+offset = Vector2(2.08165e-12, -13.76)
 
 [node name="Wall" type="TileMap" parent="."]
+y_sort_enabled = true
+position = Vector2(8, 2.08165e-12)
 tile_set = SubResource("TileSet_vl1lw")
 format = 2
-layer_0/tile_data = PackedInt32Array(-65538, 0, 0, -2, 0, 1, 65534, 0, 2, -131071, 196608, 0, -65535, 196608, 1, 1, 196608, 2, -65537, 65536, 0, -131072, 131072, 0)
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(-1, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
