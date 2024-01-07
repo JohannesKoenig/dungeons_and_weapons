@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://oynassojhlq3" path="res://Scenes/Game/Units/character.tscn" id="3_gr4se"]
 
 [node name="NPC_Movement" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_cinp1")
 
 [node name="Character" parent="." instance=ExtResource("3_gr4se")]
