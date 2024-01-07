@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1wruq1vniqxl"]
+[gd_scene load_steps=5 format=3 uid="uid://c1wruq1vniqxl"]
 
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="1_i1q3x"]
+[ext_resource type="Script" path="res://scripts/GUI_elements/TavernGUI.gd" id="1_r07mv"]
 [ext_resource type="Texture2D" uid="uid://dc7n8s67r7kwm" path="res://art/sprites/icons/coin.png" id="1_vp7g8"]
 [ext_resource type="Texture2D" uid="uid://bxns8sdk2ug6y" path="res://art/sprites/icons/options_icon.png" id="2_b1a5n"]
 
@@ -13,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_r07mv")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -28,7 +30,7 @@ grow_horizontal = 0
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="cash_counter" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Coins" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "100"
@@ -39,7 +41,8 @@ vertical_alignment = 1
 layout_mode = 2
 texture = ExtResource("1_vp7g8")
 
-[node name="daytime" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Clock" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 2.08165e-12)
 layout_mode = 2
 text = "10:40"
