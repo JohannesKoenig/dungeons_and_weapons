@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=13 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
 [ext_resource type="Texture2D" uid="uid://baff6fb2jgy2j" path="res://art/sprites/tilesets/tavern_furniture.png" id="2_guppe"]
-[ext_resource type="Texture2D" uid="uid://2r5bnfjqkfsg" path="res://art/sprites/tilesets/tavern_door.png" id="3_cq6h3"]
 [ext_resource type="PackedScene" uid="uid://c1wruq1vniqxl" path="res://Scenes/tavern_scene.tscn" id="4_1ogd8"]
+[ext_resource type="PackedScene" uid="uid://mkl1ivf2pshi" path="res://Scenes/Game/TavernDoor.tscn" id="4_pt4fs"]
 [ext_resource type="PackedScene" uid="uid://cqq4ym0fxsu8t" path="res://Scenes/Game/Items/Interactable.tscn" id="6_ev1l8"]
 [ext_resource type="PackedScene" uid="uid://dpmnvee3ssjvm" path="res://Scenes/Game/NPC_spawner.tscn" id="6_ypesp"]
 
@@ -261,52 +261,6 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_ms7km")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kxx4"]
-texture = ExtResource("3_cq6h3")
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-3:0/0 = 0
-3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:0/0/physics_layer_0/angular_velocity = 0.0
-0:1/0 = 0
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0 = 0
-1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:1/0/physics_layer_0/angular_velocity = 0.0
-2:1/0 = 0
-2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:1/0/physics_layer_0/angular_velocity = 0.0
-3:1/0 = 0
-3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:1/0/physics_layer_0/angular_velocity = 0.0
-0:2/0 = 0
-0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:2/0/physics_layer_0/angular_velocity = 0.0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 7.625, -8, 8, 8, -8, 8)
-1:2/0 = 0
-1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:2/0/physics_layer_0/angular_velocity = 0.0
-2:2/0 = 0
-2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:2/0/physics_layer_0/angular_velocity = 0.0
-3:2/0 = 0
-3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:2/0/physics_layer_0/angular_velocity = 0.0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -7.5625, 8, 8, -8, 8)
-
-[sub_resource type="TileSet" id="TileSet_35sdu"]
-physics_layer_0/collision_layer = 2
-physics_layer_0/collision_mask = 3
-sources/0 = SubResource("TileSetAtlasSource_6kxx4")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wu8u"]
 size = Vector2(14, 16)
 
@@ -323,11 +277,8 @@ tile_set = SubResource("TileSet_lgjjn")
 format = 2
 layer_0/tile_data = PackedInt32Array(196613, 65537, 0, 262149, 65537, 1, 262150, 131073, 1, 196615, 196609, 0, 262151, 196609, 1, 458756, 65537, 3, 524292, 65537, 4, 589828, 65537, 5, 655364, 65537, 6, 458759, 65537, 3, 524295, 65537, 4, 589831, 65537, 5, 655367, 65537, 6, 327685, 65537, 2, 327686, 131073, 2, 327687, 196609, 2, 262152, 262145, 1, 327688, 262145, 2, 458757, 131073, 3, 524293, 131073, 4, 589829, 131073, 5, 655365, 131073, 6, 458760, 131073, 3, 524296, 131073, 4, 589832, 131073, 5, 655368, 131073, 6)
 
-[node name="TavernDoor" type="TileMap" parent="."]
-z_index = 10
-tile_set = SubResource("TileSet_35sdu")
-format = 2
-layer_0/tile_data = PackedInt32Array(655369, 0, 0, 720905, 0, 1, 786441, 0, 2, 655370, 65536, 0, 720906, 65536, 1, 786442, 65536, 2, 655371, 131072, 0, 720907, 131072, 1, 786443, 131072, 2, 655372, 196608, 0, 720908, 196608, 1, 786444, 196608, 2)
+[node name="TavernDoor" parent="." instance=ExtResource("4_pt4fs")]
+position = Vector2(176, 192)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
