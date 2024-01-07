@@ -1,10 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://crqpbylxx3ay1"]
 
 [ext_resource type="Shader" uid="uid://c3v48sh65xxnb" path="res://art/shader/mapping_test.tres" id="1_t27rb"]
-[ext_resource type="Texture2D" uid="uid://dc7n8s67r7kwm" path="res://art/sprites/icons/coin.png" id="2_cql3g"]
+[ext_resource type="Texture2D" uid="uid://b154k08h80ohn" path="res://art/sprites/character_mario_skin.png" id="2_ixu71"]
 [ext_resource type="Texture2D" uid="uid://1lj62kv7to5f" path="res://art/sprites/Character_uv.png" id="3_u8kuf"]
 
 [resource]
 shader = ExtResource("1_t27rb")
 shader_parameter/uv = ExtResource("3_u8kuf")
-shader_parameter/diffuse = ExtResource("2_cql3g")
+shader_parameter/diffuse = ExtResource("2_ixu71")
