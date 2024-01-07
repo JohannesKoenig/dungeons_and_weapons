@@ -4,6 +4,10 @@ class_name DayNightTimer
 @export var day_length = 60
 @export var night_length = 60
 @export var speed = 1.0
+@export var min_day_time_hours = 6
+@export var min_day_time_minutes = 0
+@export var max_day_time_hours = 18
+@export var max_day_time_minutes = 0
 
 var current_day_time = 0.0
 var current_hours: int
@@ -19,7 +23,6 @@ signal night_ended
 var timer: Timer
 
 func _ready():
-	is_day = true
 	timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(_on_timeout)
@@ -29,11 +32,11 @@ func _ready():
 func _process(_delta: float):
 	var remaining_time = timer.get_time_left()
 	if is_day:
-		current_day_time = int((1-(remaining_time / day_length)) * 60 * 12)
+		current_day_time = (int((1-(remaining_time / day_length)) * 60 * 12) + min_day_time_hours * 60 + min_day_time_minutes) % (24 * 60)
 	else:
-		current_day_time = int((1-(remaining_time / night_length)) * 60 * 12)
+		current_day_time = (int((1-(remaining_time / night_length)) * 60 * 12) + max_day_time_hours * 60 + max_day_time_minutes) % (24 * 60)
 	current_hours = floor(current_day_time / 60)
-	current_minutes = int(floor(current_day_time % 60)/10) * 10
+	current_minutes = int(floor(current_day_time % 60))
 	time_changed.emit(is_day, current_hours, current_minutes)
 
 func start_day():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjlfkpk8sw53e"]
+[gd_scene load_steps=2 format=3 uid="uid://ct0txx7wk68i2"]
 
 [ext_resource type="Script" path="res://scripts/Game/DayNightTimer.gd" id="1_2ijkx"]
 

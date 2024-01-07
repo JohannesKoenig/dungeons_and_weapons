@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c1wruq1vniqxl" path="res://Scenes/tavern_scene.tscn" id="4_1ogd8"]
 [ext_resource type="PackedScene" uid="uid://cqq4ym0fxsu8t" path="res://Scenes/Game/Items/Interactable.tscn" id="6_ev1l8"]
 [ext_resource type="PackedScene" uid="uid://dpmnvee3ssjvm" path="res://Scenes/Game/NPC_spawner.tscn" id="6_ypesp"]
-[ext_resource type="PackedScene" path="res://Scenes/Game/DayNightTimer.tscn" id="8_kh38u"]
+[ext_resource type="PackedScene" uid="uid://ct0txx7wk68i2" path="res://Scenes/Game/DayNightTimer.tscn" id="8_kh38u"]
 [ext_resource type="PackedScene" uid="uid://e7hpefbeseyy" path="res://Scenes/Game/SunLighting.tscn" id="9_wmdma"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgtce"]
@@ -560,7 +560,6 @@ texture = SubResource("GradientTexture2D_8ehtb")
 [node name="DayNightTimer" parent="." instance=ExtResource("8_kh38u")]
 day_length = 30
 night_length = 30
-speed = null
 
 [connection signal="time_changed" from="DayNightTimer" to="CanvasLayer/TavernScene" method="update_time"]
 [connection signal="time_changed" from="DayNightTimer" to="SunLighting" method="on_daytime_changed"]
