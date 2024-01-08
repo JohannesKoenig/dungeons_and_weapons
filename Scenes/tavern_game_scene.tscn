@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=38 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -338,6 +338,27 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_17voc")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jkyxo"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mx7pq"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8e6fi"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hls84"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1on8a"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5j53g"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0a4pv"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ms7km"]
 texture = ExtResource("2_guppe")
 1:0/0 = 0
@@ -350,16 +371,19 @@ texture = ExtResource("2_guppe")
 3:0/0/physics_layer_0/angular_velocity = 0.0
 1:1/0 = 0
 1:1/0/y_sort_origin = 3
+1:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jkyxo")
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 8, -8, 8)
 2:1/0 = 0
 2:1/0/y_sort_origin = 3
+2:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_5j53g")
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 8, -8, 8)
 3:1/0 = 0
 3:1/0/y_sort_origin = 3
+3:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_0a4pv")
 3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:1/0/physics_layer_0/angular_velocity = 0.0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 8, -8, 8)
@@ -380,6 +404,7 @@ texture = ExtResource("2_guppe")
 4:2/0/physics_layer_0/angular_velocity = 0.0
 1:3/0 = 0
 1:3/0/y_sort_origin = 3
+1:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_mx7pq")
 1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:3/0/physics_layer_0/angular_velocity = 0.0
 1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 8, -8, 8)
@@ -388,6 +413,7 @@ texture = ExtResource("2_guppe")
 2:3/0/physics_layer_0/angular_velocity = 0.0
 1:4/0 = 0
 1:4/0/y_sort_origin = 3
+1:4/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_8e6fi")
 1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:4/0/physics_layer_0/angular_velocity = 0.0
 1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -396,6 +422,7 @@ texture = ExtResource("2_guppe")
 2:4/0/physics_layer_0/angular_velocity = 0.0
 1:5/0 = 0
 1:5/0/y_sort_origin = 3
+1:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_hls84")
 1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:5/0/physics_layer_0/angular_velocity = 0.0
 1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -403,6 +430,7 @@ texture = ExtResource("2_guppe")
 2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:5/0/physics_layer_0/angular_velocity = 0.0
 1:6/0 = 0
+1:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_1on8a")
 1:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:6/0/physics_layer_0/angular_velocity = 0.0
 1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 2, -8, 2.0625)
@@ -411,12 +439,23 @@ texture = ExtResource("2_guppe")
 2:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_lgjjn"]
+occlusion_layer_0/light_mask = 2
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_ms7km")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wu8u"]
 size = Vector2(14, 16)
+
+[sub_resource type="Gradient" id="Gradient_115n4"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b6pu7"]
+gradient = SubResource("Gradient_115n4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
+metadata/_snap_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_lbt43"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -463,7 +502,7 @@ position = Vector2(176, 192)
 position = Vector2(176, 48)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("5_cx0rx")]
-position = Vector2(107, 65)
+position = Vector2(146, 93)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -525,19 +564,27 @@ spawn_window_duration = 20.0
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(132, 120)
-scale = Vector2(4.23438, 4.23438)
-color = Color(1, 0.760784, 0.270588, 1)
-energy = 1.52
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_8ehtb")
-
 [node name="SunLighting" parent="." instance=ExtResource("9_wmdma")]
 
 [node name="DayNightTimer" parent="." instance=ExtResource("8_kh38u")]
 day_length = 30
 night_length = 30
+
+[node name="PointLight" type="PointLight2D" parent="."]
+position = Vector2(146, 93)
+scale = Vector2(4.23438, 4.23438)
+color = Color(1, 0.760784, 0.270588, 1)
+energy = 1.17
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_b6pu7")
+
+[node name="PointLightShadows" type="PointLight2D" parent="PointLight"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+color = Color(1, 0.760784, 0.270588, 1)
+energy = 0.28
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_8ehtb")
 
 [connection signal="time_changed" from="DayNightTimer" to="CanvasLayer/TavernScene" method="update_time"]
 [connection signal="time_changed" from="DayNightTimer" to="SunLighting" method="on_daytime_changed"]
