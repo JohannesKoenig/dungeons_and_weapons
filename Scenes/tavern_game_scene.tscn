@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
 [ext_resource type="Texture2D" uid="uid://baff6fb2jgy2j" path="res://art/sprites/tilesets/tavern_furniture.png" id="2_guppe"]
-[ext_resource type="Texture2D" uid="uid://2r5bnfjqkfsg" path="res://art/sprites/tilesets/tavern_door.png" id="3_cq6h3"]
 [ext_resource type="Texture2D" uid="uid://bspjin4ruk1a4" path="res://art/sprites/tilesets/Outdoor.png" id="3_p81w2"]
 [ext_resource type="PackedScene" uid="uid://c1wruq1vniqxl" path="res://Scenes/tavern_scene.tscn" id="4_1ogd8"]
 [ext_resource type="PackedScene" uid="uid://mkl1ivf2pshi" path="res://Scenes/Game/TavernDoor.tscn" id="4_pt4fs"]
@@ -12,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dpmnvee3ssjvm" path="res://Scenes/Game/NPC_spawner.tscn" id="6_ypesp"]
 [ext_resource type="PackedScene" uid="uid://ct0txx7wk68i2" path="res://Scenes/Game/DayNightTimer.tscn" id="8_kh38u"]
 [ext_resource type="PackedScene" uid="uid://e7hpefbeseyy" path="res://Scenes/Game/SunLighting.tscn" id="9_wmdma"]
+[ext_resource type="PackedScene" uid="uid://cr2pgbgjac4je" path="res://Scenes/Game/DungeonDoor.tscn" id="12_76spw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgtce"]
 texture = ExtResource("3_p81w2")
@@ -459,8 +459,11 @@ layer_0/tile_data = PackedInt32Array(196613, 65537, 0, 262149, 65537, 1, 262150,
 [node name="TavernDoor" parent="." instance=ExtResource("4_pt4fs")]
 position = Vector2(176, 192)
 
+[node name="DungeonDoor" parent="." instance=ExtResource("12_76spw")]
+position = Vector2(176, 48)
+
 [node name="PlayerCharacter" parent="." instance=ExtResource("5_cx0rx")]
-position = Vector2(47, 36)
+position = Vector2(107, 65)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true

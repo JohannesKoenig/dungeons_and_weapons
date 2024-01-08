@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://cr2pgbgjac4je"]
+
+[ext_resource type="Script" path="res://scripts/Game/DungeonDoor.gd" id="1_q7vtv"]
+[ext_resource type="Texture2D" uid="uid://km3t12jn74uc" path="res://art/sprites/DungeonGate.png" id="2_31dao"]
+[ext_resource type="Shader" path="res://art/shader/Game/DungeonDoor.gdshader" id="3_qm8h3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3qjer"]
+texture = ExtResource("2_31dao")
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3ltxy"]
+sources/1 = SubResource("TileSetAtlasSource_3qjer")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b56gm"]
+seed = 1
+frequency = 0.0005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g3xm6"]
+seamless = true
+seamless_blend_skirt = 0.544
+noise = SubResource("FastNoiseLite_b56gm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_weqjl"]
+shader = ExtResource("3_qm8h3")
+shader_parameter/scroll = Vector2(2.08165e-12, 0.2)
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/strength = 1.95
+shader_parameter/distortion_strength = 0.0680001
+shader_parameter/color = Color(0, 0.85098, 0.694118, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_g3xm6")
+
+[sub_resource type="Gradient" id="Gradient_2vxuu"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ytbqk"]
+gradient = SubResource("Gradient_2vxuu")
+fill = 1
+fill_from = Vector2(0.4, 0.3)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_vvxko"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0nfu2"]
+gradient = SubResource("Gradient_vvxko")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
+metadata/_snap_enabled = true
+
+[node name="DungeonDoor" type="Node2D"]
+script = ExtResource("1_q7vtv")
+
+[node name="Wall" type="TileMap" parent="."]
+position = Vector2(8, 8)
+tile_set = SubResource("TileSet_3ltxy")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65537, 1, 0)
+
+[node name="Portal" type="Sprite2D" parent="."]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_weqjl")
+position = Vector2(0, -17)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("GradientTexture2D_ytbqk")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-4.54747e-13, -11)
+scale = Vector2(0.625, 0.625)
+color = Color(0, 0.929412, 0.65098, 1)
+texture = SubResource("GradientTexture2D_0nfu2")
