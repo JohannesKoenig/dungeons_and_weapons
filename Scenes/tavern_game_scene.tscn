@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=37 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -444,9 +444,6 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_ms7km")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wu8u"]
-size = Vector2(14, 16)
-
 [sub_resource type="Gradient" id="Gradient_115n4"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
@@ -549,13 +546,20 @@ position = Vector2(105, 136)
 position = Vector2(105, 154)
 
 [node name="Interactable" parent="." instance=ExtResource("6_ev1l8")]
-position = Vector2(72, 152)
+z_index = 1
+position = Vector2(72, 151)
 
-[node name="Area2D" type="Area2D" parent="Interactable"]
+[node name="Interactable2" parent="." instance=ExtResource("6_ev1l8")]
+z_index = 1
+position = Vector2(72, 136)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/Area2D"]
-position = Vector2(15, 9)
-shape = SubResource("RectangleShape2D_4wu8u")
+[node name="Interactable3" parent="." instance=ExtResource("6_ev1l8")]
+z_index = 1
+position = Vector2(72, 120)
+
+[node name="Interactable4" parent="." instance=ExtResource("6_ev1l8")]
+z_index = 1
+position = Vector2(121, 121)
 
 [node name="NpcSpawner" parent="." instance=ExtResource("6_ypesp")]
 position = Vector2(177, 281)

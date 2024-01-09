@@ -8,9 +8,8 @@ class_name Character
 
 @onready var animation_tree = $AnimationTree
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var actionable_finder: ActionableFinder = $Direction/ActionableFinder
 
-
-var interaction_controller: InteractionController
 signal reached_target
 var reached_target_emitted = false
 
@@ -27,7 +26,6 @@ var current_target_position: Vector2
 func _ready():
 	set_texture(self.texture)
 	current_target_position = global_position
-	interaction_controller = get_node("/root/InteractionController")
 	animated_sprite.material.set_shader_parameter("diffuse", texture)
 
 

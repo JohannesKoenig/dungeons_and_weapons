@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://oynassojhlq3"]
+[gd_scene load_steps=35 format=3 uid="uid://oynassojhlq3"]
 
 [ext_resource type="Script" path="res://scripts/Game/Units/character.gd" id="1_qeh3e"]
 [ext_resource type="Material" uid="uid://crqpbylxx3ay1" path="res://art/shader/Game/Units/character.tres" id="2_vys2b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://v1ub3uvyf0qj" path="res://art/sprites/Character_walking.png" id="5_3u13q"]
 [ext_resource type="PackedScene" uid="uid://dhxcyp4w5ds6t" path="res://Scenes/Game/InventoryComponent.tscn" id="5_r505x"]
 [ext_resource type="PackedScene" uid="uid://bo5d5ncmmftp5" path="res://Scenes/Game/Units/CoinPurseComponent.tscn" id="6_nwmy6"]
+[ext_resource type="PackedScene" uid="uid://d7m7ddelkjy8" path="res://Scenes/helper/ActionableFinder.tscn" id="7_v8t1w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q1mjx"]
 atlas = ExtResource("4_2gpmw")
@@ -391,6 +392,9 @@ graph_offset = Vector2(150.697, 38.7224)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7ets"]
 size = Vector2(9, 3)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pp5ui"]
+radius = 7.0
+
 [node name="Character" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_mask = 2
@@ -426,3 +430,12 @@ shape = SubResource("RectangleShape2D_f7ets")
 [node name="InventoryComponent" parent="." instance=ExtResource("5_r505x")]
 
 [node name="CoinBankComponent" parent="." instance=ExtResource("6_nwmy6")]
+
+[node name="Direction" type="Marker2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="ActionableFinder" parent="Direction" instance=ExtResource("7_v8t1w")]
+position = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder"]
+shape = SubResource("CircleShape2D_pp5ui")

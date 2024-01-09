@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d7m7ddelkjy8"]
+
+[ext_resource type="Script" path="res://Scenes/helper/ActionableFinder.gd" id="1_ax1ve"]
+
+[node name="ActionableFinder" type="Area2D"]
+collision_layer = 512
+collision_mask = 256
+script = ExtResource("1_ax1ve")

@@ -1,10 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqq4ym0fxsu8t"]
+[gd_scene load_steps=6 format=3 uid="uid://cqq4ym0fxsu8t"]
 
-[ext_resource type="Script" path="res://scripts/Game/Items/Interactable.gd" id="1_uin6m"]
+[ext_resource type="Script" path="res://scripts/Game/Items/Weapon.gd" id="1_7mqnm"]
 [ext_resource type="Texture2D" uid="uid://6s6s225wtutx" path="res://art/sprites/items/dummy_sword.png" id="2_bjsdq"]
+[ext_resource type="PackedScene" uid="uid://phmysi5nhblq" path="res://Scenes/helper/Actionable.tscn" id="3_whpce"]
+[ext_resource type="Texture2D" uid="uid://dc7n8s67r7kwm" path="res://art/sprites/icons/coin.png" id="4_dw6ly"]
 
-[node name="Interactable" type="Node2D"]
-script = ExtResource("1_uin6m")
+[sub_resource type="CircleShape2D" id="CircleShape2D_8u32m"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_7mqnm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_bjsdq")
+
+[node name="Actionable" parent="." instance=ExtResource("3_whpce")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+shape = SubResource("CircleShape2D_8u32m")
+
+[node name="InteractionPromp" type="Sprite2D" parent="."]
+position = Vector2(7, 6)
+scale = Vector2(0.484375, 0.484375)
+texture = ExtResource("4_dw6ly")
+
+[connection signal="action" from="Actionable" to="." method="_on_actionable_action"]
+[connection signal="area_entered" from="Actionable" to="." method="_on_actionable_area_entered"]
+[connection signal="area_exited" from="Actionable" to="." method="_on_actionable_area_exited"]
+[connection signal="body_entered" from="Actionable" to="." method="_on_actionable_body_entered"]
