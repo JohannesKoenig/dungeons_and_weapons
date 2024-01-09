@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://mkl1ivf2pshi"]
+[gd_scene load_steps=28 format=3 uid="uid://mkl1ivf2pshi"]
 
 [ext_resource type="Script" path="res://scripts/Game/TavernDoor.gd" id="1_7qtlc"]
 [ext_resource type="Texture2D" uid="uid://dkv6q0qyhqf0" path="res://art/sprites/tavern_door_animation.png" id="1_rwli4"]
 [ext_resource type="Texture2D" uid="uid://2r5bnfjqkfsg" path="res://art/sprites/tilesets/tavern_door.png" id="2_6p4q5"]
+[ext_resource type="PackedScene" uid="uid://phmysi5nhblq" path="res://Scenes/helper/Actionable.tscn" id="4_oox3w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mipmo"]
 atlas = ExtResource("1_rwli4")
@@ -183,10 +184,12 @@ advance_mode = 2
 advance_expression = "is_open"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t540a"]
+switch_mode = 2
 advance_mode = 2
 advance_expression = "!is_open"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2ch0p"]
+switch_mode = 2
 advance_mode = 2
 advance_expression = "is_open"
 
@@ -200,6 +203,10 @@ states/close/position = Vector2(573, 73.5)
 states/open/node = SubResource("AnimationNodeAnimation_ggfdx")
 states/open/position = Vector2(392, 248)
 transitions = ["Start", "open", SubResource("AnimationNodeStateMachineTransition_oxilt"), "open", "close", SubResource("AnimationNodeStateMachineTransition_t540a"), "close", "open", SubResource("AnimationNodeStateMachineTransition_2ch0p"), "Start", "close", SubResource("AnimationNodeStateMachineTransition_ukxfd")]
+graph_offset = Vector2(14, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qtpi"]
+size = Vector2(38.25, 20)
 
 [node name="TavernDoor" type="Node2D"]
 y_sort_enabled = true
@@ -232,3 +239,11 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_au3kx")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="Actionable" parent="." instance=ExtResource("4_oox3w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_2qtpi")
+
+[connection signal="action" from="Actionable" to="." method="_on_actionable_action"]

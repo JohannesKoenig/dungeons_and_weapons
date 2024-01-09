@@ -8,3 +8,10 @@ func open():
 
 func close():
 	is_open = false
+
+
+func _on_actionable_action():
+	if is_open:
+		close()
+	else:
+		open()

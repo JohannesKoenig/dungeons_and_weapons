@@ -18,7 +18,6 @@ func _on_actionable_action():
 
 
 func _on_actionable_area_entered(area):
-	print("test")
 	$InteractionPromp.visible = true
 
 func _on_actionable_area_exited(area):

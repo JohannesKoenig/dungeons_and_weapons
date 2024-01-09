@@ -16,7 +16,7 @@ func _handle_input():
 	var vertical = Input.get_axis("up","down")
 	var horizontal = Input.get_axis("left", "right")
 	direction = Vector2(horizontal, vertical)
-	if Input.is_action_pressed("action"):
+	if Input.is_action_just_pressed("action"):
 		var actionables = character.actionable_finder.get_overlapping_areas()
 		if actionables.size() > 0:
 			actionables[0].trigger()
