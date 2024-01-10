@@ -590,5 +590,6 @@ shadow_enabled = true
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_8ehtb")
 
+[connection signal="coins_changed" from="PlayerCharacter" to="CanvasLayer/TavernScene" method="update_coins"]
 [connection signal="time_changed" from="DayNightTimer" to="CanvasLayer/TavernScene" method="update_time"]
 [connection signal="time_changed" from="DayNightTimer" to="SunLighting" method="on_daytime_changed"]

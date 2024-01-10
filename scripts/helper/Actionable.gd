@@ -2,11 +2,11 @@ extends Area2D
 class_name Actionable
 
 var disabled = false
-signal action
+signal action(message: Dictionary)
 
-func trigger() -> void:
+func trigger(message: Dictionary = {}) -> void:
 	if not disabled:
-		action.emit()
+		action.emit(message)
 
 func disable():
 	disabled = true

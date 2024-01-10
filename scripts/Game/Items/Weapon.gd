@@ -1,19 +1,21 @@
 extends Node2D
 class_name Weapon
 
+@export var price: int = 10
 
 func _ready():
 	$InteractionPromp.visible = false
 
 func sell():
-	print("sold for X gold")
 	visible = false
 	$Actionable.disable()
 	await get_tree().create_timer(2).timeout
 	visible = true
 	$Actionable.enable()
 
-func _on_actionable_action():
+func _on_actionable_action(message: Dictionary):
+	var callback = message["callback"]
+	callback.call(price)
 	sell()
 
 

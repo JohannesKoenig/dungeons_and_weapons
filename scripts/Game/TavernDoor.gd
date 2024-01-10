@@ -10,7 +10,7 @@ func close():
 	is_open = false
 
 
-func _on_actionable_action():
+func _on_actionable_action(message: Dictionary):
 	if is_open:
 		close()
 	else:
