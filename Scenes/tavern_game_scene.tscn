@@ -562,8 +562,8 @@ color = Color(0, 0, 0, 1)
 [node name="SunLighting" parent="Entities" instance=ExtResource("9_wmdma")]
 
 [node name="DayNightTimer" parent="Entities" instance=ExtResource("8_kh38u")]
-day_length = 30
-night_length = 30
+day_length = 240
+night_length = 240
 
 [node name="PointLight" type="PointLight2D" parent="Entities"]
 position = Vector2(146, 93)
@@ -623,3 +623,4 @@ input = NodePath("../PlayerInputHandler")
 
 [connection signal="time_changed" from="Entities/DayNightTimer" to="Entities/SunLighting" method="on_daytime_changed"]
 [connection signal="time_changed" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="update_time"]
+[connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]
