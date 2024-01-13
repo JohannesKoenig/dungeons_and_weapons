@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqq4ym0fxsu8t"]
+
+[ext_resource type="Script" path="res://items/weapon/Weapon.gd" id="1_prim8"]
+[ext_resource type="Texture2D" uid="uid://6s6s225wtutx" path="res://Resources/weapons/training_sword/icon.png" id="2_y1qdr"]
+[ext_resource type="PackedScene" uid="uid://phmysi5nhblq" path="res://Scenes/helper/Actionable.tscn" id="3_wbvo8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8u32m"]
+
+[node name="Weapon" type="Node2D"]
+z_index = 2
+script = ExtResource("1_prim8")
+
+[node name="GameSprite" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("2_y1qdr")
+
+[node name="Actionable" parent="." instance=ExtResource("3_wbvo8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+shape = SubResource("CircleShape2D_8u32m")
+
+[connection signal="action" from="Actionable" to="." method="_on_actionable_action"]
+[connection signal="area_entered" from="Actionable" to="." method="_on_actionable_area_entered"]
+[connection signal="area_exited" from="Actionable" to="." method="_on_actionable_area_exited"]
+[connection signal="body_entered" from="Actionable" to="." method="_on_actionable_body_entered"]

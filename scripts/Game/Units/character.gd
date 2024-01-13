@@ -37,8 +37,7 @@ func set_texture(texture: Texture2D):
 
 func _physics_process(delta):
 	if manual_movement:
-		velocity.x = direction.x * speed
-		velocity.y = direction.y * speed
+		move(velocity)
 		move_and_slide()
 		update_animation()
 	else:
@@ -58,7 +57,6 @@ func _physics_process(delta):
 				reached_target.emit()
 
 func move(movement_direction: Vector2):
-	current_state = WALKING
 	direction = movement_direction.normalized()
 	if direction != Vector2.ZERO:
 		view_direction = direction
@@ -70,3 +68,7 @@ func move_to(point: Vector2):
 func update_animation():
 	animation_tree.set("parameters/Idle/blend_position", Vector2(view_direction.x, 0.0))
 	animation_tree.set("parameters/Walking/blend_position", direction)
+	if velocity == Vector2.ZERO:
+		current_state = IDLE
+	else: 
+		current_state = WALKING

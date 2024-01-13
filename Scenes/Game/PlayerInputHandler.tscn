@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1mwlja06w4h8"]
+
+[ext_resource type="Script" path="res://scripts/Game/PlayerInputHandler.gd" id="1_seqav"]
+
+[node name="PlayerInputHandler" type="Node"]
+script = ExtResource("1_seqav")

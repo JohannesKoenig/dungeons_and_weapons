@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://jelxxyo0sgiy"]
+[gd_scene load_steps=6 format=3 uid="uid://jelxxyo0sgiy"]
 
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_14v1d"]
+[ext_resource type="PackedScene" uid="uid://d0qyqvk76p3pi" path="res://Scenes/GUI_elements/audio_options.tscn" id="2_b6g10"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4t1f"]
 
@@ -36,49 +37,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_x4t1f")
 
-[node name="Audio" type="Label" parent="VBoxContainer"]
+[node name="AudioOptions" parent="VBoxContainer" instance=ExtResource("2_b6g10")]
 layout_mode = 2
-text = "Audio
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
-layout_mode = 2
-columns = 2
-
-[node name="Ambient" type="Label" parent="VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Ambient"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AmbientSlider" type="HSlider" parent="VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Music" type="Label" parent="VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Music"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MusicSlider" type="HSlider" parent="VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Combat" type="Label" parent="VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Combat"
-
-[node name="ComatSlider" type="HSlider" parent="VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_vertical = 4
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 layout_mode = 2
@@ -102,4 +62,6 @@ layout_mode = 2
 text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/save-button" to="." method="_on_savebutton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/save-button" to="." method="_on_close"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/back-button" to="." method="_on_backbutton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/back-button" to="." method="_on_close"]
