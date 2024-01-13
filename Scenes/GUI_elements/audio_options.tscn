@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://d0qyqvk76p3pi"]
+
+[node name="AudioOptions" type="VBoxContainer"]
+
+[node name="Audio" type="Label" parent="."]
+layout_mode = 2
+text = "Audio
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="Ambient" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Ambient"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmbientSlider" type="HSlider" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Music" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Combat" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Combat"
+
+[node name="ComatSlider" type="HSlider" parent="GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4

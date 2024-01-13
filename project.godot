@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameSaver="*res://scripts/Autoloads/game_saver.gd"
 AiPathMarkers="*res://scripts/Autoloads/ai_path_markers.gd"
+ResourceLoadingManager="*res://scripts/Autoloads/resource_loading_manager.gd"
 
 [display]
 
@@ -63,6 +64,8 @@ action={
 
 [layer_names]
 
+2d_physics/layer_1="Ground"
+2d_physics/layer_2="Units"
 2d_physics/layer_9="Actionable"
 2d_physics/layer_10="ActionableFinder"
 

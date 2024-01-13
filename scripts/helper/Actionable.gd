@@ -1,6 +1,7 @@
 extends Area2D
 class_name Actionable
 
+@export var actionable_name: String
 var disabled = false
 signal action(message: Dictionary)
 

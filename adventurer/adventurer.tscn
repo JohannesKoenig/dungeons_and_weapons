@@ -1,68 +1,16 @@
-[gd_scene load_steps=36 format=3 uid="uid://oynassojhlq3"]
+[gd_scene load_steps=29 format=3 uid="uid://bph32xoowbi6c"]
 
-[ext_resource type="Script" path="res://scripts/Game/Units/character.gd" id="1_qeh3e"]
-[ext_resource type="Material" uid="uid://crqpbylxx3ay1" path="res://art/shader/Game/Units/character.tres" id="2_vys2b"]
-[ext_resource type="Texture2D" uid="uid://1lj62kv7to5f" path="res://art/sprites/Character_uv.png" id="4_2gpmw"]
-[ext_resource type="Texture2D" uid="uid://v1ub3uvyf0qj" path="res://art/sprites/Character_walking.png" id="5_3u13q"]
-[ext_resource type="PackedScene" uid="uid://dhxcyp4w5ds6t" path="res://Scenes/Game/InventoryComponent.tscn" id="5_r505x"]
-[ext_resource type="PackedScene" uid="uid://bo5d5ncmmftp5" path="res://Scenes/Game/Units/CoinPurseComponent.tscn" id="6_nwmy6"]
-[ext_resource type="PackedScene" uid="uid://d7m7ddelkjy8" path="res://Scenes/helper/ActionableFinder.tscn" id="7_v8t1w"]
-[ext_resource type="PackedScene" uid="uid://3rtctqad5utq" path="res://Scenes/interactor_component.tscn" id="8_hwq67"]
+[ext_resource type="Script" path="res://adventurer/adventurer.gd" id="1_bmppq"]
+[ext_resource type="Material" uid="uid://crqpbylxx3ay1" path="res://art/shader/Game/Units/character.tres" id="1_jlo2m"]
+[ext_resource type="SpriteFrames" uid="uid://cg6xjmjhhqm0" path="res://adventurer/adventurer_sprite_frame.tres" id="1_s6g8s"]
+[ext_resource type="PackedScene" uid="uid://dhxcyp4w5ds6t" path="res://Scenes/Game/InventoryComponent.tscn" id="1_uobyx"]
+[ext_resource type="PackedScene" uid="uid://bo5d5ncmmftp5" path="res://Scenes/Game/Units/CoinPurseComponent.tscn" id="2_ge7nb"]
+[ext_resource type="Texture2D" uid="uid://1lj62kv7to5f" path="res://art/sprites/Character_uv.png" id="4_8l170"]
+[ext_resource type="Texture2D" uid="uid://v1ub3uvyf0qj" path="res://art/sprites/Character_walking.png" id="5_jgug5"]
+[ext_resource type="PackedScene" uid="uid://d7m7ddelkjy8" path="res://Scenes/helper/ActionableFinder.tscn" id="8_24af2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q1mjx"]
-atlas = ExtResource("4_2gpmw")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4wol8"]
-atlas = ExtResource("4_2gpmw")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e63x7"]
-atlas = ExtResource("5_3u13q")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nq40b"]
-atlas = ExtResource("5_3u13q")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lwety"]
-atlas = ExtResource("5_3u13q")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_obg1s"]
-atlas = ExtResource("5_3u13q")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_apoc8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q1mjx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4wol8")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e63x7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nq40b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lwety")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_obg1s")
-}],
-"loop": true,
-"name": &"walking",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65iww"]
+size = Vector2(10, 4)
 
 [sub_resource type="Animation" id="Animation_nt3m7"]
 tracks/0/type = "value"
@@ -111,7 +59,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_2gpmw")]
+"values": [ExtResource("4_8l170")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -176,7 +124,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_2gpmw")]
+"values": [ExtResource("4_8l170")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -241,7 +189,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_2gpmw")]
+"values": [ExtResource("4_8l170")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -294,7 +242,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_3u13q")]
+"values": [ExtResource("5_jgug5")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -359,7 +307,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_3u13q")]
+"values": [ExtResource("5_jgug5")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -442,7 +390,7 @@ advance_expression = "current_state == WALKING"
 advance_mode = 2
 advance_expression = "current_state == IDLE"
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_iqiep"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8d8bd"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_5qa8p")
 states/Idle/position = Vector2(387.82, 117.083)
 states/Walking/node = SubResource("AnimationNodeBlendSpace2D_uyqtg")
@@ -450,30 +398,34 @@ states/Walking/position = Vector2(672.857, 178.777)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_35sqe"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_d2ne3"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_vf8ik")]
 graph_offset = Vector2(150.697, 38.7224)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7ets"]
-size = Vector2(9, 3)
+[sub_resource type="CircleShape2D" id="CircleShape2D_nbxr1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pp5ui"]
-radius = 7.0
-
-[node name="Character" type="CharacterBody2D"]
+[node name="Adventurer" type="CharacterBody2D"]
 y_sort_enabled = true
+position = Vector2(2.08165e-12, -4)
 collision_layer = 2
-script = ExtResource("1_qeh3e")
+motion_mode = 1
+script = ExtResource("1_bmppq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.08165e-12, 5)
+shape = SubResource("RectangleShape2D_65iww")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
-material = ExtResource("2_vys2b")
-position = Vector2(0, 1)
-sprite_frames = SubResource("SpriteFrames_apoc8")
+material = ExtResource("1_jlo2m")
+sprite_frames = ExtResource("1_s6g8s")
 animation = &"idle"
-offset = Vector2(2.08165e-12, -6)
+
+[node name="InventoryComponent" parent="." instance=ExtResource("1_uobyx")]
+
+[node name="CoinBankComponent" parent="." instance=ExtResource("2_ge7nb")]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_txfwg")
 }
-tree_root = SubResource("AnimationNodeStateMachine_iqiep")
+tree_root = SubResource("AnimationNodeStateMachine_8d8bd")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.985788, 0.00967741)
@@ -484,23 +436,12 @@ libraries = {
 "": SubResource("AnimationLibrary_txfwg")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.08165e-12, 0.5)
-shape = SubResource("RectangleShape2D_f7ets")
-
-[node name="InventoryComponent" parent="." instance=ExtResource("5_r505x")]
-
-[node name="CoinBankComponent" parent="." instance=ExtResource("6_nwmy6")]
-
 [node name="Direction" type="Marker2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(2.08165e-12, 1)
 rotation = 1.5708
 
-[node name="ActionableFinder" parent="Direction" instance=ExtResource("7_v8t1w")]
-position = Vector2(0, 8)
+[node name="ActionableFinder" parent="Direction" instance=ExtResource("8_24af2")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder"]
-shape = SubResource("CircleShape2D_pp5ui")
-
-[node name="InteractorComponent" parent="." node_paths=PackedStringArray("actionable_finder") instance=ExtResource("8_hwq67")]
-actionable_finder = NodePath("../Direction/ActionableFinder")
+position = Vector2(-2.08165e-12, 7)
+shape = SubResource("CircleShape2D_nbxr1")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://qt8yey64vkjj"]
+
+[ext_resource type="Script" path="res://utils/ToggleComponent/ToggleComponent.gd" id="1_qb68e"]
+
+[node name="ToggleComponent" type="Node2D"]
+script = ExtResource("1_qb68e")

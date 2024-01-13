@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://blju14eccfr53"]
+
+[ext_resource type="Script" path="res://scripts/Game/ItemDisplay.gd" id="1_q5mcy"]
+[ext_resource type="PackedScene" uid="uid://qt8yey64vkjj" path="res://utils/ToggleComponent/ToggleComponent.tscn" id="2_eikxv"]
+[ext_resource type="PackedScene" uid="uid://brh82olvvw0w4" path="res://utils/PopUpGUIComponent/PopUpGUIComponent.tscn" id="3_yygff"]
+[ext_resource type="PackedScene" uid="uid://1on721liy2cb" path="res://items/UIItem.tscn" id="4_b52ua"]
+[ext_resource type="Script" path="res://scripts/helper/Actionable.gd" id="5_00r8b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sjws"]
+
+[node name="ItemDisplay" type="Marker2D"]
+script = ExtResource("1_q5mcy")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+z_index = 1
+
+[node name="ToggleComponent" parent="." instance=ExtResource("2_eikxv")]
+
+[node name="PopUpGuiComponent" parent="." node_paths=PackedStringArray("content") instance=ExtResource("3_yygff")]
+visible = false
+light_mask = 0
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 0.0
+offset_bottom = 0.0
+content = NodePath("UIItem")
+margin = 6
+
+[node name="UIItem" parent="PopUpGuiComponent" instance=ExtResource("4_b52ua")]
+light_mask = 0
+layout_mode = 1
+
+[node name="Actionable" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 512
+script = ExtResource("5_00r8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+shape = SubResource("CircleShape2D_4sjws")
+
+[connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]
+[connection signal="action" from="Actionable" to="." method="_on_actionable_action"]
