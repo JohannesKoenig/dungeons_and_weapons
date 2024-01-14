@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd4j4l87ky8n3"]
+
+[ext_resource type="Script" path="res://Scenes/Game/ItemHoldingComponent.gd" id="1_v4opq"]
+
+[node name="ItemHoldingComponent" type="Node2D"]
+script = ExtResource("1_v4opq")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
