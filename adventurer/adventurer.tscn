@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bph32xoowbi6c"]
+[gd_scene load_steps=31 format=3 uid="uid://bph32xoowbi6c"]
 
 [ext_resource type="Script" path="res://adventurer/adventurer.gd" id="1_bmppq"]
 [ext_resource type="Material" uid="uid://crqpbylxx3ay1" path="res://art/shader/Game/Units/character.tres" id="1_jlo2m"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://v1ub3uvyf0qj" path="res://art/sprites/Character_walking.png" id="5_jgug5"]
 [ext_resource type="PackedScene" uid="uid://d7m7ddelkjy8" path="res://Scenes/helper/ActionableFinder.tscn" id="8_24af2"]
 [ext_resource type="PackedScene" uid="uid://dd4j4l87ky8n3" path="res://Scenes/Game/ItemHoldingComponent.tscn" id="9_a5y4w"]
+[ext_resource type="Resource" uid="uid://btml0ae7ppwql" path="res://Resources/weapons/curved_axe/weapon.tres" id="10_y76m5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65iww"]
 size = Vector2(10, 4)
@@ -74,6 +75,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [1.5708]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ItemHoldingComponent:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2.08165e-12, -7)]
+}
 
 [sub_resource type="Animation" id="Animation_4yltu"]
 resource_name = "idle_left"
@@ -136,8 +149,20 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [1.5708]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ItemHoldingComponent:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(2.08165e-12, -9), Vector2(2.08165e-12, -8)]
 }
 
 [sub_resource type="Animation" id="Animation_7ckma"]
@@ -201,8 +226,20 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [4.71239]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ItemHoldingComponent:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(2.08165e-12, -9), Vector2(2.08165e-12, -8)]
 }
 
 [sub_resource type="Animation" id="Animation_vjpm4"]
@@ -448,3 +485,6 @@ position = Vector2(-2.08165e-12, 7)
 shape = SubResource("CircleShape2D_nbxr1")
 
 [node name="ItemHoldingComponent" parent="." instance=ExtResource("9_a5y4w")]
+z_index = 1
+position = Vector2(-2.08165e-12, -7)
+resource = ExtResource("10_y76m5")

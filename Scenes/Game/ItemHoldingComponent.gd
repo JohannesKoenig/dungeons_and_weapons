@@ -1,7 +1,10 @@
 extends Node2D
 class_name ItemHoldingComponent
 
-var resource: WeaponResource
+@export var resource: WeaponResource
+
+func _ready():
+	set_resource(resource)
 
 func set_resource(resource: WeaponResource):
 	self.resource = resource

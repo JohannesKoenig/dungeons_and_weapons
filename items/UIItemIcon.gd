@@ -3,14 +3,17 @@ extends Control
 @export var resource: Resource
 signal resource_changed(resource: Resource)
 @export var default_texture: Texture
+@export var enable_drag_and_drop: bool = true
 
 func _ready():
 	set_resource(resource)
 
 func _can_drop_data(at_position, data):
-	return true
+	return enable_drag_and_drop
 
 func _get_drag_data(at_position):
+	if not enable_drag_and_drop:
+		return null
 	if resource:
 		var drag_preview_texture = load("res://items/UIItemDragPreview.tscn").instantiate()
 		drag_preview_texture.texture = resource.icon_texture
