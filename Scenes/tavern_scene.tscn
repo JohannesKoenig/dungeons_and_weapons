@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1wruq1vniqxl"]
+[gd_scene load_steps=9 format=3 uid="uid://c1wruq1vniqxl"]
 
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="1_i1q3x"]
 [ext_resource type="Script" path="res://scripts/GUI_elements/TavernGUI.gd" id="1_r07mv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qt8yey64vkjj" path="res://utils/ToggleComponent/ToggleComponent.tscn" id="5_57lu4"]
 [ext_resource type="PackedScene" uid="uid://brh82olvvw0w4" path="res://utils/PopUpGUIComponent/PopUpGUIComponent.tscn" id="6_vjcvr"]
 [ext_resource type="PackedScene" uid="uid://d0qyqvk76p3pi" path="res://Scenes/GUI_elements/audio_options.tscn" id="7_hr2mv"]
+[ext_resource type="PackedScene" uid="uid://ckxthsiaun2c1" path="res://Scenes/GUI_elements/InventoryGUI.tscn" id="8_ofdxy"]
 
 [node name="TavernScene" type="Control"]
 layout_mode = 3
@@ -101,5 +102,22 @@ offset_right = 200.0
 offset_bottom = 40.0
 grow_vertical = 2
 
+[node name="InventoryPopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("6_vjcvr")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_right = 0.0
+grow_horizontal = 0
+content = NodePath("InventoryGui")
+
+[node name="InventoryGui" parent="InventoryPopUp" instance=ExtResource("8_ofdxy")]
+layout_mode = 1
+
+[node name="InventoryToggle" parent="." instance=ExtResource("5_57lu4")]
+
 [connection signal="pressed" from="MarginContainer2/Options" to="ToggleComponent" method="activate"]
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]
+[connection signal="deactivated" from="InventoryPopUp" to="InventoryToggle" method="deactivate"]
+[connection signal="value_changed" from="InventoryToggle" to="InventoryPopUp" method="set_active"]

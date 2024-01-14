@@ -1,28 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://1on721liy2cb"]
+[gd_scene load_steps=6 format=3 uid="uid://1on721liy2cb"]
 
 [ext_resource type="Script" path="res://items/UIItem.gd" id="1_e7bgj"]
 [ext_resource type="Texture2D" uid="uid://dc7n8s67r7kwm" path="res://art/sprites/icons/coin.png" id="2_17sw2"]
 [ext_resource type="Material" uid="uid://dq5mgv4ch1cxs" path="res://art/shader/unshaded.tres" id="2_i8mob"]
-[ext_resource type="Script" path="res://items/weapon/weapon_resource.gd" id="3_imuon"]
-[ext_resource type="Texture2D" uid="uid://bxns8sdk2ug6y" path="res://art/sprites/icons/options_icon.png" id="5_q5rf4"]
-
-[sub_resource type="Resource" id="Resource_kw7gn"]
-script = ExtResource("3_imuon")
-price = 0
-icon_texture = ExtResource("2_17sw2")
-name = ""
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcvpp"]
-bg_color = Color(0, 0, 0, 0.12549)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.105882, 0.105882, 0.105882, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[ext_resource type="PackedScene" uid="uid://l7nmxxxkmcf6" path="res://items/UIItemIcon.tscn" id="5_8g0x6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jhrt"]
 
@@ -38,7 +19,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_e7bgj")
-weapon_resource = SubResource("Resource_kw7gn")
 
 [node name="Content" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -56,43 +36,12 @@ layout_mode = 2
 text = "Name"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="Content"]
+[node name="UIItemIcon" parent="Content" instance=ExtResource("5_8g0x6")]
+custom_minimum_size = Vector2(16, 16)
+layout_direction = 1
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="Content/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -11.0
-offset_top = -11.0
-offset_right = 11.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_lcvpp")
-
-[node name="Texture" type="TextureRect" parent="Content/Control"]
-material = ExtResource("2_i8mob")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-texture = ExtResource("5_q5rf4")
+size_flags_vertical = 4
 
 [node name="CostContainer" type="HBoxContainer" parent="Content"]
 layout_mode = 2
@@ -115,3 +64,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_17sw2")
+
+[connection signal="resource_changed" from="Content/UIItemIcon" to="." method="_on_UIItemIcon_resource_changed"]

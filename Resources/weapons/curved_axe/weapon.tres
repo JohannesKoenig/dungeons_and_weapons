@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://btml0ae7ppwql"]
+
+[ext_resource type="Texture2D" uid="uid://chwae56kqtetw" path="res://Resources/weapons/curved_axe/icon.png" id="1_5yuhd"]
+[ext_resource type="Script" path="res://items/weapon/weapon_resource.gd" id="2_whtcp"]
+
+[resource]
+script = ExtResource("2_whtcp")
+price = 32
+name = "Curved Axe"
+icon_texture = ExtResource("1_5yuhd")
+ingame_texture = ExtResource("1_5yuhd")

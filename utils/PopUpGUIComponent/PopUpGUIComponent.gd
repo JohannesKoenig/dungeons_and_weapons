@@ -3,6 +3,7 @@ extends Control
 @export var active: bool = false
 @export var content: Control
 @export var margin = 20
+signal deactivated
 
 func _ready():
 	$Panel.size = size

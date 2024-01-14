@@ -11,3 +11,6 @@ func deactivate():
 	value = false
 	value_changed.emit(false)
 
+func toggle():
+	value = !value
+	value_changed.emit(value)

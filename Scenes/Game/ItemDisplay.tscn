@@ -39,4 +39,5 @@ script = ExtResource("5_00r8b")
 shape = SubResource("CircleShape2D_4sjws")
 
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]
+[connection signal="resource_changed" from="PopUpGuiComponent/UIItem" to="." method="_on_ui_item_resource_changed"]
 [connection signal="action" from="Actionable" to="." method="_on_actionable_action"]
