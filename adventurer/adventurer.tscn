@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bph32xoowbi6c"]
+[gd_scene load_steps=32 format=3 uid="uid://bph32xoowbi6c"]
 
 [ext_resource type="Script" path="res://adventurer/adventurer.gd" id="1_bmppq"]
 [ext_resource type="Material" uid="uid://crqpbylxx3ay1" path="res://art/shader/Game/Units/character.tres" id="1_jlo2m"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d7m7ddelkjy8" path="res://Scenes/helper/ActionableFinder.tscn" id="8_24af2"]
 [ext_resource type="PackedScene" uid="uid://dd4j4l87ky8n3" path="res://Scenes/Game/ItemHoldingComponent.tscn" id="9_a5y4w"]
 [ext_resource type="Resource" uid="uid://btml0ae7ppwql" path="res://Resources/weapons/curved_axe/weapon.tres" id="10_y76m5"]
+[ext_resource type="PackedScene" uid="uid://dnugsdn6poypk" path="res://Scenes/Game/QickAccessComponent.tscn" id="11_qxvjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65iww"]
 size = Vector2(10, 4)
@@ -488,3 +489,5 @@ shape = SubResource("CircleShape2D_nbxr1")
 z_index = 1
 position = Vector2(-2.08165e-12, -7)
 resource = ExtResource("10_y76m5")
+
+[node name="QickAccessComponent" parent="." instance=ExtResource("11_qxvjh")]

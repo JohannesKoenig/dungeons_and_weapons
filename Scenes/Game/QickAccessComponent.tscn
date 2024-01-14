@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnugsdn6poypk"]
+
+[ext_resource type="Script" path="res://Scenes/Game/QickAccessComponent.gd" id="1_87t7v"]
+
+[node name="QickAccessComponent" type="Node2D"]
+script = ExtResource("1_87t7v")

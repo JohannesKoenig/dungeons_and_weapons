@@ -12,3 +12,6 @@ func update_time(is_day: bool, hours: int, minutes: int) -> void:
 
 func toggle_inventory():
 	$InventoryToggle.toggle()
+
+func set_quick_access_component(quick_access_component: QuickAccessComponent):
+	$HotbarGui.set_quick_access_component(quick_access_component)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1wruq1vniqxl"]
+[gd_scene load_steps=10 format=3 uid="uid://c1wruq1vniqxl"]
 
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="1_i1q3x"]
 [ext_resource type="Script" path="res://scripts/GUI_elements/TavernGUI.gd" id="1_r07mv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://brh82olvvw0w4" path="res://utils/PopUpGUIComponent/PopUpGUIComponent.tscn" id="6_vjcvr"]
 [ext_resource type="PackedScene" uid="uid://d0qyqvk76p3pi" path="res://Scenes/GUI_elements/audio_options.tscn" id="7_hr2mv"]
 [ext_resource type="PackedScene" uid="uid://ckxthsiaun2c1" path="res://Scenes/GUI_elements/InventoryGUI.tscn" id="8_ofdxy"]
+[ext_resource type="PackedScene" uid="uid://dmegvhl0tg3gx" path="res://Scenes/GUI_elements/HotbarGUI.tscn" id="9_wr4vi"]
 
 [node name="TavernScene" type="Control"]
 layout_mode = 3
@@ -55,15 +56,8 @@ horizontal_alignment = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Options" type="Button" parent="MarginContainer2"]
 layout_mode = 2
@@ -116,6 +110,14 @@ content = NodePath("InventoryGui")
 layout_mode = 1
 
 [node name="InventoryToggle" parent="." instance=ExtResource("5_57lu4")]
+
+[node name="HotbarGui" parent="." instance=ExtResource("9_wr4vi")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+grow_vertical = 0
 
 [connection signal="pressed" from="MarginContainer2/Options" to="ToggleComponent" method="activate"]
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]

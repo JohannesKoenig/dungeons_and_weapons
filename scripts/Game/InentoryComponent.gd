@@ -2,7 +2,7 @@ extends Node2D
 class_name InventoryComponent
 
 var inventory = []
-@export var inventory_size = 10
+@export var inventory_size = 16
 
 func _ready():
 	# Initialize inventory with empty slots

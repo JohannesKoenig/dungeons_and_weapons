@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckxthsiaun2c1"]
+[gd_scene load_steps=2 format=3 uid="uid://ckxthsiaun2c1"]
 
-[ext_resource type="PackedScene" uid="uid://l7nmxxxkmcf6" path="res://items/UIItemIcon.tscn" id="1_3b7ff"]
-[ext_resource type="Resource" uid="uid://cju1muovg1xma" path="res://Resources/weapons/training_sword/weapon.tres" id="2_n0tkh"]
-[ext_resource type="Resource" uid="uid://btml0ae7ppwql" path="res://Resources/weapons/curved_axe/weapon.tres" id="3_kxcr8"]
+[ext_resource type="Script" path="res://Scenes/GUI_elements/InventoryGUI.gd" id="1_fj01o"]
 
 [node name="InventoryGui" type="Control"]
 layout_mode = 3
@@ -11,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fj01o")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
@@ -19,70 +18,3 @@ offset_bottom = 40.0
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 4
-
-[node name="Item" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-resource = ExtResource("2_n0tkh")
-
-[node name="Item2" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-resource = ExtResource("2_n0tkh")
-
-[node name="Item3" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-resource = ExtResource("3_kxcr8")
-
-[node name="Item4" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item5" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item6" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item7" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item8" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item9" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item10" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item11" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item12" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item13" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item14" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item15" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="Item16" parent="GridContainer" instance=ExtResource("1_3b7ff")]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
