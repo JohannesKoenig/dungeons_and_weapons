@@ -2,7 +2,6 @@ extends Node2D
 
 var ai_path_markers: AiPathMarkers
 
-
 func _ready():
 	ai_path_markers = get_node("/root/AiPathMarkers")
 	if ai_path_markers:
@@ -19,4 +18,6 @@ func _ready():
 		ai_path_markers.register_position("shelve_2_1_position", $Entities/Marker/Shelve2Point1)
 		ai_path_markers.register_position("shelve_2_2_position", $Entities/Marker/Shelve2Point2)
 		ai_path_markers.register_position("shelve_2_3_position", $Entities/Marker/Shelve2Point3)
-
+	
+	var drag_and_drop_layer = get_node("/root/DragAndDropLayer")
+	drag_and_drop_layer.set_canvas_layer($CanvasLayer)

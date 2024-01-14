@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://mjmcgiwdjmb7"]
+
+[ext_resource type="Script" path="res://Scenes/Autoloads/DragAndDropLayer.gd" id="1_1daji"]
+
+[node name="DragAndDropLayer" type="CanvasLayer"]
+layer = 2
+scale = Vector2(2.08165e-12, 2.08165e-12)
+transform = Transform2D(2.08165e-12, 0, 0, 2.08165e-12, 0, 0)
+follow_viewport_enabled = true
+script = ExtResource("1_1daji")

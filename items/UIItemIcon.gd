@@ -1,28 +1,39 @@
 extends Control
 
-var resource: Resource
+@export var resource: Resource
+signal resource_changed(resource: Resource)
 @export var default_texture: Texture
+
+func _ready():
+	set_resource(resource)
 
 func _can_drop_data(at_position, data):
 	return true
 
 func _get_drag_data(at_position):
-	var data = {
-		"origin_node": self,
-		"resource": resource,
-		"test": "hello"
-	}
-	return data
+	if resource:
+		var drag_preview_texture = load("res://items/UIItemDragPreview.tscn").instantiate()
+		drag_preview_texture.texture = resource.icon_texture
+		get_node("/root/DragAndDropLayer").get_canvas_layer().add_child(drag_preview_texture)
+		drag_preview_texture.size = Vector2(0.1,0.1)  # No idea why this works
+		var data = {
+			"origin_node": self,
+			"resource": resource
+		}
+		set_drag_preview(drag_preview_texture)
+		return data
+	else:
+		return null
 
 func _drop_data(at_position, data):
-	print("drop data")
-	if not resource:
+	if (data["origin_node"] != self) and (data["resource"]):
 		var this_resource = resource
 		set_resource(data["resource"])
 		data["origin_node"].set_resource(this_resource)
 
 func set_resource(resource: Resource):
 	self.resource = resource
+	resource_changed.emit(resource)
 	if resource:
 		$Texture.texture = resource.icon_texture
 	else:

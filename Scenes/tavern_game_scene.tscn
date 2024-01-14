@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=42 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cr2pgbgjac4je" path="res://Scenes/Game/DungeonDoor.tscn" id="12_76spw"]
 [ext_resource type="PackedScene" uid="uid://blju14eccfr53" path="res://Scenes/Game/ItemDisplay.tscn" id="12_j0urc"]
 [ext_resource type="PackedScene" uid="uid://bph32xoowbi6c" path="res://adventurer/adventurer.tscn" id="12_ou522"]
-[ext_resource type="Resource" uid="uid://cju1muovg1xma" path="res://Resources/weapons/training_sword/weapon.tres" id="13_2udle"]
 [ext_resource type="PackedScene" uid="uid://coh6x8in6t67w" path="res://Scenes/player_movement_mapper.tscn" id="15_pacfw"]
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="16_e63fn"]
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://Scenes/Game/PlayerInputHandler.tscn" id="16_v5hdu"]
@@ -601,7 +600,6 @@ position = Vector2(120, 153)
 
 [node name="Player" parent="Entities" instance=ExtResource("12_ou522")]
 position = Vector2(96, 92)
-item_resource = ExtResource("13_2udle")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
