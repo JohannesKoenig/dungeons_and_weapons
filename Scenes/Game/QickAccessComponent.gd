@@ -19,6 +19,8 @@ func add_item(item: WeaponResource, index: int) -> WeaponResource:
 	var item_to_return = items[index]
 	items[index] = item
 	items_changed.emit(items)
+	if index == selected:
+		select_by_index(index)
 	return item_to_return 
 
 func remove_item_at_index(index: int) -> WeaponResource:
@@ -30,6 +32,8 @@ func remove_item(item: WeaponResource) -> bool:
 		if items[index] == item:
 			items[index] = null
 			items_changed.emit(items)
+			if index == selected:
+				select_by_index(index)
 			return true
 	return false
 

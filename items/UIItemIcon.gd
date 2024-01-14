@@ -35,10 +35,11 @@ func _drop_data(at_position, data):
 		data["origin_node"].set_resource(this_resource)
 
 func set_resource(resource: Resource):
-	self.resource = resource
-	resource_changed.emit(resource)
-	if resource:
-		$Texture.texture = resource.icon_texture
-	else:
-		$Texture.texture = default_texture
+	if self.resource != resource:
+		self.resource = resource
+		resource_changed.emit(resource)
+		if resource:
+			$Texture.texture = resource.icon_texture
+		else:
+			$Texture.texture = default_texture
 	

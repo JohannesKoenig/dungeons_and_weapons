@@ -8,10 +8,17 @@ func _ready():
 
 func set_resource(resource: WeaponResource):
 	self.resource = resource
-	$ItemSprite.texture = resource.ingame_texture
+	if self.resource:
+		$ItemSprite.texture = resource.ingame_texture
+	else:
+		$ItemSprite.texture = null
 
 func remove_resource() -> WeaponResource:
 	var old_resource = self.resource
 	self.resource = null
 	$ItemSprite.texture = null
 	return old_resource
+
+
+func _on_qick_access_component_selected_changed(resource):
+	set_resource(resource)
