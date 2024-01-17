@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://blaf30o8pbcte"]
+
+[ext_resource type="Texture2D" uid="uid://dywmr3vfopsv7" path="res://Resources/weapons/hammer/icon.png" id="1_hbqsf"]
+[ext_resource type="Script" path="res://items/weapon/weapon_resource.gd" id="1_w4ril"]
+
+[resource]
+script = ExtResource("1_w4ril")
+price = 29
+name = "Hammer"
+icon_texture = ExtResource("1_hbqsf")
+ingame_texture = ExtResource("1_hbqsf")

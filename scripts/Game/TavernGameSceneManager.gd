@@ -23,3 +23,13 @@ func _ready():
 	drag_and_drop_layer.set_canvas_layer($CanvasLayer)
 	$CanvasLayer/TavernScene.set_quick_access_component($Entities/Player/QickAccessComponent)
 	$CanvasLayer/TavernScene/InventoryPopUp.content.set_inventory_component($Entities/Player/InventoryComponent)
+	
+	var timer = Timer.new()
+	add_child(timer)
+	timer.timeout.connect(_start_npcs)
+	timer.one_shot = true
+	timer.start(2)
+	
+
+func _start_npcs():
+	$Behaviours/AiDirector.update_instructions()

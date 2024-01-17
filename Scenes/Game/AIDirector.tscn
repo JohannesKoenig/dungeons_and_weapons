@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bigcq1dyqr61g"]
+
+[ext_resource type="Script" path="res://Scenes/Game/AIDirector.gd" id="1_8p2vy"]
+
+[node name="AiDirector" type="Node"]
+script = ExtResource("1_8p2vy")

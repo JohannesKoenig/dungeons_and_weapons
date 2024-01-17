@@ -1,12 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://cr2pgbgjac4je"]
+[gd_scene load_steps=19 format=3 uid="uid://cr2pgbgjac4je"]
 
 [ext_resource type="Script" path="res://scripts/Game/DungeonDoor.gd" id="1_q7vtv"]
 [ext_resource type="Texture2D" uid="uid://km3t12jn74uc" path="res://art/sprites/DungeonGate.png" id="2_31dao"]
+[ext_resource type="Texture2D" uid="uid://oimikb3wpcdj" path="res://art/sprites/DungeonGateNormals.png" id="3_3ng10"]
 [ext_resource type="Shader" path="res://art/shader/Game/DungeonDoorDistort.gdshader" id="3_fxokg"]
 [ext_resource type="Shader" path="res://art/shader/Game/DungeonDoor.gdshader" id="3_qm8h3"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_qk0em"]
+diffuse_texture = ExtResource("2_31dao")
+normal_texture = ExtResource("3_3ng10")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3qjer"]
-texture = ExtResource("2_31dao")
+texture = SubResource("CanvasTexture_qk0em")
 0:0/size_in_atlas = Vector2i(4, 4)
 0:0/0 = 0
 
@@ -74,12 +79,14 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_vac40")
 script = ExtResource("1_q7vtv")
 
 [node name="Wall" type="TileMap" parent="."]
+light_mask = 2
 position = Vector2(8, 8)
 tile_set = SubResource("TileSet_3ltxy")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65537, 1, 0)
 
 [node name="Portal" type="Sprite2D" parent="."]
+light_mask = 2
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_weqjl")
 position = Vector2(0, -17)
@@ -88,13 +95,16 @@ texture = SubResource("GradientTexture2D_ytbqk")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-2.71051e-20, -1)
+position = Vector2(-1.14794e-41, 6)
 scale = Vector2(0.625, 0.625)
 color = Color(0, 0.929412, 0.65098, 1)
 energy = 1.7
+range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_0nfu2")
+texture_scale = 1.79
 
 [node name="PortalDistort" type="Sprite2D" parent="."]
+light_mask = 2
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_q0y1x")
 position = Vector2(0, -17)

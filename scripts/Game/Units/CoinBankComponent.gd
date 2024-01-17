@@ -1,7 +1,7 @@
 extends Node2D
 class_name CoinBankComponent
 
-var value = 0
+var value = 20
 
 signal value_changed(value)
 

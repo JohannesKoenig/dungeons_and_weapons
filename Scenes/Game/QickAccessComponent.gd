@@ -15,6 +15,13 @@ func _ready():
 		items.append(null)
 	select_by_index(selected)
 
+func replace_item(target: WeaponResource, to_replace: WeaponResource) -> WeaponResource:
+	for index in range(size):
+		if items[index] == target:
+			return add_item(to_replace, index)
+	return null
+
+
 func add_item(item: WeaponResource, index: int) -> WeaponResource:
 	var item_to_return = items[index]
 	items[index] = item

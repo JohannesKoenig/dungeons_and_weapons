@@ -1,0 +1,74 @@
+{
+    "name": "buyer",
+    "states": [
+        {
+            "name": "init",
+            "type": "movement",
+            "parameters": {
+                "target": "spawn_position"
+            },
+            "next": "door"
+        },
+        {
+            "name": "door",
+            "type": "movement",
+            "parameters": {
+                "target": "door_position"
+            },
+            "next": "hallway"
+        },
+        {
+            "name": "hallway",
+            "type": "movement",
+            "parameters": {
+                "target": "hallway_position"
+            },
+            "next": "store"
+        },
+        {
+            "name": "store",
+            "type": "movement",
+            "parameters": {
+                "target": "store_position"
+            },
+            "next": "shelve"
+        },
+        {
+            "name": "shelve",
+            "type": "movement",
+            "parameters": {
+                "target": "shelve_1_3_position"
+            },
+            "next": "pick_item"
+        },
+        {
+            "name": "pick_item",
+            "type": "interaction",
+            "next": "counter"
+        },
+        {
+            "name": "counter",
+            "type": "movement",
+            "parameters": {
+                "target": "counter_position"
+            },
+            "next": "hallway_return"
+        },
+        {
+            "name": "hallway_return",
+            "type": "movement",
+            "parameters": {
+                "target": "hallway_position"
+            },
+            "next": "despawn"
+        },
+        {
+            "name": "despawn",
+            "type": "movement",
+            "parameters": {
+                "target": "despawn_position"
+            },
+            "next": null
+        }
+    ]
+}

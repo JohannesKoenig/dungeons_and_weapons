@@ -19,6 +19,5 @@ func remove_resource() -> WeaponResource:
 	$ItemSprite.texture = null
 	return old_resource
 
-
 func _on_qick_access_component_selected_changed(resource):
 	set_resource(resource)

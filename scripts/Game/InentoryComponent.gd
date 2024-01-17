@@ -10,6 +10,7 @@ func _ready():
 	for i in range(inventory_size):
 		inventory.append(null)
 	add_item(load("res://Resources/weapons/curved_axe/weapon.tres"))
+	add_item(load("res://Resources/weapons/hammer/weapon.tres"))
 
 func add_item(item) -> bool:
 	# Add item to first empty slot

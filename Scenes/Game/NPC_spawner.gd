@@ -8,6 +8,7 @@ var _timer_durations: Array
 var timer: Timer
 var current_index: int
 const CharacterResource = preload("res://Scenes/Game/Units/NPC_movement.tscn")
+var adventurer_resource = preload("res://adventurer/adventurer.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -57,7 +58,7 @@ func _ready():
 			}
 		)
 	])
-	start_spawning()
+	#start_spawning()
 
 
 func set_characters(characters: Array):
@@ -91,3 +92,8 @@ func instantiate_from_model(character_model: CharacterModel):
 	instance.character_model = character_model
 	instance.position = Vector2.ZERO
 	add_child(instance)
+
+func spawn_adventurer() -> Adventurer:
+	var adventurer = adventurer_resource.instantiate()
+	add_child(adventurer)
+	return adventurer
