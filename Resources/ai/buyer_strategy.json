@@ -39,6 +39,14 @@
             "parameters": {
                 "target": "shelve_1_3_position"
             },
+            "next": "wait_to_pick_up"
+        },
+        {
+            "name": "wait_to_pick_up",
+            "type": "wait",
+            "parameters": {
+                "time": 1
+            },
             "next": "pick_item"
         },
         {
