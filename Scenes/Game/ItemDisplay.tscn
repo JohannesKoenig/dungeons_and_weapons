@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://blju14eccfr53"]
+[gd_scene load_steps=8 format=3 uid="uid://blju14eccfr53"]
 
 [ext_resource type="Script" path="res://scripts/Game/ItemDisplay.gd" id="1_q5mcy"]
 [ext_resource type="PackedScene" uid="uid://qt8yey64vkjj" path="res://utils/ToggleComponent/ToggleComponent.tscn" id="2_eikxv"]
 [ext_resource type="PackedScene" uid="uid://brh82olvvw0w4" path="res://utils/PopUpGUIComponent/PopUpGUIComponent.tscn" id="3_yygff"]
 [ext_resource type="PackedScene" uid="uid://1on721liy2cb" path="res://items/UIItem.tscn" id="4_b52ua"]
 [ext_resource type="Script" path="res://scripts/helper/Actionable.gd" id="5_00r8b"]
+[ext_resource type="PackedScene" uid="uid://cn37c7bbn7wkc" path="res://Scenes/helper/ActionableMiddleware.tscn" id="6_5dcff"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sjws"]
 
@@ -37,6 +38,8 @@ script = ExtResource("5_00r8b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
 shape = SubResource("CircleShape2D_4sjws")
+
+[node name="ActionableMiddleware" parent="Actionable" instance=ExtResource("6_5dcff")]
 
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]
 [connection signal="resource_changed" from="PopUpGuiComponent/UIItem" to="." method="_on_ui_item_resource_changed"]

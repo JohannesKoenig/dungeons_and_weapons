@@ -7,7 +7,9 @@ func _ready():
 	$ItemSprite.visible = true
 
 
-func _on_actionable_action(message):
+func _on_actionable_action(message: Dictionary):
+	if message.is_empty():
+		return
 	#$ToggleComponent.activate()
 	if "selected_resource" in message:
 		var resource = message["selected_resource"]

@@ -764,7 +764,7 @@ position = Vector2(120, 137)
 [node name="ItemDisplay6" parent="Entities" instance=ExtResource("12_j0urc")]
 position = Vector2(120, 153)
 
-[node name="Player" parent="Entities" instance=ExtResource("12_ou522")]
+[node name="Player" parent="Entities" groups=["player"] instance=ExtResource("12_ou522")]
 position = Vector2(111, 54)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

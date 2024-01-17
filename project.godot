@@ -21,6 +21,7 @@ GameSaver="*res://scripts/Autoloads/game_saver.gd"
 AiPathMarkers="*res://scripts/Autoloads/ai_path_markers.gd"
 ResourceLoadingManager="*res://scripts/Autoloads/resource_loading_manager.gd"
 DragAndDropLayer="*res://Scenes/Autoloads/DragAndDropLayer.tscn"
+InteractionMiddleware="*res://interaction_middleware.gd"
 
 [display]
 

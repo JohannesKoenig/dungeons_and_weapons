@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn37c7bbn7wkc"]
+
+[ext_resource type="Script" path="res://Scenes/helper/ActionableMiddleware.gd" id="1_45rhn"]
+
+[node name="ActionableMiddleware" type="Node2D"]
+script = ExtResource("1_45rhn")

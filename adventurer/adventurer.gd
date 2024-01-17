@@ -13,7 +13,8 @@ func _physics_process(delta):
 func interact():
 	actionable_finder.interact({
 		"selected_resource": quick_access_component.selected_resource,
-		"on_success": item_change_interaction
+		"on_success": item_change_interaction,
+		"source": self
 	})
 
 func buy():
