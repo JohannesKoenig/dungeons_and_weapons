@@ -25,6 +25,8 @@ func _process(delta):
 				_execute_interaction_state(self.state)
 			"wait":
 				_execute_wait_state(self.state)
+			"buy":
+				_execute_buy_state(self.state)
 		
 
 func set_strategy(strategy: Dictionary):
@@ -85,6 +87,17 @@ func _execute_wait_state(interaction_state: Dictionary):
 			# reset class state
 			timer_started = false
 			return
+
+func _execute_buy_state(sell_state: Dictionary):
+	#actions
+	actor.buy()
+	#pick next state
+	var next_state_name = self.state["next"]
+	if next_state_name:
+		self.state = get_state_with_name(next_state_name,self.strategy["states"])
+	else: 
+		self.state = null
+	return
 
 func get_state_with_name(state_name: String, states: Array):
 	for _state in states:

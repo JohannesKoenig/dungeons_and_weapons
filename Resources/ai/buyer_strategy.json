@@ -60,6 +60,19 @@
             "parameters": {
                 "target": "counter_position"
             },
+            "next": "wait_to_sell"
+        },
+        {
+            "name": "wait_to_sell",
+            "type": "wait",
+            "parameters": {
+                "time": 1
+            },
+            "next": "sell"
+        },
+        {
+            "name": "sell",
+            "type": "buy",
             "next": "hallway_return"
         },
         {
