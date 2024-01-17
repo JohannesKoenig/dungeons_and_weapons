@@ -794,6 +794,8 @@ weapon_resource = ExtResource("19_ym7yb")
 
 [node name="TavernAi" parent="Behaviours" instance=ExtResource("19_2wblc")]
 
+[connection signal="day_started" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="show_day_time_pop_up"]
+[connection signal="night_started" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="show_night_time_pop_up"]
 [connection signal="time_changed" from="Entities/DayNightTimer" to="Entities/SunLighting" method="on_daytime_changed"]
 [connection signal="time_changed" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="update_time"]
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]

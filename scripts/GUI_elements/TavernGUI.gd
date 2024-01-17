@@ -4,6 +4,7 @@ extends Control
 @onready var coins_label = $MarginContainer/HBoxContainer/Coins
 @export var player: Adventurer
 
+
 func _ready():
 	set_player(player)
 
@@ -26,3 +27,9 @@ func set_player(adventurer: Adventurer):
 
 func _update_coin_label(value: int):
 	$MarginContainer/HBoxContainer/Coins.text = str(value)
+
+func show_day_time_pop_up():
+	$DayTimePopUp.show_content()
+
+func show_night_time_pop_up():
+	$NightTimePopUp.show_content()

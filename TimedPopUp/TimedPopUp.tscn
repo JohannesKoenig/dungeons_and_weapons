@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://df0ryqi78vhof"]
+
+[ext_resource type="Script" path="res://TimedPopUp/TimedPopUp.gd" id="1_wg04g"]
+
+[node name="TimedPopUp" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wg04g")
+
+[node name="Timer" type="Timer" parent="."]

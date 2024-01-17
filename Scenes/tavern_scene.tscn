@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1wruq1vniqxl"]
+[gd_scene load_steps=11 format=3 uid="uid://c1wruq1vniqxl"]
 
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="1_i1q3x"]
 [ext_resource type="Script" path="res://scripts/GUI_elements/TavernGUI.gd" id="1_r07mv"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d0qyqvk76p3pi" path="res://Scenes/GUI_elements/audio_options.tscn" id="7_hr2mv"]
 [ext_resource type="PackedScene" uid="uid://ckxthsiaun2c1" path="res://Scenes/GUI_elements/InventoryGUI.tscn" id="8_ofdxy"]
 [ext_resource type="PackedScene" uid="uid://dmegvhl0tg3gx" path="res://Scenes/GUI_elements/HotbarGUI.tscn" id="9_wr4vi"]
+[ext_resource type="PackedScene" uid="uid://df0ryqi78vhof" path="res://TimedPopUp/TimedPopUp.tscn" id="10_uiwp6"]
 
 [node name="TavernScene" type="Control"]
 layout_mode = 3
@@ -118,6 +119,64 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 grow_vertical = 0
+
+[node name="DayTimePopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("10_uiwp6")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+content = NodePath("DayTimeChangedLabel")
+duration = 5.0
+
+[node name="DayTimeChangedLabel" type="Label" parent="DayTimePopUp"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -5.0
+offset_right = 20.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Day"
+horizontal_alignment = 1
+
+[node name="NightTimePopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("10_uiwp6")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+content = NodePath("NightTimeChangedLabel")
+duration = 5.0
+
+[node name="NightTimeChangedLabel" type="Label" parent="NightTimePopUp"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -10.0
+offset_right = 26.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Night"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="MarginContainer2/Options" to="ToggleComponent" method="activate"]
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]
