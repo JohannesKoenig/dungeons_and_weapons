@@ -3,9 +3,13 @@ class_name Adventurer
 
 @onready var actionable_finder: ActionableFinder = $Direction/ActionableFinder
 @export var actionable_selector: Callable
+@export var adventurer_resource: AdventurerResource
 @onready var quick_access_component: QuickAccessComponent = $QickAccessComponent
 @onready var coin_bank_component: CoinBankComponent = $CoinBankComponent
 var ai_mapper: AIMovementMapper
+
+func _ready():
+	coin_bank_component.value = adventurer_resource.coins
 
 func _physics_process(delta):
 	move_and_slide()

@@ -38,8 +38,7 @@ func set_actor(actor: CharacterBody2D):
 
 func start():
 	if self.strategy:
-		if self.strategy["name"] == "buyer":
-			self.state = get_state_with_name("init", self.strategy["states"])
+		self.state = get_state_with_name("init", self.strategy["states"])
 
 func _execute_movement_state(movement_state: Dictionary):
 	var target_name = movement_state["parameters"]["target"]

@@ -1,0 +1,37 @@
+{
+    "name": "dungeon",
+    "states": [
+        {
+            "name": "init",
+            "type": "movement",
+            "parameters": {
+                "target": "spawn_position"
+            },
+            "next": "door"
+        },
+        {
+            "name": "door",
+            "type": "movement",
+            "parameters": {
+                "target": "door_position"
+            },
+            "next": "hallway"
+        },
+        {
+            "name": "hallway",
+            "type": "movement",
+            "parameters": {
+                "target": "hallway_position"
+            },
+            "next": "despawn"
+        },
+        {
+            "name": "despawn",
+            "type": "movement",
+            "parameters": {
+                "target": "despawn_position"
+            },
+            "next": null
+        }
+    ]
+}

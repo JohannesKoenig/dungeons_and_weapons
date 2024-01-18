@@ -2,7 +2,7 @@ extends Node
 class_name TavernAI
 
 var buyer_strategy: Dictionary
-
+var dungeon_strategy: Dictionary
 
 func calculate_strategies(
 	item_stock: Array,
@@ -26,7 +26,10 @@ func _get_buyer_strategy() -> Dictionary:
 	return buyer_strategy
 
 func _get_dungeon_strategy() -> Dictionary:
-	return {}
+	if dungeon_strategy.is_empty():
+		var resource = FileAccess.open("res://Resources/ai/dungeon_strategy.json", FileAccess.READ)
+		dungeon_strategy = JSON.parse_string(resource.get_as_text())
+	return dungeon_strategy
 
 func _map_items_to_buyer(
 	item_stock: Array,
@@ -41,16 +44,14 @@ func _map_items_to_buyer(
 	for i in range(nr_of_items):
 		if j >= nr_of_adventurers:
 			break
-		if item_stock_sorted_by_price[i].price <= adventurers_sorted_by_coins[j].coin_bank_component.value:
+		if item_stock_sorted_by_price[i].price <= adventurers_sorted_by_coins[j].coins:
 			map_item_to_buyer[item_stock_sorted_by_price[i]] = adventurers_sorted_by_coins[j]
 			j += 1
 			continue
 	return map_item_to_buyer
 
-func _compare_adventurers_by_coins(a: Adventurer, b: Adventurer) -> bool:
-	var a_coins = a.coin_bank_component.value
-	var b_coins = b.coin_bank_component.value
-	return a_coins < b_coins
+func _compare_adventurers_by_coins(a: AdventurerResource, b: AdventurerResource) -> bool:
+	return a.coins < b.coins
 
 func _compare_items_by_price(a: WeaponResource, b: WeaponResource) -> bool:
 	return a.price < b.price

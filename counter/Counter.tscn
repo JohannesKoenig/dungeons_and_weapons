@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvuu5tnbgss15"]
+[gd_scene load_steps=6 format=3 uid="uid://bvuu5tnbgss15"]
 
 [ext_resource type="Script" path="res://counter/Counter.gd" id="1_hhj4e"]
 [ext_resource type="Script" path="res://scripts/helper/Actionable.gd" id="2_sufjh"]
+[ext_resource type="PackedScene" uid="uid://phmysi5nhblq" path="res://Scenes/helper/Actionable.tscn" id="3_0jxvl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8jb27"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k4pq3"]
 
 [node name="Counter" type="Node2D"]
 script = ExtResource("1_hhj4e")
@@ -16,4 +19,11 @@ script = ExtResource("2_sufjh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
 shape = SubResource("CircleShape2D_8jb27")
 
-[connection signal="action" from="Actionable" to="." method="interact"]
+[node name="TavernOpen" parent="." instance=ExtResource("3_0jxvl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TavernOpen"]
+position = Vector2(0, -28)
+shape = SubResource("CircleShape2D_k4pq3")
+
+[connection signal="action" from="Actionable" to="." method="interact_buy_item"]
+[connection signal="action" from="TavernOpen" to="." method="interact_open_tavern"]

@@ -1,9 +1,15 @@
 extends Node2D
+class_name TavernManager
 
 var ai_path_markers: AiPathMarkers
 var interaction_middleware: InteractionMiddleware
+var tavern_open = false
+signal tavern_open_changed(value: bool)
+var adventurer_resource_template = preload("res://adventurer/adventurer_resource.gd")
+var rng: RandomNumberGenerator
 
 func _ready():
+	rng = RandomNumberGenerator.new()
 	ai_path_markers = get_node("/root/AiPathMarkers")
 	if ai_path_markers:
 		ai_path_markers.register_position("spawn_position", $Entities/Marker/SpawnPoint)
@@ -32,13 +38,44 @@ func _ready():
 	$Entities/DayNightTimer.night_started.connect(
 		interaction_middleware.night_starts
 	)
-	
-	var timer = Timer.new()
-	add_child(timer)
-	timer.timeout.connect(_start_npcs)
-	timer.one_shot = true
-	timer.start(2)
-	
+	tavern_open_changed.connect(trigger_ai_on_tavern_open)
 
-func _start_npcs():
-	$Behaviours/AiDirector.update_instructions()
+
+func open_tavern(value: bool):
+	if not value and not $Entities/DayNightTimer.is_day:
+		tavern_open = value
+		tavern_open_changed.emit(value)
+	if value and $Entities/DayNightTimer.is_day:
+		tavern_open = value
+		tavern_open_changed.emit(value)
+
+func toggle_tavern():
+	open_tavern(!tavern_open)
+
+func get_items_on_display() -> Array:
+	return [
+		$Entities/ItemDisplay.item_resource,
+		$Entities/ItemDisplay2.item_resource,
+		$Entities/ItemDisplay3.item_resource,
+		$Entities/ItemDisplay4.item_resource,
+		$Entities/ItemDisplay5.item_resource,
+		$Entities/ItemDisplay6.item_resource,
+	]
+
+func get_adventurers() -> Array:
+	var number_of_adventurers = rng.randi_range(2, 10)
+	var adventurers = []
+	for i in range(number_of_adventurers):
+		var template = adventurer_resource_template.new()
+		template.coins = 100
+		adventurers.append(template)
+	return adventurers
+
+func trigger_ai_on_tavern_open(open: bool):
+	if !open:
+		return
+	$Behaviours/AiDirector.update_instructions(
+		get_items_on_display(),
+		get_adventurers()
+	)
+	
