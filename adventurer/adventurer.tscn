@@ -422,17 +422,17 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d2ne3"]
 advance_mode = 2
-advance_expression = "current_state == WALKING"
+advance_expression = "(velocity.x != 0) or (velocity.y != 0)"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vf8ik"]
 advance_mode = 2
-advance_expression = "current_state == IDLE"
+advance_expression = "(velocity.x == 0) and (velocity.y == 0)"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8d8bd"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_5qa8p")
 states/Idle/position = Vector2(387.82, 117.083)
 states/Walking/node = SubResource("AnimationNodeBlendSpace2D_uyqtg")
-states/Walking/position = Vector2(672.857, 178.777)
+states/Walking/position = Vector2(673.357, 178.777)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_35sqe"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_d2ne3"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_vf8ik")]
 graph_offset = Vector2(150.697, 38.7224)
 

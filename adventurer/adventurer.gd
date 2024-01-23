@@ -6,6 +6,7 @@ class_name Adventurer
 @export var adventurer_resource: AdventurerResource
 @onready var quick_access_component: QuickAccessComponent = $QickAccessComponent
 @onready var coin_bank_component: CoinBankComponent = $CoinBankComponent
+@onready var animation_tree: AnimationTree = $AnimationTree
 var ai_mapper: AIMovementMapper
 
 func _ready():
@@ -13,6 +14,7 @@ func _ready():
 
 func _physics_process(delta):
 	move_and_slide()
+	animation_tree["parameters/Walking/blend_position"] = velocity
 
 func interact():
 	actionable_finder.interact({
