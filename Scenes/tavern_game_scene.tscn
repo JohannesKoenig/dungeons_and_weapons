@@ -822,6 +822,11 @@ texture = ExtResource("21_xp0n5")
 [node name="SpriteShadow" parent="Entities/Tree" instance=ExtResource("19_sjjon")]
 position = Vector2(2.08165e-12, 27)
 
+[node name="AlphaWall" type="StaticBody2D" parent="."]
+
+[node name="Polygon" type="CollisionPolygon2D" parent="AlphaWall"]
+polygon = PackedVector2Array(0, 0, 0, 256, 256, 256, 256, 0, 1, 0, 1, -8, 264, -8, 264, 264, -8, 264, -8, -8, 0, -8)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
