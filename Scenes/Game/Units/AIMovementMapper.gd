@@ -27,7 +27,10 @@ func _process(delta):
 				_execute_wait_state(self.state)
 			"buy":
 				_execute_buy_state(self.state)
-		
+			"despawn":
+				print("deleted player")
+				actor.queue_free()
+				queue_free()
 
 func set_strategy(strategy: Dictionary):
 	self.strategy = strategy

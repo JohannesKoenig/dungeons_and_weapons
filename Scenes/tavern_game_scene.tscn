@@ -699,7 +699,7 @@ position = Vector2(176, 97)
 position = Vector2(176, 52)
 
 [node name="DespawnPoint" type="Marker2D" parent="Entities/Marker"]
-position = Vector2(176, -52)
+position = Vector2(176, 40)
 
 [node name="StorePoint" type="Marker2D" parent="Entities/Marker"]
 position = Vector2(105, 97)
