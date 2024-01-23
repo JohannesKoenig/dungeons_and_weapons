@@ -1,11 +1,6 @@
 extends Node2D
 
-@onready var canvas_modulate = $CanvasModulate
-@export var dawn_color: Color
-@export var noon_color: Color
-@export var dusk_color: Color
-@export var midnight_color: Color
-
+@export var shadow_color: Color
 @export var sun_up_time_hour = 6
 @export var sun_up_duration = 2
 
@@ -19,53 +14,67 @@ var noon_time: int
 var dusk_time: int
 var midnight_time: int
 
+var max_alpha
+
 var initialized = false
 
 func _ready():
+	if get_parent() is Sprite2D:
+		$Sprite2D.texture = get_parent().texture
+		var offset = get_parent().global_position - global_position
+		$Sprite2D.position = offset
 	day_length = sun_down_time_hour - sun_up_time_hour
 	night_length = 24 - day_length
 	dawn_time = sun_up_time_hour * 60
 	noon_time = (sun_up_time_hour + day_length/2) * 60
 	dusk_time = sun_down_time_hour * 60
 	midnight_time = (sun_down_time_hour + night_length/2) * 60
+	max_alpha = shadow_color.a
 	initialized = true
 
 func on_daytime_changed(is_day: bool, hour: int, minute: int) -> void:
 	if not initialized:
 		return
 	var time_in_minutes = hour * 60 + minute
-	var color: Color
+	var alpha: float
+	var skew_degree: float
 	
 	# midnight -> dawn
 	if (dawn_time - sun_up_duration/2 * 60) <= time_in_minutes and time_in_minutes < dawn_time:
 		var delta = between((dawn_time - sun_up_duration/2 * 60), time_in_minutes, dawn_time)
-		color = midnight_color.lerp(dawn_color, delta)
+		alpha = lerp(0.0,max_alpha/2,delta)
 	
 	# dawn -> noon
 	elif dawn_time <= time_in_minutes and time_in_minutes < (dawn_time + sun_up_duration/2 * 60):
 		var delta = between(dawn_time, time_in_minutes, (dawn_time + sun_up_duration/2 * 60))
-		color = dawn_color.lerp(noon_color, delta)
+		alpha = lerp(max_alpha/2,max_alpha,delta)
 
 	# noon
 	elif (dawn_time + sun_up_duration/2 * 60) <= time_in_minutes and time_in_minutes < dusk_time:
-		color = noon_color
+		alpha = max_alpha
 
 	# noon -> dusk
 	elif dusk_time <= time_in_minutes and time_in_minutes < (dusk_time + sun_down_duration/2 * 60):
 		var delta = between(dusk_time, time_in_minutes, (dusk_time + sun_down_duration/2 * 60))
-		color = noon_color.lerp(dusk_color, delta)
+		alpha = lerp(max_alpha,max_alpha/2,delta)
 
 	# dusk -> midnight
 	elif (dusk_time + sun_down_duration/2 * 60) <= time_in_minutes and time_in_minutes < (dusk_time + sun_down_duration * 60):
 		var delta = between((dusk_time + sun_down_duration/2 * 60), time_in_minutes, (dusk_time + sun_down_duration * 60))
-		color = dusk_color.lerp(midnight_color, delta)
+		alpha = lerp(max_alpha/2,0.0,delta)
 	
 	# midnight
 	else:
-		color = midnight_color
+		alpha = 0.0
 	
-	canvas_modulate.color = color
-
+	# skew shadow
+	if (dawn_time - sun_up_duration/2 * 60) <= time_in_minutes and time_in_minutes < (dusk_time + sun_down_duration * 60):
+		var delta = between((dawn_time - sun_up_duration/2 * 60), time_in_minutes, (dusk_time + sun_down_duration * 60))
+		skew_degree = lerp(40,-40, delta)
+	shadow_color.a = alpha
+	skew = deg_to_rad(skew_degree)
+	modulate = shadow_color
+	
 func between(start: int, value: int, end: int) -> float:
 	if value <= start:
 		return 0
@@ -74,4 +83,3 @@ func between(start: int, value: int, end: int) -> float:
 	var duration = end - start
 	var progress = float(value - start) / duration
 	return progress
-

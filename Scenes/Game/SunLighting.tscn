@@ -4,21 +4,10 @@
 
 [node name="SunLighting" type="Node2D"]
 script = ExtResource("1_6tkvf")
+dawn_color = Color(0.619608, 0.333333, 0.364706, 1)
+noon_color = Color(0.811765, 0.929412, 0.976471, 1)
+dusk_color = Color(0.317647, 0.27451, 0.478431, 1)
+midnight_color = Color(0.0745098, 0.12549, 0.266667, 1)
 
-[node name="DirectionalLightShadows" type="DirectionalLight2D" parent="."]
-position = Vector2(82, -28)
-rotation = 0.535554
-scale = Vector2(4.23438, 4.23438)
-color = Color(0.862745, 0.988235, 0.984314, 1)
-energy = 1.42
-blend_mode = 2
-shadow_enabled = true
-shadow_filter = 1
-shadow_filter_smooth = 1.9
-
-[node name="DirectionalLightSun" type="DirectionalLight2D" parent="."]
-position = Vector2(82, -28)
-rotation = 0.541749
-scale = Vector2(4.23438, 4.23438)
-energy = 0.89
-blend_mode = 2
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.776471, 0.886275, 0.960784, 1)

@@ -26,8 +26,7 @@ func _ready():
 	timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(_on_timeout)
-	timer.start()
-	time_changed.emit(is_day, 0, 0)
+	start_night_timer()
 
 func _process(_delta: float):
 	var remaining_time = timer.get_time_left()
