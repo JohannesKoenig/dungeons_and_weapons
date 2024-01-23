@@ -8,13 +8,17 @@ class_name Adventurer
 @onready var coin_bank_component: CoinBankComponent = $CoinBankComponent
 @onready var animation_tree: AnimationTree = $AnimationTree
 var ai_mapper: AIMovementMapper
+var view_direction: Vector2
 
 func _ready():
 	coin_bank_component.value = adventurer_resource.coins
 
 func _physics_process(delta):
 	move_and_slide()
-	animation_tree["parameters/Walking/blend_position"] = velocity
+	if velocity.x != 0:
+		view_direction = velocity
+	animation_tree["parameters/Walking/blend_position"] = view_direction
+	animation_tree["parameters/Idle/blend_position"] = view_direction
 
 func interact():
 	actionable_finder.interact({
