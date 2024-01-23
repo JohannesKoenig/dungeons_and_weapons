@@ -46,3 +46,8 @@ func item_change_interaction(to_change: WeaponResource):
 func set_ai_mapper(ai_mapper: AIMovementMapper):
 	self.ai_mapper = ai_mapper
 	add_child(ai_mapper)
+
+func unlink_material():
+	var material: Material = $AnimatedSprite2D.material.duplicate()
+	$AnimatedSprite2D.material = material
+	

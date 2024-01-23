@@ -35,6 +35,7 @@ func spawn_adventurer() -> Adventurer:
 	ai_movement_mapper.movement_stats = self.movement_stats
 	adventurer.set_ai_mapper(ai_movement_mapper)
 	adventurer.ai_mapper.set_strategy(self.adventurer_strategy_map[resource])
+	adventurer.unlink_material()
 	add_child(adventurer)
 	index += 1
 	if index < len(time_table):
