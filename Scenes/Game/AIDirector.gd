@@ -24,6 +24,6 @@ func _get_strategies(item_stock: Array, adventurers: Array) -> Dictionary:
 func _remove_nulls(array: Array) -> Array:
 	var new_array = []
 	for elem in array:
-		if elem != null:
+		if elem["item"] != null:
 			new_array.append(elem)
 	return new_array

@@ -12,17 +12,19 @@ func calculate_strategies(
 	var adventurers_to_strategy_map = {}
 	# all adventurers in map need buyer strategy
 	for item in item_to_buyer_map:
-		adventurers_to_strategy_map[item_to_buyer_map[item]] = _get_buyer_strategy()
+		adventurers_to_strategy_map[item_to_buyer_map[item]] = _get_buyer_strategy(item["position"])
 	# all adventurers not in map need dungeon strategy
 	for adventurer in adventurers:
 		if adventurer not in adventurers_to_strategy_map:
 			adventurers_to_strategy_map[adventurer] = _get_dungeon_strategy()
 	return adventurers_to_strategy_map
 	
-func _get_buyer_strategy() -> Dictionary:
-	if buyer_strategy.is_empty():
-		var resource = FileAccess.open("res://Resources/ai/buyer_strategy.json", FileAccess.READ)
-		buyer_strategy = JSON.parse_string(resource.get_as_text())
+func _get_buyer_strategy(position: Marker2D) -> Dictionary:
+	var resource = FileAccess.open("res://Resources/ai/buyer_strategy.json", FileAccess.READ)
+	var buyer_strategy = JSON.parse_string(resource.get_as_text())
+	for state in buyer_strategy["states"]:
+		if state["name"] == "shelve":
+			state["parameters"]["target"] = position
 	return buyer_strategy
 
 func _get_dungeon_strategy() -> Dictionary:
@@ -44,7 +46,7 @@ func _map_items_to_buyer(
 	for i in range(nr_of_items):
 		if j >= nr_of_adventurers:
 			break
-		if item_stock_sorted_by_price[i].price <= adventurers_sorted_by_coins[j].coins:
+		if item_stock_sorted_by_price[i]["item"].price <= adventurers_sorted_by_coins[j].coins:
 			map_item_to_buyer[item_stock_sorted_by_price[i]] = adventurers_sorted_by_coins[j]
 			j += 1
 			continue
@@ -53,8 +55,9 @@ func _map_items_to_buyer(
 func _compare_adventurers_by_coins(a: AdventurerResource, b: AdventurerResource) -> bool:
 	return a.coins < b.coins
 
-func _compare_items_by_price(a: WeaponResource, b: WeaponResource) -> bool:
-	return a.price < b.price
+func _compare_items_by_price(a: Dictionary, b: Dictionary) -> bool:
+	print(a)
+	return a["item"].price < b["item"].price
 
 func to_sorted_array(array: Array, comparator: Callable) -> Array:
 	var duplicated = array.duplicate()

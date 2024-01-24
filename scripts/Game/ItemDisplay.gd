@@ -2,6 +2,7 @@ extends Marker2D
 class_name ItemDisplay
 
 var item_resource: Resource
+@export var position_marker: Marker2D
 
 func _ready():
 	$ItemSprite.visible = true

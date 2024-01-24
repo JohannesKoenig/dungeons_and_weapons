@@ -641,7 +641,7 @@ position = Vector2(176, 52)
 position = Vector2(176, 40)
 
 [node name="StorePoint" type="Marker2D" parent="Entities/Marker"]
-position = Vector2(105, 97)
+position = Vector2(96, 97)
 
 [node name="CounterPoint" type="Marker2D" parent="Entities/Marker"]
 position = Vector2(105, 84)
@@ -719,23 +719,29 @@ shadow_filter_smooth = 1.8
 shadow_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_8ehtb")
 
-[node name="ItemDisplay" parent="Entities" instance=ExtResource("12_j0urc")]
+[node name="ItemDisplay" parent="Entities" node_paths=PackedStringArray("position_marker") instance=ExtResource("12_j0urc")]
 position = Vector2(72, 121)
+position_marker = NodePath("../Marker/Shelve1Point1")
 
-[node name="ItemDisplay2" parent="Entities" instance=ExtResource("12_j0urc")]
+[node name="ItemDisplay2" parent="Entities" node_paths=PackedStringArray("position_marker") instance=ExtResource("12_j0urc")]
 position = Vector2(72, 137)
+position_marker = NodePath("../Marker/Shelve1Point2")
 
-[node name="ItemDisplay3" parent="Entities" instance=ExtResource("12_j0urc")]
+[node name="ItemDisplay3" parent="Entities" node_paths=PackedStringArray("position_marker") instance=ExtResource("12_j0urc")]
 position = Vector2(72, 153)
+position_marker = NodePath("../Marker/Shelve1Point3")
 
-[node name="ItemDisplay4" parent="Entities" instance=ExtResource("12_j0urc")]
+[node name="ItemDisplay4" parent="Entities" node_paths=PackedStringArray("position_marker") instance=ExtResource("12_j0urc")]
 position = Vector2(120, 121)
+position_marker = NodePath("../Marker/Shelve2Point1")
 
-[node name="ItemDisplay5" parent="Entities" instance=ExtResource("12_j0urc")]
+[node name="ItemDisplay5" parent="Entities" node_paths=PackedStringArray("position_marker") instance=ExtResource("12_j0urc")]
 position = Vector2(120, 137)
+position_marker = NodePath("../Marker/Shelve2Point2")
 
-[node name="ItemDisplay6" parent="Entities" instance=ExtResource("12_j0urc")]
+[node name="ItemDisplay6" parent="Entities" node_paths=PackedStringArray("position_marker") instance=ExtResource("12_j0urc")]
 position = Vector2(120, 153)
+position_marker = NodePath("../Marker/Shelve2Point3")
 
 [node name="Player" parent="Entities" groups=["player"] instance=ExtResource("12_ou522")]
 position = Vector2(111, 54)

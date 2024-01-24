@@ -37,7 +37,7 @@
 			"name": "shelve",
 			"type": "movement",
 			"parameters": {
-				"target": "shelve_1_3_position"
+				"target": "<set_in_script>"
 			},
 			"next": "wait_to_pick_up"
 		},

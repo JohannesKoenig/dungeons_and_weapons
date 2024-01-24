@@ -45,7 +45,11 @@ func start():
 
 func _execute_movement_state(movement_state: Dictionary):
 	var target_name = movement_state["parameters"]["target"]
-	var target = ai_path_markers.position_register[target_name]
+	var target = null
+	if target_name is String:
+		target = ai_path_markers.position_register[target_name]
+	else:
+		target = target_name
 	var direction = target.global_position - actor.global_position
 	var dist = direction.length()
 	if dist <= delta:

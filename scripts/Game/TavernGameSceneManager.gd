@@ -55,12 +55,12 @@ func toggle_tavern():
 
 func get_items_on_display() -> Array:
 	return [
-		$Entities/ItemDisplay.item_resource,
-		$Entities/ItemDisplay2.item_resource,
-		$Entities/ItemDisplay3.item_resource,
-		$Entities/ItemDisplay4.item_resource,
-		$Entities/ItemDisplay5.item_resource,
-		$Entities/ItemDisplay6.item_resource,
+		_get_item_resource_and_marker($Entities/ItemDisplay),	
+		_get_item_resource_and_marker($Entities/ItemDisplay2),
+		_get_item_resource_and_marker($Entities/ItemDisplay3),
+		_get_item_resource_and_marker($Entities/ItemDisplay4),
+		_get_item_resource_and_marker($Entities/ItemDisplay5),
+		_get_item_resource_and_marker($Entities/ItemDisplay6),
 	]
 
 func get_adventurers() -> Array:
@@ -79,4 +79,9 @@ func trigger_ai_on_tavern_open(open: bool):
 		get_items_on_display(),
 		get_adventurers()
 	)
-	
+
+func _get_item_resource_and_marker(item_display: ItemDisplay) -> Dictionary:
+	return {
+		"item": item_display.item_resource,
+		"position": item_display.position_marker
+	}
