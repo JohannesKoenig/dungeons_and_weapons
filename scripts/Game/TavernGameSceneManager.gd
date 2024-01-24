@@ -30,6 +30,7 @@ func _ready():
 	drag_and_drop_layer.set_canvas_layer($CanvasLayer)
 	$CanvasLayer/TavernScene.set_quick_access_component($Entities/Player/QickAccessComponent)
 	$CanvasLayer/TavernScene/InventoryPopUp.content.set_inventory_component($Entities/Player/InventoryComponent)
+	$CanvasLayer/TavernScene/InventoryPopUp.content.set_quick_access_component($Entities/Player/QickAccessComponent)
 	
 	interaction_middleware = get_node("/root/InteractionMiddleware")
 	$Entities/DayNightTimer.day_started.connect(

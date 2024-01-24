@@ -59,3 +59,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 texture = ExtResource("2_64pt2")
+
+[connection signal="mouse_entered" from="." to="." method="_on_ui_item_icon_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_ui_item_icon_mouse_exited"]

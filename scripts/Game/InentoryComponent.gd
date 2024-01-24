@@ -27,7 +27,7 @@ func add_item_at_index(item, index):
 	inventory_changed.emit(inventory)
 	return previous_item
 
-func remove_item(item: ItemComponent) -> bool:
+func remove_item(item) -> bool:
 	# Remove item from inventory
 	for i in range(inventory_size):
 		if inventory[i] == item:
@@ -36,7 +36,7 @@ func remove_item(item: ItemComponent) -> bool:
 			return true
 	return false
 
-func get_item(index) -> ItemComponent:
+func get_item(index):
 	# Get item at index
 	return inventory[index]
 

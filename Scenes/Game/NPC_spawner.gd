@@ -45,6 +45,7 @@ func spawn_adventurer() -> Adventurer:
 func set_adventurer_strategy_map(map: Dictionary):
 	adventurer_strategy_map = map
 	adventurers_to_spawn = map.keys()
+	adventurers_to_spawn.shuffle()
 
 func start_spawning():
 	time_table = _create_time_table(spawn_window_duration, len(adventurer_strategy_map))

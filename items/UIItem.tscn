@@ -66,4 +66,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_17sw2")
 
+[connection signal="mouse_entered" from="Content/UIItemIcon" to="Content/UIItemIcon" method="_on_ui_item_icon_mouse_entered"]
+[connection signal="mouse_exited" from="Content/UIItemIcon" to="Content/UIItemIcon" method="_on_ui_item_icon_mouse_exited"]
 [connection signal="resource_changed" from="Content/UIItemIcon" to="." method="_on_UIItemIcon_resource_changed"]

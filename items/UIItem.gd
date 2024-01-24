@@ -3,13 +3,17 @@ class_name UIItem
 
 @export var weapon_resource: WeaponResource
 signal resource_changed(resource: Resource)
+signal right_clicked(resource: Resource)
+
 
 func _ready():
 	set_resource(weapon_resource)
-	
+
+
 func set_resource(resource: WeaponResource):
 	weapon_resource = resource
 	$Content/UIItemIcon.set_resource(weapon_resource)
+
 
 func _on_UIItemIcon_resource_changed(resource: Resource):
 	weapon_resource = resource

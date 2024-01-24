@@ -21,6 +21,13 @@ func replace_item(target: WeaponResource, to_replace: WeaponResource) -> WeaponR
 			return add_item(to_replace, index)
 	return null
 
+func add_item_to_first_free_slot(item: WeaponResource) -> bool:
+	for i in range(size):
+		if items[i] == null:
+			items[i] = item
+			items_changed.emit(items)
+			return true
+	return false
 
 func add_item(item: WeaponResource, index: int) -> WeaponResource:
 	var item_to_return = items[index]

@@ -2,11 +2,19 @@ extends Control
 
 @export var resource: Resource
 signal resource_changed(resource: Resource)
+signal right_clicked(resource: Resource)
 @export var default_texture: Texture
 @export var enable_drag_and_drop: bool = true
+var mouse_insight = false
 
 func _ready():
 	set_resource(resource)
+
+
+func _process(delta):
+	if Input.is_action_just_pressed("Right Mouse") and mouse_insight:
+		right_clicked.emit(resource)
+
 
 func _can_drop_data(at_position, data):
 	return enable_drag_and_drop
@@ -42,4 +50,11 @@ func set_resource(resource: Resource):
 			$Texture.texture = resource.icon_texture
 		else:
 			$Texture.texture = default_texture
-	
+
+
+func _on_ui_item_icon_mouse_entered():
+	mouse_insight = true
+
+
+func _on_ui_item_icon_mouse_exited():
+	mouse_insight = false
