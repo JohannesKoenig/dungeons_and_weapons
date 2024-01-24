@@ -5,4 +5,3 @@
 [node name="NpcSpawner" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_86rys")
-spawn_window_duration = 3.0

@@ -7,6 +7,12 @@ var interaction_middleware: InteractionMiddleware
 var tavern_open = false
 signal tavern_open_changed(value: bool)
 var adventurer_resource_template = preload("res://adventurer/adventurer_resource.gd")
+var adventurer_textures = [
+	preload("res://art/sprites/character_commoner_skin.png"),
+	preload("res://art/sprites/character_isolde_skin.png"),
+	preload("res://art/sprites/character_mario_skin.png"),
+	preload("res://art/sprites/texture_test.png"),
+]
 var rng: RandomNumberGenerator
 
 func _ready():
@@ -75,6 +81,7 @@ func get_adventurers() -> Array:
 	for i in range(number_of_adventurers):
 		var template = adventurer_resource_template.new()
 		template.coins = 100
+		template.texture = adventurer_textures.pick_random()
 		adventurers.append(template)
 	return adventurers
 

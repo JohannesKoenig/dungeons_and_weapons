@@ -9,10 +9,17 @@ class_name Adventurer
 @onready var animation_tree: AnimationTree = $AnimationTree
 var ai_mapper: AIMovementMapper
 var view_direction: Vector2
+var is_ready = false
 
 func _ready():
-	coin_bank_component.value = adventurer_resource.coins
+	is_ready = true
+	set_resource(adventurer_resource)
 
+func set_resource(resource: AdventurerResource):
+	adventurer_resource = resource
+	if is_ready:
+		coin_bank_component.value = adventurer_resource.coins
+		$AnimatedSprite2D.material.set("shader_parameter/diffuse", adventurer_resource.texture)
 
 func _process(delta):
 	move_and_slide()

@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bph32xoowbi6c" path="res://adventurer/adventurer.tscn" id="12_ou522"]
 [ext_resource type="Script" path="res://Scenes/PlayerCamera.gd" id="14_fn6jr"]
 [ext_resource type="Script" path="res://adventurer/adventurer_resource.gd" id="14_i2wni"]
+[ext_resource type="Texture2D" uid="uid://l5upf6m8iynn" path="res://art/sprites/character_petuna_skin_2.png" id="14_q4y4o"]
 [ext_resource type="PackedScene" uid="uid://coh6x8in6t67w" path="res://Scenes/player_movement_mapper.tscn" id="15_pacfw"]
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="16_e63fn"]
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://Scenes/Game/PlayerInputHandler.tscn" id="16_v5hdu"]
@@ -567,6 +568,7 @@ metadata/_snap_enabled = true
 script = ExtResource("14_i2wni")
 coins = 10
 strategy = {}
+texture = ExtResource("14_q4y4o")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_h556j"]
 diffuse_texture = ExtResource("24_j1c6b")
@@ -589,15 +591,6 @@ movement_speed = 50
 [sub_resource type="Resource" id="Resource_gl7o2"]
 script = ExtResource("16_e63fn")
 movement_speed = 50
-
-[sub_resource type="Environment" id="Environment_f4mj0"]
-background_mode = 3
-glow_bloom = 0.05
-glow_blend_mode = 0
-fog_density = 0.0321
-fog_height = 2.13163e-14
-adjustment_brightness = 0.95
-adjustment_contrast = 1.2
 
 [node name="TavernGameScene" type="Node2D"]
 y_sort_enabled = true
@@ -872,9 +865,6 @@ movement_stats = SubResource("Resource_gl7o2")
 weapon_resource = ExtResource("19_ym7yb")
 
 [node name="TavernAi" parent="Behaviours" instance=ExtResource("19_2wblc")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_f4mj0")
 
 [connection signal="tavern_open_changed" from="." to="Entities/Player/PlayerCamera" method="_on_tavern_game_scene_tavern_open_changed"]
 [connection signal="tavern_open_changed" from="." to="Behaviours/PlayerInputHandler" method="_on_tavern_open_changed"]

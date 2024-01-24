@@ -34,7 +34,7 @@ func _create_time_table(duration: float, nr_of_chunks: int) -> Array:
 func spawn_adventurer() -> Adventurer:
 	var resource = adventurers_to_spawn[index]
 	var adventurer: Adventurer = adventurer_resource.instantiate()
-	adventurer.adventurer_resource = resource
+	adventurer.set_resource(resource)
 	var ai_movement_mapper = ai_resource.instantiate()
 	ai_movement_mapper.set_actor(adventurer)
 	ai_movement_mapper.movement_stats = self.movement_stats
