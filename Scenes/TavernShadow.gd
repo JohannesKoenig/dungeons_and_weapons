@@ -22,7 +22,7 @@ func _ready():
 	if get_parent() is Sprite2D:
 		$Sprite2D.texture = get_parent().texture
 		var offset = get_parent().global_position - global_position
-		$Sprite2D.position = offset
+		$Sprite2D.position = offset + get_parent().offset
 	day_length = sun_down_time_hour - sun_up_time_hour
 	night_length = 24 - day_length
 	dawn_time = sun_up_time_hour * 60

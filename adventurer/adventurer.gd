@@ -13,12 +13,14 @@ var view_direction: Vector2
 func _ready():
 	coin_bank_component.value = adventurer_resource.coins
 
-func _physics_process(delta):
+
+func _process(delta):
 	move_and_slide()
 	if velocity.x != 0:
 		view_direction = velocity
 	animation_tree["parameters/Walking/blend_position"] = view_direction
 	animation_tree["parameters/Idle/blend_position"] = view_direction
+
 
 func interact():
 	actionable_finder.interact({

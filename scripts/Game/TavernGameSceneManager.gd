@@ -1,6 +1,7 @@
 extends Node2D
 class_name TavernManager
 
+@export var max_adventurers_per_hour: int = 1
 var ai_path_markers: AiPathMarkers
 var interaction_middleware: InteractionMiddleware
 var tavern_open = false
@@ -64,7 +65,12 @@ func get_items_on_display() -> Array:
 	]
 
 func get_adventurers() -> Array:
-	var number_of_adventurers = rng.randi_range(2, 10)
+	var day_night_timer = $Entities/DayNightTimer
+	var current_time = day_night_timer.current_day_time
+	var end_day_time = day_night_timer.max_day_time_hours * 60 + day_night_timer.max_day_time_minutes
+	var diff = end_day_time - current_time
+	var diff_in_hours = float(diff) / 60
+	var number_of_adventurers = rng.randi_range(0, diff_in_hours * max_adventurers_per_hour)
 	var adventurers = []
 	for i in range(number_of_adventurers):
 		var template = adventurer_resource_template.new()

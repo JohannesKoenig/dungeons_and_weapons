@@ -28,7 +28,6 @@ func _process(delta):
 			"buy":
 				_execute_buy_state(self.state)
 			"despawn":
-				print("deleted player")
 				actor.queue_free()
 				queue_free()
 

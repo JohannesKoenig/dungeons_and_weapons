@@ -56,7 +56,6 @@ func _compare_adventurers_by_coins(a: AdventurerResource, b: AdventurerResource)
 	return a.coins < b.coins
 
 func _compare_items_by_price(a: Dictionary, b: Dictionary) -> bool:
-	print(a)
 	return a["item"].price < b["item"].price
 
 func to_sorted_array(array: Array, comparator: Callable) -> Array:

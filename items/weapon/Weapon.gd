@@ -8,4 +8,4 @@ func _ready():
 	actionable.disable()
 
 func _on_actionable_action(message: Dictionary):
-	print("interacted")
+	pass
