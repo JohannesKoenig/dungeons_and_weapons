@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=74 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bspjin4ruk1a4" path="res://art/sprites/tilesets/Outdoor.png" id="3_p81w2"]
 [ext_resource type="PackedScene" uid="uid://c1wruq1vniqxl" path="res://Scenes/tavern_scene.tscn" id="4_1ogd8"]
 [ext_resource type="PackedScene" uid="uid://mkl1ivf2pshi" path="res://Scenes/Game/TavernDoor.tscn" id="4_pt4fs"]
-[ext_resource type="Texture2D" uid="uid://pblffx1o0m" path="res://art/sprites/tilesets/tavern_flooring_normals.png" id="4_q4k5d"]
 [ext_resource type="PackedScene" uid="uid://dpmnvee3ssjvm" path="res://Scenes/Game/NPC_spawner.tscn" id="6_ypesp"]
 [ext_resource type="PackedScene" uid="uid://ct0txx7wk68i2" path="res://Scenes/Game/DayNightTimer.tscn" id="8_kh38u"]
 [ext_resource type="PackedScene" uid="uid://e7hpefbeseyy" path="res://Scenes/Game/SunLighting.tscn" id="9_wmdma"]
@@ -432,68 +431,6 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_17voc")
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_r2pqk"]
-diffuse_texture = ExtResource("1_4pst3")
-normal_texture = ExtResource("4_q4k5d")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xw5xr"]
-texture = SubResource("CanvasTexture_r2pqk")
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-8:4/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-8:5/0 = 0
-9:5/0 = 0
-10:5/0 = 0
-11:5/0 = 0
-12:5/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-7:6/0 = 0
-8:6/0 = 0
-9:6/0 = 0
-10:6/0 = 0
-11:6/0 = 0
-12:6/0 = 0
-3:7/0 = 0
-4:7/0 = 0
-5:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-8:7/0 = 0
-9:7/0 = 0
-10:7/0 = 0
-11:7/0 = 0
-12:7/0 = 0
-3:8/0 = 0
-4:8/0 = 0
-5:8/0 = 0
-6:8/0 = 0
-7:8/0 = 0
-8:8/0 = 0
-9:8/0 = 0
-10:8/0 = 0
-11:8/0 = 0
-12:8/0 = 0
-3:9/0 = 0
-4:9/0 = 0
-5:9/0 = 0
-6:9/0 = 0
-7:9/0 = 0
-8:9/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_rcpld"]
-sources/0 = SubResource("TileSetAtlasSource_xw5xr")
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jkyxo"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
@@ -634,6 +571,15 @@ strategy = {}
 diffuse_texture = ExtResource("24_j1c6b")
 normal_texture = ExtResource("25_eop8i")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t238w"]
+polygon = PackedVector2Array(48, 32, 48, 199, 69, 199, 69, 198, 49, 198, 49, 33, 207, 33, 207, 199, 192, 199, 192, 208, 208, 208, 208, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_d5osy"]
+polygon = PackedVector2Array(91, 198, 91, 199, 118, 199, 118, 198)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s1tvn"]
+polygon = PackedVector2Array(139, 198, 160, 198, 160, 208, 159, 208, 159, 199, 152.049, 199, 139, 199)
+
 [sub_resource type="Resource" id="Resource_v3ysv"]
 script = ExtResource("16_e63fn")
 movement_speed = 50
@@ -662,17 +608,10 @@ tile_set = SubResource("TileSet_f1irb")
 format = 2
 layer_0/name = "Ground"
 layer_0/z_index = -1
-layer_0/tile_data = PackedInt32Array(131074, 196609, 4, 196610, 196609, 5, 262146, 196609, 6, 327682, 196609, 7, 393218, 196609, 8, 458754, 196609, 4, 524290, 196609, 5, 589826, 196609, 6, 655362, 196609, 7, 720898, 196609, 8, 786434, 196609, 9, 131075, 262145, 4, 196611, 262145, 5, 262147, 589825, 5, 327683, 589825, 6, 393219, 589825, 8, 458755, 262145, 5, 524291, 262145, 6, 589827, 262145, 7, 655363, 262145, 8, 720899, 262145, 5, 786435, 262145, 9, 131076, 327681, 4, 196612, 327681, 5, 262148, 655361, 5, 327684, 655361, 6, 393220, 655361, 8, 458756, 327681, 5, 524292, 327681, 6, 589828, 327681, 7, 655364, 327681, 8, 720900, 327681, 5, 786436, 327681, 9, 131077, 393217, 4, 196613, 393217, 5, 262149, 720897, 5, 327685, 720897, 6, 393221, 720897, 8, 458757, 393217, 5, 524293, 393217, 6, 589829, 393217, 7, 655365, 393217, 8, 720901, 393217, 5, 786437, 393217, 9, 131078, 458753, 4, 196614, 458753, 5, 262150, 655361, 5, 327686, 655361, 6, 393222, 655361, 8, 458758, 458753, 5, 524294, 458753, 6, 589830, 458753, 7, 655366, 458753, 8, 720902, 458753, 5, 786438, 458753, 9, 131079, 393217, 4, 196615, 262145, 5, 262151, 720897, 5, 327687, 720897, 6, 393223, 720897, 8, 458759, 262145, 5, 524295, 262145, 6, 589831, 262145, 7, 655367, 262145, 8, 720903, 262145, 5, 786439, 262145, 9, 131080, 327681, 131081, 196616, 327681, 5, 262152, 786433, 5, 327688, 786433, 6, 393224, 786433, 8, 458760, 327681, 5, 524296, 327681, 6, 589832, 327681, 7, 655368, 327681, 8, 720904, 327681, 5, 786440, 327681, 9, 196617, 589825, 5, 262153, 589825, 6, 327689, 589825, 7, 393225, 589825, 6, 458761, 589825, 7, 524297, 589825, 6, 589833, 589825, 7, 655369, 589825, 6, 720905, 589825, 8, 196618, 655361, 5, 262154, 655361, 6, 327690, 655361, 7, 393226, 655361, 6, 458762, 655361, 7, 524298, 655361, 6, 589834, 655361, 7, 655370, 655361, 6, 720906, 655361, 8, 196619, 720897, 5, 262155, 720897, 6, 327691, 720897, 7, 393227, 720897, 6, 458763, 720897, 7, 524299, 720897, 6, 589835, 720897, 7, 655371, 720897, 6, 720907, 720897, 8, 196620, 786433, 5, 262156, 786433, 6, 327692, 786433, 7, 393228, 786433, 6, 458764, 786433, 7, 524300, 786433, 6, 589836, 786433, 7, 655372, 786433, 6, 720908, 786433, 8, 131085, 524289, 4, 196621, 524289, 5, 262157, 524289, 6, 327693, 524289, 7, 393229, 524289, 8, 458765, 524289, 4, 524301, 524289, 5, 589837, 524289, 6, 655373, 524289, 7, 720909, 524289, 8, 786445, 524289, 9, 131081, 262145, 131081, 131084, 262145, 131081, 131082, 262145, 131081, 131083, 262145, 131081)
+layer_0/tile_data = PackedInt32Array(196611, 262145, 5, 262147, 589825, 5, 327683, 589825, 6, 393219, 589825, 8, 458755, 262145, 5, 524291, 262145, 6, 589827, 262145, 7, 655363, 262145, 8, 720899, 262145, 5, 786435, 262145, 5, 196612, 327681, 5, 262148, 655361, 5, 327684, 655361, 6, 393220, 655361, 8, 458756, 327681, 5, 524292, 327681, 6, 589828, 327681, 7, 655364, 327681, 8, 720900, 327681, 5, 786436, 327681, 5, 196613, 393217, 5, 262149, 720897, 5, 327685, 720897, 6, 393221, 720897, 8, 458757, 393217, 5, 524293, 393217, 6, 589829, 393217, 7, 655365, 393217, 8, 720901, 393217, 5, 786437, 393217, 5, 196614, 458753, 5, 262150, 655361, 5, 327686, 655361, 6, 393222, 655361, 8, 458758, 458753, 5, 524294, 458753, 6, 589830, 458753, 7, 655366, 458753, 8, 720902, 458753, 5, 786438, 458753, 5, 196615, 262145, 5, 262151, 720897, 5, 327687, 720897, 6, 393223, 720897, 8, 458759, 262145, 5, 524295, 262145, 6, 589831, 262145, 7, 655367, 262145, 8, 720903, 262145, 5, 786439, 262145, 5, 131080, 262145, 5, 196616, 327681, 5, 262152, 786433, 5, 327688, 786433, 6, 393224, 786433, 8, 458760, 327681, 5, 524296, 327681, 6, 589832, 327681, 7, 655368, 327681, 8, 720904, 327681, 5, 786440, 327681, 5, 196617, 589825, 5, 262153, 589825, 6, 327689, 589825, 7, 393225, 589825, 6, 458761, 589825, 7, 524297, 589825, 6, 589833, 589825, 7, 655369, 589825, 6, 720905, 589825, 8, 196618, 655361, 5, 262154, 655361, 6, 327690, 655361, 7, 393226, 655361, 6, 458762, 655361, 7, 524298, 655361, 6, 589834, 655361, 7, 655370, 655361, 6, 720906, 655361, 8, 196619, 720897, 5, 262155, 720897, 6, 327691, 720897, 7, 393227, 720897, 6, 458763, 720897, 7, 524299, 720897, 6, 589835, 720897, 7, 655371, 720897, 6, 720907, 720897, 8, 196620, 786433, 5, 262156, 786433, 6, 327692, 786433, 7, 393228, 786433, 6, 458764, 786433, 7, 524300, 786433, 6, 589836, 786433, 7, 655372, 786433, 6, 720908, 786433, 8, 131081, 262145, 5, 131075, 262145, 5, 131076, 327681, 5, 131077, 393217, 5, 131078, 458753, 5, 131079, 262145, 5, 786441, 393217, 5, 786442, 262145, 5, 786443, 327681, 5, 786444, 393217, 5, 131082, 327681, 5, 131083, 393217, 5, 131084, 262145, 5)
 layer_1/name = "Wall"
 layer_1/y_sort_enabled = true
-layer_1/tile_data = PackedInt32Array(786438, 262145, 9, 786439, 327681, 9, 786440, 393217, 9, 786434, 196609, 9, 786435, 262145, 9, 786436, 327681, 9, 786437, 393217, 9, 786445, 524289, 9, 131080, 393217, 4, 131074, 196609, 4, 196610, 196609, 5, 262146, 196609, 6, 327682, 196609, 7, 393218, 196609, 8, 458754, 196609, 5, 524290, 196609, 5, 589826, 196609, 6, 655362, 196609, 7, 720898, 196609, 8, 524301, 524289, 5, 589837, 524289, 6, 655373, 524289, 7, 720909, 524289, 8, 262157, 524289, 5, 327693, 524289, 6, 393229, 524289, 7, 458765, 524289, 8, 131085, 524289, 4, 196621, 524289, 5, 786441, 393217, 9, 786444, 393217, 9, 131075, 458753, 4, 131076, 458753, 4, 131077, 458753, 4, 131078, 458753, 4, 131079, 458753, 4)
-
-[node name="FloorOutdoors" type="TileMap" parent="Entities"]
-light_mask = 4
-z_index = 1
-tile_set = SubResource("TileSet_rcpld")
-format = 2
-layer_0/tile_data = PackedInt32Array(786437, 262144, 9, 786438, 327680, 9, 786439, 393216, 9, 786440, 458752, 9, 786435, 262144, 9, 786436, 327680, 9, 786434, 196608, 9, 131074, 196608, 4, 196610, 196608, 5, 262146, 196608, 6, 327682, 196608, 7, 393218, 196608, 8, 458754, 196608, 5, 524290, 196608, 5, 589826, 196608, 6, 655362, 196608, 7, 720898, 196608, 8, 458765, 524288, 4, 524301, 524288, 5, 589837, 524288, 6, 655373, 524288, 7, 720909, 524288, 8, 131085, 524288, 4, 196621, 524288, 5, 262157, 524288, 6, 327693, 524288, 7, 393229, 524288, 8, 786445, 524288, 9)
+layer_1/tile_data = PackedInt32Array()
 
 [node name="Furniture" type="TileMap" parent="Entities"]
 y_sort_enabled = true
@@ -682,7 +621,7 @@ layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(262149, 65537, 1, 196615, 196609, 0, 458756, 65537, 3, 524292, 65537, 4, 589828, 65537, 5, 655364, 65537, 6, 458759, 65537, 3, 524295, 65537, 4, 589831, 65537, 5, 196613, 65537, 0, 262150, 131073, 1, 262151, 196609, 1, 655367, 65537, 6)
 
 [node name="TavernDoor" parent="Entities" instance=ExtResource("4_pt4fs")]
-position = Vector2(176, 192)
+position = Vector2(176, 194)
 
 [node name="DungeonDoor" parent="Entities" instance=ExtResource("12_76spw")]
 position = Vector2(176, 48)
@@ -740,7 +679,28 @@ day_length = 30
 night_length = 30
 
 [node name="PointLight" type="PointLight2D" parent="Entities"]
-position = Vector2(157, 99)
+position = Vector2(153, 88)
+scale = Vector2(4.23438, 4.23438)
+color = Color(1, 0.760784, 0.270588, 1)
+energy = 1.1
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 5
+texture = SubResource("GradientTexture2D_b6pu7")
+texture_scale = 1.32
+
+[node name="PointLightShadows" type="PointLight2D" parent="Entities/PointLight"]
+color = Color(1, 0.760784, 0.270588, 1)
+energy = 0.22
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter_smooth = 1.8
+shadow_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_8ehtb")
+
+[node name="PointLight2" type="PointLight2D" parent="Entities"]
+visible = false
+position = Vector2(87, 46)
 scale = Vector2(4.23438, 4.23438)
 color = Color(1, 0.760784, 0.270588, 1)
 energy = 0.9
@@ -749,8 +709,8 @@ shadow_enabled = true
 shadow_item_cull_mask = 5
 texture = SubResource("GradientTexture2D_b6pu7")
 
-[node name="PointLightShadows" type="PointLight2D" parent="Entities/PointLight"]
-position = Vector2(0.236162, -4.48708)
+[node name="PointLightShadows" type="PointLight2D" parent="Entities/PointLight2"]
+position = Vector2(2.08165e-12, 2.08165e-12)
 color = Color(1, 0.760784, 0.270588, 1)
 energy = 0.53
 range_item_cull_mask = 3
@@ -786,8 +746,12 @@ position = Vector2(104, 79)
 player = NodePath("../Player")
 tavern_manager = NodePath("../..")
 
+[node name="TavernCollider" type="StaticBody2D" parent="Entities"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Entities/TavernCollider"]
+polygon = PackedVector2Array(48, 32, 48, 208, 160, 208, 160, 200, 56, 200, 56, 40, 199, 40, 199, 200, 192, 200, 192, 208, 208, 208, 208, 32)
+
 [node name="Tavern_open" type="Sprite2D" parent="Entities"]
-visible = false
 light_mask = 0
 z_index = 1
 position = Vector2(128, 96)
@@ -822,6 +786,15 @@ texture = ExtResource("21_xp0n5")
 [node name="SpriteShadow" parent="Entities/Tree" instance=ExtResource("19_sjjon")]
 position = Vector2(2.08165e-12, 27)
 
+[node name="TavernLightOccluder" type="LightOccluder2D" parent="Entities"]
+occluder = SubResource("OccluderPolygon2D_t238w")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Entities/TavernLightOccluder"]
+occluder = SubResource("OccluderPolygon2D_d5osy")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Entities/TavernLightOccluder/LightOccluder2D"]
+occluder = SubResource("OccluderPolygon2D_s1tvn")
+
 [node name="AlphaWall" type="StaticBody2D" parent="."]
 
 [node name="Polygon" type="CollisionPolygon2D" parent="AlphaWall"]
@@ -831,6 +804,10 @@ polygon = PackedVector2Array(0, 0, 0, 256, 256, 256, 256, 0, 1, 0, 1, -8, 264, -
 follow_viewport_enabled = true
 
 [node name="TavernScene" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("4_1ogd8")]
+offset_left = -8.0
+offset_top = -4.0
+offset_right = -8.0
+offset_bottom = -4.0
 player = NodePath("../../Entities/Player")
 
 [node name="Behaviours" type="Node" parent="."]
