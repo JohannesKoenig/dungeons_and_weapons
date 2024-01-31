@@ -2,5 +2,5 @@ extends Resource
 class_name AdventurerResource
 
 @export var coins: int
-#@export var strategy: Dictionary
+@export var inventory: InventoryResource
 @export var texture: Texture

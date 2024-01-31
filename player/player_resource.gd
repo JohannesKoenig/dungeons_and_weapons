@@ -1,2 +1,6 @@
 class_name PlayerResource
-extends AdventurerResource
+extends Resource
+
+@export var inventory: InventoryResource
+@export var coins: int
+@export var texture: Texture

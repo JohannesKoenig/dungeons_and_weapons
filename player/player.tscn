@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://1dyua8285is8"]
+[gd_scene load_steps=9 format=3 uid="uid://1dyua8285is8"]
 
 [ext_resource type="PackedScene" uid="uid://bph32xoowbi6c" path="res://adventurer/adventurer.tscn" id="1_lgk36"]
 [ext_resource type="Script" path="res://player/player.gd" id="2_3yalk"]
 [ext_resource type="PackedScene" uid="uid://s5xklgk57qy7" path="res://interaction_handlers/player_interaction_mapper.tscn" id="3_452tt"]
 [ext_resource type="Resource" uid="uid://d3se5wucuuebd" path="res://player/player_resource.tres" id="3_m1rlj"]
+[ext_resource type="Resource" uid="uid://dem2m3ldyh10n" path="res://player/player_inventory.tres" id="4_hlcuy"]
 [ext_resource type="PackedScene" uid="uid://coh6x8in6t67w" path="res://interaction_handlers/player_movement_mapper.tscn" id="4_uob2g"]
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="5_dcjke"]
 
@@ -15,6 +16,9 @@ acceleration_time = 0.05
 [node name="Player" groups=["player"] instance=ExtResource("1_lgk36")]
 script = ExtResource("2_3yalk")
 player_resource = ExtResource("3_m1rlj")
+
+[node name="InventoryComponent" parent="." index="2"]
+inventory_resource = ExtResource("4_hlcuy")
 
 [node name="PlayerInteractionMapper" parent="." index="9" node_paths=PackedStringArray("actionable_finder") instance=ExtResource("3_452tt")]
 actionable_finder = NodePath("../Direction/ActionableFinder")

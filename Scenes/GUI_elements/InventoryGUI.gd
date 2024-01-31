@@ -1,21 +1,21 @@
 extends Control
 
-@export var inventory_component: InventoryComponent
+@export var inventory_component: InventoryResource
 @export var quick_access_component: QuickAccessComponent
 var packed_ui_scene: PackedScene
 var ui_items: Array
 
 func _ready():
-	set_inventory_component(inventory_component)
+	#set_inventory_component(inventory_component)
 	set_quick_access_component(quick_access_component)
 	packed_ui_scene = load("res://items/UIItemIcon.tscn")
 
-func set_inventory_component(inventory_component: InventoryComponent):
+func set_inventory_component(inventory_component: InventoryResource):
 	self.inventory_component = inventory_component
 
 	_delete_ui_items()
 	if self.inventory_component:
-		_create_ui_items(inventory_component.inventory_size)
+		_create_ui_items(inventory_component.size)
 		_load_ui_items()
 		inventory_component.inventory_changed.connect(_refresh_items)
 
