@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_cckxs")
-size = 0
-items = []
+size = 6
+items = [null, null, null, null, null, null]

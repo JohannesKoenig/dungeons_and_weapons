@@ -3,6 +3,8 @@ class_name ItemDisplay
 
 var item_resource: Resource
 @export var position_marker: Marker2D
+@export var tavern_inventory_resource: InventoryResource
+@export var index: int
 
 func _ready():
 	$ItemSprite.visible = true

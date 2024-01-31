@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://blju14eccfr53"]
+[gd_scene load_steps=9 format=3 uid="uid://blju14eccfr53"]
 
 [ext_resource type="Script" path="res://scripts/Game/ItemDisplay.gd" id="1_q5mcy"]
 [ext_resource type="PackedScene" uid="uid://qt8yey64vkjj" path="res://utils/ToggleComponent/ToggleComponent.tscn" id="2_eikxv"]
+[ext_resource type="Resource" uid="uid://c7abec4wn2hfv" path="res://tavern/tavern_inventory_resource.tres" id="2_wqxd7"]
 [ext_resource type="PackedScene" uid="uid://brh82olvvw0w4" path="res://utils/PopUpGUIComponent/PopUpGUIComponent.tscn" id="3_yygff"]
 [ext_resource type="PackedScene" uid="uid://1on721liy2cb" path="res://items/UIItem.tscn" id="4_b52ua"]
 [ext_resource type="Script" path="res://scripts/helper/Actionable.gd" id="5_00r8b"]
@@ -11,6 +12,7 @@
 
 [node name="ItemDisplay" type="Marker2D"]
 script = ExtResource("1_q5mcy")
+tavern_inventory_resource = ExtResource("2_wqxd7")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
 z_index = 1
