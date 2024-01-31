@@ -5,9 +5,9 @@ var interaction_middleware: InteractionMiddleware
 func _ready():
 	var drag_and_drop_layer = get_node("/root/DragAndDropLayer")
 	drag_and_drop_layer.set_canvas_layer($CanvasLayer)
-	$CanvasLayer/TavernScene.set_quick_access_component($Entities/Player/QickAccessComponent)
-	$CanvasLayer/TavernScene/InventoryPopUp.content.set_inventory_component($Entities/Player/InventoryComponent)
-	$CanvasLayer/TavernScene/InventoryPopUp.content.set_quick_access_component($Entities/Player/QickAccessComponent)
+	#$CanvasLayer/TavernScene.set_quick_access_component($Entities/Player/QickAccessComponent)
+	#$CanvasLayer/TavernScene/InventoryPopUp.content.set_inventory_component($Entities/Player/InventoryComponent)
+	#$CanvasLayer/TavernScene/InventoryPopUp.content.set_quick_access_component($Entities/Player/QickAccessComponent)
 	
 	interaction_middleware = get_node("/root/InteractionMiddleware")
 	$Entities/DayNightTimer.day_started.connect(

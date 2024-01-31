@@ -17,6 +17,10 @@ func write_savegame():
 		"player_resource": {
 			"coins": player_resource.coins,
 			"inventory": inventory_to_data(player_resource.inventory),
+			"quick_access": {
+				"size": player_resource.quick_access.size,
+				"selected_index": player_resource.quick_access.selected_index,
+			},
 			"texture": player_resource.texture
 		},
 		"tavern_resource": {
@@ -27,6 +31,15 @@ func write_savegame():
 	var json_string := JSON.new().stringify(data)
 	file.store_string(json_string)
 	file.close()
+
+func load_savegame():
+	var file := FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
+	var content = file.get_as_text()
+	file.close()
+	var data: Dictionary = JSON.parse_string(content)
+	player_resource.coins = data["player_resource"]["coins"]
+	player_resource.inventory.size = data["player_resource"]["inventory"]["size"]
+	player_resource.inventory.items = data["player_resource"]["inventory"]["items"]
 
 func inventory_to_data(inventory: InventoryResource) -> Dictionary:
 	return {

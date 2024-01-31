@@ -16,7 +16,7 @@ var adventurer_textures = [
 var rng: RandomNumberGenerator
 
 func _ready():
-	get_node("/root/GameSaver").save_game_from_resources()
+	get_node("/root/GameSaver").load_game_from_resources()
 	rng = RandomNumberGenerator.new()
 	ai_path_markers = get_node("/root/AiPathMarkers")
 	if ai_path_markers:
@@ -36,7 +36,7 @@ func _ready():
 	
 	var drag_and_drop_layer = get_node("/root/DragAndDropLayer")
 	drag_and_drop_layer.set_canvas_layer($CanvasLayer)
-	$CanvasLayer/TavernScene.set_quick_access_component($Entities/Player/QickAccessComponent)
+	#$CanvasLayer/TavernScene.set_quick_access_component($Entities/Player/QickAccessComponent)
 	#$CanvasLayer/TavernScene/InventoryPopUp.content.set_inventory_component($Entities/Player/InventoryComponent)
 	$CanvasLayer/TavernScene/InventoryPopUp.content.set_quick_access_component($Entities/Player/QickAccessComponent)
 	

@@ -37,6 +37,6 @@ func _process(delta):
 	animation_tree["parameters/Idle/blend_position"] = view_direction
 
 
-func item_change_interaction(to_change: WeaponResource):
+func item_change_interaction(to_change: Item):
 	quick_access_component.replace_item(quick_access_component.selected_resource, to_change)
 

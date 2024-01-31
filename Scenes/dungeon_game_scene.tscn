@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dt1choghkaavl"]
+[gd_scene load_steps=25 format=3 uid="uid://dt1choghkaavl"]
 
 [ext_resource type="Texture2D" uid="uid://d1ygcjaogfae5" path="res://art/sprites/tilesets/Dungeon Tiles 2.png" id="1_jlim3"]
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://interaction_handlers/PlayerInputHandler.tscn" id="1_ndabk"]
@@ -6,9 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://s5xklgk57qy7" path="res://interaction_handlers/player_interaction_mapper.tscn" id="2_5i0ky"]
 [ext_resource type="PackedScene" uid="uid://coh6x8in6t67w" path="res://interaction_handlers/player_movement_mapper.tscn" id="3_rdwn8"]
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="4_5jtbs"]
-[ext_resource type="PackedScene" uid="uid://bph32xoowbi6c" path="res://adventurer/adventurer.tscn" id="5_oohiq"]
-[ext_resource type="Script" path="res://adventurer/adventurer_resource.gd" id="6_bavhw"]
-[ext_resource type="Texture2D" uid="uid://l5upf6m8iynn" path="res://art/sprites/character_petuna_skin_2.png" id="8_d2ik7"]
+[ext_resource type="PackedScene" uid="uid://1dyua8285is8" path="res://player/player.tscn" id="8_p6pyq"]
 [ext_resource type="PackedScene" uid="uid://c1wruq1vniqxl" path="res://Scenes/tavern_scene.tscn" id="9_ti3ea"]
 [ext_resource type="PackedScene" uid="uid://ct0txx7wk68i2" path="res://Scenes/Game/DayNightTimer.tscn" id="10_73h6w"]
 
@@ -148,15 +146,11 @@ script = ExtResource("4_5jtbs")
 movement_speed = 50
 acceleration_time = 0.1
 
-[sub_resource type="Resource" id="Resource_y4jw1"]
-script = ExtResource("6_bavhw")
-texture = ExtResource("8_d2ik7")
-
-[sub_resource type="Gradient" id="Gradient_4yyor"]
+[sub_resource type="Gradient" id="Gradient_rs1s7"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_olkhk"]
-gradient = SubResource("Gradient_4yyor")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_glnbo"]
+gradient = SubResource("Gradient_rs1s7")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
@@ -187,23 +181,15 @@ movement_stats = SubResource("Resource_vjepf")
 
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="Player" parent="Entities" instance=ExtResource("5_oohiq")]
-position = Vector2(207, 282)
-adventurer_resource = SubResource("Resource_y4jw1")
-
-[node name="Torch" type="PointLight2D" parent="Entities/Player"]
-position = Vector2(2.08165e-12, 2.08165e-12)
-color = Color(0.968627, 0.682353, 0.584314, 1)
-energy = 1.4
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_olkhk")
-texture_scale = 1.9
-
-[node name="Camera2D" type="Camera2D" parent="Entities/Player"]
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-
 [node name="DayNightTimer" parent="Entities" instance=ExtResource("10_73h6w")]
+
+[node name="Player" parent="Entities" instance=ExtResource("8_p6pyq")]
+position = Vector2(245, 284)
+
+[node name="PlayerCamera" type="Camera2D" parent="Entities/Player"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Entities/Player"]
+texture = SubResource("GradientTexture2D_glnbo")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)

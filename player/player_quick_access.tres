@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="QuickAccessResource" load_steps=3 format=3 uid="uid://c7dbnocijw28c"]
+
+[ext_resource type="Script" path="res://player/quick_access_resource.gd" id="1_7gep4"]
+[ext_resource type="Resource" uid="uid://dem2m3ldyh10n" path="res://player/player_inventory.tres" id="1_x5jil"]
+
+[resource]
+script = ExtResource("1_7gep4")
+inventory_resource = ExtResource("1_x5jil")
+size = 10
+selected_index = 0
