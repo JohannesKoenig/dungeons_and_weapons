@@ -478,7 +478,8 @@ libraries = {
 position = Vector2(2.08165e-12, 1)
 rotation = 1.5708
 
-[node name="ActionableFinder" parent="Direction" instance=ExtResource("8_24af2")]
+[node name="ActionableFinder" parent="Direction" node_paths=PackedStringArray("source") instance=ExtResource("8_24af2")]
+source = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder"]
 position = Vector2(-2.08165e-12, 7)

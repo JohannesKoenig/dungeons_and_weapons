@@ -1,7 +1,9 @@
 extends Area2D
 class_name ActionableFinder
 
-func interact(message: Dictionary = {}):
+@export var source: Node
+
+func interact(source):
 	var actionables = get_overlapping_areas()
 	if actionables.size() > 0:
 		var nearest = null
@@ -12,4 +14,4 @@ func interact(message: Dictionary = {}):
 				dist = current_dist
 				nearest = actionable
 		if nearest:
-			nearest.trigger(message)
+			nearest.trigger(source)

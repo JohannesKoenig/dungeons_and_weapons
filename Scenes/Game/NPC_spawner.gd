@@ -3,7 +3,7 @@ class_name NPCSpawner
 
 @export var day_night_timer: DayNightTimer
 var spawn_window_duration: float
-var adventurer_resource = preload("res://adventurer/adventurer.tscn")
+var visitor_resource = preload("res://visitor/visitor.tscn")
 var adventurer_strategy_map: Dictionary
 var adventurers_to_spawn: Array
 var timer: Timer
@@ -31,16 +31,13 @@ func _create_time_table(duration: float, nr_of_chunks: int) -> Array:
 		table.append(equal_chunk_size + (-1) + randf_range(-random_offset, 0))
 	return table
 
-func spawn_adventurer() -> Adventurer:
+func spawn_adventurer() -> Visitor:
 	var resource = adventurers_to_spawn[index]
-	var adventurer: Adventurer = adventurer_resource.instantiate()
-	adventurer.set_resource(resource)
-	var ai_movement_mapper = ai_resource.instantiate()
-	ai_movement_mapper.set_actor(adventurer)
-	ai_movement_mapper.movement_stats = self.movement_stats
-	adventurer.set_ai_mapper(ai_movement_mapper)
-	adventurer.ai_mapper.set_strategy(self.adventurer_strategy_map[resource])
-	adventurer.unlink_material()
+	var adventurer: Visitor = visitor_resource.instantiate()
+	adventurer.set_adventurer_resource(resource)
+	adventurer.set_strategy(adventurer_strategy_map[resource])
+	# TODO: pass strategy
+	# adventurer.
 	add_child(adventurer)
 	index += 1
 	if index < len(time_table):
@@ -59,4 +56,5 @@ func start_spawning():
 	spawn_window_duration = (float(diff) / (24 * 60)) * (day_night_timer.day_length + day_night_timer.night_length)
 	time_table = _create_time_table(spawn_window_duration, len(adventurer_strategy_map))
 	index = 0
-	timer.start(time_table[index])
+	if len(time_table):
+		timer.start(time_table[index])

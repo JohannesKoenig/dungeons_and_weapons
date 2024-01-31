@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=70 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -12,21 +12,17 @@
 [ext_resource type="PackedScene" uid="uid://e7hpefbeseyy" path="res://Scenes/Game/SunLighting.tscn" id="9_wmdma"]
 [ext_resource type="PackedScene" uid="uid://cr2pgbgjac4je" path="res://Scenes/Game/DungeonDoor.tscn" id="12_76spw"]
 [ext_resource type="PackedScene" uid="uid://blju14eccfr53" path="res://Scenes/Game/ItemDisplay.tscn" id="12_j0urc"]
-[ext_resource type="PackedScene" uid="uid://bph32xoowbi6c" path="res://adventurer/adventurer.tscn" id="12_ou522"]
-[ext_resource type="Script" path="res://Scenes/PlayerCamera.gd" id="14_fn6jr"]
-[ext_resource type="Script" path="res://adventurer/adventurer_resource.gd" id="14_i2wni"]
-[ext_resource type="Texture2D" uid="uid://l5upf6m8iynn" path="res://art/sprites/character_petuna_skin_2.png" id="14_q4y4o"]
-[ext_resource type="PackedScene" uid="uid://coh6x8in6t67w" path="res://Scenes/player_movement_mapper.tscn" id="15_pacfw"]
+[ext_resource type="PackedScene" uid="uid://1dyua8285is8" path="res://player/player.tscn" id="12_si50m"]
+[ext_resource type="Script" path="res://Scenes/PlayerCamera.gd" id="13_l06rj"]
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="16_e63fn"]
-[ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://Scenes/Game/PlayerInputHandler.tscn" id="16_v5hdu"]
-[ext_resource type="PackedScene" uid="uid://s5xklgk57qy7" path="res://Scenes/player_interaction_mapper.tscn" id="17_e0xqn"]
+[ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://interaction_handlers/PlayerInputHandler.tscn" id="16_v5hdu"]
+[ext_resource type="Texture2D" uid="uid://cbshdt1t43px" path="res://art/sprites/tilesets/Tavern_open_2.png" id="17_7lae8"]
 [ext_resource type="PackedScene" uid="uid://bigcq1dyqr61g" path="res://Scenes/Game/AIDirector.tscn" id="18_ghi10"]
 [ext_resource type="PackedScene" uid="uid://nu58iqeehn5c" path="res://Scenes/TavernAI.tscn" id="19_2wblc"]
 [ext_resource type="PackedScene" uid="uid://m6w2er7cnnh7" path="res://sprite_shadow.tscn" id="19_sjjon"]
 [ext_resource type="Resource" uid="uid://cju1muovg1xma" path="res://Resources/weapons/training_sword/weapon.tres" id="19_ym7yb"]
 [ext_resource type="Texture2D" uid="uid://cwu82l3jopdt" path="res://art/sprites/tilesets/Sapling.png" id="20_h8wp4"]
 [ext_resource type="Texture2D" uid="uid://jw4xjcc1y1aw" path="res://art/sprites/tilesets/Tree.png" id="21_xp0n5"]
-[ext_resource type="Texture2D" uid="uid://c65bwt2f3pvsm" path="res://art/sprites/tilesets/Tavern_open.png" id="23_xc35w"]
 [ext_resource type="Texture2D" uid="uid://bjuyul8ahp676" path="res://art/sprites/tilesets/Tavern_closed.png" id="24_j1c6b"]
 [ext_resource type="Texture2D" uid="uid://dth62kh6mt3aq" path="res://art/sprites/tilesets/Tavern_closed_normal.png" id="25_eop8i"]
 
@@ -543,6 +539,7 @@ sources/1 = SubResource("TileSetAtlasSource_ms7km")
 [sub_resource type="Resource" id="Resource_ag016"]
 script = ExtResource("16_e63fn")
 movement_speed = 50
+acceleration_time = 0.1
 
 [sub_resource type="Gradient" id="Gradient_115n4"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -564,12 +561,6 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 metadata/_snap_enabled = true
 
-[sub_resource type="Resource" id="Resource_ydwjq"]
-script = ExtResource("14_i2wni")
-coins = 10
-strategy = {}
-texture = ExtResource("14_q4y4o")
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_h556j"]
 diffuse_texture = ExtResource("24_j1c6b")
 normal_texture = ExtResource("25_eop8i")
@@ -584,13 +575,10 @@ height = 40.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t238w"]
 polygon = PackedVector2Array(48, 32, 48, 199, 152, 200, 152, 208, 160, 208, 160, 199, 49, 198, 49, 33, 207, 33, 207, 199, 192, 199, 192, 208, 208, 208, 208, 32)
 
-[sub_resource type="Resource" id="Resource_v3ysv"]
-script = ExtResource("16_e63fn")
-movement_speed = 50
-
 [sub_resource type="Resource" id="Resource_gl7o2"]
 script = ExtResource("16_e63fn")
 movement_speed = 50
+acceleration_time = 0.1
 
 [node name="TavernGameScene" type="Node2D"]
 y_sort_enabled = true
@@ -629,7 +617,7 @@ z_index = 1
 position = Vector2(176, 194)
 
 [node name="DungeonDoor" parent="Entities" node_paths=PackedStringArray("day_night_timer") instance=ExtResource("12_76spw")]
-position = Vector2(176, 48)
+position = Vector2(176, 72)
 day_night_timer = NodePath("../DayNightTimer")
 
 [node name="Marker" type="Node" parent="Entities"]
@@ -641,10 +629,10 @@ position = Vector2(176, 215)
 position = Vector2(176, 97)
 
 [node name="DungeonPoint" type="Marker2D" parent="Entities/Marker"]
-position = Vector2(176, 52)
+position = Vector2(176, 76)
 
 [node name="DespawnPoint" type="Marker2D" parent="Entities/Marker"]
-position = Vector2(176, 40)
+position = Vector2(176, 58)
 
 [node name="StorePoint" type="Marker2D" parent="Entities/Marker"]
 position = Vector2(96, 97)
@@ -749,19 +737,11 @@ position_marker = NodePath("../Marker/Shelve2Point2")
 position = Vector2(120, 153)
 position_marker = NodePath("../Marker/Shelve2Point3")
 
-[node name="Player" parent="Entities" groups=["player"] instance=ExtResource("12_ou522")]
-position = Vector2(111, 54)
-adventurer_resource = SubResource("Resource_ydwjq")
+[node name="Player" parent="Entities" instance=ExtResource("12_si50m")]
+position = Vector2(130, 91)
 
 [node name="PlayerCamera" type="Camera2D" parent="Entities/Player"]
-position = Vector2(2.08165e-12, 2.08165e-12)
-limit_left = -50
-limit_top = -50
-limit_right = 306
-limit_bottom = 306
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-script = ExtResource("14_fn6jr")
+script = ExtResource("13_l06rj")
 
 [node name="Counter" parent="Entities" node_paths=PackedStringArray("player", "tavern_manager") instance=ExtResource("2_2n6xp")]
 position = Vector2(104, 79)
@@ -777,7 +757,7 @@ polygon = PackedVector2Array(48, 32, 48, 208, 160, 208, 160, 200, 56, 200, 56, 4
 light_mask = 0
 z_index = 2
 position = Vector2(128, 96)
-texture = ExtResource("23_xc35w")
+texture = ExtResource("17_7lae8")
 
 [node name="Tavern_closed" type="Sprite2D" parent="Entities"]
 self_modulate = Color(1, 1, 1, 0)
@@ -817,7 +797,6 @@ offset = Vector2(2.08165e-12, -20)
 
 [node name="SpriteShadow" parent="Entities/Tree/Sprite" instance=ExtResource("19_sjjon")]
 position = Vector2(2.08165e-12, 7)
-shadow_color = Color(0, 0, 0, 0.258824)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Entities/Tree/Sprite"]
 position = Vector2(2.08165e-12, 0.2)
@@ -838,25 +817,15 @@ polygon = PackedVector2Array(-48, 0, -48, 304, 304, 304, 304, -48, -48, -48, -48
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TavernScene" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("4_1ogd8")]
+[node name="TavernScene" parent="CanvasLayer" instance=ExtResource("4_1ogd8")]
 offset_left = -8.0
 offset_top = -8.0
 offset_right = -8.0
 offset_bottom = -8.0
-player = NodePath("../../Entities/Player")
 
 [node name="Behaviours" type="Node" parent="."]
 
 [node name="PlayerInputHandler" parent="Behaviours" instance=ExtResource("16_v5hdu")]
-
-[node name="PlayerMovementMapper" parent="Behaviours" node_paths=PackedStringArray("target", "input") instance=ExtResource("15_pacfw")]
-target = NodePath("../../Entities/Player")
-input = NodePath("../PlayerInputHandler")
-movement_stats = SubResource("Resource_v3ysv")
-
-[node name="PlayerInteractionMapper" parent="Behaviours" node_paths=PackedStringArray("target", "input") instance=ExtResource("17_e0xqn")]
-target = NodePath("../../Entities/Player")
-input = NodePath("../PlayerInputHandler")
 
 [node name="AiDirector" parent="Behaviours" node_paths=PackedStringArray("tavern_ai", "npc_spawner") instance=ExtResource("18_ghi10")]
 tavern_ai = NodePath("../TavernAi")
@@ -867,7 +836,6 @@ weapon_resource = ExtResource("19_ym7yb")
 [node name="TavernAi" parent="Behaviours" instance=ExtResource("19_2wblc")]
 
 [connection signal="tavern_open_changed" from="." to="Entities/Player/PlayerCamera" method="_on_tavern_game_scene_tavern_open_changed"]
-[connection signal="tavern_open_changed" from="." to="Behaviours/PlayerInputHandler" method="_on_tavern_open_changed"]
 [connection signal="day_started" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="show_day_time_pop_up"]
 [connection signal="night_started" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="show_night_time_pop_up"]
 [connection signal="time_changed" from="Entities/DayNightTimer" to="Entities/SunLighting" method="on_daytime_changed"]

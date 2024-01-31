@@ -31,6 +31,13 @@ window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/scale=2.0
 
+[file_customization]
+
+folder_colors={
+"res://player/": "red",
+"res://visitor/": "red"
+}
+
 [gui]
 
 theme/custom="res://themes/default_theme.tres"

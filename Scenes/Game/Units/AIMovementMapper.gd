@@ -1,7 +1,7 @@
 extends Node2D
 class_name AIMovementMapper
 
-@export var actor: CharacterBody2D
+var actor: CharacterBody2D
 @export var strategy: Dictionary
 @export var delta = 2
 @export var movement_stats: MovementStats
@@ -11,6 +11,9 @@ var timer_started = false
 var state = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var parent = get_parent()
+	if parent is CharacterBody2D:
+		actor = parent
 	ai_path_markers = get_node("/root/AiPathMarkers")
 	start()
 

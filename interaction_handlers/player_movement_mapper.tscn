@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://coh6x8in6t67w"]
 
-[ext_resource type="Script" path="res://Scenes/player_movement_mapper.gd" id="1_akgdw"]
+[ext_resource type="Script" path="res://interaction_handlers/player_movement_mapper.gd" id="1_akgdw"]
 
 [node name="PlayerMovementMapper" type="Node"]
 script = ExtResource("1_akgdw")

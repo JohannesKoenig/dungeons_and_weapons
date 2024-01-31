@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerResource" load_steps=3 format=3 uid="uid://d3se5wucuuebd"]
+
+[ext_resource type="Script" path="res://player/player_resource.gd" id="1_axll6"]
+[ext_resource type="Texture2D" uid="uid://l5upf6m8iynn" path="res://art/sprites/character_petuna_skin_2.png" id="2_o30h4"]
+
+[resource]
+script = ExtResource("1_axll6")
+coins = 20
+texture = ExtResource("2_o30h4")

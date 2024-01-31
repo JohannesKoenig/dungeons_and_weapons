@@ -62,7 +62,7 @@ func toggle_tavern():
 
 func get_items_on_display() -> Array:
 	return [
-		_get_item_resource_and_marker($Entities/ItemDisplay),	
+		_get_item_resource_and_marker($Entities/ItemDisplay),
 		_get_item_resource_and_marker($Entities/ItemDisplay2),
 		_get_item_resource_and_marker($Entities/ItemDisplay3),
 		_get_item_resource_and_marker($Entities/ItemDisplay4),
@@ -78,6 +78,7 @@ func get_adventurers() -> Array:
 	var diff_in_hours = float(diff) / 60
 	var number_of_adventurers = rng.randi_range(0, diff_in_hours * max_adventurers_per_hour)
 	var adventurers = []
+	print(number_of_adventurers)
 	for i in range(number_of_adventurers):
 		var template = adventurer_resource_template.new()
 		template.coins = 100

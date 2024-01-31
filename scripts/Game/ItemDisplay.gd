@@ -8,16 +8,12 @@ func _ready():
 	$ItemSprite.visible = true
 
 
-func _on_actionable_action(message: Dictionary):
-	if message.is_empty():
-		return
-	#$ToggleComponent.activate()
-	if "selected_resource" in message:
-		var resource = message["selected_resource"]
+func _on_actionable_action(source: Node2D):
+	if source is Player or source is Visitor:
+		var resource = source.item_holding_component.resource
 		var previous_resource = item_resource
 		set_resource(resource)
-		var callback = message["on_success"]
-		callback.call(previous_resource)
+		source.item_change_interaction(previous_resource)
 
 func _on_ui_item_resource_changed(resource):
 	set_resource(resource)

@@ -2,10 +2,11 @@ extends Control
 
 @onready var clock_label = $MarginContainer/HBoxContainer/Clock
 @onready var coins_label = $MarginContainer/HBoxContainer/Coins
-@export var player: Adventurer
+var player: Player
 
 
 func _ready():
+	player = get_tree().get_first_node_in_group("player") as Player
 	set_player(player)
 
 func update_coins(coins: int) -> void:
@@ -21,7 +22,7 @@ func toggle_inventory():
 func set_quick_access_component(quick_access_component: QuickAccessComponent):
 	$HotbarGui.set_quick_access_component(quick_access_component)
 
-func set_player(adventurer: Adventurer):
+func set_player(adventurer: Player):
 	player.coin_bank_component.value_changed.connect(_update_coin_label)
 	_update_coin_label(player.coin_bank_component.value)
 
