@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dt1choghkaavl"]
+[gd_scene load_steps=24 format=3 uid="uid://dt1choghkaavl"]
 
 [ext_resource type="Texture2D" uid="uid://d1ygcjaogfae5" path="res://art/sprites/tilesets/Dungeon Tiles 2.png" id="1_jlim3"]
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://interaction_handlers/PlayerInputHandler.tscn" id="1_ndabk"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="4_5jtbs"]
 [ext_resource type="PackedScene" uid="uid://1dyua8285is8" path="res://player/player.tscn" id="8_p6pyq"]
 [ext_resource type="PackedScene" uid="uid://c1wruq1vniqxl" path="res://Scenes/tavern_scene.tscn" id="9_ti3ea"]
-[ext_resource type="PackedScene" uid="uid://ct0txx7wk68i2" path="res://Scenes/Game/DayNightTimer.tscn" id="10_73h6w"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2wd66"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, -7, -8, -7)
@@ -181,8 +180,6 @@ movement_stats = SubResource("Resource_vjepf")
 
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="DayNightTimer" parent="Entities" instance=ExtResource("10_73h6w")]
-
 [node name="Player" parent="Entities" instance=ExtResource("8_p6pyq")]
 position = Vector2(245, 284)
 
@@ -199,6 +196,3 @@ color = Color(0, 0, 0, 1)
 [node name="TavernScene" parent="CanvasLayer" instance=ExtResource("9_ti3ea")]
 
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]
-[connection signal="day_started" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="show_day_time_pop_up"]
-[connection signal="night_started" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="show_night_time_pop_up"]
-[connection signal="time_changed" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="update_time"]

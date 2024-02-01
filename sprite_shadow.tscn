@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://m6w2er7cnnh7"]
+[gd_scene load_steps=3 format=3 uid="uid://m6w2er7cnnh7"]
 
 [ext_resource type="Script" path="res://Scenes/TavernShadow.gd" id="1_btcdi"]
+[ext_resource type="Resource" uid="uid://ce7k2iju7uyph" path="res://daynight/day_night_resource.tres" id="2_libm8"]
 
 [node name="SpriteShadow" type="Marker2D"]
 modulate = Color(0, 0, 0, 0.258824)
 position = Vector2(2.08165e-12, 2.08165e-12)
 skew = 0.349066
 script = ExtResource("1_btcdi")
+dnr = ExtResource("2_libm8")
 shadow_color = Color(0, 0, 0, 0.258824)
 metadata/_edit_group_ = true
 

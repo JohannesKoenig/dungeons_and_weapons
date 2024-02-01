@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1wruq1vniqxl"]
+[gd_scene load_steps=13 format=3 uid="uid://c1wruq1vniqxl"]
 
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="1_i1q3x"]
 [ext_resource type="Script" path="res://scripts/GUI_elements/TavernGUI.gd" id="1_r07mv"]
 [ext_resource type="Texture2D" uid="uid://dc7n8s67r7kwm" path="res://art/sprites/icons/coin.png" id="1_vp7g8"]
 [ext_resource type="Texture2D" uid="uid://bxns8sdk2ug6y" path="res://art/sprites/icons/options_icon.png" id="2_b1a5n"]
 [ext_resource type="Resource" uid="uid://d3se5wucuuebd" path="res://player/player_resource.tres" id="2_pl53y"]
+[ext_resource type="Resource" uid="uid://ce7k2iju7uyph" path="res://daynight/day_night_resource.tres" id="3_gxsul"]
 [ext_resource type="PackedScene" uid="uid://qt8yey64vkjj" path="res://utils/ToggleComponent/ToggleComponent.tscn" id="5_57lu4"]
 [ext_resource type="PackedScene" uid="uid://brh82olvvw0w4" path="res://utils/PopUpGUIComponent/PopUpGUIComponent.tscn" id="6_vjcvr"]
 [ext_resource type="PackedScene" uid="uid://d0qyqvk76p3pi" path="res://Scenes/GUI_elements/audio_options.tscn" id="7_hr2mv"]
@@ -24,6 +25,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_r07mv")
 player_resource = ExtResource("2_pl53y")
+dnr = ExtResource("3_gxsul")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

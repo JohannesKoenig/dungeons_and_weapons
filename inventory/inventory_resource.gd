@@ -6,14 +6,6 @@ extends Resource
 
 signal items_changed(items: Array)
 
-func _ready():
-	# Initialize items-array
-	if len(items) < size:
-		var slots_to_create = size - len(items)
-		for _i in range(slots_to_create):
-			items.append(null)
-		items_changed.emit(items)
-
 func add(item: Item) -> int:
 	for i in range(len(items)):
 		if items[i] == null:

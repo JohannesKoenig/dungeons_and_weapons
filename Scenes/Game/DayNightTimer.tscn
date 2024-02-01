@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct0txx7wk68i2"]
-
-[ext_resource type="Script" path="res://scripts/Game/DayNightTimer.gd" id="1_2ijkx"]
-
-[node name="DayNightTimer" type="Node2D"]
-script = ExtResource("1_2ijkx")

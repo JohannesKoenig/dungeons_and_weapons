@@ -6,7 +6,8 @@ var selected_resource: Item
 signal selected_changed(resource: Item)
 
 func _ready():
-	select_by_index(quick_access_resource.selected_index)
+	if quick_access_resource:
+		select_by_index(quick_access_resource.selected_index)
 
 func replace_item(target: Item, to_replace: Item) -> Item:
 	return quick_access_resource.replace_item(target, to_replace)

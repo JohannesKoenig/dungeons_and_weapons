@@ -1,7 +1,7 @@
 extends Node2D
 class_name DungeonDoor
 
-@export var day_night_timer: DayNightTimer
+@export var day_night_timer: DayNightResource
 var is_open: bool = false
 var is_night = false
 

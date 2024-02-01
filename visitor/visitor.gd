@@ -17,7 +17,8 @@ var strategy: Dictionary
 func _ready():
 	is_ready = true
 	unlink_material()
-	set_adventurer_resource(adventurer_resource)
+	if adventurer_resource:
+		set_adventurer_resource(adventurer_resource)
 	set_strategy(strategy)
 
 
@@ -26,6 +27,8 @@ func set_adventurer_resource(resource: AdventurerResource):
 	if is_ready:
 		coin_bank_component.value = adventurer_resource.coins
 		$AnimatedSprite2D.material.set("shader_parameter/diffuse", adventurer_resource.texture)
+		$InventoryComponent.set_inventory_resource(adventurer_resource.inventory)
+		$CoinBankComponent.value = adventurer_resource.coins
 
 
 func set_strategy(strategy: Dictionary):

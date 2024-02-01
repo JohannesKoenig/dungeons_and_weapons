@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemTable" load_steps=5 format=3 uid="uid://nrla0xdxb86p"]
+
+[ext_resource type="Resource" uid="uid://btml0ae7ppwql" path="res://Resources/weapons/curved_axe/weapon.tres" id="1_2smj4"]
+[ext_resource type="Script" path="res://items/item/item_factory.gd" id="1_j34ut"]
+[ext_resource type="Resource" uid="uid://blaf30o8pbcte" path="res://Resources/weapons/hammer/weapon.tres" id="2_kth7c"]
+[ext_resource type="Resource" uid="uid://cju1muovg1xma" path="res://Resources/weapons/training_sword/weapon.tres" id="3_vmqcr"]
+
+[resource]
+script = ExtResource("1_j34ut")
+item_table = {
+"curved_axe": ExtResource("1_2smj4"),
+"hammer": ExtResource("2_kth7c"),
+"training_sword": ExtResource("3_vmqcr")
+}

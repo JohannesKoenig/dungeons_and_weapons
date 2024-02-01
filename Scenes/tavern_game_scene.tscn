@@ -1,15 +1,16 @@
-[gd_scene load_steps=70 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=72 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
 [ext_resource type="PackedScene" uid="uid://bvuu5tnbgss15" path="res://counter/Counter.tscn" id="2_2n6xp"]
 [ext_resource type="Texture2D" uid="uid://baff6fb2jgy2j" path="res://art/sprites/tilesets/tavern_furniture.png" id="2_guppe"]
+[ext_resource type="Resource" uid="uid://wvebum26rk73" path="res://customers/customers_resource.tres" id="2_k46dw"]
 [ext_resource type="Texture2D" uid="uid://bspjin4ruk1a4" path="res://art/sprites/tilesets/Outdoor.png" id="3_p81w2"]
 [ext_resource type="PackedScene" uid="uid://c1wruq1vniqxl" path="res://Scenes/tavern_scene.tscn" id="4_1ogd8"]
 [ext_resource type="PackedScene" uid="uid://mkl1ivf2pshi" path="res://Scenes/Game/TavernDoor.tscn" id="4_pt4fs"]
 [ext_resource type="PackedScene" uid="uid://dpmnvee3ssjvm" path="res://Scenes/Game/NPC_spawner.tscn" id="6_ypesp"]
-[ext_resource type="PackedScene" uid="uid://ct0txx7wk68i2" path="res://Scenes/Game/DayNightTimer.tscn" id="8_kh38u"]
 [ext_resource type="PackedScene" uid="uid://e7hpefbeseyy" path="res://Scenes/Game/SunLighting.tscn" id="9_wmdma"]
+[ext_resource type="Resource" uid="uid://ce7k2iju7uyph" path="res://daynight/day_night_resource.tres" id="10_iob6c"]
 [ext_resource type="PackedScene" uid="uid://cr2pgbgjac4je" path="res://Scenes/Game/DungeonDoor.tscn" id="12_76spw"]
 [ext_resource type="PackedScene" uid="uid://blju14eccfr53" path="res://Scenes/Game/ItemDisplay.tscn" id="12_j0urc"]
 [ext_resource type="PackedScene" uid="uid://1dyua8285is8" path="res://player/player.tscn" id="12_si50m"]
@@ -24,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cwu82l3jopdt" path="res://art/sprites/tilesets/Sapling.png" id="20_h8wp4"]
 [ext_resource type="Texture2D" uid="uid://jw4xjcc1y1aw" path="res://art/sprites/tilesets/Tree.png" id="21_xp0n5"]
 [ext_resource type="Texture2D" uid="uid://bjuyul8ahp676" path="res://art/sprites/tilesets/Tavern_closed.png" id="24_j1c6b"]
+[ext_resource type="Resource" uid="uid://co6aefe3hm0ou" path="res://tavern/tavern_resource.tres" id="25_35v82"]
 [ext_resource type="Texture2D" uid="uid://dth62kh6mt3aq" path="res://art/sprites/tilesets/Tavern_closed_normal.png" id="25_eop8i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgtce"]
@@ -583,6 +585,8 @@ acceleration_time = 0.1
 [node name="TavernGameScene" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_tl1ne")
+customers_resource = ExtResource("2_k46dw")
+dnr = ExtResource("10_iob6c")
 
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -616,9 +620,9 @@ layer_0/tile_data = PackedInt32Array(262149, 65537, 1, 196615, 196609, 0, 458756
 z_index = 1
 position = Vector2(176, 194)
 
-[node name="DungeonDoor" parent="Entities" node_paths=PackedStringArray("day_night_timer") instance=ExtResource("12_76spw")]
+[node name="DungeonDoor" parent="Entities" instance=ExtResource("12_76spw")]
 position = Vector2(176, 72)
-day_night_timer = NodePath("../DayNightTimer")
+day_night_timer = ExtResource("10_iob6c")
 
 [node name="Marker" type="Node" parent="Entities"]
 
@@ -661,16 +665,13 @@ position = Vector2(105, 154)
 [node name="SpawnPoint" type="Marker2D" parent="Entities/Marker"]
 position = Vector2(177, 248)
 
-[node name="NpcSpawner" parent="Entities" node_paths=PackedStringArray("day_night_timer") instance=ExtResource("6_ypesp")]
+[node name="NpcSpawner" parent="Entities" instance=ExtResource("6_ypesp")]
 position = Vector2(177, 248)
-day_night_timer = NodePath("../DayNightTimer")
+day_night_timer = ExtResource("10_iob6c")
 movement_stats = SubResource("Resource_ag016")
 
 [node name="SunLighting" parent="Entities" instance=ExtResource("9_wmdma")]
-
-[node name="DayNightTimer" parent="Entities" instance=ExtResource("8_kh38u")]
-day_length = 30
-night_length = 30
+dnr = ExtResource("10_iob6c")
 
 [node name="PointLight" type="PointLight2D" parent="Entities"]
 position = Vector2(153, 88)
@@ -720,22 +721,27 @@ position_marker = NodePath("../Marker/Shelve1Point1")
 [node name="ItemDisplay2" parent="Entities" node_paths=PackedStringArray("position_marker") instance=ExtResource("12_j0urc")]
 position = Vector2(72, 137)
 position_marker = NodePath("../Marker/Shelve1Point2")
+index = 1
 
 [node name="ItemDisplay3" parent="Entities" node_paths=PackedStringArray("position_marker") instance=ExtResource("12_j0urc")]
 position = Vector2(72, 153)
 position_marker = NodePath("../Marker/Shelve1Point3")
+index = 2
 
 [node name="ItemDisplay4" parent="Entities" node_paths=PackedStringArray("position_marker") instance=ExtResource("12_j0urc")]
 position = Vector2(120, 121)
 position_marker = NodePath("../Marker/Shelve2Point1")
+index = 3
 
 [node name="ItemDisplay5" parent="Entities" node_paths=PackedStringArray("position_marker") instance=ExtResource("12_j0urc")]
 position = Vector2(120, 137)
 position_marker = NodePath("../Marker/Shelve2Point2")
+index = 4
 
 [node name="ItemDisplay6" parent="Entities" node_paths=PackedStringArray("position_marker") instance=ExtResource("12_j0urc")]
 position = Vector2(120, 153)
 position_marker = NodePath("../Marker/Shelve2Point3")
+index = 5
 
 [node name="Player" parent="Entities" instance=ExtResource("12_si50m")]
 position = Vector2(130, 91)
@@ -828,6 +834,8 @@ offset_bottom = -8.0
 [node name="PlayerInputHandler" parent="Behaviours" instance=ExtResource("16_v5hdu")]
 
 [node name="AiDirector" parent="Behaviours" node_paths=PackedStringArray("tavern_ai", "npc_spawner") instance=ExtResource("18_ghi10")]
+tavern_resource = ExtResource("25_35v82")
+customers_resource = ExtResource("2_k46dw")
 tavern_ai = NodePath("../TavernAi")
 npc_spawner = NodePath("../../Entities/NpcSpawner")
 movement_stats = SubResource("Resource_gl7o2")
@@ -836,11 +844,4 @@ weapon_resource = ExtResource("19_ym7yb")
 [node name="TavernAi" parent="Behaviours" instance=ExtResource("19_2wblc")]
 
 [connection signal="tavern_open_changed" from="." to="Entities/Player/PlayerCamera" method="_on_tavern_game_scene_tavern_open_changed"]
-[connection signal="day_started" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="show_day_time_pop_up"]
-[connection signal="night_started" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="show_night_time_pop_up"]
-[connection signal="time_changed" from="Entities/DayNightTimer" to="Entities/SunLighting" method="on_daytime_changed"]
-[connection signal="time_changed" from="Entities/DayNightTimer" to="Entities/Tavern_closed/SpriteShadow" method="on_daytime_changed"]
-[connection signal="time_changed" from="Entities/DayNightTimer" to="Entities/Sapling/SpriteShadow" method="on_daytime_changed"]
-[connection signal="time_changed" from="Entities/DayNightTimer" to="Entities/Tree/Sprite/SpriteShadow" method="on_daytime_changed"]
-[connection signal="time_changed" from="Entities/DayNightTimer" to="CanvasLayer/TavernScene" method="update_time"]
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]

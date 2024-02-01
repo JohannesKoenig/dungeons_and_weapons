@@ -1,6 +1,8 @@
 extends Node2D
 class_name TavernManager
 
+@export var customers_resource: CustomersResource
+@export var dnr: DayNightResource
 @export var max_adventurers_per_hour: int = 1
 var ai_path_markers: AiPathMarkers
 var interaction_middleware: InteractionMiddleware
@@ -14,9 +16,12 @@ var adventurer_textures = [
 	preload("res://art/sprites/texture_test.png"),
 ]
 var rng: RandomNumberGenerator
+var game_saver: GameSaver
 
 func _ready():
-	get_node("/root/GameSaver").load_game_from_resources()
+	game_saver = get_node("/root/GameSaver")
+	game_saver.load_game_from_resources()
+	dnr.day_ended.connect(game_saver.save_game_from_resources)
 	rng = RandomNumberGenerator.new()
 	ai_path_markers = get_node("/root/AiPathMarkers")
 	if ai_path_markers:
@@ -36,25 +41,16 @@ func _ready():
 	
 	var drag_and_drop_layer = get_node("/root/DragAndDropLayer")
 	drag_and_drop_layer.set_canvas_layer($CanvasLayer)
-	#$CanvasLayer/TavernScene.set_quick_access_component($Entities/Player/QickAccessComponent)
-	#$CanvasLayer/TavernScene/InventoryPopUp.content.set_inventory_component($Entities/Player/InventoryComponent)
 	$CanvasLayer/TavernScene/InventoryPopUp.content.set_quick_access_component($Entities/Player/QickAccessComponent)
 	
-	interaction_middleware = get_node("/root/InteractionMiddleware")
-	$Entities/DayNightTimer.day_started.connect(
-		interaction_middleware.day_starts
-	)
-	$Entities/DayNightTimer.night_started.connect(
-		interaction_middleware.night_starts
-	)
 	tavern_open_changed.connect(trigger_ai_on_tavern_open)
 
 
 func open_tavern(value: bool):
-	if not value and not $Entities/DayNightTimer.is_day:
+	if not value and not dnr.is_day:
 		tavern_open = value
 		tavern_open_changed.emit(value)
-	if value and $Entities/DayNightTimer.is_day:
+	if value and dnr.is_day:
 		tavern_open = value
 		tavern_open_changed.emit(value)
 
@@ -71,29 +67,21 @@ func get_items_on_display() -> Array:
 		_get_item_resource_and_marker($Entities/ItemDisplay6),
 	]
 
-func get_adventurers() -> Array:
-	var day_night_timer = $Entities/DayNightTimer
-	var current_time = day_night_timer.current_day_time
-	var end_day_time = day_night_timer.max_day_time_hours * 60 + day_night_timer.max_day_time_minutes
+func get_adventurers():
+	var current_time = dnr.current_day_time
+	var end_day_time = dnr.sun_down_hour * 60 + dnr.sun_down_minute
 	var diff = end_day_time - current_time
 	var diff_in_hours = float(diff) / 60
 	var number_of_adventurers = rng.randi_range(0, diff_in_hours * max_adventurers_per_hour)
-	var adventurers = []
-	print(number_of_adventurers)
-	for i in range(number_of_adventurers):
-		var template = adventurer_resource_template.new()
-		template.coins = 100
-		template.texture = adventurer_textures.pick_random()
-		adventurers.append(template)
-	return adventurers
+	var adventurers = customers_resource.get_random_cutstomers(number_of_adventurers)
+	customers_resource.available.append_array(adventurers)
+	customers_resource.today = adventurers
 
 func trigger_ai_on_tavern_open(open: bool):
 	if !open:
 		return
-	$Behaviours/AiDirector.update_instructions(
-		get_items_on_display(),
-		get_adventurers()
-	)
+	get_adventurers()
+	$Behaviours/AiDirector.update_instructions()
 
 func _get_item_resource_and_marker(item_display: ItemDisplay) -> Dictionary:
 	return {

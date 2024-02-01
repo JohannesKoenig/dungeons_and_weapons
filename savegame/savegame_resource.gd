@@ -5,14 +5,13 @@ var SAVE_GAME_PATH = "user://save.json"
 
 var player_resource = preload("res://player/player_resource.tres")
 var tavern_resource = preload("res://tavern/tavern_resource.tres")
-
+var customers = preload("res://customers/customers_resource.tres")
 
 func save_exists() -> bool:
 	return FileAccess.file_exists(SAVE_GAME_PATH)
 
 func write_savegame():
 	var file := FileAccess.open(SAVE_GAME_PATH, FileAccess.WRITE)
-	
 	var data := {
 		"player_resource": {
 			"coins": player_resource.coins,
@@ -25,6 +24,10 @@ func write_savegame():
 		},
 		"tavern_resource": {
 			"inventory": inventory_to_data(tavern_resource.inventory)
+		},
+		"customers": {
+			"available": customers.available.map(func(x): return adventurer_to_data(x)),
+			"today": customers.today.map(func(x): return adventurer_to_data(x))
 		}
 	}
 	
@@ -36,13 +39,22 @@ func load_savegame():
 	var file := FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
 	var content = file.get_as_text()
 	file.close()
-	var data: Dictionary = JSON.parse_string(content)
-	player_resource.coins = data["player_resource"]["coins"]
-	player_resource.inventory.size = data["player_resource"]["inventory"]["size"]
-	player_resource.inventory.items = data["player_resource"]["inventory"]["items"]
+	var data = JSON.parse_string(content)
+	if data:
+		player_resource.coins = data["player_resource"]["coins"]
+		player_resource.inventory.size = data["player_resource"]["inventory"]["size"]
+		player_resource.inventory.items = data["player_resource"]["inventory"]["items"]
 
 func inventory_to_data(inventory: InventoryResource) -> Dictionary:
 	return {
 		"size": inventory.size,
 		"items": inventory.items
+	}
+
+func adventurer_to_data(adventurer: AdventurerResource) -> Dictionary:
+	print(adventurer.coins)
+	return {
+		"coins": adventurer.coins,
+		"inventory": inventory_to_data(adventurer.inventory),
+		"texture": adventurer.texture
 	}

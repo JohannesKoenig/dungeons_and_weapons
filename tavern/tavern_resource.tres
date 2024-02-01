@@ -6,3 +6,4 @@
 [resource]
 script = ExtResource("1_bo3b3")
 inventory = ExtResource("1_2f5tg")
+fee = 10

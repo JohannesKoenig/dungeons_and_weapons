@@ -1,11 +1,13 @@
 extends Control
 
+@export var player_resource: PlayerResource
+@export var dnr: DayNightResource
 @onready var clock_label = $MarginContainer/HBoxContainer/Clock
 @onready var coins_label = $MarginContainer/HBoxContainer/Coins
-@export var player_resource: PlayerResource
 
 
 func _ready():
+	dnr.time_changed.connect(update_time)
 	set_player_resource(player_resource)
 
 func _process(delta):
