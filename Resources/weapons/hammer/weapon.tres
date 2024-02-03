@@ -6,6 +6,9 @@
 [resource]
 script = ExtResource("1_w4ril")
 price = 29
+id = "hammer"
 name = "Hammer"
+value = 29
 icon_texture = ExtResource("1_hbqsf")
 ingame_texture = ExtResource("1_hbqsf")
+level = 0

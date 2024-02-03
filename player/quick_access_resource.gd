@@ -3,7 +3,10 @@ extends Resource
 
 @export var inventory_resource: InventoryResource
 @export var size: int
-@export var selected_index: int
+@export var selected_index: int:
+	set(value):
+		index_updated.emit(value)
+signal index_updated(index: int)
 
 func replace_item(target: Item, to_replace: Item) -> Item:
 	for index in range(size):

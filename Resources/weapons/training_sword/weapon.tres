@@ -6,6 +6,9 @@
 [resource]
 script = ExtResource("1_4bteb")
 price = 10
+id = "training_sword"
 name = "Training Sword"
+value = 10
 icon_texture = ExtResource("1_kclrs")
 ingame_texture = ExtResource("1_kclrs")
+level = 0

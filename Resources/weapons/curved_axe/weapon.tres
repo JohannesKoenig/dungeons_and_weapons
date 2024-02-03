@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_whtcp")
 price = 32
+id = "curved_axe"
 name = "Curved Axe"
 value = 32
 icon_texture = ExtResource("1_5yuhd")

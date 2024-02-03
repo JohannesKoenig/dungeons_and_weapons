@@ -1,11 +1,13 @@
 class_name SaveGameResource
 extends Resource
 
+@export var item_factory: ItemFactory = preload("res://items/item/item_factory.tres")
 var SAVE_GAME_PATH = "user://save.json"
 
 var player_resource = preload("res://player/player_resource.tres")
 var tavern_resource = preload("res://tavern/tavern_resource.tres")
 var customers = preload("res://customers/customers_resource.tres")
+var dungeon_inventory = preload("res://dungeon/dungeon_inventory.tres")
 
 func save_exists() -> bool:
 	return FileAccess.file_exists(SAVE_GAME_PATH)
@@ -13,22 +15,15 @@ func save_exists() -> bool:
 func write_savegame():
 	var file := FileAccess.open(SAVE_GAME_PATH, FileAccess.WRITE)
 	var data := {
-		"player_resource": {
-			"coins": player_resource.coins,
-			"inventory": inventory_to_data(player_resource.inventory),
-			"quick_access": {
-				"size": player_resource.quick_access.size,
-				"selected_index": player_resource.quick_access.selected_index,
-			},
-			"texture": player_resource.texture
-		},
+		"player_resource": player_resource.serialize(),
 		"tavern_resource": {
-			"inventory": inventory_to_data(tavern_resource.inventory)
+			"inventory": tavern_resource.inventory.serialize()
 		},
 		"customers": {
-			"available": customers.available.map(func(x): return adventurer_to_data(x)),
-			"today": customers.today.map(func(x): return adventurer_to_data(x))
-		}
+			"available": customers.available.map(func(x): return x.serialize()),
+			"today": customers.today.map(func(x): return x.serialize())
+		},
+		"dungeon_inventory": dungeon_inventory.serialize()
 	}
 	
 	var json_string := JSON.new().stringify(data)
@@ -37,24 +32,14 @@ func write_savegame():
 
 func load_savegame():
 	var file := FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
+	if !file:
+		return
 	var content = file.get_as_text()
 	file.close()
 	var data = JSON.parse_string(content)
 	if data:
-		player_resource.coins = data["player_resource"]["coins"]
-		player_resource.inventory.size = data["player_resource"]["inventory"]["size"]
-		player_resource.inventory.items = data["player_resource"]["inventory"]["items"]
-
-func inventory_to_data(inventory: InventoryResource) -> Dictionary:
-	return {
-		"size": inventory.size,
-		"items": inventory.items
-	}
-
-func adventurer_to_data(adventurer: AdventurerResource) -> Dictionary:
-	print(adventurer.coins)
-	return {
-		"coins": adventurer.coins,
-		"inventory": inventory_to_data(adventurer.inventory),
-		"texture": adventurer.texture
-	}
+		player_resource.deserialize(data["player_resource"])
+		tavern_resource.inventory.deserialize(data["tavern_resource"]["inventory"])
+		customers.available = data["customers"]["available"].map(func(x): return AdventurerResource.deserialize_from_dict(x))
+		customers.today = data["customers"]["today"].map(func(x): return AdventurerResource.deserialize_from_dict(x))
+		dungeon_inventory.deserialize(data["dungeon_inventory"])

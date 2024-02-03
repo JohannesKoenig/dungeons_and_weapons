@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="InventoryResource" load_steps=2 format=3 uid="uid://c5tc5pfapdxlx"]
+
+[ext_resource type="Script" path="res://inventory/inventory_resource.gd" id="1_nlkwv"]
+
+[resource]
+script = ExtResource("1_nlkwv")
+size = 32
+items = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]

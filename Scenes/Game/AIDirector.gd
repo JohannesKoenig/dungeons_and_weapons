@@ -5,13 +5,9 @@ class_name AIDirector
 @export var customers_resource: CustomersResource
 @export var tavern_ai: TavernAI
 @export var npc_spawner: NPCSpawner
-@export var movement_stats: MovementStats
 var strategies: Dictionary
 var items: Array
 var adventurer_resources: Array
-
-@export var weapon_resource: WeaponResource
-var ai_resource = preload("res://Scenes/Game/Units/AIMovementMapper.tscn")
 
 func update_instructions():
 	self.items = tavern_resource.inventory.items

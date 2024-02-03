@@ -1,7 +1,8 @@
 extends Node2D
-class_name DungeonDoor
+class_name TavernDungeonDoor
 
 @export var day_night_timer: DayNightResource
+@onready var game_saver : GameSaver = $"/root/GameSaver"
 var is_open: bool = false
 var is_night = false
 
@@ -12,8 +13,11 @@ func close():
 	is_open = false
 
 
+
+
 func _on_actionable_action(source):
 	if !day_night_timer.is_day and "player" in source.get_groups():
+		game_saver.save_game_from_resources()
 		get_tree().change_scene_to_file("res://Scenes/dungeon_game_scene.tscn")
 
 

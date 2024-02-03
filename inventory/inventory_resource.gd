@@ -5,6 +5,7 @@ extends Resource
 @export var items: Array
 
 signal items_changed(items: Array)
+var _item_factory = preload("res://items/item/item_factory.tres")
 
 func add(item: Item) -> int:
 	for i in range(len(items)):
@@ -32,3 +33,47 @@ func remove_at_index(index: int) -> Item:
 	var to_remove = items[index]
 	items[index] = null
 	return to_remove
+
+func get_index(item: Item) -> int:
+	for i in range(len(items)):
+		if item == items[i]:
+			return i
+	return -1
+
+func clear():
+	for i in range(len(items)):
+		items[i] = null
+	items_changed.emit(items)
+
+
+func serialize() -> Dictionary:
+	return {
+		"size": size,
+		"items": items.map(func(x): return _serialize_item(x))
+	}
+
+func deserialize(dict: Dictionary):
+	size = dict["size"]
+	items = dict["items"].map(func(x): return _deserialize_item(x))
+	items_changed.emit(items)
+
+static func deserialize_from_dict(dict: Dictionary):
+	var adventurer_resource = InventoryResource.new()
+	adventurer_resource.deserialize(dict)
+	return adventurer_resource
+
+func _serialize_item(item: Item) -> Dictionary:
+	if item == null:
+		return {
+			"is_null": true
+		}
+	else:
+		var dict = item.serialize()
+		dict["is_null"] = false
+		return dict
+
+func _deserialize_item(dict: Dictionary) -> Item:
+	if dict["is_null"]:
+		return null
+	else:
+		return _item_factory.item_table[dict["id"]]

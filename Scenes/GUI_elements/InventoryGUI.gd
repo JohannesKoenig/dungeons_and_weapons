@@ -1,23 +1,22 @@
 extends Control
 
-@export var inventory_component: InventoryResource
+@export var inventory_resource: InventoryResource
 @export var quick_access_component: QuickAccessComponent
-var packed_ui_scene: PackedScene
+var packed_ui_scene: PackedScene = preload("res://items/UIItemIcon.tscn")
 var ui_items: Array
 
 func _ready():
-	#set_inventory_component(inventory_component)
+	if inventory_resource:
+		set_inventory_resource(inventory_resource)
 	set_quick_access_component(quick_access_component)
-	packed_ui_scene = load("res://items/UIItemIcon.tscn")
 
-func set_inventory_component(inventory_component: InventoryResource):
-	self.inventory_component = inventory_component
-
+func set_inventory_resource(inventory_resource: InventoryResource):
+	self.inventory_resource = inventory_resource
 	_delete_ui_items()
-	if self.inventory_component:
-		_create_ui_items(inventory_component.size)
+	if self.inventory_resource:
+		_create_ui_items(inventory_resource.size)
 		_load_ui_items()
-		inventory_component.inventory_changed.connect(_refresh_items)
+		inventory_resource.items_changed.connect(_refresh_items)
 
 func set_quick_access_component(quick_access_component: QuickAccessComponent):
 	self.quick_access_component = quick_access_component
@@ -25,10 +24,9 @@ func set_quick_access_component(quick_access_component: QuickAccessComponent):
 func _refresh_items(items: Array):
 	_load_ui_items()
 
-
 func _load_ui_items():
-	for i in range(inventory_component.inventory_size):
-		var resource = inventory_component.inventory[i]
+	for i in range(inventory_resource.size):
+		var resource = inventory_resource.items[i]
 		ui_items[i].set_resource(resource)
 
 func _delete_ui_items():
@@ -51,11 +49,11 @@ func _create_ui_items(amount: int):
 
 func _on_resource_changed_for_index(index: int) -> Callable:
 	return func _on_resource_changed(resource: Resource):
-		inventory_component.add_item_at_index(resource, index)
+		inventory_resource.add_at_position(resource, index)
 
 
 func _quick_move_for_index(index: int) -> Callable:
 	return func _quick_move_item(resource: Resource):
 		var success = quick_access_component.add_item_to_first_free_slot(resource)
 		if success:
-			inventory_component.remove_item(resource)
+			inventory_resource.remove_item(resource)

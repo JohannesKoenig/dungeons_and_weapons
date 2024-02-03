@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://0nqay38481la"]
+
+[ext_resource type="Script" path="res://item_pickup/item_pickup.gd" id="1_p8cnt"]
+[ext_resource type="Resource" uid="uid://c5tc5pfapdxlx" path="res://dungeon/dungeon_inventory.tres" id="2_4b4fw"]
+[ext_resource type="PackedScene" uid="uid://dtm8kpm4rwo5u" path="res://utils/BoppingComponent/BoppingComponent.tscn" id="2_hcs2g"]
+[ext_resource type="PackedScene" uid="uid://phmysi5nhblq" path="res://Scenes/helper/Actionable.tscn" id="2_u3n5o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnqoi"]
+
+[node name="ItemPickup" type="Node2D"]
+script = ExtResource("1_p8cnt")
+inventory = ExtResource("2_4b4fw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="BoppingComponent" parent="Sprite2D" instance=ExtResource("2_hcs2g")]
+offset = Vector2(2.08165e-12, -3)
+
+[node name="Actionable" parent="." instance=ExtResource("2_u3n5o")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+shape = SubResource("CircleShape2D_tnqoi")
+
+[connection signal="action" from="Actionable" to="." method="on_collect"]

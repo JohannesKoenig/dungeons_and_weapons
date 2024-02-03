@@ -10,7 +10,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sjws"]
 
-[node name="ItemDisplay" type="Marker2D"]
+[node name="ItemDisplay" type="Marker2D" groups=["item_display"]]
 script = ExtResource("1_q5mcy")
 tavern_inventory_resource = ExtResource("2_wqxd7")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=71 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -16,12 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://1dyua8285is8" path="res://player/player.tscn" id="12_si50m"]
 [ext_resource type="Script" path="res://Scenes/PlayerCamera.gd" id="13_l06rj"]
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="16_e63fn"]
+[ext_resource type="Resource" uid="uid://d3se5wucuuebd" path="res://player/player_resource.tres" id="16_sxamc"]
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://interaction_handlers/PlayerInputHandler.tscn" id="16_v5hdu"]
 [ext_resource type="Texture2D" uid="uid://cbshdt1t43px" path="res://art/sprites/tilesets/Tavern_open_2.png" id="17_7lae8"]
 [ext_resource type="PackedScene" uid="uid://bigcq1dyqr61g" path="res://Scenes/Game/AIDirector.tscn" id="18_ghi10"]
 [ext_resource type="PackedScene" uid="uid://nu58iqeehn5c" path="res://Scenes/TavernAI.tscn" id="19_2wblc"]
 [ext_resource type="PackedScene" uid="uid://m6w2er7cnnh7" path="res://sprite_shadow.tscn" id="19_sjjon"]
-[ext_resource type="Resource" uid="uid://cju1muovg1xma" path="res://Resources/weapons/training_sword/weapon.tres" id="19_ym7yb"]
 [ext_resource type="Texture2D" uid="uid://cwu82l3jopdt" path="res://art/sprites/tilesets/Sapling.png" id="20_h8wp4"]
 [ext_resource type="Texture2D" uid="uid://jw4xjcc1y1aw" path="res://art/sprites/tilesets/Tree.png" id="21_xp0n5"]
 [ext_resource type="Texture2D" uid="uid://bjuyul8ahp676" path="res://art/sprites/tilesets/Tavern_closed.png" id="24_j1c6b"]
@@ -577,11 +577,6 @@ height = 40.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t238w"]
 polygon = PackedVector2Array(48, 32, 48, 199, 152, 200, 152, 208, 160, 208, 160, 199, 49, 198, 49, 33, 207, 33, 207, 199, 192, 199, 192, 208, 208, 208, 208, 32)
 
-[sub_resource type="Resource" id="Resource_gl7o2"]
-script = ExtResource("16_e63fn")
-movement_speed = 50
-acceleration_time = 0.1
-
 [node name="TavernGameScene" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_tl1ne")
@@ -749,10 +744,10 @@ position = Vector2(130, 91)
 [node name="PlayerCamera" type="Camera2D" parent="Entities/Player"]
 script = ExtResource("13_l06rj")
 
-[node name="Counter" parent="Entities" node_paths=PackedStringArray("player", "tavern_manager") instance=ExtResource("2_2n6xp")]
+[node name="Counter" parent="Entities" instance=ExtResource("2_2n6xp")]
 position = Vector2(104, 79)
-player = NodePath("../Player")
-tavern_manager = NodePath("../..")
+player_resource = ExtResource("16_sxamc")
+tavern_resource = ExtResource("25_35v82")
 
 [node name="TavernCollider" type="StaticBody2D" parent="Entities"]
 
@@ -824,10 +819,6 @@ polygon = PackedVector2Array(-48, 0, -48, 304, 304, 304, 304, -48, -48, -48, -48
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TavernScene" parent="CanvasLayer" instance=ExtResource("4_1ogd8")]
-offset_left = -8.0
-offset_top = -8.0
-offset_right = -8.0
-offset_bottom = -8.0
 
 [node name="Behaviours" type="Node" parent="."]
 
@@ -838,10 +829,7 @@ tavern_resource = ExtResource("25_35v82")
 customers_resource = ExtResource("2_k46dw")
 tavern_ai = NodePath("../TavernAi")
 npc_spawner = NodePath("../../Entities/NpcSpawner")
-movement_stats = SubResource("Resource_gl7o2")
-weapon_resource = ExtResource("19_ym7yb")
 
 [node name="TavernAi" parent="Behaviours" instance=ExtResource("19_2wblc")]
 
-[connection signal="tavern_open_changed" from="." to="Entities/Player/PlayerCamera" method="_on_tavern_game_scene_tavern_open_changed"]
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]

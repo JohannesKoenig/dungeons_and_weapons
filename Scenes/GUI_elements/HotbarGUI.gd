@@ -4,11 +4,11 @@ extends Control
 
 var ui_items: Array
 
-var packed_ui_scene: PackedScene
+var packed_ui_scene: PackedScene = preload("res://items/UIItemIcon.tscn")
 
 func _ready():
-	set_quick_access_resource(quick_access_resource)
-	packed_ui_scene = load("res://items/UIItemIcon.tscn")
+	if quick_access_resource:
+		set_quick_access_resource(quick_access_resource)
 
 func set_quick_access_resource(quick_access_resource):
 	self.quick_access_resource = quick_access_resource

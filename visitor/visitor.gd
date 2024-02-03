@@ -25,10 +25,14 @@ func _ready():
 func set_adventurer_resource(resource: AdventurerResource):
 	adventurer_resource = resource
 	if is_ready:
-		coin_bank_component.value = adventurer_resource.coins
 		$AnimatedSprite2D.material.set("shader_parameter/diffuse", adventurer_resource.texture)
-		$InventoryComponent.set_inventory_resource(adventurer_resource.inventory)
-		$CoinBankComponent.value = adventurer_resource.coins
+		var inv: Inventory = $InventoryComponent
+		inv.set_inventory_resource(adventurer_resource.inventory)
+		var qa: QuickAccessComponent = $QickAccessComponent
+		qa.quick_access_resource = adventurer_resource.quick_access
+		var ih: ItemHoldingComponent = $ItemHoldingComponent
+		ih.set_inventory_resource(adventurer_resource.inventory)
+		ih.set_quick_access(adventurer_resource.quick_access)
 
 
 func set_strategy(strategy: Dictionary):

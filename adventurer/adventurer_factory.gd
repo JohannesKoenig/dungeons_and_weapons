@@ -9,6 +9,11 @@ func get_random() -> AdventurerResource:
 	adventurer_resource.texture = load("res://art/sprites/character_petuna_skin.png")
 	adventurer_resource.inventory = InventoryResource.new()
 	adventurer_resource.inventory.size = 4
+	adventurer_resource.quick_access = QuickAccessResource.new()
+	adventurer_resource.quick_access.size = 4
+	adventurer_resource.quick_access.selected_index = 0
+	adventurer_resource.quick_access.inventory_resource = adventurer_resource.inventory
+	
 	for i in range(adventurer_resource.inventory.size):
 		adventurer_resource.inventory.items.append(null)
 	var indexes = range(0, adventurer_resource.inventory.size)

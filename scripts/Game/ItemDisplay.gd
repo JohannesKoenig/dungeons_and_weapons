@@ -8,23 +8,29 @@ var item_resource: Resource
 
 func _ready():
 	$ItemSprite.visible = true
+	tavern_inventory_resource.items_changed.connect(set_resource)
 
 
 func _on_actionable_action(source: Node2D):
-	if source is Player or source is Visitor:
-		var resource = source.item_holding_component.resource
-		var previous_resource = item_resource
-		set_resource(resource)
-		source.item_change_interaction(previous_resource)
+	if source is Player:
+		var selected_item = source.player_resource.inventory.items[source.player_resource.quick_access.selected_index]
+		var previous_item = tavern_inventory_resource.add_at_position(selected_item, index)
+		source.player_resource.inventory.add_at_position(previous_item, source.player_resource.quick_access.selected_index)
+	elif source is Visitor:
+		var selected_item = source.adventurer_resource.inventory.items[source.adventurer_resource.quick_access.selected_index]
+		var previous_item = tavern_inventory_resource.add_at_position(selected_item, index)
+		source.adventurer_resource.inventory.add_at_position(previous_item, source.adventurer_resource.quick_access.selected_index)
+		
 
 func _on_ui_item_resource_changed(resource):
 	set_resource(resource)
 
-func set_resource(resource):
-	item_resource = resource
-	if resource:
+
+func set_resource(items: Array):
+	var item: Item = items[index]
+	if item:
 		$ItemSprite.visible = true
-		$ItemSprite.texture = item_resource.ingame_texture
+		$ItemSprite.texture = item.ingame_texture
 	else:
 		$ItemSprite.visible = false
 		$ItemSprite.texture = null

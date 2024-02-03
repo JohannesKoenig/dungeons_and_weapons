@@ -21,6 +21,7 @@ func set_resource(resource: PlayerResource):
 	player_resource = resource
 	if is_ready:
 		coin_bank_component.value = player_resource.coins
+
 		$AnimatedSprite2D.material.set("shader_parameter/diffuse", player_resource.texture)
 
 
@@ -38,5 +39,5 @@ func _process(delta):
 
 
 func item_change_interaction(to_change: Item):
-	quick_access_component.replace_item(quick_access_component.selected_resource, to_change)
-
+	var selected_item = player_resource.inventory.items[player_resource.quick_access.selected_index]
+	player_resource.quick_access.replace_item(selected_item, to_change)

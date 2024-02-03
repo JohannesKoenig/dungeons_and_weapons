@@ -21,6 +21,10 @@ player_resource = ExtResource("3_m1rlj")
 [node name="InventoryComponent" parent="." index="2"]
 inventory_resource = ExtResource("4_hlcuy")
 
+[node name="ItemHoldingComponent" parent="." index="7"]
+inventory_resource = ExtResource("4_hlcuy")
+quick_access = ExtResource("5_0hr34")
+
 [node name="QickAccessComponent" parent="." index="8"]
 quick_access_resource = ExtResource("5_0hr34")
 

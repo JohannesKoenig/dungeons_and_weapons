@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqpd85ie6hc02"]
+
+[ext_resource type="Script" path="res://dungeon_door/dungeon_door.gd" id="1_p7il1"]
+[ext_resource type="Texture2D" uid="uid://d187mhwbcg6m2" path="res://art/sprites/dungeon_door_inside.png" id="2_k1chb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvpcw"]
+
+[node name="DungeonDoor" type="Node2D"]
+script = ExtResource("1_p7il1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_k1chb")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 25)
+scale = Vector2(1.92, 1)
+shape = SubResource("RectangleShape2D_tvpcw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

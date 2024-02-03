@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1wruq1vniqxl"]
+[gd_scene load_steps=15 format=3 uid="uid://c1wruq1vniqxl"]
 
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="1_i1q3x"]
 [ext_resource type="Script" path="res://scripts/GUI_elements/TavernGUI.gd" id="1_r07mv"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://ckxthsiaun2c1" path="res://Scenes/GUI_elements/InventoryGUI.tscn" id="8_ofdxy"]
 [ext_resource type="PackedScene" uid="uid://dmegvhl0tg3gx" path="res://Scenes/GUI_elements/HotbarGUI.tscn" id="9_wr4vi"]
 [ext_resource type="PackedScene" uid="uid://df0ryqi78vhof" path="res://TimedPopUp/TimedPopUp.tscn" id="10_uiwp6"]
+[ext_resource type="Resource" uid="uid://dem2m3ldyh10n" path="res://player/player_inventory.tres" id="11_k4ghi"]
+[ext_resource type="Resource" uid="uid://c7dbnocijw28c" path="res://player/player_quick_access.tres" id="13_ylfwy"]
 
 [node name="TavernScene" type="Control"]
 layout_mode = 3
@@ -113,6 +115,7 @@ content = NodePath("InventoryGui")
 
 [node name="InventoryGui" parent="InventoryPopUp" instance=ExtResource("8_ofdxy")]
 layout_mode = 1
+inventory_resource = ExtResource("11_k4ghi")
 
 [node name="InventoryToggle" parent="." instance=ExtResource("5_57lu4")]
 
@@ -123,6 +126,7 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 grow_vertical = 0
+quick_access_resource = ExtResource("13_ylfwy")
 
 [node name="DayTimePopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("10_uiwp6")]
 layout_mode = 1

@@ -3,7 +3,7 @@ extends Resource
 
 # ------------------
 # real world time
-@export var day_length_in_seconds: int = 20
+@export var day_length_in_seconds: int = 60
 var day_time_length_in_seconds: int = day_length_in_seconds / 2
 var night_time_length_in_seconds: int = day_length_in_seconds / 2
 # ------------------

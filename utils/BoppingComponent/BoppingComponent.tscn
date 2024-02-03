@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtm8kpm4rwo5u"]
+
+[ext_resource type="Script" path="res://utils/BoppingComponent/BoppingComponent.gd" id="1_um5n4"]
+
+[node name="BoppingComponent" type="Node"]
+script = ExtResource("1_um5n4")

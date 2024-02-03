@@ -6,11 +6,19 @@ extends Resource
 
 var _adventurer_factory = preload("res://adventurer/adventurer_factory.tres")
 
-func get_random_cutstomers(count: int) -> Array:
-	var nr_from_available = randi_range(0, min(count, len(available)))
+func get_random_cutstomers(count: int) -> Dictionary:
+	var nr_from_available = randi_range(min(count * 0.9, len(available)), min(count, len(available)))
 	var duplicated_list = available.duplicate()
 	duplicated_list.shuffle()
-	var adventurers = duplicated_list.slice(0, nr_from_available)
+	var known = duplicated_list.slice(0, nr_from_available)
+	var new = []
 	for i in range(nr_from_available, count):
-		adventurers.append(_adventurer_factory.get_random())
-	return adventurers
+		new.append(_adventurer_factory.get_random())
+	var adventurers = []
+	adventurers.append_array(known)
+	adventurers.append_array(new)
+	return {
+		"known": known,
+		"new": new,
+		"adventurers": adventurers
+	}

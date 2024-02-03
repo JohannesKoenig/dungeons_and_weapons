@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_tsjtq")
-day_length_in_seconds = 30
+day_length_in_seconds = 60
 sun_up_hour = 6
 sun_up_minute = 0
 sun_up_second = 0
