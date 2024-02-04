@@ -13,7 +13,8 @@ func _ready():
 	dungeon_inventory.clear()
 	for item in items_to_spawn:
 		dungeon_inventory.add(item)
-	$ItemPickupSpawner.spawn_pickups()
+	# $ItemPickupSpawner.spawn_pickups()
+	$DungeonSpawner.spawn_dungeon()
 
 
 func _get_items_to_spawn() -> Array:

@@ -8,6 +8,7 @@ var player_resource = preload("res://player/player_resource.tres")
 var tavern_resource = preload("res://tavern/tavern_resource.tres")
 var customers = preload("res://customers/customers_resource.tres")
 var dungeon_inventory = preload("res://dungeon/dungeon_inventory.tres")
+var dungeon_resource = preload("res://dungeon_spawner/dungeon_resource.tres")
 
 func save_exists() -> bool:
 	return FileAccess.file_exists(SAVE_GAME_PATH)
@@ -23,7 +24,8 @@ func write_savegame():
 			"available": customers.available.map(func(x): return x.serialize()),
 			"today": customers.today.map(func(x): return x.serialize())
 		},
-		"dungeon_inventory": dungeon_inventory.serialize()
+		"dungeon_inventory": dungeon_inventory.serialize(),
+		"dungeon_resource": dungeon_resource.serialize()
 	}
 	
 	var json_string := JSON.new().stringify(data)
@@ -43,3 +45,4 @@ func load_savegame():
 		customers.available = data["customers"]["available"].map(func(x): return AdventurerResource.deserialize_from_dict(x))
 		customers.today = data["customers"]["today"].map(func(x): return AdventurerResource.deserialize_from_dict(x))
 		dungeon_inventory.deserialize(data["dungeon_inventory"])
+		dungeon_resource.deserialize(data["dungeon_resource"])

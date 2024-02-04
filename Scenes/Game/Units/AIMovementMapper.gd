@@ -97,9 +97,7 @@ func _execute_wait_state(interaction_state: Dictionary):
 			return
 
 func _execute_buy_state(sell_state: Dictionary):
-	#actions
 	actor.interact()
-	#pick next state
 	var next_state_name = self.state["next"]
 	if next_state_name:
 		self.state = get_state_with_name(next_state_name,self.strategy["states"])

@@ -1,7 +1,66 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqpd85ie6hc02"]
+[gd_scene load_steps=16 format=3 uid="uid://dqpd85ie6hc02"]
 
 [ext_resource type="Script" path="res://dungeon_door/dungeon_door.gd" id="1_p7il1"]
-[ext_resource type="Texture2D" uid="uid://d187mhwbcg6m2" path="res://art/sprites/dungeon_door_inside.png" id="2_k1chb"]
+[ext_resource type="Texture2D" uid="uid://km3t12jn74uc" path="res://art/sprites/DungeonGate.png" id="2_qtp5h"]
+[ext_resource type="Shader" path="res://art/shader/Game/DungeonDoor.gdshader" id="3_70kjw"]
+[ext_resource type="Shader" path="res://art/shader/Game/DungeonDoorDistort.gdshader" id="4_v0npf"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sed2c"]
+seed = 1
+frequency = 0.0005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g3xm6"]
+seamless = true
+seamless_blend_skirt = 0.544
+noise = SubResource("FastNoiseLite_sed2c")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frp61"]
+shader = ExtResource("3_70kjw")
+shader_parameter/scroll = Vector2(2.08165e-12, 0.2)
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/strength = 1.95
+shader_parameter/distortion_strength = 0.0680001
+shader_parameter/color = Color(0, 0.85098, 0.694118, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_g3xm6")
+
+[sub_resource type="Gradient" id="Gradient_2vxuu"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8fsht"]
+gradient = SubResource("Gradient_2vxuu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_vvxko"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g3b6a"]
+gradient = SubResource("Gradient_vvxko")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bp000"]
+frequency = 0.0028
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vac40"]
+seamless = true
+seamless_blend_skirt = 0.131
+noise = SubResource("FastNoiseLite_bp000")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27e58"]
+shader = ExtResource("4_v0npf")
+shader_parameter/min_uv = null
+shader_parameter/max_uv = null
+shader_parameter/scroll = Vector2(2.08165e-12, 0.1)
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/strength = 1.71
+shader_parameter/distortion_strength = 0.0880001
+shader_parameter/color = Color(0, 0.823529, 0.709804, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_vac40")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvpcw"]
 
@@ -9,14 +68,48 @@
 script = ExtResource("1_p7il1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_k1chb")
+light_mask = 2
+visibility_layer = 2
+y_sort_enabled = true
+position = Vector2(2.08165e-12, -6)
+texture = ExtResource("2_qtp5h")
+offset = Vector2(2.08165e-12, -10)
+
+[node name="Portal" type="Sprite2D" parent="."]
+light_mask = 2
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_frp61")
+position = Vector2(2.08165e-12, -5)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("GradientTexture2D_8fsht")
+offset = Vector2(2.08165e-12, -25)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 4)
+scale = Vector2(0.625, 0.625)
+color = Color(0, 0.929412, 0.65098, 1)
+energy = 1.7
+range_item_cull_mask = 2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_g3b6a")
+texture_scale = 1.79
+
+[node name="PortalDistort" type="Sprite2D" parent="."]
+light_mask = 2
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_27e58")
+position = Vector2(2.08165e-12, -5)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("GradientTexture2D_8fsht")
+offset = Vector2(2.08165e-12, -25)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 25)
+position = Vector2(0, -7)
 scale = Vector2(1.92, 1)
 shape = SubResource("RectangleShape2D_tvpcw")
 
