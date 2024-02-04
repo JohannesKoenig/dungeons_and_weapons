@@ -3,8 +3,17 @@ extends Resource
 
 @export var inventory: InventoryResource
 @export var quick_access: QuickAccessResource
-@export var coins: int
+@export var coins: int:
+	set(value):
+		coins_changed.emit(value)
+		coins = value
 @export var texture: Texture
+
+signal coins_changed(coins: int)
+
+func set_coins(value: int):
+	coins = value
+	coins_changed.emit(coins)
 
 func serialize() -> Dictionary:
 	return {
@@ -18,7 +27,7 @@ func serialize() -> Dictionary:
 	}
 
 func deserialize(data: Dictionary):
-	coins = data["coins"]
+	set_coins(data["coins"])
 	inventory.deserialize(data["inventory"])
 	quick_access.size = data["quick_access"]["size"]
 	quick_access.selected_index = data["quick_access"]["selected_index"]

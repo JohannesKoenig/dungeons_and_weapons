@@ -8,6 +8,8 @@ extends Control
 
 func _ready():
 	dnr.time_changed.connect(update_time)
+	player_resource.coins_changed.connect(update_coins)
+	update_coins(player_resource.coins)
 	set_player_resource(player_resource)
 
 func _process(delta):

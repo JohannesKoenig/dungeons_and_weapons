@@ -50,9 +50,6 @@ func interact():
 	actionable_finder.interact(self)
 
 
-func buy():
-	pass
-
 func _process(delta):
 	move_and_slide()
 	if velocity.x != 0:

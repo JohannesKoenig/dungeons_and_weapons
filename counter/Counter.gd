@@ -4,9 +4,9 @@ extends Node2D
 @export var tavern_resource: TavernResource
 
 func interact_buy_item(source: Node2D):
-	if "player" in source.get_groups():
+	if source is Player:
 		return
-	if source is Adventurer:
+	if source is Visitor:
 		var adventurer_resource: AdventurerResource = source.adventurer_resource
 		var inventory: InventoryResource = adventurer_resource.inventory
 		var quick_access: QuickAccessResource = adventurer_resource.quick_access

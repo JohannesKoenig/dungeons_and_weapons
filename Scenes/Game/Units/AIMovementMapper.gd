@@ -98,7 +98,7 @@ func _execute_wait_state(interaction_state: Dictionary):
 
 func _execute_buy_state(sell_state: Dictionary):
 	#actions
-	actor.buy()
+	actor.interact()
 	#pick next state
 	var next_state_name = self.state["next"]
 	if next_state_name:
