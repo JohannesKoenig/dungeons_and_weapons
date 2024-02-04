@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CustomersResource" load_steps=2 format=3 uid="uid://wvebum26rk73"]
+
+[ext_resource type="Script" path="res://customers/customers_resource.gd" id="1_kv8yi"]
+
+[resource]
+script = ExtResource("1_kv8yi")
+available = []
+today = []

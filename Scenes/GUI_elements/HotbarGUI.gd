@@ -1,22 +1,22 @@
 extends Control
 
-@export var quick_access_component: QuickAccessComponent
+@export var quick_access_resource: QuickAccessResource
 
 var ui_items: Array
 
-var packed_ui_scene: PackedScene
+var packed_ui_scene: PackedScene = preload("res://items/UIItemIcon.tscn")
 
 func _ready():
-	set_quick_access_component(quick_access_component)
-	packed_ui_scene = load("res://items/UIItemIcon.tscn")
+	if quick_access_resource:
+		set_quick_access_resource(quick_access_resource)
 
-func set_quick_access_component(quick_access_component):
-	self.quick_access_component = quick_access_component
+func set_quick_access_resource(quick_access_resource):
+	self.quick_access_resource = quick_access_resource
 	_delete_ui_items()
-	if self.quick_access_component:
-		_create_ui_items(quick_access_component.size)
+	if self.quick_access_resource:
+		_create_ui_items(quick_access_resource.size)
 		_load_ui_items()
-		quick_access_component.items_changed.connect(_refresh_items)
+		quick_access_resource.inventory_resource.items_changed.connect(_refresh_items)
 
 func _refresh_items(items: Array):
 	_load_ui_items()
@@ -41,10 +41,10 @@ func _create_ui_items(amount: int):
 	$HBoxContainer.position = Vector2(-x_size_container/2, -40)
 
 func _load_ui_items():
-	for i in range(quick_access_component.size):
-		var resource = quick_access_component.items[i]
+	for i in range(quick_access_resource.size):
+		var resource = quick_access_resource.inventory_resource.items[i]
 		ui_items[i].set_resource(resource)
 		
 func _on_resource_changed_for_index(index: int) -> Callable:
 	return func _on_resource_changed(resource: Resource):
-		quick_access_component.add_item(resource, index)
+		quick_access_resource.add_item(resource, index)

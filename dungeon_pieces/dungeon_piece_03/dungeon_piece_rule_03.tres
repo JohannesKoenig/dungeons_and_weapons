@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DungeonPieceRule" load_steps=4 format=3 uid="uid://bg7lcarka0ce1"]
+
+[ext_resource type="Resource" uid="uid://43rve1rnfyv7" path="res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres" id="1_1q2xv"]
+[ext_resource type="Script" path="res://dungeon_generator/dungeon_piece_rule.gd" id="2_2kxxr"]
+[ext_resource type="Resource" uid="uid://b1ktltfwptdhk" path="res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres" id="2_d3k5m"]
+
+[resource]
+script = ExtResource("2_2kxxr")
+dungeon_piece = ExtResource("1_1q2xv")
+N = []
+W = []
+E = []
+S = [ExtResource("1_1q2xv"), ExtResource("2_d3k5m")]

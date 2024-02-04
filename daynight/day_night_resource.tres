@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DayNightResource" load_steps=2 format=3 uid="uid://ce7k2iju7uyph"]
+
+[ext_resource type="Script" path="res://daynight/daynight.gd" id="1_tsjtq"]
+
+[resource]
+script = ExtResource("1_tsjtq")
+day_length_in_seconds = 60
+sun_up_hour = 6
+sun_up_minute = 0
+sun_up_second = 0
+sun_down_hour = 18
+sun_down_minute = 0
+sun_down_second = 0

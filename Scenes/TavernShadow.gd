@@ -1,10 +1,11 @@
 extends Node2D
 
+@export var dnr: DayNightResource
 @export var shadow_color: Color
-@export var sun_up_time_hour = 6
+var sun_up_time_hour = 6
 @export var sun_up_duration = 2
 
-@export var sun_down_time_hour = 18
+var sun_down_time_hour = 18
 @export var sun_down_duration = 2
 
 var day_length: int
@@ -19,6 +20,9 @@ var max_alpha
 var initialized = false
 
 func _ready():
+	dnr.time_changed.connect(on_daytime_changed)
+	sun_down_time_hour = dnr.sun_down_hour
+	sun_up_time_hour = dnr.sun_up_hour
 	if get_parent() is Sprite2D:
 		$Sprite2D.texture = get_parent().texture
 		var offset = get_parent().global_position - global_position

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DungeonResource" load_steps=5 format=3 uid="uid://b20jkm7hy5t00"]
+
+[ext_resource type="Script" path="res://dungeon_spawner/dungeon_resource.gd" id="1_30fkj"]
+[ext_resource type="PackedScene" uid="uid://cfy3by57ofi4w" path="res://dungeon_pieces/dungeon_piece_01/dungeon_piece_01.tscn" id="1_gu2cq"]
+[ext_resource type="Script" path="res://dungeon_pieces/dungeon_piece_resource.gd" id="2_m6ruh"]
+
+[sub_resource type="Resource" id="Resource_6sve2"]
+script = ExtResource("2_m6ruh")
+scene = ExtResource("1_gu2cq")
+offset = Vector2(2.08165e-12, 48)
+
+[resource]
+script = ExtResource("1_30fkj")
+dungeon_pieces = [SubResource("Resource_6sve2")]

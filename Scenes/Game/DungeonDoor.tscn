@@ -23,7 +23,7 @@ sources/1 = SubResource("TileSetAtlasSource_3qjer")
 seed = 1
 frequency = 0.0005
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g3xm6"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g2jjb"]
 seamless = true
 seamless_blend_skirt = 0.544
 noise = SubResource("FastNoiseLite_b56gm")
@@ -35,23 +35,23 @@ shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/strength = 1.95
 shader_parameter/distortion_strength = 0.0680001
 shader_parameter/color = Color(0, 0.85098, 0.694118, 1)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_g3xm6")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_g2jjb")
 
-[sub_resource type="Gradient" id="Gradient_2vxuu"]
+[sub_resource type="Gradient" id="Gradient_fh75l"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ytbqk"]
-gradient = SubResource("Gradient_2vxuu")
+gradient = SubResource("Gradient_fh75l")
 fill = 1
-fill_from = Vector2(0.4, 0.3)
+fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 metadata/_snap_enabled = true
 
-[sub_resource type="Gradient" id="Gradient_vvxko"]
+[sub_resource type="Gradient" id="Gradient_loael"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0nfu2"]
-gradient = SubResource("Gradient_vvxko")
+gradient = SubResource("Gradient_loael")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0.5)
@@ -60,7 +60,7 @@ metadata/_snap_enabled = true
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_s45jk"]
 frequency = 0.0028
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vac40"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l5wqj"]
 seamless = true
 seamless_blend_skirt = 0.131
 noise = SubResource("FastNoiseLite_s45jk")
@@ -74,7 +74,7 @@ shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/strength = 1.71
 shader_parameter/distortion_strength = 0.0880001
 shader_parameter/color = Color(0, 0.823529, 0.709804, 1)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_vac40")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_l5wqj")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxv1n"]
 

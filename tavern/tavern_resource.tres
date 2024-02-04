@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TavernResource" load_steps=3 format=3 uid="uid://co6aefe3hm0ou"]
+
+[ext_resource type="Resource" uid="uid://c7abec4wn2hfv" path="res://tavern/tavern_inventory_resource.tres" id="1_2f5tg"]
+[ext_resource type="Script" path="res://tavern/tavern_resource.gd" id="1_bo3b3"]
+
+[resource]
+script = ExtResource("1_bo3b3")
+inventory = ExtResource("1_2f5tg")
+fee = 10

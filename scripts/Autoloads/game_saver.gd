@@ -1,7 +1,13 @@
 extends Node
 
 var SAFE_FILE_PREFIX = "save_file"
+var save_game_resource = SaveGameResource.new()
 
+func save_game_from_resources():
+	save_game_resource.write_savegame()
+
+func load_game_from_resources():
+	save_game_resource.load_savegame()
 
 func save_game(save_slot: int, save_name: String):
 	var save_game = FileAccess.open(_get_file_name(save_slot), FileAccess.WRITE)

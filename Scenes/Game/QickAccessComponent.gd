@@ -1,56 +1,32 @@
 extends Node2D
 class_name QuickAccessComponent
 
-@export var size = 10
-@export var selected: int = 0
-var selected_resource: WeaponResource
-signal selected_changed(resource: WeaponResource)
-signal items_changed(items: Array)
-
-var items: Array
+@export var quick_access_resource: QuickAccessResource
+var selected_resource: Item
+signal selected_changed(resource: Item)
 
 func _ready():
-	items = []
-	for i in range(size):
-		items.append(null)
-	select_by_index(selected)
+	if quick_access_resource:
+		select_by_index(quick_access_resource.selected_index)
 
-func replace_item(target: WeaponResource, to_replace: WeaponResource) -> WeaponResource:
-	for index in range(size):
-		if items[index] == target:
-			return add_item(to_replace, index)
-	return null
+func replace_item(target: Item, to_replace: Item) -> Item:
+	return quick_access_resource.replace_item(target, to_replace)
 
-func add_item_to_first_free_slot(item: WeaponResource) -> bool:
-	for i in range(size):
-		if items[i] == null:
-			items[i] = item
-			items_changed.emit(items)
-			return true
-	return false
+func add_item_to_first_free_slot(item: Item) -> bool:
+	return quick_access_resource.add_item_to_first_free_slot(item)
 
-func add_item(item: WeaponResource, index: int) -> WeaponResource:
-	var item_to_return = items[index]
-	items[index] = item
-	items_changed.emit(items)
-	if index == selected:
+func add_item(item: Item, index: int) -> Item:
+	var replaced = quick_access_resource.add_item(item, index)
+	if index == quick_access_resource.selected_index:
 		select_by_index(index)
-	return item_to_return 
+	return replaced
 
-func remove_item_at_index(index: int) -> WeaponResource:
-	items_changed.emit(items)
-	return add_item(null, index)
+func remove_item_at_index(index: int) -> Item:
+	return quick_access_resource.remove_at_index(index)
 
-func remove_item(item: WeaponResource) -> bool:
-	for index in range(size):
-		if items[index] == item:
-			items[index] = null
-			items_changed.emit(items)
-			if index == selected:
-				select_by_index(index)
-			return true
-	return false
+func remove_item(item: Item) -> bool:
+	return quick_access_resource.remove(item)
 
 func select_by_index(index: int):
-	selected_resource = items[index]
+	selected_resource = quick_access_resource.inventory_resource.items[index]
 	selected_changed.emit(selected_resource)

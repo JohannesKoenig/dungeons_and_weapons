@@ -1,15 +1,16 @@
 extends Node2D
 
 @onready var canvas_modulate = $CanvasModulate
+@export var dnr: DayNightResource
 @export var dawn_color: Color
 @export var noon_color: Color
 @export var dusk_color: Color
 @export var midnight_color: Color
 
-@export var sun_up_time_hour = 6
+var sun_up_time_hour
 @export var sun_up_duration = 2
 
-@export var sun_down_time_hour = 18
+var sun_down_time_hour
 @export var sun_down_duration = 2
 
 var day_length: int
@@ -22,6 +23,9 @@ var midnight_time: int
 var initialized = false
 
 func _ready():
+	sun_up_time_hour = dnr.sun_up_hour
+	sun_down_time_hour = dnr.sun_down_hour
+	dnr.time_changed.connect(on_daytime_changed)
 	day_length = sun_down_time_hour - sun_up_time_hour
 	night_length = 24 - day_length
 	dawn_time = sun_up_time_hour * 60

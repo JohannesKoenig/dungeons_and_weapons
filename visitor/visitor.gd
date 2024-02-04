@@ -17,15 +17,22 @@ var strategy: Dictionary
 func _ready():
 	is_ready = true
 	unlink_material()
-	set_adventurer_resource(adventurer_resource)
+	if adventurer_resource:
+		set_adventurer_resource(adventurer_resource)
 	set_strategy(strategy)
 
 
 func set_adventurer_resource(resource: AdventurerResource):
 	adventurer_resource = resource
 	if is_ready:
-		coin_bank_component.value = adventurer_resource.coins
 		$AnimatedSprite2D.material.set("shader_parameter/diffuse", adventurer_resource.texture)
+		var inv: Inventory = $InventoryComponent
+		inv.set_inventory_resource(adventurer_resource.inventory)
+		var qa: QuickAccessComponent = $QickAccessComponent
+		qa.quick_access_resource = adventurer_resource.quick_access
+		var ih: ItemHoldingComponent = $ItemHoldingComponent
+		ih.set_inventory_resource(adventurer_resource.inventory)
+		ih.set_quick_access(adventurer_resource.quick_access)
 
 
 func set_strategy(strategy: Dictionary):
@@ -42,9 +49,6 @@ func unlink_material():
 func interact():
 	actionable_finder.interact(self)
 
-
-func buy():
-	pass
 
 func _process(delta):
 	move_and_slide()

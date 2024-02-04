@@ -4,7 +4,6 @@ class_name Player
 @onready var actionable_finder: ActionableFinder = $Direction/ActionableFinder
 @export var player_resource: PlayerResource
 @onready var quick_access_component: QuickAccessComponent = $QickAccessComponent
-@onready var coin_bank_component: CoinBankComponent = $CoinBankComponent
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var item_holding_component: ItemHoldingComponent = $ItemHoldingComponent
 var view_direction: Vector2
@@ -20,7 +19,6 @@ func _ready():
 func set_resource(resource: PlayerResource):
 	player_resource = resource
 	if is_ready:
-		coin_bank_component.value = player_resource.coins
 		$AnimatedSprite2D.material.set("shader_parameter/diffuse", player_resource.texture)
 
 
@@ -37,6 +35,6 @@ func _process(delta):
 	animation_tree["parameters/Idle/blend_position"] = view_direction
 
 
-func item_change_interaction(to_change: WeaponResource):
-	quick_access_component.replace_item(quick_access_component.selected_resource, to_change)
-
+func item_change_interaction(to_change: Item):
+	var selected_item = player_resource.inventory.items[player_resource.quick_access.selected_index]
+	player_resource.quick_access.replace_item(selected_item, to_change)

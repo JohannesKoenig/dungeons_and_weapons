@@ -1,13 +1,19 @@
 extends Control
 
+@export var player_resource: PlayerResource
+@export var dnr: DayNightResource
 @onready var clock_label = $MarginContainer/HBoxContainer/Clock
 @onready var coins_label = $MarginContainer/HBoxContainer/Coins
-var player: Player
 
 
 func _ready():
-	player = get_tree().get_first_node_in_group("player") as Player
-	set_player(player)
+	dnr.time_changed.connect(update_time)
+	player_resource.coins_changed.connect(update_coins)
+	update_coins(player_resource.coins)
+	set_player_resource(player_resource)
+
+func _process(delta):
+	_update_coin_label(player_resource.coins)
 
 func update_coins(coins: int) -> void:
 	coins_label.text = str(coins)
@@ -19,12 +25,8 @@ func update_time(is_day: bool, hours: int, minutes: int) -> void:
 func toggle_inventory():
 	$InventoryToggle.toggle()
 
-func set_quick_access_component(quick_access_component: QuickAccessComponent):
-	$HotbarGui.set_quick_access_component(quick_access_component)
-
-func set_player(adventurer: Player):
-	player.coin_bank_component.value_changed.connect(_update_coin_label)
-	_update_coin_label(player.coin_bank_component.value)
+func set_player_resource(player_resource: PlayerResource):
+	_update_coin_label(player_resource.coins)
 
 func _update_coin_label(value: int):
 	$MarginContainer/HBoxContainer/Coins.text = str(value)

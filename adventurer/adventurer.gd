@@ -12,13 +12,21 @@ var is_ready = false
 func _ready():
 	is_ready = true
 	unlink_material()
-	set_resource(adventurer_resource)
+	if adventurer_resource:
+		set_resource(adventurer_resource)
 
 func set_resource(resource: AdventurerResource):
 	adventurer_resource = resource
 	if is_ready:
-		# coin_bank_component.value = adventurer_resource.coins
 		$AnimatedSprite2D.material.set("shader_parameter/diffuse", adventurer_resource.texture)
+		var inv: Inventory = $InventoryComponent
+		inv.set_inventory_resource(adventurer_resource.inventory)
+		var qa: QuickAccessComponent = $QickAccessComponent
+		qa.quick_access_resource = adventurer_resource.quick_access
+		var ih: ItemHoldingComponent = $ItemHoldingComponent
+		ih.set_inventory_resource(adventurer_resource.inventory)
+		ih.set_quick_access(adventurer_resource.quick_access)
+		
 
 func unlink_material():
 	var material: Material = $AnimatedSprite2D.material.duplicate()
@@ -54,7 +62,7 @@ func _process(delta):
 #
 #func item_change_interaction(to_change: WeaponResource):
 	#quick_access_component.replace_item(quick_access_component.selected_resource, to_change)
-#
+
 #func set_ai_mapper(ai_mapper: AIMovementMapper):
 	#self.ai_mapper = ai_mapper
 	#add_child(ai_mapper)

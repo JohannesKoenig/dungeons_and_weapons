@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AdventurerTable" load_steps=3 format=3 uid="uid://w5ju4q0mn2yi"]
+
+[ext_resource type="Resource" uid="uid://nrla0xdxb86p" path="res://items/item/item_factory.tres" id="1_2ldlr"]
+[ext_resource type="Script" path="res://adventurer/adventurer_factory.gd" id="1_w88s2"]
+
+[resource]
+script = ExtResource("1_w88s2")
+item_table = ExtResource("1_2ldlr")
