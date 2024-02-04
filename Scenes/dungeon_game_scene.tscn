@@ -55,6 +55,7 @@ position = Vector2(0, 4)
 color = Color(0.878431, 0.576471, 0.466667, 1)
 energy = 1.42
 shadow_enabled = true
+shadow_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_glnbo")
 texture_scale = 1.6
 

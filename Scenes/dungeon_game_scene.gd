@@ -2,7 +2,8 @@ extends Node2D
 
 @export var dungeon_inventory: InventoryResource = preload("res://dungeon/dungeon_inventory.tres")
 var customers_resource: CustomersResource = preload("res://customers/customers_resource.tres")
-
+@onready var dungeon_spawner: DungeonSpawner = $DungeonSpawner
+@onready var item_pickup_spawner: ItemPickupSpawner = $ItemPickupSpawner
 
 func _ready():
 	var game_saver = get_node("/root/GameSaver")
@@ -13,8 +14,15 @@ func _ready():
 	dungeon_inventory.clear()
 	for item in items_to_spawn:
 		dungeon_inventory.add(item)
-	# $ItemPickupSpawner.spawn_pickups()
-	$DungeonSpawner.spawn_dungeon()
+	dungeon_spawner.spawn_dungeon()
+	var piece: DungeonPiece = dungeon_spawner.dungeon_pieces.pick_random()
+	var local_point = piece.spawn_area.get_random_point()
+	var global_point = piece.dungeon_piece_resource.offset
+	print(local_point)
+	print(global_point)
+	item_pickup_spawner.global_position = local_point + global_point + dungeon_spawner.global_position
+	item_pickup_spawner.spawn_pickups()
+	
 
 
 func _get_items_to_spawn() -> Array:

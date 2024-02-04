@@ -15,11 +15,13 @@ var dungeon_piece_resource: DungeonPieceResource:
 signal dungeon_piece_resource_changed(dungeon_piece_resource: DungeonPieceResource)
 
 @onready var _tilemap: TileMap = $TileMap
+@onready var spawn_area: SpawnArea = $SpawnArea
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
 func _ready():
-	_on_dungeon_piece_resource_changed(dungeon_piece_resource)
+	if dungeon_piece_resource:
+		_on_dungeon_piece_resource_changed(dungeon_piece_resource)
 	dungeon_piece_resource_changed.connect(_on_dungeon_piece_resource_changed)
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================

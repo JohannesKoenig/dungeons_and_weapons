@@ -68,7 +68,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_vac40")
 script = ExtResource("1_p7il1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-light_mask = 2
+light_mask = 7
 visibility_layer = 2
 y_sort_enabled = true
 position = Vector2(2.08165e-12, -6)

@@ -1,4 +1,4 @@
-extends Node2D
+class_name ItemPickupSpawner extends Node2D
 
 var item_pickup_prototype = preload("res://item_pickup/item_pickup.tscn")
 var dungeon_inventory: InventoryResource = preload("res://dungeon/dungeon_inventory.tres")

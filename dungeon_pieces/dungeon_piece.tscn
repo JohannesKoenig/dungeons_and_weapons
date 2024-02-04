@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6stybarclq7d"]
+[gd_scene load_steps=3 format=3 uid="uid://c6stybarclq7d"]
 
 [ext_resource type="Script" path="res://dungeon_pieces/dungeon_piece.gd" id="1_40l83"]
+[ext_resource type="PackedScene" uid="uid://d2npakiw8ghlx" path="res://spawn_area/spawn_area.tscn" id="2_to5g4"]
 
 [node name="DungeonPiece" type="Node2D"]
 script = ExtResource("1_40l83")
@@ -8,3 +9,6 @@ script = ExtResource("1_40l83")
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
 format = 2
+
+[node name="SpawnArea" parent="." instance=ExtResource("2_to5g4")]
+polygon = PackedVector2Array(-40, -40, -40, 40, 40, 40, 40, -40)

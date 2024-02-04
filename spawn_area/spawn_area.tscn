@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2npakiw8ghlx"]
+
+[ext_resource type="Script" path="res://spawn_area/spawn_area.gd" id="1_w3oms"]
+
+[node name="SpawnArea" type="Polygon2D"]
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_w3oms")

@@ -10,8 +10,8 @@ var _DONE = 2
 
 var pixel_width = 128
 var pixel_height = 128
-var x_width = 3
-var y_width = 3
+var x_width = 5
+var y_width = 5
 var start_x = 1
 var start_y = 0
 # ------------------------------------------------------------------------------
