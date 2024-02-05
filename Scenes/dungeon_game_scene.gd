@@ -12,16 +12,15 @@ func _ready():
 	drag_and_drop_layer.set_canvas_layer($CanvasLayer)
 	var items_to_spawn = _get_items_to_spawn()
 	dungeon_inventory.clear()
+	dungeon_spawner.spawn_dungeon()
+	var spawn_points = []
 	for item in items_to_spawn:
 		dungeon_inventory.add(item)
-	dungeon_spawner.spawn_dungeon()
-	var piece: DungeonPiece = dungeon_spawner.dungeon_pieces.pick_random()
-	var local_point = piece.spawn_area.get_random_point()
-	var global_point = piece.dungeon_piece_resource.offset
-	print(local_point)
-	print(global_point)
-	item_pickup_spawner.global_position = local_point + global_point + dungeon_spawner.global_position
-	item_pickup_spawner.spawn_pickups()
+		var piece: DungeonPiece = dungeon_spawner.dungeon_pieces.pick_random()
+		var local_point = piece.spawn_area.get_random_point()
+		var global_point = local_point + piece.dungeon_piece_resource.offset + dungeon_spawner.global_position
+		spawn_points.append(global_point)
+	item_pickup_spawner.spawn_pickups(spawn_points)
 	
 
 
