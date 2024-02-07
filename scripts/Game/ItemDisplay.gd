@@ -17,9 +17,9 @@ func _on_actionable_action(source: Node2D):
 		var previous_item = tavern_inventory_resource.add_at_position(selected_item, index)
 		source.player_resource.inventory.add_at_position(previous_item, source.player_resource.quick_access.selected_index)
 	elif source is Visitor:
-		var selected_item = source.adventurer_resource.inventory.items[source.adventurer_resource.quick_access.selected_index]
-		var previous_item = tavern_inventory_resource.add_at_position(selected_item, index)
-		source.adventurer_resource.inventory.add_at_position(previous_item, source.adventurer_resource.quick_access.selected_index)
+		var previous_item = tavern_inventory_resource.remove_at_index(index)
+		if previous_item:
+			source.item_change_interaction(previous_item)
 		
 
 func _on_ui_item_resource_changed(resource):

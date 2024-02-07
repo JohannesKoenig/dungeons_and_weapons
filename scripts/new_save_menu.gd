@@ -1,28 +1,30 @@
 extends Control
 
-var game_saver: GameSaver
+@export var menu_save_resource: MenuSaveResource = preload("res://savegame/menu_save_resource.tres")
 @onready var name_input = $VBoxContainer/NameInput
-var save_slot: int = 1
-var name_text: String = ""
 @onready var save_slot_selection = $VBoxContainer/SlotSelection
 
-func _ready():
-	game_saver = $/root/GameSaver
+var _save_slot: int = 1
+var _name_text: String = ""
 
 
 func _on_create_pressed():
-	game_saver.save_game(save_slot, name_text)
+	var save_slot_resource = SaveslotResource.new()
+	save_slot_resource.player_name = _name_text
+	save_slot_resource.slot = _save_slot
+	menu_save_resource.saveslot_resources[_save_slot] = save_slot_resource
+	menu_save_resource.write_savegame()
 	get_tree().change_scene_to_file("res://Scenes/save_file_menu.tscn")
 
 
 func _on_back_pressed():
+	menu_save_resource.write_savegame()
 	get_tree().change_scene_to_file("res://Scenes/save_file_menu.tscn")
 
 
-
 func _on_slot_selection_item_selected(index):
-	save_slot = index + 1
+	_save_slot = index + 1
 
 
 func _on_name_input_text_changed():
-	name_text = name_input.text
+	_name_text = name_input.text

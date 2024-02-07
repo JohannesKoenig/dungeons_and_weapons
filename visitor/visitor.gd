@@ -58,6 +58,10 @@ func _process(delta):
 	animation_tree["parameters/Idle/blend_position"] = view_direction
 
 
-func item_change_interaction(to_change: WeaponResource):
-	quick_access_component.replace_item(quick_access_component.selected_resource, to_change)
+func item_change_interaction(to_change: Item):
+	var selected_index = adventurer_resource.quick_access.selected_index
+	var selected_item = adventurer_resource.inventory.items[selected_index]
+	adventurer_resource.inventory.add(selected_item)
+	adventurer_resource.inventory.remove_at_index(selected_index)
+	adventurer_resource.inventory.add_at_position(to_change, selected_index)
 

@@ -32,6 +32,7 @@ func remove(item: Item) -> bool:
 func remove_at_index(index: int) -> Item:
 	var to_remove = items[index]
 	items[index] = null
+	items_changed.emit(items)
 	return to_remove
 
 func get_index(item: Item) -> int:

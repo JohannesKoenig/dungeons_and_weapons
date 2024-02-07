@@ -9,5 +9,5 @@
 script = ExtResource("2_e6rbk")
 visitor_ai_resource = null
 
-[node name="AiMovementMapper" parent="." index="9" instance=ExtResource("2_en4x0")]
+[node name="AiMovementMapper" parent="." index="8" instance=ExtResource("2_en4x0")]
 movement_stats = ExtResource("3_52ac2")
