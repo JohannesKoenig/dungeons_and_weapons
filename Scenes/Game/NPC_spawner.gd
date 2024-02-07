@@ -53,7 +53,8 @@ func start_spawning():
 	var current_time = day_night_timer.current_day_time
 	var end_day_time = day_night_timer.sun_down_hour * 60 + day_night_timer.sun_down_minute
 	var diff = end_day_time - current_time
-	spawn_window_duration = (float(diff) / (24 * 60)) * (day_night_timer.day_length_in_seconds + day_night_timer.night_time_length_in_seconds)
+	print(diff)
+	spawn_window_duration = (float(diff) / (24 * 60)) * (day_night_timer.day_time_length_in_seconds + day_night_timer.night_time_length_in_seconds)
 	time_table = _create_time_table(spawn_window_duration, len(adventurer_strategy_map))
 	index = 0
 	if len(time_table):
