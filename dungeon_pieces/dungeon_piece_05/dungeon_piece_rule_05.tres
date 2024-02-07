@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DungeonPieceRule" load_steps=5 format=3 uid="uid://c3xmgs4opoegn"]
+
+[ext_resource type="Resource" uid="uid://43rve1rnfyv7" path="res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres" id="1_pgaxd"]
+[ext_resource type="Resource" uid="uid://b1ktltfwptdhk" path="res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres" id="2_6naov"]
+[ext_resource type="Resource" uid="uid://bb6a435ibxhv5" path="res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres" id="3_yaqg5"]
+[ext_resource type="Script" path="res://dungeon_generator/dungeon_piece_rule.gd" id="4_d05s7"]
+
+[resource]
+script = ExtResource("4_d05s7")
+dungeon_piece = ExtResource("3_yaqg5")
+N = [ExtResource("1_pgaxd"), ExtResource("2_6naov")]
+W = []
+E = []
+S = [ExtResource("1_pgaxd"), ExtResource("2_6naov")]
+edges = {
+"E": "hall",
+"N": "wall",
+"S": "wall",
+"W": "hall"
+}

@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://dojlwdvovx2ic"]
+
+[ext_resource type="Texture2D" uid="uid://b06exi5vcpymx" path="res://GUI_elements/tavern_open/Tavern-open 1.png" id="1_3ogyj"]
+[ext_resource type="Script" path="res://GUI_elements/tavern_open/tavern_open.gd" id="1_j38g8"]
+[ext_resource type="Texture2D" uid="uid://dq8vb0sy2ukn1" path="res://GUI_elements/tavern_open/Tavern-open 2.png" id="2_40rh2"]
+[ext_resource type="Texture2D" uid="uid://bjs1inu2ipced" path="res://GUI_elements/tavern_open/Tavern-open 3.png" id="3_ilps0"]
+[ext_resource type="Texture2D" uid="uid://cy6in5s8e47qj" path="res://GUI_elements/tavern_open/Tavern-open 4.png" id="4_ds3xn"]
+[ext_resource type="Texture2D" uid="uid://cbd4jtb1va5d4" path="res://GUI_elements/tavern_open/Tavern-open 5.png" id="5_2y2lh"]
+[ext_resource type="Texture2D" uid="uid://yad2i5xvjfoi" path="res://GUI_elements/tavern_open/Tavern-open 6.png" id="6_1yxjr"]
+[ext_resource type="Texture2D" uid="uid://migd0t274nkm" path="res://GUI_elements/tavern_open/Tavern-open 7.png" id="7_1vee1"]
+[ext_resource type="Texture2D" uid="uid://di56jk41k1nev" path="res://GUI_elements/tavern_open/Tavern-open 8.png" id="8_tjmsf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d6udk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3ogyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_40rh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ilps0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ds3xn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2y2lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1yxjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1vee1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tjmsf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="TavernOpen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j38g8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.66, 0.66)
+sprite_frames = SubResource("SpriteFrames_d6udk")
+autoplay = "default"

@@ -16,6 +16,11 @@ func close():
 
 func _on_actionable_action(source):
 	if !day_night_timer.is_day and "player" in source.get_groups():
+		dungeon_generator_resource.save_rules()
+		dungeon_generator_resource.load_rules()
+		dungeon_generator_resource.save_rules()
+		for res in dungeon_generator_resource.rules.keys():
+			var rule = dungeon_generator_resource.rules[res]
 		var pieces = dungeon_generator_resource.get_layout()
 		dungeon_resource.dungeon_pieces = pieces
 		game_saver.save_game_from_resources()

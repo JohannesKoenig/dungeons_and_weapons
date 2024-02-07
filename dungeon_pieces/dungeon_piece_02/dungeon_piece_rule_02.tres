@@ -12,3 +12,9 @@ N = [ExtResource("1_iqe0l"), ExtResource("2_tdtqi")]
 W = []
 E = []
 S = []
+edges = {
+"E": "wall",
+"N": "hall",
+"S": "wall",
+"W": "wall"
+}

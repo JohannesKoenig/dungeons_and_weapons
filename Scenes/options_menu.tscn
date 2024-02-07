@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://jelxxyo0sgiy"]
 
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_14v1d"]
-[ext_resource type="PackedScene" uid="uid://d0qyqvk76p3pi" path="res://Scenes/GUI_elements/audio_options.tscn" id="2_b6g10"]
+[ext_resource type="PackedScene" uid="uid://d0qyqvk76p3pi" path="res://GUI_elements/audio_options.tscn" id="2_b6g10"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4t1f"]
 

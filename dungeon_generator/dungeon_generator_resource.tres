@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DungeonGeneratorResource" load_steps=8 format=3 uid="uid://suqt7fckewcd"]
+[gd_resource type="Resource" script_class="DungeonGeneratorResource" load_steps=9 format=3 uid="uid://suqt7fckewcd"]
 
 [ext_resource type="Resource" uid="uid://cab17rn74a0k6" path="res://dungeon_pieces/dungeon_piece_01/dungeon_piece_rule_01.tres" id="1_4p3j5"]
 [ext_resource type="Script" path="res://dungeon_generator/dungeon_generator_resource.gd" id="1_jhnr4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://b1ktltfwptdhk" path="res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres" id="3_ddvsx"]
 [ext_resource type="Resource" uid="uid://cb3kk3xhnawrp" path="res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres" id="5_puwys"]
 [ext_resource type="Resource" uid="uid://bg7lcarka0ce1" path="res://dungeon_pieces/dungeon_piece_03/dungeon_piece_rule_03.tres" id="6_stpat"]
+[ext_resource type="Resource" uid="uid://dsfn47x2qi0ux" path="res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres" id="8_44v1q"]
 
 [resource]
 script = ExtResource("1_jhnr4")
@@ -16,3 +17,4 @@ ExtResource("3_ddvsx"): ExtResource("2_8es6b"),
 ExtResource("5_puwys"): ExtResource("6_stpat")
 }
 start_dungeon_piece_resource = ExtResource("5_puwys")
+wall_dungeon_piece_resource = ExtResource("8_44v1q")

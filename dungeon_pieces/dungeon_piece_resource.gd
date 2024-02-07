@@ -28,3 +28,6 @@ static func deserialize_from_dict(dict: Dictionary) -> DungeonPieceResource:
 	var res = DungeonPieceResource.new()
 	res.deserialize(dict)
 	return res
+
+func _to_string():
+	return resource_path.split("_")[-1].split(".")[0]

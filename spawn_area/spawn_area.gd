@@ -3,6 +3,8 @@ class_name SpawnArea extends Polygon2D
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
 func get_random_point() -> Vector2:
+	if len(polygon) < 3:
+		return Vector2.INF
 	var vertices = Geometry2D.triangulate_polygon(polygon)
 	var nr_of_triangles = len(vertices) / 3
 	var triangle_index = randi_range(0, nr_of_triangles-1)

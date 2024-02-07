@@ -13,10 +13,11 @@ func _ready():
 	var items_to_spawn = _get_items_to_spawn()
 	dungeon_inventory.clear()
 	dungeon_spawner.spawn_dungeon()
+	var spawning_pieces = dungeon_spawner.dungeon_pieces.filter(func(x): return len(x.spawn_area.polygon) >= 3)
 	var spawn_points = []
 	for item in items_to_spawn:
 		dungeon_inventory.add(item)
-		var piece: DungeonPiece = dungeon_spawner.dungeon_pieces.pick_random()
+		var piece: DungeonPiece = spawning_pieces.pick_random()
 		var local_point = piece.spawn_area.get_random_point()
 		var global_point = local_point + piece.dungeon_piece_resource.offset + dungeon_spawner.global_position
 		spawn_points.append(global_point)
