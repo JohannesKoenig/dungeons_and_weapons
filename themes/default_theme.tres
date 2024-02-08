@@ -73,3 +73,4 @@ Label/colors/font_color = Color(0.764706, 0.654902, 0.611765, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.137255)
 Label/font_sizes/font_size = 16
 Panel/styles/panel = SubResource("StyleBoxFlat_fd1q3")
+VBoxContainer/constants/separation = 7

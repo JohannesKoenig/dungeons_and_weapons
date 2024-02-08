@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://mr5ewegmm3pb"]
+[gd_scene load_steps=10 format=3 uid="uid://mr5ewegmm3pb"]
 
 [ext_resource type="PackedScene" uid="uid://c47y8d4xspkgo" path="res://GUI_elements/SaveSlot.tscn" id="1_sxlnt"]
 [ext_resource type="Script" path="res://scripts/save_file_menu.gd" id="1_wfu4v"]
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="2_w54wt"]
+[ext_resource type="Shortcut" uid="uid://cyyv46obj83ya" path="res://Scenes/UI-back-shortcut.tres" id="4_hppih"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fblil"]
 texture = ExtResource("2_w54wt")
@@ -135,6 +136,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_navvj")
 
 [node name="Back" type="Button" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+shortcut = ExtResource("4_hppih")
 text = "Back
 "
 

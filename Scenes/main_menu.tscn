@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfaoa3aib2qy5"]
+[gd_scene load_steps=10 format=3 uid="uid://dfaoa3aib2qy5"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_qna3i"]
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="2_grjiq"]
 [ext_resource type="Texture2D" uid="uid://baff6fb2jgy2j" path="res://art/sprites/tilesets/tavern_furniture.png" id="3_vr5nh"]
+[ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="4_2hlwr"]
 [ext_resource type="Shortcut" uid="uid://cyyv46obj83ya" path="res://Scenes/UI-back-shortcut.tres" id="4_5pkbh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tnofw"]
@@ -113,12 +114,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -73.5
+offset_top = -65.5
+offset_right = 73.5
+offset_bottom = 65.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_2hlwr")
 
 [node name="Heading" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -146,6 +148,11 @@ text = "Options"
 layout_mode = 2
 shortcut = ExtResource("4_5pkbh")
 text = "Exit"
+
+[node name="Version" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "v0.1"
+horizontal_alignment = 2
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
