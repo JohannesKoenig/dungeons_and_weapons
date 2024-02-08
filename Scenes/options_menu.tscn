@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://jelxxyo0sgiy"]
+[gd_scene load_steps=7 format=3 uid="uid://jelxxyo0sgiy"]
 
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_14v1d"]
 [ext_resource type="PackedScene" uid="uid://d0qyqvk76p3pi" path="res://GUI_elements/audio_options.tscn" id="2_b6g10"]
+[ext_resource type="Shortcut" uid="uid://cyyv46obj83ya" path="res://Scenes/UI-back-shortcut.tres" id="3_h0uo7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4t1f"]
 
@@ -59,6 +60,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_eusn3")
 
 [node name="back-button" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+shortcut = ExtResource("3_h0uo7")
 text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/save-button" to="." method="_on_savebutton_pressed"]

@@ -12,7 +12,7 @@
 [sub_resource type="Resource" id="Resource_v5gix"]
 script = ExtResource("5_dcjke")
 movement_speed = 50
-acceleration_time = 0.05
+acceleration_time = 2.08165e-12
 
 [node name="Player" groups=["player"] instance=ExtResource("1_lgk36")]
 script = ExtResource("2_3yalk")
@@ -21,15 +21,15 @@ player_resource = ExtResource("3_m1rlj")
 [node name="InventoryComponent" parent="." index="2"]
 inventory_resource = ExtResource("4_hlcuy")
 
-[node name="ItemHoldingComponent" parent="." index="7"]
+[node name="ItemHoldingComponent" parent="." index="6"]
 inventory_resource = ExtResource("4_hlcuy")
 quick_access = ExtResource("5_0hr34")
 
-[node name="QickAccessComponent" parent="." index="8"]
+[node name="QickAccessComponent" parent="." index="7"]
 quick_access_resource = ExtResource("5_0hr34")
 
-[node name="PlayerInteractionMapper" parent="." index="9" node_paths=PackedStringArray("actionable_finder") instance=ExtResource("3_452tt")]
+[node name="PlayerInteractionMapper" parent="." index="8" node_paths=PackedStringArray("actionable_finder") instance=ExtResource("3_452tt")]
 actionable_finder = NodePath("../Direction/ActionableFinder")
 
-[node name="PlayerMovementMapper" parent="." index="10" instance=ExtResource("4_uob2g")]
+[node name="PlayerMovementMapper" parent="." index="9" instance=ExtResource("4_uob2g")]
 movement_stats = SubResource("Resource_v5gix")

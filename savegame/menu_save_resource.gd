@@ -3,6 +3,9 @@ class_name MenuSaveResource extends Resource
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
 var saveslot_resources: Dictionary = {}
+var ambient_sound_level: int = 0
+var music_sound_level: int = 0
+var combat_sound_level: int = 0
 var MENU_SAVE_PATH = "user://menu_save.json"
 signal saveslot_resource_changed(slots: Array)
 # ------------------------------------------------------------------------------
@@ -30,7 +33,10 @@ func load_savegame():
 
 func serialize() -> Dictionary:
 	return {
-		"save_slots": saveslot_resources.values().map(func(x): return x.serialize())
+		"save_slots": saveslot_resources.values().map(func(x): return x.serialize()),
+		"ambient": ambient_sound_level,
+		"music": music_sound_level,
+		"combat": combat_sound_level
 	}
 
 func deserialize(data: Dictionary):
@@ -39,7 +45,11 @@ func deserialize(data: Dictionary):
 		var res = SaveslotResource.new()
 		res.deserialize(slot)
 		saveslot_resources[res.slot] = res
+	ambient_sound_level = data["ambient"]
+	music_sound_level = data["music"]
+	combat_sound_level = data["combat"]
 	saveslot_resource_changed.emit(saveslot_resources.values())
+	
 
 func remove_slot(slot: int):
 	saveslot_resources.erase(slot)

@@ -6,6 +6,7 @@ extends Control
 @onready var save_slot_3 = $VBoxContainer/HBoxContainer/SaveSlot3
 
 func _ready():
+	$VBoxContainer/HBoxContainer2/New.grab_focus()
 	menu_save_resource.saveslot_resource_changed.connect(_on_saveslots_changed)
 	menu_save_resource.load_savegame()
 

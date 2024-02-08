@@ -3,12 +3,6 @@ class_name DungeonGenerator extends Node2D
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
 @export var dgr: DungeonGeneratorResource = preload("res://dungeon_generator/dungeon_generator_resource.tres")
-
-
-func _ready():
-	# dgr.save_rules()
-	# dgr.load_rules()
-
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------

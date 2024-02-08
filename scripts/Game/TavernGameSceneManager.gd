@@ -6,7 +6,6 @@ class_name TavernManager
 @export var tavern_resource: TavernResource = preload("res://tavern/tavern_resource.tres")
 @export var max_adventurers_per_hour: int = 1
 var ai_path_markers: AiPathMarkers
-var interaction_middleware: InteractionMiddleware
 var adventurer_resource_template = preload("res://adventurer/adventurer_resource.gd")
 var adventurer_textures = [
 	preload("res://art/sprites/character_commoner_skin.png"),

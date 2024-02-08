@@ -7,6 +7,9 @@ extends Control
 var _save_slot: int = 1
 var _name_text: String = ""
 
+func _ready():
+	$VBoxContainer/HBoxContainer/Back.grab_focus()
+
 
 func _on_create_pressed():
 	var save_slot_resource = SaveslotResource.new()

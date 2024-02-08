@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dfaoa3aib2qy5"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_qna3i"]
-[ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="2_3fexa"]
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="2_grjiq"]
 [ext_resource type="Texture2D" uid="uid://baff6fb2jgy2j" path="res://art/sprites/tilesets/tavern_furniture.png" id="3_vr5nh"]
+[ext_resource type="Shortcut" uid="uid://cyyv46obj83ya" path="res://Scenes/UI-back-shortcut.tres" id="4_5pkbh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tnofw"]
 texture = ExtResource("2_grjiq")
@@ -135,7 +135,6 @@ size_flags_horizontal = 4
 
 [node name="Start" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_3fexa")
 text = "Start"
 
 [node name="Options" type="Button" parent="VBoxContainer/VBoxContainer"]
@@ -145,6 +144,7 @@ text = "Options"
 
 [node name="Exit" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
+shortcut = ExtResource("4_5pkbh")
 text = "Exit"
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
