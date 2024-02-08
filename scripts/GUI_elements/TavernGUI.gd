@@ -28,6 +28,9 @@ func update_time(is_day: bool, hours: int, minutes: int) -> void:
 func toggle_inventory():
 	$InventoryToggle.toggle()
 
+func toggle_game_menu():
+	$GameMenuToggle.toggle()
+
 func set_player_resource(player_resource: PlayerResource):
 	_update_coin_label(player_resource.coins)
 

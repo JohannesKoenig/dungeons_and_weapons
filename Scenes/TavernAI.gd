@@ -9,19 +9,21 @@ func calculate_strategies(
 	item_stock: Array,
 	adventurers: Array
 ) -> Dictionary:
-	var item_to_buyer_map = _map_items_to_buyer(item_stock, adventurers)
+	var item_to_buyer_map := _map_items_to_buyer(adventurers)
 	var adventurers_to_strategy_map = {}
 	# all adventurers in map need buyer strategy
-	for item in item_to_buyer_map:
-		adventurers_to_strategy_map[item_to_buyer_map[item]] = _get_buyer_strategy(item)
+	for elem in item_to_buyer_map:
+		var item = elem["item"]
+		var buyer = elem["buyer"]
+		adventurers_to_strategy_map[buyer] = _get_buyer_strategy(item)
 	# all adventurers not in map need dungeon strategy
 	for adventurer in adventurers:
 		if adventurer not in adventurers_to_strategy_map:
 			adventurers_to_strategy_map[adventurer] = _get_dungeon_strategy()
 	return adventurers_to_strategy_map
 	
-func _get_buyer_strategy(item: Item) -> Dictionary:
-	var index = tavern_inventory.get_index(item)
+func _get_buyer_strategy(item: Dictionary) -> Dictionary:
+	var index = item["index"]
 	var item_displays = get_tree().get_nodes_in_group("item_display")
 	var position = null
 	for item_display: ItemDisplay in item_displays:
@@ -41,20 +43,30 @@ func _get_dungeon_strategy() -> Dictionary:
 	return dungeon_strategy
 
 func _map_items_to_buyer(
-	item_stock: Array,
 	adventurers: Array
-) -> Dictionary:
+) -> Array:
+	var items = tavern_inventory.items
+	var item_stock = []
+	for i in range(len(items)):
+		item_stock.append({
+			"item": items[i],
+			"index": i
+		})
 	var nr_of_adventurers = adventurers.size()
-	var nr_of_items = item_stock.size()
-	var item_stock_sorted_by_price = to_sorted_array(item_stock, _compare_items_by_price)
+	var no_null = item_stock.filter(func(x): return x["item"])
+	var nr_of_items = len(no_null)
+	var item_stock_sorted_by_price = to_sorted_array(no_null, _compare_items_by_price)
 	var adventurers_sorted_by_coins = to_sorted_array(adventurers, _compare_adventurers_by_coins)
-	var map_item_to_buyer = {}
+	var map_item_to_buyer = []
 	var j = 0
 	for i in range(nr_of_items):
 		if j >= nr_of_adventurers:
 			break
-		if item_stock_sorted_by_price[i].value <= adventurers_sorted_by_coins[j].coins:
-			map_item_to_buyer[item_stock_sorted_by_price[i]] = adventurers_sorted_by_coins[j]
+		if item_stock_sorted_by_price[i]["item"].value <= adventurers_sorted_by_coins[j].coins:
+			map_item_to_buyer.append({
+				"item": item_stock_sorted_by_price[i],
+				"buyer": adventurers_sorted_by_coins[j]
+			})
 			j += 1
 			continue
 	return map_item_to_buyer

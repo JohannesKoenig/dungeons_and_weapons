@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c1wruq1vniqxl"]
+[gd_scene load_steps=18 format=3 uid="uid://c1wruq1vniqxl"]
 
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="1_i1q3x"]
 [ext_resource type="Script" path="res://scripts/GUI_elements/TavernGUI.gd" id="1_r07mv"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dmegvhl0tg3gx" path="res://GUI_elements/HotbarGUI.tscn" id="12_j558f"]
 [ext_resource type="Resource" uid="uid://c7dbnocijw28c" path="res://player/player_quick_access.tres" id="13_ylfwy"]
 [ext_resource type="PackedScene" uid="uid://dojlwdvovx2ic" path="res://GUI_elements/tavern_open/tavern_open.tscn" id="15_gan4x"]
+[ext_resource type="PackedScene" uid="uid://dqlw76ugakfeo" path="res://Scenes/GameMenu.tscn" id="17_pgggk"]
 
 [node name="TavernScene" type="Control"]
 layout_mode = 3
@@ -205,7 +206,42 @@ fade_duration = 0.3
 [node name="TavernOpen" parent="TavernOpenTimedPopUp" instance=ExtResource("15_gan4x")]
 layout_mode = 1
 
+[node name="GameMenuPopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("6_vjcvr")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+content = NodePath("GameMenu")
+
+[node name="GameMenu" parent="GameMenuPopUp" instance=ExtResource("17_pgggk")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 27.0
+offset_bottom = 27.0
+grow_horizontal = 1
+grow_vertical = 1
+alignment = 1
+
+[node name="GameMenuToggle" parent="." instance=ExtResource("5_57lu4")]
+
 [connection signal="pressed" from="MarginContainer2/Options" to="ToggleComponent" method="activate"]
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]
 [connection signal="deactivated" from="InventoryPopUp" to="InventoryToggle" method="deactivate"]
 [connection signal="value_changed" from="InventoryToggle" to="InventoryPopUp" method="set_active"]
+[connection signal="deactivated" from="GameMenuPopUp" to="GameMenuToggle" method="deactivate"]
+[connection signal="value_changed" from="GameMenuToggle" to="GameMenuPopUp" method="set_active"]
+[connection signal="value_changed" from="GameMenuToggle" to="GameMenuPopUp/GameMenu" method="activated"]

@@ -3,6 +3,7 @@ class_name PlayerMovementMapper
 
 var target: CharacterBody2D
 @export var movement_stats: MovementStats
+@export var tavern_resource: TavernResource = preload("res://tavern/tavern_resource.tres")
 
 var vertical: float
 var horizontal: float
@@ -19,8 +20,9 @@ func _process(delta):
 	vertical = Input.get_axis("up","down")
 	horizontal = Input.get_axis("left", "right")
 	direction = Vector2(horizontal, vertical)
-	if _direction_tween:
-		_direction_tween.kill()
-	
-	_direction_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
-	_direction_tween.tween_property(target, "velocity", direction.normalized() * movement_stats.movement_speed, movement_stats.acceleration_time)
+	if !target:
+		return
+	if tavern_resource and !tavern_resource.open:
+		target.velocity = direction.normalized() * movement_stats.movement_speed
+	else:
+		target.velocity = Vector2.ZERO

@@ -8,4 +8,5 @@ extends Resource
 }
 
 func get_random() -> Item:
-	return item_table.values().pick_random()
+	var item = item_table.values().pick_random()
+	return item.duplicate()

@@ -833,3 +833,4 @@ npc_spawner = NodePath("../../Entities/NpcSpawner")
 [node name="TavernAi" parent="Behaviours" instance=ExtResource("19_2wblc")]
 
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]
+[connection signal="toggle_menu" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_game_menu"]
