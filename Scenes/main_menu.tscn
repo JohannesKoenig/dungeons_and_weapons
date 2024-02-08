@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfaoa3aib2qy5"]
+[gd_scene load_steps=11 format=3 uid="uid://dfaoa3aib2qy5"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_qna3i"]
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="2_grjiq"]
@@ -88,6 +88,8 @@ texture = ExtResource("3_vr5nh")
 [sub_resource type="TileSet" id="TileSet_8dxfi"]
 sources/1 = SubResource("TileSetAtlasSource_g7g72")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agi0w"]
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -149,7 +151,19 @@ layout_mode = 2
 shortcut = ExtResource("4_5pkbh")
 text = "Exit"
 
-[node name="Version" type="Label" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Credits" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " i "
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_agi0w")
+
+[node name="Version" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "v0.1"
 horizontal_alignment = 2
@@ -157,3 +171,4 @@ horizontal_alignment = 2
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Credits" to="." method="_on_credits_pressed"]
