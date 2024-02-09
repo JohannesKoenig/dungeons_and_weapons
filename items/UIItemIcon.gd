@@ -9,6 +9,7 @@ var mouse_insight = false
 
 func _ready():
 	set_resource(resource)
+	set_highlighted(false)
 
 
 func _process(delta):
@@ -58,3 +59,11 @@ func _on_ui_item_icon_mouse_entered():
 
 func _on_ui_item_icon_mouse_exited():
 	mouse_insight = false
+
+func set_highlighted(value: bool):
+	var panel: Panel = $Panel
+	if value:
+		panel.theme_type_variation = "HighlightedPanel"
+	else:
+		panel.theme_type_variation = "ItemBackgroundPanel"
+		

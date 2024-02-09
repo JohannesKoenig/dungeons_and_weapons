@@ -8,7 +8,7 @@ func _ready():
 	timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(_on_timeout)
-	start_night_timer()
+	start_day_timer()
 
 
 func _process(_delta: float):

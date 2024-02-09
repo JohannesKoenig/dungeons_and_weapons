@@ -21,7 +21,7 @@ var current_day_time: int = 0
 var current_hours: int
 var current_minutes: int
 var current_seconds: int
-var is_day: bool
+var is_day: bool = true
 
 signal time_changed(is_day: bool, hours: int, minutes: int)
 signal day_started

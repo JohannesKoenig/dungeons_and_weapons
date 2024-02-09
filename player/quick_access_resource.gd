@@ -6,6 +6,7 @@ extends Resource
 @export var selected_index: int:
 	set(value):
 		index_updated.emit(value)
+		selected_index = value
 signal index_updated(index: int)
 
 func replace_item(target: Item, to_replace: Item) -> Item:
@@ -28,3 +29,11 @@ func remove_item_at_index(index: int) -> Item:
 func remove_item(item: Item) -> bool:
 	return inventory_resource.remove(item)
 
+func select_next_index():
+	selected_index = (selected_index - 1 + size) % size
+
+func select_previous_index():
+	selected_index = (selected_index + 1) % size
+
+func select_index(index: int):
+	selected_index = index

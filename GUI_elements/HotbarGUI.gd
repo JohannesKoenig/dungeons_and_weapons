@@ -17,6 +17,7 @@ func set_quick_access_resource(quick_access_resource):
 		_create_ui_items(quick_access_resource.size)
 		_load_ui_items()
 		quick_access_resource.inventory_resource.items_changed.connect(_refresh_items)
+		quick_access_resource.index_updated.connect(_selected_index_changed)
 
 func _refresh_items(items: Array):
 	_load_ui_items()
@@ -48,3 +49,8 @@ func _load_ui_items():
 func _on_resource_changed_for_index(index: int) -> Callable:
 	return func _on_resource_changed(resource: Resource):
 		quick_access_resource.add_item(resource, index)
+
+func _selected_index_changed(index: int):
+	for item in ui_items:
+		item.set_highlighted(false)
+	ui_items[index].set_highlighted(true)

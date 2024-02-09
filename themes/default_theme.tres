@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://b7cxggxiumhyf"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://b7cxggxiumhyf"]
 
 [ext_resource type="FontFile" uid="uid://btphj1vw1bdty" path="res://fonts/minimal5x7/minimal5x7.otf" id="1_5ya70"]
 
@@ -51,6 +51,17 @@ expand_margin_left = 4.0
 expand_margin_top = 2.0
 expand_margin_right = 4.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1bh2f"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_pybvl"]
+color = Color(0.854902, 0.854902, 0.854902, 1)
+grow_begin = 3.0
+grow_end = 3.0
+thickness = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fy3p"]
+bg_color = Color(0, 0, 0, 0.290196)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd1q3"]
 bg_color = Color(0.827451, 0.627451, 0.517647, 1)
 corner_radius_top_left = 5
@@ -69,6 +80,12 @@ Button/styles/focus = SubResource("StyleBoxFlat_383cq")
 Button/styles/hover = SubResource("StyleBoxFlat_i6fe4")
 Button/styles/normal = SubResource("StyleBoxFlat_bmfvt")
 Button/styles/pressed = SubResource("StyleBoxFlat_pvq80")
+HiddenPanel/base_type = &"Panel"
+HiddenPanel/styles/panel = SubResource("StyleBoxEmpty_1bh2f")
+HighlightedPanel/base_type = &"Panel"
+HighlightedPanel/styles/panel = SubResource("StyleBoxLine_pybvl")
+ItemBackgroundPanel/base_type = &"Panel"
+ItemBackgroundPanel/styles/panel = SubResource("StyleBoxFlat_8fy3p")
 Label/colors/font_color = Color(0.764706, 0.654902, 0.611765, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.137255)
 Label/font_sizes/font_size = 16

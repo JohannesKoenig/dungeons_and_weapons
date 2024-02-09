@@ -5,6 +5,8 @@ class_name TavernManager
 @export var dnr: DayNightResource
 @export var tavern_resource: TavernResource = preload("res://tavern/tavern_resource.tres")
 @export var max_adventurers_per_hour: int = 1
+var dungeon_generator_resource: DungeonGeneratorResource = preload("res://dungeon_generator/dungeon_generator_resource.tres")
+var dungeon_resource: DungeonResource = preload("res://dungeon_spawner/dungeon_resource.tres")
 var ai_path_markers: AiPathMarkers
 var adventurer_resource_template = preload("res://adventurer/adventurer_resource.gd")
 var adventurer_textures = [
@@ -21,6 +23,7 @@ func _ready():
 	game_saver.load_game_from_resources()
 	dnr.day_ended.connect(game_saver.save_game_from_resources)
 	dnr.day_ended.connect(func(): tavern_resource.open_tavern(false))
+	dnr.day_ended.connect(_generate_dungeon)
 	rng = RandomNumberGenerator.new()
 	ai_path_markers = get_node("/root/AiPathMarkers")
 	if ai_path_markers:
@@ -42,7 +45,9 @@ func _ready():
 	drag_and_drop_layer.set_canvas_layer($CanvasLayer)
 	$CanvasLayer/TavernScene/InventoryPopUp.content.set_quick_access_component($Entities/Player/QickAccessComponent)
 	tavern_resource.tavern_open_changed.connect(trigger_ai_on_tavern_open)
-
+	if dungeon_resource.dungeon_pieces.is_empty():
+		var pieces = dungeon_generator_resource.get_layout()
+		dungeon_resource.dungeon_pieces = pieces
 
 func get_items_on_display() -> Array:
 	return [
@@ -75,3 +80,14 @@ func _get_item_resource_and_marker(item_display: ItemDisplay) -> Dictionary:
 		"item": item_display.item_resource,
 		"position": item_display.position_marker
 	}
+
+func _generate_dungeon():
+	print("generate dungeon")
+	dungeon_generator_resource.save_rules()
+	dungeon_generator_resource.load_rules()
+	dungeon_generator_resource.save_rules()
+	#for res in dungeon_generator_resource.rules.keys():
+		#var rule = dungeon_generator_resource.rules[res]
+	var pieces = dungeon_generator_resource.get_layout()
+	dungeon_resource.dungeon_pieces = pieces
+

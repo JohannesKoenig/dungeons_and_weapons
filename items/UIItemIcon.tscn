@@ -3,18 +3,7 @@
 [ext_resource type="Material" uid="uid://dq5mgv4ch1cxs" path="res://art/shader/unshaded.tres" id="1_adreu"]
 [ext_resource type="Script" path="res://items/UIItemIcon.gd" id="1_q37fn"]
 [ext_resource type="Texture2D" uid="uid://bxns8sdk2ug6y" path="res://art/sprites/icons/options_icon.png" id="2_64pt2"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcvpp"]
-bg_color = Color(0, 0, 0, 0.12549)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.105882, 0.105882, 0.105882, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="3_hfhgj"]
 
 [node name="UIItemIcon" type="Control"]
 layout_mode = 3
@@ -40,7 +29,8 @@ offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_lcvpp")
+theme = ExtResource("3_hfhgj")
+theme_type_variation = &"HighlightedPanel"
 
 [node name="Texture" type="TextureRect" parent="."]
 material = ExtResource("1_adreu")
