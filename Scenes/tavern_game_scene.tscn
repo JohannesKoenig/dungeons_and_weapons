@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=73 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://bjuyul8ahp676" path="res://art/sprites/tilesets/Tavern_closed.png" id="24_j1c6b"]
 [ext_resource type="Resource" uid="uid://co6aefe3hm0ou" path="res://tavern/tavern_resource.tres" id="25_35v82"]
 [ext_resource type="Texture2D" uid="uid://dth62kh6mt3aq" path="res://art/sprites/tilesets/Tavern_closed_normal.png" id="25_eop8i"]
+[ext_resource type="PackedScene" uid="uid://b7sjloxcm3svx" path="res://audio/background_music_player.tscn" id="28_dbcv7"]
+[ext_resource type="AudioStream" uid="uid://dgltsoh56mqok" path="res://audio/TavernAmbiance.mp3" id="29_uin4i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgtce"]
 texture = ExtResource("3_p81w2")
@@ -831,6 +833,15 @@ tavern_ai = NodePath("../TavernAi")
 npc_spawner = NodePath("../../Entities/NpcSpawner")
 
 [node name="TavernAi" parent="Behaviours" instance=ExtResource("19_2wblc")]
+
+[node name="BackgroundMusicPlayer" parent="." instance=ExtResource("28_dbcv7")]
+autoplay = false
+max_distance = 150.0
+
+[node name="TavernAmbiance" parent="." instance=ExtResource("28_dbcv7")]
+stream = ExtResource("29_uin4i")
+volume_db = -2.0
+max_distance = 150.0
 
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]
 [connection signal="toggle_menu" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_game_menu"]

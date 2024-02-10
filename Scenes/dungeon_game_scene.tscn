@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dt1choghkaavl"]
+[gd_scene load_steps=23 format=3 uid="uid://dt1choghkaavl"]
 
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://interaction_handlers/PlayerInputHandler.tscn" id="1_ndabk"]
 [ext_resource type="Script" path="res://Scenes/dungeon_game_scene.gd" id="1_rgff1"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dqpd85ie6hc02" path="res://dungeon_door/dungeon_door.tscn" id="10_j2umu"]
 [ext_resource type="PackedScene" uid="uid://bcy7yr4ag3rcy" path="res://dungeon_spawner/dungeon_spawner.tscn" id="10_vrn8s"]
 [ext_resource type="Resource" uid="uid://b20jkm7hy5t00" path="res://dungeon_spawner/dungeon_resource.tres" id="11_0hnuh"]
+[ext_resource type="PackedScene" uid="uid://b7sjloxcm3svx" path="res://audio/background_music_player.tscn" id="13_stig1"]
+[ext_resource type="AudioStream" uid="uid://bfmr1pjkm33fy" path="res://audio/DungeonTune.wav" id="14_q41g7"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_m370i"]
 frequency = 0.1315
@@ -99,5 +101,11 @@ position = Vector2(198, 240)
 [node name="DungeonSpawner" parent="." instance=ExtResource("10_vrn8s")]
 position = Vector2(-256, -80)
 dungeon_resource = ExtResource("11_0hnuh")
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("13_stig1")]
+stream = ExtResource("14_q41g7")
+volume_db = -4.0
+max_distance = 200000.0
+fade_in_duration = 3.0
 
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]
