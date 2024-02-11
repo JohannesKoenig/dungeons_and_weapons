@@ -21,7 +21,6 @@ func set_resource(resource: PlayerResource):
 	if is_ready:
 		$AnimatedSprite2D.material.set("shader_parameter/diffuse", player_resource.texture)
 
-
 func unlink_material():
 	var material: Material = $AnimatedSprite2D.material.duplicate()
 	$AnimatedSprite2D.material = material
@@ -36,5 +35,13 @@ func _process(delta):
 
 
 func item_change_interaction(to_change: Item):
+	if to_change:
+		$ItemPickupPlayer.play()
 	var selected_item = player_resource.inventory.items[player_resource.quick_access.selected_index]
+	if selected_item:
+		$ItemDropPlayer.play()
 	player_resource.quick_access.replace_item(selected_item, to_change)
+
+func pickup_item(item: Item):
+	if item:
+		$ItemPickupPlayer.play()

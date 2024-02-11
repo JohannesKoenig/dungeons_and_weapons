@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bph32xoowbi6c"]
+[gd_scene load_steps=34 format=3 uid="uid://bph32xoowbi6c"]
 
 [ext_resource type="Script" path="res://adventurer/adventurer.gd" id="1_bmppq"]
 [ext_resource type="Material" uid="uid://crqpbylxx3ay1" path="res://art/shader/Game/Units/character.tres" id="1_jlo2m"]
@@ -8,7 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://v1ub3uvyf0qj" path="res://art/sprites/Character_walking.png" id="5_jgug5"]
 [ext_resource type="PackedScene" uid="uid://d7m7ddelkjy8" path="res://Scenes/helper/ActionableFinder.tscn" id="8_24af2"]
 [ext_resource type="PackedScene" uid="uid://dd4j4l87ky8n3" path="res://Scenes/Game/ItemHoldingComponent.tscn" id="9_a5y4w"]
+[ext_resource type="PackedScene" uid="uid://c4flt7v6bsbv5" path="res://adventurer/footsteps_player.tscn" id="10_k0pi7"]
+[ext_resource type="PackedScene" uid="uid://cq0qvsnn4x771" path="res://utils/TileScanner/TileScanner.tscn" id="11_e8gh8"]
 [ext_resource type="PackedScene" uid="uid://dnugsdn6poypk" path="res://Scenes/Game/QickAccessComponent.tscn" id="11_qxvjh"]
+[ext_resource type="AudioStream" uid="uid://ddoq4n58r8ulg" path="res://audio/item_interaction/pickup_and_drop/pickup.wav" id="12_fv4ib"]
+[ext_resource type="AudioStream" uid="uid://dphleyxchyikk" path="res://audio/item_interaction/pickup_and_drop/drop.wav" id="13_f0kga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65iww"]
 size = Vector2(10, 4)
@@ -305,6 +309,23 @@ tracks/4/keys = {
 "update": 0,
 "values": [1.5708]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FootstepsPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_lkokd"]
 resource_name = "walking_right"
@@ -369,6 +390,23 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [4.71239]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FootstepsPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_txfwg"]
@@ -487,5 +525,18 @@ z_index = 1
 position = Vector2(-2.08165e-12, -7)
 
 [node name="QickAccessComponent" parent="." instance=ExtResource("11_qxvjh")]
+
+[node name="FootstepsPlayer" parent="." node_paths=PackedStringArray("tile_scanner") instance=ExtResource("10_k0pi7")]
+volume_db = -17.286
+tile_scanner = NodePath("../TileScanner")
+
+[node name="TileScanner" parent="." instance=ExtResource("11_e8gh8")]
+position = Vector2(-2.08165e-12, 6)
+
+[node name="ItemPickupPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_fv4ib")
+
+[node name="ItemDropPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_f0kga")
 
 [connection signal="selected_changed" from="QickAccessComponent" to="ItemHoldingComponent" method="_on_qick_access_component_selected_changed"]

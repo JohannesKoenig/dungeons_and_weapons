@@ -6,10 +6,12 @@ extends Resource
 @export var coins: int:
 	set(value):
 		coins_changed.emit(value)
+		coins_changed_delta.emit(value, value - coins)
 		coins = value
 @export var texture: Texture
 
 signal coins_changed(coins: int)
+signal coins_changed_delta(coins: int, delta: int)
 
 func set_coins(value: int):
 	coins = value

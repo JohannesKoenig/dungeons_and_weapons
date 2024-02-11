@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform vec2 direction = vec2(1, 0);
 uniform float speed = 0.1;
+uniform float blend_value = 1.0;
 uniform sampler2D noise: repeat_enable, filter_linear;
 
 vec4 overlay(vec4 base, vec4 blend){
@@ -17,5 +18,6 @@ void fragment()
 	vec4 blend = texture(noise, UV + ( direction * speed * TIME));
 	blend.a = blend.r;
 	blend.a = blend.a * 0.7;
+	blend.a = blend.a * blend_value;
 	COLOR = blend;
 }

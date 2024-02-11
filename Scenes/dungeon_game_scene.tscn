@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://dt1choghkaavl"]
+[gd_scene load_steps=18 format=3 uid="uid://dt1choghkaavl"]
 
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://interaction_handlers/PlayerInputHandler.tscn" id="1_ndabk"]
 [ext_resource type="Script" path="res://Scenes/dungeon_game_scene.gd" id="1_rgff1"]
 [ext_resource type="PackedScene" uid="uid://s5xklgk57qy7" path="res://interaction_handlers/player_interaction_mapper.tscn" id="2_5i0ky"]
-[ext_resource type="Shader" path="res://Scenes/dungeon_game_scene.gdshader" id="2_kbnl1"]
+[ext_resource type="PackedScene" uid="uid://cb4qohghjri5g" path="res://Scenes/fog.tscn" id="2_8egu5"]
 [ext_resource type="PackedScene" uid="uid://coh6x8in6t67w" path="res://interaction_handlers/player_movement_mapper.tscn" id="3_rdwn8"]
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="4_5jtbs"]
 [ext_resource type="PackedScene" uid="uid://1dyua8285is8" path="res://player/player.tscn" id="8_p6pyq"]
@@ -14,25 +14,6 @@
 [ext_resource type="Resource" uid="uid://b20jkm7hy5t00" path="res://dungeon_spawner/dungeon_resource.tres" id="11_0hnuh"]
 [ext_resource type="PackedScene" uid="uid://b7sjloxcm3svx" path="res://audio/background_music_player.tscn" id="13_stig1"]
 [ext_resource type="AudioStream" uid="uid://bfmr1pjkm33fy" path="res://audio/DungeonTune.wav" id="14_q41g7"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_m370i"]
-frequency = 0.1315
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mn8xi"]
-seamless = true
-noise = SubResource("FastNoiseLite_m370i")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rd71s"]
-shader = ExtResource("2_kbnl1")
-shader_parameter/direction = Vector2(1, 0)
-shader_parameter/speed = 0.002
-shader_parameter/noise = SubResource("NoiseTexture2D_mn8xi")
-
-[sub_resource type="Gradient" id="Gradient_u51yx"]
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6q7pk"]
-gradient = SubResource("Gradient_u51yx")
 
 [sub_resource type="Resource" id="Resource_vjepf"]
 script = ExtResource("4_5jtbs")
@@ -53,12 +34,7 @@ metadata/_snap_enabled = true
 y_sort_enabled = true
 script = ExtResource("1_rgff1")
 
-[node name="Fog" type="Sprite2D" parent="."]
-light_mask = 7
-material = SubResource("ShaderMaterial_rd71s")
-position = Vector2(189, 513)
-scale = Vector2(45.7266, 44.0935)
-texture = SubResource("GradientTexture2D_6q7pk")
+[node name="Fog" parent="." instance=ExtResource("2_8egu5")]
 
 [node name="Behaviours" type="Node" parent="."]
 

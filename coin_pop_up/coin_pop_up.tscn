@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://qw2et1kpab6v"]
+
+[ext_resource type="Texture2D" uid="uid://dc7n8s67r7kwm" path="res://art/sprites/icons/coin.png" id="1_a1pgf"]
+[ext_resource type="Script" path="res://coin_pop_up/coin_pop_up.gd" id="1_lr5ws"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_824p1"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lsa7t"]
+light_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ec4x"]
+particle_flag_disable_z = true
+angle_min = -105.1
+angle_max = 47.3
+velocity_pivot = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+direction = Vector3(2.08165e-12, -1, 2.08165e-12)
+initial_velocity_max = 80.29
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 0.5
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t00yd"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a3v3m"]
+light_mode = 1
+
+[node name="CoinPopUp" type="Node2D"]
+z_index = 2
+material = SubResource("CanvasItemMaterial_824p1")
+script = ExtResource("1_lr5ws")
+height = -10.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_lsa7t")
+position = Vector2(2, -1)
+emitting = false
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_7ec4x")
+texture = ExtResource("1_a1pgf")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Label" type="Label" parent="."]
+material = SubResource("CanvasItemMaterial_t00yd")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -5.0
+offset_right = 10.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.537255, 0.709804, 0.423529, 1)
+text = "+10"
+horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_a3v3m")
+position = Vector2(16, -2)
+texture = ExtResource("1_a1pgf")

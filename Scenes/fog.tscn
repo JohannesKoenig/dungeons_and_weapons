@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://cb4qohghjri5g"]
+
+[ext_resource type="Shader" path="res://Scenes/dungeon_game_scene.gdshader" id="1_6bjof"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m370i"]
+frequency = 0.1315
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mn8xi"]
+seamless = true
+noise = SubResource("FastNoiseLite_m370i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rd71s"]
+shader = ExtResource("1_6bjof")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed = 0.002
+shader_parameter/noise = SubResource("NoiseTexture2D_mn8xi")
+
+[sub_resource type="Gradient" id="Gradient_u51yx"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6q7pk"]
+gradient = SubResource("Gradient_u51yx")
+
+[node name="Fog" type="Sprite2D"]
+light_mask = 7
+material = SubResource("ShaderMaterial_rd71s")
+position = Vector2(189, 513)
+scale = Vector2(45.7266, 44.0935)
+texture = SubResource("GradientTexture2D_6q7pk")

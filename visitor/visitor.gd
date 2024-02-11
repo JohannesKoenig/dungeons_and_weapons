@@ -61,6 +61,8 @@ func _process(delta):
 func item_change_interaction(to_change: Item):
 	var selected_index = adventurer_resource.quick_access.selected_index
 	var selected_item = adventurer_resource.inventory.items[selected_index]
+	if to_change:
+		$ItemPickupPlayer.play()
 	adventurer_resource.inventory.add(selected_item)
 	adventurer_resource.inventory.remove_at_index(selected_index)
 	adventurer_resource.inventory.add_at_position(to_change, selected_index)

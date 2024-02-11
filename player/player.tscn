@@ -33,3 +33,9 @@ actionable_finder = NodePath("../Direction/ActionableFinder")
 
 [node name="PlayerMovementMapper" parent="." index="9" instance=ExtResource("4_uob2g")]
 movement_stats = SubResource("Resource_v5gix")
+
+[node name="ItemPickupPlayer" parent="." index="12"]
+volume_db = -10.0
+
+[node name="ItemDropPlayer" parent="." index="13"]
+volume_db = -10.0

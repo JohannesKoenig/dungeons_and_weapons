@@ -35,5 +35,6 @@ func on_collect(source):
 		if inventory:
 			var pos = source.player_resource.inventory.add(inventory.items[index])
 			if pos != -1:
+				source.pickup_item(inventory.items[index])
 				inventory.remove_at_index(index)
 				queue_free()

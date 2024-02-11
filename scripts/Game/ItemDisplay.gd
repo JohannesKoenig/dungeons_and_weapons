@@ -15,7 +15,8 @@ func _on_actionable_action(source: Node2D):
 	if source is Player:
 		var selected_item = source.player_resource.inventory.items[source.player_resource.quick_access.selected_index]
 		var previous_item = tavern_inventory_resource.add_at_position(selected_item, index)
-		source.player_resource.inventory.add_at_position(previous_item, source.player_resource.quick_access.selected_index)
+		source.item_change_interaction(previous_item)
+		# source.player_resource.inventory.add_at_position(previous_item, source.player_resource.quick_access.selected_index)
 	elif source is Visitor:
 		var previous_item = tavern_inventory_resource.remove_at_index(index)
 		if previous_item:

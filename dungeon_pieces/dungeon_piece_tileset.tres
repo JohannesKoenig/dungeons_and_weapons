@@ -567,4 +567,6 @@ texture = ExtResource("1_m455f")
 [resource]
 occlusion_layer_0/light_mask = 3
 physics_layer_0/collision_layer = 0
+custom_data_layer_0/name = "material"
+custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_wb8o1")

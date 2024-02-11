@@ -6,6 +6,7 @@ extends Node2D
 @export var noon_color: Color
 @export var dusk_color: Color
 @export var midnight_color: Color
+@export var fog: Sprite2D
 
 var sun_up_time_hour
 @export var sun_up_duration = 2
@@ -39,36 +40,44 @@ func on_daytime_changed(is_day: bool, hour: int, minute: int) -> void:
 		return
 	var time_in_minutes = hour * 60 + minute
 	var color: Color
+	var alpha: float
 	
 	# midnight -> dawn
 	if (dawn_time - sun_up_duration/2 * 60) <= time_in_minutes and time_in_minutes < dawn_time:
 		var delta = between((dawn_time - sun_up_duration/2 * 60), time_in_minutes, dawn_time)
 		color = midnight_color.lerp(dawn_color, delta)
+		alpha = lerp(1.0, 0.5, delta)
 	
 	# dawn -> noon
 	elif dawn_time <= time_in_minutes and time_in_minutes < (dawn_time + sun_up_duration/2 * 60):
 		var delta = between(dawn_time, time_in_minutes, (dawn_time + sun_up_duration/2 * 60))
 		color = dawn_color.lerp(noon_color, delta)
+		alpha = lerp(0.5, 0.0, delta)
 
 	# noon
 	elif (dawn_time + sun_up_duration/2 * 60) <= time_in_minutes and time_in_minutes < dusk_time:
 		color = noon_color
+		alpha = 0
 
 	# noon -> dusk
 	elif dusk_time <= time_in_minutes and time_in_minutes < (dusk_time + sun_down_duration/2 * 60):
 		var delta = between(dusk_time, time_in_minutes, (dusk_time + sun_down_duration/2 * 60))
 		color = noon_color.lerp(dusk_color, delta)
+		alpha = lerp(0.0, 0.5, delta)
 
 	# dusk -> midnight
 	elif (dusk_time + sun_down_duration/2 * 60) <= time_in_minutes and time_in_minutes < (dusk_time + sun_down_duration * 60):
 		var delta = between((dusk_time + sun_down_duration/2 * 60), time_in_minutes, (dusk_time + sun_down_duration * 60))
 		color = dusk_color.lerp(midnight_color, delta)
+		alpha = lerp(0.5, 1.0, delta)
 	
 	# midnight
 	else:
 		color = midnight_color
+		alpha = 1
 	
 	canvas_modulate.color = color
+	fog.material.set_shader_parameter("blend_value", alpha)
 
 func between(start: int, value: int, end: int) -> float:
 	if value <= start:

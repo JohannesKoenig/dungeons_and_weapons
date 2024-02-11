@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cksui80t86inp"]
+
+[ext_resource type="Script" path="res://coin_pop_up/coin_pop_up_spawner.gd" id="1_opr2m"]
+[ext_resource type="AudioStream" uid="uid://bfw7xom6oib88" path="res://coin_pop_up/cash-register-purchase.wav" id="2_3usk2"]
+
+[node name="CoinPopUpSpawner" type="Node2D"]
+script = ExtResource("1_opr2m")
+
+[node name="SoundEffectPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_3usk2")
