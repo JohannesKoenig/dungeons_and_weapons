@@ -32,3 +32,6 @@ func _on_dungeon_piece_resource_changed(value: DungeonPieceResource):
 
 func _on_tilemap_offset_changed(value: Vector2):
 	_tilemap.position = value
+	for child in get_children():
+		if child is PointLight2D:
+			child.position = child.position + value

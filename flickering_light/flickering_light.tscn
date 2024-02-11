@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://vrfwipd3m6p8"]
+
+[ext_resource type="Texture2D" uid="uid://gph8y5vr8mix" path="res://flickering_light/flickering_light.tres" id="1_38262"]
+[ext_resource type="Script" path="res://flickering_light/flickering_light.gd" id="2_8gid0"]
+
+[node name="FlickeringLight" type="PointLight2D"]
+color = Color(0.980392, 0.611765, 0.403922, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("1_38262")
+script = ExtResource("2_8gid0")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 2
+color = Color(0.8, 0.6, 0.501961, 1)
+texture = ExtResource("1_38262")

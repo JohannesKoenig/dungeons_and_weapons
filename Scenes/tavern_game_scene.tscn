@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=76 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bjuyul8ahp676" path="res://art/sprites/tilesets/Tavern_closed.png" id="24_j1c6b"]
 [ext_resource type="Resource" uid="uid://co6aefe3hm0ou" path="res://tavern/tavern_resource.tres" id="25_35v82"]
 [ext_resource type="Texture2D" uid="uid://dth62kh6mt3aq" path="res://art/sprites/tilesets/Tavern_closed_normal.png" id="25_eop8i"]
+[ext_resource type="PackedScene" uid="uid://vrfwipd3m6p8" path="res://flickering_light/flickering_light.tscn" id="25_eyorj"]
 [ext_resource type="PackedScene" uid="uid://b7sjloxcm3svx" path="res://audio/background_music_player.tscn" id="28_dbcv7"]
 [ext_resource type="AudioStream" uid="uid://dgltsoh56mqok" path="res://audio/TavernAmbiance.mp3" id="29_uin4i"]
 [ext_resource type="PackedScene" uid="uid://cksui80t86inp" path="res://coin_pop_up/coin_pop_up_spawner.tscn" id="30_ws4ym"]
@@ -758,10 +759,10 @@ day_night_timer = ExtResource("10_iob6c")
 movement_stats = SubResource("Resource_ag016")
 
 [node name="PointLight" type="PointLight2D" parent="Entities"]
-position = Vector2(153, 88)
+position = Vector2(144, 118)
 scale = Vector2(4.23438, 4.23438)
 color = Color(1, 0.760784, 0.270588, 1)
-energy = 1.1
+energy = 0.4
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_item_cull_mask = 5
@@ -908,6 +909,34 @@ z_index = -2
 z_index = -2
 dnr = ExtResource("10_iob6c")
 fog = NodePath("../Fog")
+
+[node name="FlickeringLight" parent="Entities" instance=ExtResource("25_eyorj")]
+position = Vector2(66, 55)
+scale = Vector2(1.5, 1.5)
+color = Color(0.941176, 0.419608, 0.262745, 1)
+energy = 0.59
+flicker_time = 0.3
+
+[node name="FlickeringLight2" parent="Entities" instance=ExtResource("25_eyorj")]
+position = Vector2(201, 123)
+scale = Vector2(1.5, 1.5)
+color = Color(0.941176, 0.419608, 0.262745, 1)
+energy = 0.59
+flicker_time = 0.3
+
+[node name="FlickeringLight3" parent="Entities" instance=ExtResource("25_eyorj")]
+position = Vector2(96, 142)
+scale = Vector2(2.1, 2.1)
+color = Color(0.941176, 0.419608, 0.262745, 1)
+energy = 0.59
+flicker_time = 0.3
+
+[node name="FlickeringLight4" parent="Entities" instance=ExtResource("25_eyorj")]
+position = Vector2(133, 55)
+scale = Vector2(3.5, 3.5)
+color = Color(0.941176, 0.419608, 0.262745, 1)
+energy = 0.59
+flicker_time = 0.3
 
 [node name="AlphaWall" type="StaticBody2D" parent="."]
 

@@ -75,6 +75,8 @@ color = Color(0, 0, 0, 1)
 position = Vector2(198, 240)
 
 [node name="DungeonSpawner" parent="." instance=ExtResource("10_vrn8s")]
+light_mask = 7
+visibility_layer = 7
 position = Vector2(-256, -80)
 dungeon_resource = ExtResource("11_0hnuh")
 
