@@ -6,6 +6,7 @@ var saveslot_resources: Dictionary = {}
 var ambient_sound_level: int = 0
 var music_sound_level: int = 0
 var combat_sound_level: int = 0
+var selected_saveslot: int = 1
 var MENU_SAVE_PATH = "user://menu_save.json"
 signal saveslot_resource_changed(slots: Array)
 # ------------------------------------------------------------------------------

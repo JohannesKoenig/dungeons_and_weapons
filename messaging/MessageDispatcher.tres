@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="MessageDispatcher" load_steps=2 format=3 uid="uid://c6ixbwtp7ja1g"]
+
+[ext_resource type="Script" path="res://messaging/MessageDispatcher.gd" id="1_xib11"]
+
+[resource]
+script = ExtResource("1_xib11")

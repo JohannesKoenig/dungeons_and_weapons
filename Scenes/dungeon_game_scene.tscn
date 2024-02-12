@@ -35,6 +35,7 @@ y_sort_enabled = true
 script = ExtResource("1_rgff1")
 
 [node name="Fog" parent="." instance=ExtResource("2_8egu5")]
+z_index = 1
 
 [node name="Behaviours" type="Node" parent="."]
 

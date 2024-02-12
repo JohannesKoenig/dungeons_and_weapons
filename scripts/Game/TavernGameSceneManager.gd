@@ -20,7 +20,7 @@ var game_saver: GameSaver
 
 func _ready():
 	game_saver = get_node("/root/GameSaver")
-	game_saver.load_game_from_resources()
+	# game_saver.load_game_from_resources()
 	dnr.day_ended.connect(game_saver.save_game_from_resources)
 	dnr.day_ended.connect(func(): tavern_resource.open_tavern(false))
 	dnr.day_ended.connect(_generate_dungeon)

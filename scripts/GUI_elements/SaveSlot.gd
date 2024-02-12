@@ -9,7 +9,7 @@ signal on_load_pressed
 @onready var load_button = $VBoxContainer/HBoxContainer/Load
 @onready var delete_button = $VBoxContainer/HBoxContainer/Delete
 var game_saver: GameSaver
-
+var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 
 func _ready():
 	game_saver = $/root/GameSaver
@@ -38,8 +38,10 @@ func _on_delete_pressed():
 
 
 func _on_load_pressed():
+	menu_save_resource.selected_saveslot = saveslot_resource.slot
+	_message_dispatcher.requested_load.emit()
 	game_saver.save_slot = saveslot_resource.slot
-	get_tree().change_scene_to_file("res://Scenes/tavern_game_scene.tscn")
+	
 
 func _on_saveslot_changed(saveslot: SaveslotResource):
 	pass 

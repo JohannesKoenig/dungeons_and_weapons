@@ -22,6 +22,7 @@ AiPathMarkers="*res://scripts/Autoloads/ai_path_markers.gd"
 ResourceLoadingManager="*res://scripts/Autoloads/resource_loading_manager.gd"
 DragAndDropLayer="*res://Scenes/Autoloads/DragAndDropLayer.tscn"
 DayNightTimer="*res://daynight/day_night_timer.gd"
+MainStateMachine="*res://state_machines/main_state_machine/main_state_machine.gd"
 
 [display]
 

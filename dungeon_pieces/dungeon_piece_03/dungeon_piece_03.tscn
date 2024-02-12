@@ -15,7 +15,6 @@ layer_0/tile_data = PackedInt32Array(-131075, 589824, 7, -65539, 327680, 10, -3,
 
 [node name="FlickeringLight" parent="." index="2" instance=ExtResource("3_ncrsa")]
 position = Vector2(-40, 41)
-energy = 0.5
 
 [node name="FlickeringLight2" parent="." index="3" instance=ExtResource("3_ncrsa")]
 position = Vector2(39, 41)
