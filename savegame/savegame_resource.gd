@@ -13,6 +13,7 @@ var tavern_resource = preload("res://tavern/tavern_resource.tres")
 var customers = preload("res://customers/customers_resource.tres")
 var dungeon_inventory = preload("res://dungeon/dungeon_inventory.tres")
 var dungeon_resource = preload("res://dungeon_spawner/dungeon_resource.tres")
+var day_night_resoure: DayNightResource = preload("res://daynight/day_night_resource.tres")
 
 func _get_path(slot: int):
 	return SAVE_GAME_PATH % str(slot)
@@ -34,7 +35,8 @@ func write_savegame(slot: int = 1):
 			"today": customers.today.map(func(x): return x.serialize())
 		},
 		"dungeon_inventory": dungeon_inventory.serialize(),
-		"dungeon_resource": dungeon_resource.serialize()
+		"dungeon_resource": dungeon_resource.serialize(),
+		"day_night_resource": day_night_resoure.serialize()
 	}
 	
 	var json_string := JSON.new().stringify(data)
@@ -57,3 +59,4 @@ func load_savegame(slot: int = 1):
 		customers.today = data["customers"]["today"].map(func(x): return AdventurerResource.deserialize_from_dict(x))
 		dungeon_inventory.deserialize(data["dungeon_inventory"])
 		dungeon_resource.deserialize(data["dungeon_resource"])
+		day_night_resoure.deserialize(data["day_night_resource"])

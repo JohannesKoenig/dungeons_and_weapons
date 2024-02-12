@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dt1choghkaavl"]
+[gd_scene load_steps=19 format=3 uid="uid://dt1choghkaavl"]
 
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://interaction_handlers/PlayerInputHandler.tscn" id="1_ndabk"]
 [ext_resource type="Script" path="res://Scenes/dungeon_game_scene.gd" id="1_rgff1"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://b20jkm7hy5t00" path="res://dungeon_spawner/dungeon_resource.tres" id="11_0hnuh"]
 [ext_resource type="PackedScene" uid="uid://b7sjloxcm3svx" path="res://audio/background_music_player.tscn" id="13_stig1"]
 [ext_resource type="AudioStream" uid="uid://bfmr1pjkm33fy" path="res://audio/DungeonTune.wav" id="14_q41g7"]
+[ext_resource type="PackedScene" uid="uid://dksngbj7j06b3" path="res://daynight/day_night_timer.tscn" id="15_meqfy"]
 
 [sub_resource type="Resource" id="Resource_vjepf"]
 script = ExtResource("4_5jtbs")
@@ -86,5 +87,7 @@ stream = ExtResource("14_q41g7")
 volume_db = -4.0
 max_distance = 200000.0
 fade_in_duration = 3.0
+
+[node name="DayNightTimer" parent="." instance=ExtResource("15_meqfy")]
 
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]

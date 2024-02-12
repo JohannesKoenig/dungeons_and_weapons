@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=77 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -32,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://dgltsoh56mqok" path="res://audio/TavernAmbiance.mp3" id="29_uin4i"]
 [ext_resource type="PackedScene" uid="uid://cksui80t86inp" path="res://coin_pop_up/coin_pop_up_spawner.tscn" id="30_ws4ym"]
 [ext_resource type="PackedScene" uid="uid://cb4qohghjri5g" path="res://Scenes/fog.tscn" id="31_u1wbl"]
+[ext_resource type="PackedScene" uid="uid://dksngbj7j06b3" path="res://daynight/day_night_timer.tscn" id="33_m4pko"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgtce"]
 texture = ExtResource("3_p81w2")
@@ -970,6 +971,8 @@ max_distance = 150.0
 
 [node name="CoinPopUpSpawner" parent="." instance=ExtResource("30_ws4ym")]
 position = Vector2(118, 58)
+
+[node name="DayNightTimer" parent="." instance=ExtResource("33_m4pko")]
 
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]
 [connection signal="toggle_menu" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_game_menu"]

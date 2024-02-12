@@ -7,7 +7,7 @@ var customers_resource: CustomersResource = preload("res://customers/customers_r
 
 func _ready():
 	var game_saver = get_node("/root/GameSaver")
-	game_saver.load_game_from_resources()
+	# game_saver.load_game_from_resources()
 	var drag_and_drop_layer = get_node("/root/DragAndDropLayer")
 	drag_and_drop_layer.set_canvas_layer($CanvasLayer)
 	var items_to_spawn = _get_items_to_spawn()

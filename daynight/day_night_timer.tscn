@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dksngbj7j06b3"]
+
+[ext_resource type="Script" path="res://daynight/day_night_timer.gd" id="1_ek7un"]
+
+[node name="DayNightTimer" type="Node"]
+script = ExtResource("1_ek7un")
