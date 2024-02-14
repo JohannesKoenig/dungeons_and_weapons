@@ -1,0 +1,17 @@
+{
+	"name": "return",
+	"states": [
+		{
+			"name": "init",
+			"type": "movement",
+			"parameters": {
+				"target": "spawn_position"
+			},
+			"next": "despawn"
+		},
+		{
+			"name": "despawn",
+			"type": "despawn"
+		}
+	]
+}

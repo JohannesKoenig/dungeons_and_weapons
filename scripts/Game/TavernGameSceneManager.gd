@@ -4,7 +4,6 @@ class_name TavernManager
 @export var customers_resource: CustomersResource
 @export var dnr: DayNightResource
 @export var tavern_resource: TavernResource = preload("res://tavern/tavern_resource.tres")
-@export var max_adventurers_per_hour: int = 1
 var dungeon_generator_resource: DungeonGeneratorResource = preload("res://dungeon_generator/dungeon_generator_resource.tres")
 var dungeon_resource: DungeonResource = preload("res://dungeon_spawner/dungeon_resource.tres")
 var ai_path_markers: AiPathMarkers
@@ -44,7 +43,6 @@ func _ready():
 	var drag_and_drop_layer = get_node("/root/DragAndDropLayer")
 	drag_and_drop_layer.set_canvas_layer($CanvasLayer)
 	$CanvasLayer/TavernScene/InventoryPopUp.content.set_quick_access_component($Entities/Player/QickAccessComponent)
-	tavern_resource.tavern_open_changed.connect(trigger_ai_on_tavern_open)
 	if dungeon_resource.dungeon_pieces.is_empty():
 		var pieces = dungeon_generator_resource.get_layout()
 		dungeon_resource.dungeon_pieces = pieces
@@ -59,21 +57,6 @@ func get_items_on_display() -> Array:
 		_get_item_resource_and_marker($Entities/ItemDisplay6),
 	]
 
-func get_adventurers():
-	var current_time = dnr.current_day_time
-	var end_day_time = dnr.sun_down_hour * 60 + dnr.sun_down_minute
-	var diff = end_day_time - current_time
-	var diff_in_hours = float(diff) / 60
-	var number_of_adventurers = rng.randi_range(diff_in_hours * max_adventurers_per_hour / 2, diff_in_hours * max_adventurers_per_hour)
-	var res = customers_resource.get_random_cutstomers(number_of_adventurers)
-	customers_resource.available.append_array(res["new"])
-	customers_resource.today = res["adventurers"]
-
-func trigger_ai_on_tavern_open(open: bool):
-	if !open:
-		return
-	get_adventurers()
-	$Behaviours/AiDirector.update_instructions()
 
 func _get_item_resource_and_marker(item_display: ItemDisplay) -> Dictionary:
 	return {
@@ -82,7 +65,6 @@ func _get_item_resource_and_marker(item_display: ItemDisplay) -> Dictionary:
 	}
 
 func _generate_dungeon():
-	print("generate dungeon")
 	dungeon_generator_resource.save_rules()
 	dungeon_generator_resource.load_rules()
 	dungeon_generator_resource.save_rules()

@@ -2,6 +2,7 @@ extends Node2D
 
 @export var player_resource: PlayerResource
 @export var tavern_resource: TavernResource
+var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 
 func interact_buy_item(source: Node2D):
 	if source is Player:
@@ -26,4 +27,5 @@ func interact_open_tavern(source):
 
 
 func toggle_tavern_open():
-	tavern_resource.toggle_tavern()
+	_message_dispatcher.requested_shop_open.emit()
+	#tavern_resource.toggle_tavern()

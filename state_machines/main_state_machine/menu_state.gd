@@ -12,9 +12,8 @@ func _init():
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
 func on_enter():
-	print(_message_dispatcher)
-	print(_on_load)
 	_message_dispatcher.requested_load.connect(_on_load)
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 func on_exit():
 	_message_dispatcher.requested_load.disconnect(_on_load)

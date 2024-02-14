@@ -3,7 +3,7 @@ class_name PlayerMovementMapper
 
 var target: CharacterBody2D
 @export var movement_stats: MovementStats
-@export var tavern_resource: TavernResource = preload("res://tavern/tavern_resource.tres")
+var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 
 var vertical: float
 var horizontal: float
@@ -22,7 +22,7 @@ func _process(delta):
 	direction = Vector2(horizontal, vertical)
 	if !target:
 		return
-	if tavern_resource and !tavern_resource.open:
+	if !(_message_dispatcher.game_state is ShopState):
 		target.velocity = direction.normalized() * movement_stats.movement_speed
 	else:
 		target.velocity = Vector2.ZERO

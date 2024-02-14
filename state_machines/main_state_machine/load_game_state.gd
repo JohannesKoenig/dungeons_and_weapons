@@ -20,7 +20,7 @@ func on_enter():
 	add_child(timer)
 	timer.start(1)
 	await timer.timeout
-	transitioned.emit("menu")
+	transitioned.emit("game")
 	
 func on_exit():
 	get_tree().change_scene_to_file("res://Scenes/tavern_game_scene.tscn")

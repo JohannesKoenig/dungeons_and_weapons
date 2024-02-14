@@ -1,40 +1,22 @@
-class_name MessageDispatcher extends Resource
+class_name IdleState extends State
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
-var main_state:
-	set(value):
-		main_state = value
-		main_state_changed.emit(value)
-signal main_state_changed(state)
+var dnr: DayNightResource = preload("res://daynight/day_night_resource.tres")
 
-var loaded_game_state: String = "empty"
-var game_state:
-	set(value):
-		game_state = value
-		game_state_changed.emit(value)
-signal game_state_changed(state)
-
-# Main Game and Menu requests
-signal requested_load
-signal requested_save
-signal requested_exit_game
-
-#Ingame requests
-signal requested_shop_open
-signal requested_adventurer_return
-signal requested_tavern_idle
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
+func on_enter():
+	_message_dispatcher.requested_shop_open.connect(_on_shop_open)
 
+func on_exit():
+	_message_dispatcher.requested_shop_open.disconnect(_on_shop_open)
+	
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
-func serialize() -> Dictionary:
-	return {
-		"game_state": game_state.get_state_name()
-	}
 
-func deserialize(data: Dictionary):
-	loaded_game_state = data["game_state"]
+func _on_shop_open():
+	if dnr.is_day:
+		transitioned.emit("shop")

@@ -1,40 +1,27 @@
-class_name MessageDispatcher extends Resource
+class_name GameState extends State
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
-var main_state:
-	set(value):
-		main_state = value
-		main_state_changed.emit(value)
-signal main_state_changed(state)
 
-var loaded_game_state: String = "empty"
-var game_state:
-	set(value):
-		game_state = value
-		game_state_changed.emit(value)
-signal game_state_changed(state)
-
-# Main Game and Menu requests
-signal requested_load
-signal requested_save
-signal requested_exit_game
-
-#Ingame requests
-signal requested_shop_open
-signal requested_adventurer_return
-signal requested_tavern_idle
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
-
+func _init():
+	state_name = "game"
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
-func serialize() -> Dictionary:
-	return {
-		"game_state": game_state.get_state_name()
-	}
+func on_enter():
+	_message_dispatcher.requested_save.connect(_on_save)
+	_message_dispatcher.requested_exit_game.connect(_on_exit_game)
 
-func deserialize(data: Dictionary):
-	loaded_game_state = data["game_state"]
+
+func on_exit():
+	_message_dispatcher.requested_save.disconnect(_on_save)
+	_message_dispatcher.requested_exit_game.disconnect(_on_exit_game)
+
+func _on_save():
+	transitioned.emit("save")
+
+func _on_exit_game():
+	transitioned.emit("save_and_exit")

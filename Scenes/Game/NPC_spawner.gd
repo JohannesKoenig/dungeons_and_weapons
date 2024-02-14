@@ -11,13 +11,19 @@ var time_table: Array
 var index = 0
 @export var movement_stats: MovementStats
 var ai_resource = preload("res://Scenes/Game/Units/AIMovementMapper.tscn")
-
+var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
+var return_strategy:Dictionary
+@onready var ai_path_markers: AiPathMarkers = $"/root/AiPathMarkers"
 
 func _ready():
 	timer = Timer.new()
 	timer.one_shot = true
 	timer.timeout.connect(spawn_adventurer)
 	add_child(timer)
+	_message_dispatcher.game_state_changed.connect(start_spawning_return)
+	start_spawning_return(_message_dispatcher.game_state)
+	var resource = FileAccess.open("res://Resources/ai/return_strategy.json", FileAccess.READ)
+	return_strategy = JSON.parse_string(resource.get_as_text())
 
 
 func _create_time_table(duration: float, nr_of_chunks: int) -> Array:
@@ -35,13 +41,19 @@ func spawn_adventurer() -> Visitor:
 	var resource = adventurers_to_spawn[index]
 	var adventurer: Visitor = visitor_resource.instantiate()
 	adventurer.set_adventurer_resource(resource)
-	adventurer.set_strategy(adventurer_strategy_map[resource])
-	# TODO: pass strategy
-	# adventurer.
-	add_child(adventurer)
+	if _message_dispatcher.game_state is ReturnState:
+		adventurer.set_strategy(return_strategy)
+		add_child(adventurer)
+		adventurer.global_position = ai_path_markers.position_register["despawn_position"].global_position
+	else:
+		adventurer.set_strategy(adventurer_strategy_map[resource])
+		add_child(adventurer)
 	index += 1
 	if index < len(time_table):
 		timer.start(time_table[index])
+	else:
+		if _message_dispatcher.game_state is ReturnState:
+			_message_dispatcher.requested_tavern_idle.emit()
 	return adventurer
 
 func set_adventurer_strategy_map(map: Dictionary):
@@ -56,5 +68,15 @@ func start_spawning():
 	spawn_window_duration = (float(diff) / (24 * 60)) * (day_night_timer.day_time_length_in_seconds + day_night_timer.night_time_length_in_seconds)
 	time_table = _create_time_table(spawn_window_duration, len(adventurer_strategy_map))
 	index = 0
-	if len(time_table):
+	if len(time_table) > 0:
+		timer.start(time_table[index])
+
+func start_spawning_return(state: State):
+	if !(state is ReturnState):
+		return
+	var diff = 2 * 60
+	spawn_window_duration = (float(diff) / (24 * 60)) * (day_night_timer.day_time_length_in_seconds + day_night_timer.night_time_length_in_seconds)
+	time_table = _create_time_table(spawn_window_duration, len(adventurer_strategy_map))
+	index = 0
+	if len(time_table) > 0:
 		timer.start(time_table[index])

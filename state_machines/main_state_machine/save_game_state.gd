@@ -1,40 +1,22 @@
-class_name MessageDispatcher extends Resource
+class_name SaveGameState extends State
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
-var main_state:
-	set(value):
-		main_state = value
-		main_state_changed.emit(value)
-signal main_state_changed(state)
-
-var loaded_game_state: String = "empty"
-var game_state:
-	set(value):
-		game_state = value
-		game_state_changed.emit(value)
-signal game_state_changed(state)
-
-# Main Game and Menu requests
-signal requested_load
-signal requested_save
-signal requested_exit_game
-
-#Ingame requests
-signal requested_shop_open
-signal requested_adventurer_return
-signal requested_tavern_idle
+var _save_game_resource: SaveGameResource = SaveGameResource.new()
+var _menu_save_resource: MenuSaveResource = preload("res://savegame/menu_save_resource.tres")
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
-
+func _init():
+	state_name = "save"
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
-func serialize() -> Dictionary:
-	return {
-		"game_state": game_state.get_state_name()
-	}
-
-func deserialize(data: Dictionary):
-	loaded_game_state = data["game_state"]
+func on_enter():
+	var save_slot = _menu_save_resource.selected_saveslot
+	_save_game_resource.write_savegame(save_slot)
+	var timer = Timer.new()
+	add_child(timer)
+	timer.start(1)
+	await timer.timeout
+	transitioned.emit("game")

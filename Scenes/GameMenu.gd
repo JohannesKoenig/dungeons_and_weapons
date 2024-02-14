@@ -1,6 +1,7 @@
 class_name GameMenu extends VBoxContainer
 
 var game_saver: GameSaver
+var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
@@ -21,5 +22,4 @@ func _on_back_pressed():
 	deactivate.emit()
 
 func _on_exit_pressed():
-	game_saver.save_game_from_resources()
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	_message_dispatcher.requested_exit_game.emit()
