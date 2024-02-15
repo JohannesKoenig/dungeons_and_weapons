@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg5nybf67hpca"]
+
+[ext_resource type="Script" path="res://tooltip/tooltip.gd" id="1_5234x"]
+[ext_resource type="Texture2D" uid="uid://dc7n8s67r7kwm" path="res://art/sprites/icons/coin.png" id="2_8s58y"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_clvox"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f3lhq"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_11be5"]
+light_mode = 1
+
+[node name="Tooltip" type="Control"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5234x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 16.0
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+material = SubResource("CanvasItemMaterial_clvox")
+layout_mode = 2
+text = "Training Sword"
+
+[node name="Separator" type="Label" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CoinsContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Coins" type="Label" parent="HBoxContainer/CoinsContainer"]
+material = SubResource("CanvasItemMaterial_f3lhq")
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CoinTexture" type="TextureRect" parent="HBoxContainer/CoinsContainer"]
+material = SubResource("CanvasItemMaterial_11be5")
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_8s58y")
+stretch_mode = 4

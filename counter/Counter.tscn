@@ -1,14 +1,52 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvuu5tnbgss15"]
+[gd_scene load_steps=15 format=3 uid="uid://bvuu5tnbgss15"]
 
 [ext_resource type="Script" path="res://counter/Counter.gd" id="1_hhj4e"]
 [ext_resource type="Script" path="res://scripts/helper/Actionable.gd" id="2_sufjh"]
 [ext_resource type="PackedScene" uid="uid://phmysi5nhblq" path="res://Scenes/helper/Actionable.tscn" id="3_0jxvl"]
 [ext_resource type="PackedScene" uid="uid://73mvo4p2s0t5" path="res://counter/input_hint.tscn" id="4_457bb"]
 [ext_resource type="Texture2D" uid="uid://4lqrfxt1uqa5" path="res://icons/X.png" id="5_diom0"]
+[ext_resource type="Texture2D" uid="uid://bonldyn57iqqs" path="res://counter/Marker.png" id="6_q4tqn"]
+[ext_resource type="PackedScene" uid="uid://vrfwipd3m6p8" path="res://flickering_light/flickering_light.tscn" id="7_j3iyf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8jb27"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k4pq3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghuac"]
+atlas = ExtResource("6_q4tqn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00e56"]
+atlas = ExtResource("6_q4tqn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm52p"]
+atlas = ExtResource("6_q4tqn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0pii"]
+atlas = ExtResource("6_q4tqn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l6jv7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghuac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00e56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bm52p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0pii")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Counter" type="Node2D"]
 script = ExtResource("1_hhj4e")
@@ -31,6 +69,20 @@ shape = SubResource("CircleShape2D_k4pq3")
 [node name="InputHint" parent="TavernOpen" instance=ExtResource("4_457bb")]
 position = Vector2(-8, -22)
 texture = ExtResource("5_diom0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -25)
+sprite_frames = SubResource("SpriteFrames_l6jv7")
+autoplay = "default"
+frame_progress = 0.0674525
+
+[node name="FlickeringLight" parent="AnimatedSprite2D" instance=ExtResource("7_j3iyf")]
+light_mask = 7
+color = Color(0.129412, 0.690196, 0, 1)
+energy = 1.0
+shadow_enabled = false
+texture_scale = 0.5
 
 [connection signal="action" from="Actionable" to="." method="interact_buy_item"]
 [connection signal="action" from="TavernOpen" to="." method="interact_open_tavern"]

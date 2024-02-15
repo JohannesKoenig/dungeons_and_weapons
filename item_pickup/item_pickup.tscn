@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://0nqay38481la"]
+[gd_scene load_steps=9 format=3 uid="uid://0nqay38481la"]
 
 [ext_resource type="Script" path="res://item_pickup/item_pickup.gd" id="1_p8cnt"]
 [ext_resource type="Resource" uid="uid://c5tc5pfapdxlx" path="res://dungeon/dungeon_inventory.tres" id="2_4b4fw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://phmysi5nhblq" path="res://Scenes/helper/Actionable.tscn" id="2_u3n5o"]
 [ext_resource type="PackedScene" uid="uid://73mvo4p2s0t5" path="res://counter/input_hint.tscn" id="5_k70vw"]
 [ext_resource type="Texture2D" uid="uid://4lqrfxt1uqa5" path="res://icons/X.png" id="6_y37a5"]
+[ext_resource type="PackedScene" uid="uid://dg5nybf67hpca" path="res://tooltip/tooltip.tscn" id="7_5xfc2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnqoi"]
 
@@ -25,6 +26,9 @@ shape = SubResource("CircleShape2D_tnqoi")
 
 [node name="InputHint" parent="Actionable" instance=ExtResource("5_k70vw")]
 texture = ExtResource("6_y37a5")
+
+[node name="Tooltip" parent="." instance=ExtResource("7_5xfc2")]
+visible = false
 
 [connection signal="action" from="Actionable" to="." method="on_collect"]
 [connection signal="is_closest_to_player_changed" from="Actionable" to="." method="_on_actionable_is_closest_to_player_changed"]

@@ -17,8 +17,10 @@ func _update_sprite(items: Array, index: int):
 	var item = items[index]
 	if item:
 		$Sprite2D.texture = items[index].ingame_texture
+		$Tooltip.item = items[index]
 		visible = true
 	else:
+		$Tooltip.item = null
 		visible = false
 
 
@@ -43,5 +45,7 @@ func on_collect(source):
 func _on_actionable_is_closest_to_player_changed(value):
 	if value:
 		$Actionable/InputHint.show_hint()
+		$Tooltip.show_tooltip()
 	else:
 		$Actionable/InputHint.hide_hint()
+		$Tooltip.hide_tooltip()

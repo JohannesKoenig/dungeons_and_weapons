@@ -11,6 +11,7 @@ signal player_on_counter_changed(value: bool)
 
 func _ready():
 	_message_dispatcher.game_state_changed.connect(_on_state_changed)
+	_message_dispatcher.game_state_changed.connect(_update_position_marker)
 	_on_state_changed(_message_dispatcher.game_state)
 
 func interact_buy_item(source: Node2D):
@@ -46,6 +47,12 @@ func _update_hint(on_counter: bool, state: State):
 		$TavernOpen/InputHint.show_hint()
 	else:
 		$TavernOpen/InputHint.hide_hint()
+
+func _update_position_marker(state: State):
+	if state is DayState:
+		$AnimatedSprite2D.visible = true
+	else:
+		$AnimatedSprite2D.visible = false
 
 func _on_tavern_open_is_closest_to_player_changed(value):
 	player_on_counter = value

@@ -33,13 +33,17 @@ func set_resource(items: Array):
 	if item:
 		$ItemSprite.visible = true
 		$ItemSprite.texture = item.ingame_texture
+		$Tooltip.item = item
 	else:
 		$ItemSprite.visible = false
 		$ItemSprite.texture = null
+		$Tooltip.item = null
 
 
 func _on_actionable_is_closest_to_player_changed(value):
 	if value:
 		$Actionable/InputHint.show_hint()
+		$Tooltip.show_tooltip()
 	else:
 		$Actionable/InputHint.hide_hint()
+		$Tooltip.hide_tooltip()
