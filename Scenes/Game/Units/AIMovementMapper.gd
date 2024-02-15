@@ -36,7 +36,6 @@ func _process(delta):
 
 func set_strategy(strategy: Dictionary):
 	self.strategy = strategy
-	print(self.strategy)
 	start()
 
 func set_actor(actor: CharacterBody2D):

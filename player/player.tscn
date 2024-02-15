@@ -21,6 +21,8 @@ player_resource = ExtResource("3_m1rlj")
 [node name="InventoryComponent" parent="." index="2"]
 inventory_resource = ExtResource("4_hlcuy")
 
+[node name="ActionableFinder" parent="Direction" index="0" groups=["player_actionable_finder"]]
+
 [node name="ItemHoldingComponent" parent="." index="6"]
 inventory_resource = ExtResource("4_hlcuy")
 quick_access = ExtResource("5_0hr34")

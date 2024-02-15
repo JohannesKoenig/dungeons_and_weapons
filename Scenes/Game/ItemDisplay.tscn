@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://blju14eccfr53"]
+[gd_scene load_steps=10 format=3 uid="uid://blju14eccfr53"]
 
 [ext_resource type="Script" path="res://scripts/Game/ItemDisplay.gd" id="1_q5mcy"]
 [ext_resource type="PackedScene" uid="uid://qt8yey64vkjj" path="res://utils/ToggleComponent/ToggleComponent.tscn" id="2_eikxv"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://brh82olvvw0w4" path="res://utils/PopUpGUIComponent/PopUpGUIComponent.tscn" id="3_yygff"]
 [ext_resource type="PackedScene" uid="uid://1on721liy2cb" path="res://items/UIItem.tscn" id="4_b52ua"]
 [ext_resource type="Script" path="res://scripts/helper/Actionable.gd" id="5_00r8b"]
+[ext_resource type="PackedScene" uid="uid://73mvo4p2s0t5" path="res://counter/input_hint.tscn" id="7_3miev"]
+[ext_resource type="Texture2D" uid="uid://4lqrfxt1uqa5" path="res://icons/X.png" id="8_dlsft"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sjws"]
 
@@ -34,12 +36,17 @@ layout_mode = 1
 
 [node name="Actionable" type="Area2D" parent="."]
 collision_layer = 256
-collision_mask = 512
+collision_mask = 514
 script = ExtResource("5_00r8b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
 shape = SubResource("CircleShape2D_4sjws")
 
+[node name="InputHint" parent="Actionable" instance=ExtResource("7_3miev")]
+position = Vector2(-7, 4)
+texture = ExtResource("8_dlsft")
+
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]
 [connection signal="resource_changed" from="PopUpGuiComponent/UIItem" to="." method="_on_ui_item_resource_changed"]
 [connection signal="action" from="Actionable" to="." method="_on_actionable_action"]
+[connection signal="is_closest_to_player_changed" from="Actionable" to="." method="_on_actionable_is_closest_to_player_changed"]

@@ -836,7 +836,7 @@ position = Vector2(130, 91)
 script = ExtResource("13_l06rj")
 
 [node name="Counter" parent="Entities" instance=ExtResource("2_2n6xp")]
-position = Vector2(104, 79)
+position = Vector2(104, 86)
 player_resource = ExtResource("16_sxamc")
 tavern_resource = ExtResource("25_35v82")
 

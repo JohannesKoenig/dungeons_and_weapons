@@ -18,4 +18,4 @@ func on_exit():
 # ------------------------------------------------------------------------------
 
 func _on_idle():
-	transitioned.emit("idle")
+	transitioned.emit("night")

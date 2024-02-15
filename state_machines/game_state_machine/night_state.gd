@@ -1,4 +1,4 @@
-class_name IdleState extends State
+class_name NightState extends State
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
@@ -8,15 +8,13 @@ var dnr: DayNightResource = preload("res://daynight/day_night_resource.tres")
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
 func on_enter():
-	_message_dispatcher.requested_shop_open.connect(_on_shop_open)
+	dnr.night_ended.connect(_on_night_ended)
 
 func on_exit():
-	_message_dispatcher.requested_shop_open.disconnect(_on_shop_open)
+	dnr.night_ended.disconnect(_on_night_ended)
 	
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
-
-func _on_shop_open():
-	if dnr.is_day:
-		transitioned.emit("shop")
+func _on_night_ended():
+	transitioned.emit("day")

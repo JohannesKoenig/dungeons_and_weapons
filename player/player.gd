@@ -9,7 +9,6 @@ class_name Player
 var view_direction: Vector2
 var is_ready = false
 
-
 func _ready():
 	is_ready = true
 	unlink_material()

@@ -1,12 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4flt7v6bsbv5"]
+[gd_scene load_steps=3 format=3 uid="uid://c4flt7v6bsbv5"]
 
-[ext_resource type="AudioStream" uid="uid://d08ffhse2l6e7" path="res://audio/step_1.wav" id="1_pxh16"]
 [ext_resource type="Script" path="res://adventurer/footsteps_player.gd" id="2_bsav7"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_avdvh"]
-streams_count = 1
-stream_0/stream = ExtResource("1_pxh16")
-stream_0/weight = 1.0
 
 [node name="FootstepsPlayer" type="AudioStreamPlayer2D"]
 stream = SubResource("AudioStreamRandomizer_avdvh")

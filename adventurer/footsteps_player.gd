@@ -43,6 +43,7 @@ var previous_material = "default"
 # ------------------------------------------------------------------------------
 func _process(delta):
 	if previous_material != tile_scanner.floor_material:
+		previous_material = tile_scanner.floor_material
 		_change_sounds(tile_scanner.floor_material)
 
 # ------------------------------------------------------------------------------
@@ -52,7 +53,8 @@ func _process(delta):
 func _change_sounds(mat: String):
 	var stream_length = stream.streams_count
 	for i in range(stream_length):
-		stream.remove_stream(i)
+		stream.remove_stream(0)
+		print(stream.streams_count)
 	if !(mat in footsteps):
 		mat = "stone"
 	var new_streams = footsteps[mat]

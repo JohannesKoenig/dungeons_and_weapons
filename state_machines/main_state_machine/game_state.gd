@@ -25,3 +25,4 @@ func _on_save():
 
 func _on_exit_game():
 	transitioned.emit("save_and_exit")
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

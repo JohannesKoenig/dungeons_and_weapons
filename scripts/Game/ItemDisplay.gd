@@ -9,6 +9,7 @@ var item_resource: Resource
 func _ready():
 	$ItemSprite.visible = true
 	tavern_inventory_resource.items_changed.connect(set_resource)
+	set_resource(tavern_inventory_resource.items)
 
 
 func _on_actionable_action(source: Node2D):
@@ -35,3 +36,10 @@ func set_resource(items: Array):
 	else:
 		$ItemSprite.visible = false
 		$ItemSprite.texture = null
+
+
+func _on_actionable_is_closest_to_player_changed(value):
+	if value:
+		$Actionable/InputHint.show_hint()
+	else:
+		$Actionable/InputHint.hide_hint()

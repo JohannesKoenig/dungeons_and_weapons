@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_1eo2f")
-size = 16
-items = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+size = 10
+items = [null, null, null, null, null, null, null, null, null, null]

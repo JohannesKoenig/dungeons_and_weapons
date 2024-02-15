@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://73mvo4p2s0t5"]
+
+[ext_resource type="Texture2D" uid="uid://r4eulpbaamt1" path="res://icons/A.png" id="1_3prin"]
+[ext_resource type="Script" path="res://counter/InputHint.gd" id="2_stx2n"]
+[ext_resource type="PackedScene" uid="uid://dtm8kpm4rwo5u" path="res://utils/BoppingComponent/BoppingComponent.tscn" id="3_6g72k"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m5owt"]
+light_mode = 1
+
+[node name="InputHint" type="Sprite2D"]
+z_index = 2
+material = SubResource("CanvasItemMaterial_m5owt")
+position = Vector2(-8, 7)
+texture = ExtResource("1_3prin")
+script = ExtResource("2_stx2n")
+
+[node name="BoppingComponent" parent="." instance=ExtResource("3_6g72k")]
+offset = Vector2(2.08165e-12, -2)
