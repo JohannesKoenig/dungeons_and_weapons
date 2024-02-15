@@ -2,16 +2,17 @@ extends Node
 
 var dnr: DayNightResource = preload("res://daynight/day_night_resource.tres")
 var timer: Timer
-
+@export var running = false
 
 func _ready():
 	timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(_on_timeout)
-	if dnr.is_day:
-		start_day_timer()
-	else:
-		start_night_timer()
+	if running:
+		if dnr.is_day:
+			start_day_timer()
+		else:
+			start_night_timer()
 
 
 func _process(_delta: float):

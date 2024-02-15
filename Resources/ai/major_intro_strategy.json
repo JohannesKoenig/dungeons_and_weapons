@@ -1,0 +1,42 @@
+{
+	"name": "return",
+	"states": [
+		{
+			"name": "init",
+			"type": "movement",
+			"parameters": {
+				"target": "major_intro_spawn_position"
+			},
+			"next": "conversation"
+		},
+		{
+			"name": "conversation",
+			"type": "movement",
+			"parameters": {
+				"target": "major_conversation_position"
+			},
+			"next": "await_conversation"
+		},
+		{
+			"name": "await_conversation",
+			"type": "wait",
+			"parameters": {
+				"trigger": "conversation_over",
+				"time": 10
+			},
+			"next": "move_to_spawn"
+		},
+		{
+			"name": "move_to_spawn",
+			"type": "movement",
+			"parameters": {
+				"target": "major_intro_spawn_position"
+			},
+			"next": "despawn"
+		},
+		{
+			"name": "despawn",
+			"type": "despawn"
+		}
+	]
+}

@@ -1,0 +1,58 @@
+{
+	"name": "return",
+	"states": [
+		{
+			"name": "init",
+			"type": "movement",
+			"parameters": {
+				"target": "player_intro_spawn_position"
+			},
+			"next": "conversation"
+		},
+		{
+			"name": "conversation",
+			"type": "movement",
+			"parameters": {
+				"target": "player_conversation_position"
+			},
+			"next": "await_conversation"
+		},
+		{
+			"name": "await_conversation",
+			"type": "wait",
+			"parameters": {
+				"trigger": "conversation_over",
+				"time": 10
+			},
+			"next": "move_to_door"
+		},
+		{
+			"name": "move_to_door",
+			"type": "movement",
+			"parameters": {
+				"target": "door_position"
+			},
+			"next": "enter_door"
+		},
+		{
+			"name": "enter_door",
+			"type": "movement",
+			"parameters": {
+				"target": "hallway_position"
+			},
+			"next": "trigger_fade_out"
+		},
+		{
+			"name": "trigger_fade_out",
+			"type": "trigger",
+			"parameters": {
+				"trigger": "fade_out"
+			},
+			"next": "despawn"
+		},
+		{
+			"name": "despawn",
+			"type": "despawn"
+		}
+	]
+}

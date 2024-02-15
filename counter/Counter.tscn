@@ -75,7 +75,7 @@ z_index = -1
 position = Vector2(0, -25)
 sprite_frames = SubResource("SpriteFrames_l6jv7")
 autoplay = "default"
-frame_progress = 0.0674525
+frame_progress = 0.424609
 
 [node name="FlickeringLight" parent="AnimatedSprite2D" instance=ExtResource("7_j3iyf")]
 light_mask = 7
