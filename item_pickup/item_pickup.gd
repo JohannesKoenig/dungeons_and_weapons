@@ -38,3 +38,10 @@ func on_collect(source):
 				source.pickup_item(inventory.items[index])
 				inventory.remove_at_index(index)
 				queue_free()
+
+
+func _on_actionable_is_closest_to_player_changed(value):
+	if value:
+		$Actionable/InputHint.show_hint()
+	else:
+		$Actionable/InputHint.hide_hint()

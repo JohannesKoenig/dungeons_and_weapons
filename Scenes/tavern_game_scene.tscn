@@ -968,6 +968,7 @@ max_distance = 150.0
 stream = ExtResource("29_uin4i")
 volume_db = -2.0
 max_distance = 150.0
+bus = &"Ambient"
 
 [node name="CoinPopUpSpawner" parent="." instance=ExtResource("30_ws4ym")]
 position = Vector2(118, 58)

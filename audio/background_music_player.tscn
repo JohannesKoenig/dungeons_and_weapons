@@ -8,5 +8,6 @@ position = Vector2(138, 118)
 stream = ExtResource("1_682y2")
 autoplay = true
 max_distance = 20000.0
+bus = &"Music"
 area_mask = 0
 script = ExtResource("2_6m0jx")

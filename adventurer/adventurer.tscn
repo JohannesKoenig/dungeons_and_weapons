@@ -528,6 +528,7 @@ position = Vector2(-2.08165e-12, -7)
 
 [node name="FootstepsPlayer" parent="." node_paths=PackedStringArray("tile_scanner") instance=ExtResource("10_k0pi7")]
 volume_db = -17.286
+bus = &"Combat"
 tile_scanner = NodePath("../TileScanner")
 
 [node name="TileScanner" parent="." instance=ExtResource("11_e8gh8")]
@@ -535,8 +536,10 @@ position = Vector2(-2.08165e-12, 6)
 
 [node name="ItemPickupPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_fv4ib")
+bus = &"Combat"
 
 [node name="ItemDropPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_f0kga")
+bus = &"Combat"
 
 [connection signal="selected_changed" from="QickAccessComponent" to="ItemHoldingComponent" method="_on_qick_access_component_selected_changed"]
