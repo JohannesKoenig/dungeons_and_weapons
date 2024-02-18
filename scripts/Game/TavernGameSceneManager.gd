@@ -16,6 +16,7 @@ var adventurer_textures = [
 ]
 var rng: RandomNumberGenerator
 var game_saver: GameSaver
+var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 
 func _ready():
 	game_saver = get_node("/root/GameSaver")
@@ -46,6 +47,10 @@ func _ready():
 	if dungeon_resource.dungeon_pieces.is_empty():
 		var pieces = dungeon_generator_resource.get_layout()
 		dungeon_resource.dungeon_pieces = pieces
+	
+	if _message_dispatcher.game_state is TavernAfterDungeonState:
+		var pos = ai_path_markers.position_register["dungeon_position"].global_position
+		$Entities/Player.global_position = pos
 
 func get_items_on_display() -> Array:
 	return [

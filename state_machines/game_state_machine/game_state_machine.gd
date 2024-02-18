@@ -15,8 +15,13 @@ func _ready():
 		states["return"]= _instantiate_state(load("res://state_machines/game_state_machine/return_state.gd"))
 	if !("shop" in states):
 		states["shop"]= _instantiate_state(load("res://state_machines/game_state_machine/shop_state.gd"))
+	if !("dungeon" in states):
+		states["dungeon"]= _instantiate_state(load("res://state_machines/game_state_machine/dungeon_state.gd"))
+	if !("tavern_after_dungeon" in states):
+		states["tavern_after_dungeon"]= _instantiate_state(load("res://state_machines/game_state_machine/tavern_after_dungeon_state.gd"))
 	_register_states()
 	var loaded_game_state = _message_dispatcher.loaded_game_state
+	_message_dispatcher.loaded_game_state_changed.connect(_on_transition)
 	if loaded_game_state == "empty":
 		loaded_game_state = "day"
 	_on_transition(loaded_game_state)

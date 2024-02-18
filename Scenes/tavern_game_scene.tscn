@@ -723,7 +723,7 @@ position = Vector2(176, 215)
 position = Vector2(176, 97)
 
 [node name="DungeonPoint" type="Marker2D" parent="Entities/Marker"]
-position = Vector2(176, 76)
+position = Vector2(176, 79)
 
 [node name="DespawnPoint" type="Marker2D" parent="Entities/Marker"]
 position = Vector2(176, 58)
@@ -948,6 +948,7 @@ polygon = PackedVector2Array(-48, 0, -48, 304, 304, 304, 304, -48, -48, -48, -48
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TavernScene" parent="CanvasLayer" instance=ExtResource("4_1ogd8")]
+health_bar_visible = false
 
 [node name="Behaviours" type="Node" parent="."]
 

@@ -13,6 +13,7 @@ func _ready():
 	_message_dispatcher.game_state_changed.connect(_on_state_changed)
 	_message_dispatcher.game_state_changed.connect(_update_position_marker)
 	_on_state_changed(_message_dispatcher.game_state)
+	_update_position_marker(_message_dispatcher.game_state)
 
 func interact_buy_item(source: Node2D):
 	if source is Player:
@@ -50,6 +51,7 @@ func _update_hint(on_counter: bool, state: State):
 		$TavernOpen/InputHint.hide_hint()
 
 func _update_position_marker(state: State):
+	print(state)
 	if state is DayState:
 		$AnimatedSprite2D.visible = true
 	else:

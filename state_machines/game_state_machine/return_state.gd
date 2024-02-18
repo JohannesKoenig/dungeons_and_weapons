@@ -7,11 +7,14 @@ class_name ReturnState extends State
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
+func _init():
+	state_name = "return"
+
 func on_enter():
-	_message_dispatcher.requested_tavern_idle.connect(_on_idle)
+	_message_dispatcher.requested_tavern_night.connect(_on_idle)
 
 func on_exit():
-	_message_dispatcher.requested_tavern_idle.disconnect(_on_idle)
+	_message_dispatcher.requested_tavern_night.disconnect(_on_idle)
 	
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================

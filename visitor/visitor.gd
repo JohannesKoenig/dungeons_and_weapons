@@ -12,6 +12,7 @@ class_name Visitor
 var view_direction: Vector2
 var is_ready = false
 var strategy: Dictionary
+signal on_despawn
 
 
 func _ready():
@@ -49,6 +50,10 @@ func unlink_material():
 func interact():
 	actionable_finder.interact(self)
 
+
+func despawn():
+	on_despawn.emit()
+	queue_free()
 
 func _process(delta):
 	move_and_slide()

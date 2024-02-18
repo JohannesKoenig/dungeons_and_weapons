@@ -18,8 +18,7 @@ func close():
 
 func _on_actionable_action(source):
 	if !day_night_timer.is_day and "player" in source.get_groups():
-		game_saver.save_game_from_resources()
-		get_tree().change_scene_to_file("res://Scenes/dungeon_game_scene.tscn")
+		_message_dispatcher.requested_dungeon.emit()
 	if source is Visitor and _message_dispatcher.game_state is ShopState:
 		var resource: AdventurerResource = source.adventurer_resource
 		resource.coins = max(0, resource.coins - 10)

@@ -36,7 +36,7 @@ func _process(delta):
 			"await":
 				_execute_await_state(self.state)
 			"despawn":
-				actor.queue_free()
+				actor.despawn()
 				queue_free()
 
 func set_strategy(strategy: Dictionary):

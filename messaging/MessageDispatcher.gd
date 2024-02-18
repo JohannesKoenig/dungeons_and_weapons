@@ -8,7 +8,11 @@ var main_state:
 		main_state_changed.emit(value)
 signal main_state_changed(state)
 
-var loaded_game_state: String = "empty"
+var loaded_game_state: String = "empty":
+	set(value):
+		loaded_game_state = value
+		loaded_game_state_changed.emit(value)
+signal loaded_game_state_changed(state: String)
 var game_state:
 	set(value):
 		game_state = value
@@ -23,8 +27,11 @@ signal requested_exit_game
 #Ingame requests
 signal requested_shop_open
 signal requested_adventurer_return
-signal requested_tavern_idle
-
+signal requested_tavern_night
+signal requested_tavern_day
+signal requested_dungeon
+signal requested_tavern_after_dungeon
+var shoppers_active: bool = false
 var skip_intro: bool = false
 
 # ------------------------------------------------------------------------------
@@ -35,10 +42,14 @@ var skip_intro: bool = false
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
 func serialize() -> Dictionary:
-	return {
-		"game_state": game_state.get_state_name(),
-		"skip_intro": skip_intro
-	}
+	var data = {}
+	if game_state:
+		data["game_state"] = game_state.get_state_name()
+	else:
+		data["game_state"] = "day"
+	data["skip_intro"] = skip_intro
+	return data
+	
 
 func deserialize(data: Dictionary):
 	loaded_game_state = data["game_state"]

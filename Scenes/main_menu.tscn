@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfaoa3aib2qy5"]
+[gd_scene load_steps=12 format=3 uid="uid://dfaoa3aib2qy5"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_qna3i"]
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="2_grjiq"]
 [ext_resource type="Texture2D" uid="uid://baff6fb2jgy2j" path="res://art/sprites/tilesets/tavern_furniture.png" id="3_vr5nh"]
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="4_2hlwr"]
 [ext_resource type="Shortcut" uid="uid://cyyv46obj83ya" path="res://Scenes/UI-back-shortcut.tres" id="4_5pkbh"]
+[ext_resource type="Texture2D" uid="uid://dc7n8s67r7kwm" path="res://art/sprites/icons/coin.png" id="6_omtyi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tnofw"]
 texture = ExtResource("2_grjiq")
@@ -137,7 +138,21 @@ custom_minimum_size = Vector2(100, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="SaveExists" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="Continue" type="Button" parent="VBoxContainer/VBoxContainer/SaveExists"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Continue"
+
+[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/SaveExists"]
+layout_mode = 2
+icon = ExtResource("6_omtyi")
+
 [node name="Start" type="Button" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 16)
 layout_mode = 2
 text = "Start"
 
@@ -168,6 +183,8 @@ layout_mode = 2
 text = "v0.1"
 horizontal_alignment = 2
 
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/SaveExists/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/SaveExists/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

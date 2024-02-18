@@ -3,11 +3,13 @@ extends Control
 @export var player_resource: PlayerResource
 @export var dnr: DayNightResource
 @export var tavern_resource: TavernResource
+@export var health_bar_visible = true
 @onready var clock_label = $MarginContainer/HBoxContainer/Clock
 @onready var coins_label = $MarginContainer/HBoxContainer/Coins
 var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 
 func _ready():
+	$HealthBar.visible = health_bar_visible
 	dnr.time_changed.connect(update_time)
 	player_resource.coins_changed.connect(update_coins)
 	update_coins(player_resource.coins)

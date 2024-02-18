@@ -24,6 +24,7 @@ DragAndDropLayer="*res://Scenes/Autoloads/DragAndDropLayer.tscn"
 MainStateMachine="*res://state_machines/main_state_machine/main_state_machine.gd"
 GameStateMachine="*res://state_machines/game_state_machine/game_state_machine.gd"
 AudioMixer="*res://audio/mixer/audio_mixer.gd"
+ResourceResetter="*res://scripts/Autoloads/resource_resetter.gd"
 
 [display]
 

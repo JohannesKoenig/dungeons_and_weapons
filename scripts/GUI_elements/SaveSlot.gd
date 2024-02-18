@@ -39,8 +39,8 @@ func _on_delete_pressed():
 
 func _on_load_pressed():
 	menu_save_resource.selected_saveslot = saveslot_resource.slot
-	_message_dispatcher.requested_load.emit()
 	game_saver.save_slot = saveslot_resource.slot
+	_message_dispatcher.requested_load.emit()
 	
 
 func _on_saveslot_changed(saveslot: SaveslotResource):

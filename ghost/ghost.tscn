@@ -24,6 +24,7 @@ script = ExtResource("1_6uth2")
 shape = SubResource("CircleShape2D_t551g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 material = SubResource("CanvasItemMaterial_m7lm7")
 texture = ExtResource("2_1rwt0")
 

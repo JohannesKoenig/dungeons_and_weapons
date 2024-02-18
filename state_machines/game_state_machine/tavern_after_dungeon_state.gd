@@ -1,4 +1,4 @@
-class_name ShopState extends State
+class_name TavernAfterDungeonState extends State
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
@@ -8,21 +8,18 @@ var dnr: DayNightResource = preload("res://daynight/day_night_resource.tres")
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
 func _init():
-	state_name = "shop"
+	state_name = "tavern_after_dungeon"
 
 func on_enter():
-	_message_dispatcher.requested_adventurer_return.connect(_on_return)
-	dnr.day_ended.connect(_on_return)
-	if dnr.is_day == false:
-		_on_return()
+	get_tree().change_scene_to_file("res://Scenes/tavern_game_scene.tscn")
+	dnr.night_ended.connect(_on_night_ended)
 
 func on_exit():
-	_message_dispatcher.requested_adventurer_return.disconnect(_on_return)
+	dnr.night_ended.disconnect(_on_night_ended)
 	
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
-
-func _on_return():
-	if !_message_dispatcher.shoppers_active:
-		transitioned.emit("return")
+func _on_night_ended():
+	transitioned.emit("day")
+	

@@ -14,6 +14,5 @@ func serialize() -> Dictionary:
 	}
 
 func deserialize(data: Dictionary):
-	print(data)
 	player_name = data["player_name"]
 	slot = data["slot"]

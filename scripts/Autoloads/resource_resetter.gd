@@ -1,28 +1,17 @@
-class_name ShopState extends State
+extends Node
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
-var dnr: DayNightResource = preload("res://daynight/day_night_resource.tres")
 
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
 func _init():
-	state_name = "shop"
+	var new_savegame = SaveGameResource.new()
+	new_savegame.write_reset()
 
-func on_enter():
-	_message_dispatcher.requested_adventurer_return.connect(_on_return)
-	dnr.day_ended.connect(_on_return)
-	if dnr.is_day == false:
-		_on_return()
-
-func on_exit():
-	_message_dispatcher.requested_adventurer_return.disconnect(_on_return)
-	
+func _exit_tree():
+	SaveGameResource.new().remove_reset()
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
-
-func _on_return():
-	if !_message_dispatcher.shoppers_active:
-		transitioned.emit("return")

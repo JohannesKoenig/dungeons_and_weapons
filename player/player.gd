@@ -6,6 +6,7 @@ class_name Player
 @onready var quick_access_component: QuickAccessComponent = $QickAccessComponent
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var item_holding_component: ItemHoldingComponent = $ItemHoldingComponent
+var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 var view_direction: Vector2
 var is_ready = false
 
@@ -13,6 +14,9 @@ func _ready():
 	is_ready = true
 	unlink_material()
 	set_resource(player_resource)
+	if !((_message_dispatcher.game_state is DungeonState) or _message_dispatcher.game_state is TavernAfterDungeonState):
+		global_position = player_resource.tavern_global_position
+		$PlayerCamera._on_game_state_changed(_message_dispatcher.game_state)
 
 
 func set_resource(resource: PlayerResource):
@@ -31,6 +35,8 @@ func _process(delta):
 		view_direction = velocity
 	animation_tree["parameters/Walking/blend_position"] = view_direction
 	animation_tree["parameters/Idle/blend_position"] = view_direction
+	if !(_message_dispatcher.game_state is DungeonState):
+		player_resource.tavern_global_position = global_position
 
 
 func item_change_interaction(to_change: Item):

@@ -38,6 +38,7 @@ func _create_time_table(duration: float, nr_of_chunks: int) -> Array:
 	return table
 
 func spawn_adventurer() -> Visitor:
+	_message_dispatcher.shoppers_active = true
 	var resource = adventurers_to_spawn[index]
 	var adventurer: Visitor = visitor_resource.instantiate()
 	adventurer.set_adventurer_resource(resource)
@@ -48,12 +49,15 @@ func spawn_adventurer() -> Visitor:
 	else:
 		adventurer.set_strategy(adventurer_strategy_map[resource])
 		add_child(adventurer)
+	if index == len(adventurers_to_spawn) - 1:
+		if _message_dispatcher.game_state is ShopState:
+			adventurer.on_despawn.connect(_transition_to_return_state)
 	index += 1
 	if index < len(time_table):
 		timer.start(time_table[index])
 	else:
 		if _message_dispatcher.game_state is ReturnState:
-			_message_dispatcher.requested_tavern_idle.emit()
+			_message_dispatcher.requested_tavern_night.emit()
 	return adventurer
 
 func set_adventurer_strategy_map(map: Dictionary):
@@ -80,3 +84,9 @@ func start_spawning_return(state: State):
 	index = 0
 	if len(time_table) > 0:
 		timer.start(time_table[index])
+
+func _transition_to_return_state():
+	if day_night_timer.is_day:
+		await day_night_timer.day_ended
+	_message_dispatcher.shoppers_active = false
+	_message_dispatcher.requested_adventurer_return.emit()

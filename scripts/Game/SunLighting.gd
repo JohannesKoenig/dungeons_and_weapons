@@ -34,6 +34,7 @@ func _ready():
 	dusk_time = sun_down_time_hour * 60
 	midnight_time = (sun_down_time_hour + night_length/2) * 60
 	initialized = true
+	on_daytime_changed(dnr.is_day, dnr.current_hours, dnr.current_minutes)
 
 func on_daytime_changed(is_day: bool, hour: int, minute: int) -> void:
 	if not initialized:

@@ -46,6 +46,7 @@ func load_savegame():
 
 func serialize() -> Dictionary:
 	return {
+		
 		"save_slots": saveslot_resources.values().map(func(x): return x.serialize()),
 		"ambient": ambient_sound_level,
 		"music": music_sound_level,
@@ -68,3 +69,6 @@ func remove_slot(slot: int):
 	saveslot_resources.erase(slot)
 	saveslot_resource_changed.emit(saveslot_resources.values())
 	
+func delete(slot: int):
+	saveslot_resources.erase(slot)
+	return DirAccess.remove_absolute("user://save_%s.json" % slot)

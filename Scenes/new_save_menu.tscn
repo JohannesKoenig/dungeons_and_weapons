@@ -30,25 +30,18 @@ offset_bottom = 81.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NameInput" type="TextEdit" parent="VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 35)
+[node name="NameInput" type="LineEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 18)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Name"
-
-[node name="SlotSelection" type="ItemList" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-item_count = 3
-item_0/text = "Slot 1"
-item_1/text = "Slot 2"
-item_2/text = "Slot 3"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="Create" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+disabled = true
 text = "Create"
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer"]
@@ -62,6 +55,5 @@ shortcut = ExtResource("2_ow7hs")
 text = "Back"
 
 [connection signal="text_changed" from="VBoxContainer/NameInput" to="." method="_on_name_input_text_changed"]
-[connection signal="item_selected" from="VBoxContainer/SlotSelection" to="." method="_on_slot_selection_item_selected"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
