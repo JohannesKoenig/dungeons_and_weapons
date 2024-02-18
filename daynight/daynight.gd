@@ -27,15 +27,21 @@ var remaining_time: float = 30
 var current_hours: int = 6
 var current_minutes: int = 0
 var is_day: bool = true
+var day_counter: int = 1:
+	set(value):
+		day_counter = value
+		day_counter_changed.emit(value)
 
 signal time_changed(is_day: bool, hours: int, minutes: int)
 signal day_started
 signal night_started
 signal day_ended
 signal night_ended
+signal day_counter_changed(value: int)
 
 func serialize() -> Dictionary:
 	return {
+		"day_counter": day_counter,
 		"time": current_day_time,
 		"is_day": is_day,
 		"remaining_time": remaining_time
@@ -45,3 +51,5 @@ func deserialize(data: Dictionary):
 	is_day = data["is_day"]
 	current_day_time = data["time"]
 	remaining_time = data["remaining_time"]
+	day_counter = data["day_counter"]
+	

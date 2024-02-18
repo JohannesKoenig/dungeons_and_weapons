@@ -22,7 +22,8 @@ func interact_buy_item(source: Node2D):
 		var inventory: InventoryResource = adventurer_resource.inventory
 		var quick_access: QuickAccessResource = adventurer_resource.quick_access
 		var item: Item = inventory.items[quick_access.selected_index]
-		adventurer_resource.coins -= item.value
+		# TODO: decide if this makes sense
+		# adventurer_resource.coins -= item.value
 		sell(item)
 
 

@@ -19,11 +19,7 @@
 		},
 		{
 			"name": "await_conversation",
-			"type": "wait",
-			"parameters": {
-				"trigger": "conversation_over",
-				"time": 10
-			},
+			"type": "await",
 			"next": "move_to_door"
 		},
 		{

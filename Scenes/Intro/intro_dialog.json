@@ -1,0 +1,64 @@
+{
+	"dialog": [
+		{
+			"speaker": "Major",
+			"line": "Good day, Player.",
+			"align": "R"
+		},
+		{
+			"speaker": "Major",
+			"line": "I am very happy that you want to be the new steward of this old tavern.",
+			"align": "R"
+		},
+		{
+			"speaker": "Major",
+			"line": "People really seem to like this place somehow ...",
+			"align": "R"
+		},
+		{
+			"speaker": "Player",
+			"line": "...",
+			"align": "L"
+		},
+		{
+			"speaker": "Major",
+			"line": "The previous owner sold a bunch of weapons to the tavern folk to make some money.",
+			"align": "R"
+		},
+		{
+			"speaker": "Major",
+			"line": "Not sure where he got them to be honest.",
+			"align": "R"
+		},
+		{
+			"speaker": "Major",
+			"line": "But some questions need no answering I guess.",
+			"align": "R"
+		},
+		{
+			"speaker": "Major",
+			"line": "At least not as long as the money is right.",
+			"align": "R"
+		},
+		{
+			"speaker": "Player",
+			"line": "...",
+			"align": "L"
+		},
+		{
+			"speaker": "Major",
+			"line": "On that point, make sure you pay your rent in time.",
+			"align": "R"
+		},
+		{
+			"speaker": "Major",
+			"line": "Otherwise we might have to go looking for a new tavern keeper again ...",
+			"align": "R"
+		},
+		{
+			"speaker": "Major",
+			"line": "Best of luck to you, I guess.",
+			"align": "R"
+		},
+	]
+}

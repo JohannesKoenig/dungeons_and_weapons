@@ -24,6 +24,9 @@ signal requested_exit_game
 signal requested_shop_open
 signal requested_adventurer_return
 signal requested_tavern_idle
+
+var skip_intro: bool = false
+
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
@@ -33,8 +36,10 @@ signal requested_tavern_idle
 # ------------------------------------------------------------------------------
 func serialize() -> Dictionary:
 	return {
-		"game_state": game_state.get_state_name()
+		"game_state": game_state.get_state_name(),
+		"skip_intro": skip_intro
 	}
 
 func deserialize(data: Dictionary):
 	loaded_game_state = data["game_state"]
+	skip_intro = data["skip_intro"]

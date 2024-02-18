@@ -1,29 +1,21 @@
-class_name LoadGameState extends State
+class_name NewGameState extends State
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
-var _save_game_resource: SaveGameResource = SaveGameResource.new()
-var _menu_save_resource: MenuSaveResource = preload("res://savegame/menu_save_resource.tres")
+
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
 func _init():
-	state_name = "load"
+	state_name = "new_game"
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
 func on_enter():
-	get_tree().change_scene_to_file("res://loading_screen/loading_scene.tscn")
-	var save_slot = _menu_save_resource.selected_saveslot
-	_save_game_resource.load_savegame(save_slot)
-	var timer = Timer.new()
-	add_child(timer)
-	timer.start(1)
-	await timer.timeout
-	transitioned.emit("game")
-	
+	_message_dispatcher.requested_load.connect(_on_load)
+
 func on_exit():
-	if _message_dispatcher.skip_intro:
-		get_tree().change_scene_to_file("res://Scenes/tavern_game_scene.tscn")
-	else:
-		get_tree().change_scene_to_file("res://Scenes/Intro/intro_scene.tscn")
+	_message_dispatcher.requested_load.disconnect(_on_load)
+
+func _on_load():
+	transitioned.emit("game")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=78 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://cksui80t86inp" path="res://coin_pop_up/coin_pop_up_spawner.tscn" id="30_ws4ym"]
 [ext_resource type="PackedScene" uid="uid://cb4qohghjri5g" path="res://Scenes/fog.tscn" id="31_u1wbl"]
 [ext_resource type="PackedScene" uid="uid://dksngbj7j06b3" path="res://daynight/day_night_timer.tscn" id="33_m4pko"]
+[ext_resource type="PackedScene" uid="uid://oa1t6hcwqt6u" path="res://rent_paying_component/rent_paying_component.tscn" id="34_ll26b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgtce"]
 texture = ExtResource("3_p81w2")
@@ -830,7 +831,7 @@ position_marker = NodePath("../Marker/Shelve2Point3")
 index = 5
 
 [node name="Player" parent="Entities" instance=ExtResource("12_si50m")]
-position = Vector2(130, 91)
+position = Vector2(128, 128)
 
 [node name="PlayerCamera" type="Camera2D" parent="Entities/Player"]
 script = ExtResource("13_l06rj")
@@ -974,6 +975,9 @@ bus = &"Ambient"
 position = Vector2(118, 58)
 
 [node name="DayNightTimer" parent="." instance=ExtResource("33_m4pko")]
+running = true
+
+[node name="RentPayingComponent" parent="." instance=ExtResource("34_ll26b")]
 
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]
 [connection signal="toggle_menu" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_game_menu"]

@@ -3,6 +3,7 @@ extends Resource
 
 @export var inventory: InventoryResource
 @export var quick_access: QuickAccessResource
+@export var health_resource: HealthResource = preload("res://player/player_health_resource.tres")
 @export var coins: int:
 	set(value):
 		coins_changed.emit(value)
@@ -25,7 +26,8 @@ func serialize() -> Dictionary:
 			"size": quick_access.size,
 			"selected_index": quick_access.selected_index,
 		},
-		"texture": texture.resource_path
+		"texture": texture.resource_path,
+		"health": health_resource.serialize()
 	}
 
 func deserialize(data: Dictionary):
@@ -34,3 +36,4 @@ func deserialize(data: Dictionary):
 	quick_access.size = data["quick_access"]["size"]
 	quick_access.selected_index = data["quick_access"]["selected_index"]
 	texture = load(data["texture"])
+	health_resource.deserialize(data["health"])

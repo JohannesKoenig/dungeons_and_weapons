@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmc2g40pfmvug"]
+
+[ext_resource type="Texture2D" uid="uid://byj3v5g2j7ck3" path="res://health/heart_full.png" id="2_5n0s4"]
+[ext_resource type="Script" path="res://health/health_heart.gd" id="2_pyhjf"]
+[ext_resource type="Texture2D" uid="uid://jkhnd74g1sfq" path="res://health/heart_empty.png" id="3_lgn8d"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5ijb5"]
+light_mode = 1
+
+[node name="HealthHeart" type="TextureRect"]
+material = SubResource("CanvasItemMaterial_5ijb5")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5n0s4")
+script = ExtResource("2_pyhjf")
+filled = ExtResource("2_5n0s4")
+cleared = ExtResource("3_lgn8d")

@@ -44,3 +44,6 @@ func item_change_interaction(to_change: Item):
 func pickup_item(item: Item):
 	if item:
 		$ItemPickupPlayer.play()
+
+func take_damage(damage: int):
+	player_resource.health_resource.take_damage(damage)

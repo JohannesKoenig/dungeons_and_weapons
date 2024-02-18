@@ -9,6 +9,9 @@ var ai_path_markers: AiPathMarkers
 var timer: Timer
 var timer_started = false
 var state = null
+var conversation_over: bool = false
+var signaled = false
+signal start_await_state(mapper: AIMovementMapper)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var parent = get_parent()
@@ -30,6 +33,8 @@ func _process(delta):
 				_execute_wait_state(self.state)
 			"buy":
 				_execute_buy_state(self.state)
+			"await":
+				_execute_await_state(self.state)
 			"despawn":
 				actor.queue_free()
 				queue_free()
@@ -96,6 +101,20 @@ func _execute_wait_state(interaction_state: Dictionary):
 			timer_started = false
 			return
 
+func _execute_await_state(await_state: Dictionary):
+	if !signaled:
+		start_await_state.emit(self)
+		signaled = true
+	if conversation_over:
+		var next_state_name = self.state["next"]
+		if next_state_name:
+			self.state = get_state_with_name(next_state_name, self.strategy["states"])
+		else:
+			self.state = null
+		conversation_over = false
+		signaled = false
+		return
+
 func _execute_buy_state(sell_state: Dictionary):
 	actor.interact()
 	var next_state_name = self.state["next"]
@@ -111,3 +130,4 @@ func get_state_with_name(state_name: String, states: Array):
 			var matched = _state
 			return matched
 	return null
+

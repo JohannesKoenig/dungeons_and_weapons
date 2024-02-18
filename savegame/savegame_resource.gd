@@ -62,3 +62,4 @@ func load_savegame(slot: int = 1):
 		dungeon_inventory.deserialize(data["dungeon_inventory"])
 		dungeon_resource.deserialize(data["dungeon_resource"])
 		day_night_resoure.deserialize(data["day_night_resource"])
+		message_dispatcher.deserialize(data["message_dispatcher"])

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://oa1t6hcwqt6u"]
+
+[ext_resource type="Script" path="res://rent_paying_component/rent_paying_component.gd" id="1_d84hm"]
+
+[node name="RentPayingComponent" type="Node"]
+script = ExtResource("1_d84hm")

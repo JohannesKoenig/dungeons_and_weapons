@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://du6nh8euyengr"]
+
+[ext_resource type="Script" path="res://ghost/ghost.gd" id="1_6uth2"]
+[ext_resource type="Texture2D" uid="uid://cwu82l3jopdt" path="res://art/sprites/tilesets/Sapling.png" id="2_1rwt0"]
+[ext_resource type="Script" path="res://ghost/MovementMapper.gd" id="3_ilgpx"]
+[ext_resource type="Script" path="res://Resources/movement_stats.gd" id="4_ogtj5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t551g"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m7lm7"]
+light_mode = 1
+
+[sub_resource type="Resource" id="Resource_5q2uv"]
+script = ExtResource("4_ogtj5")
+movement_speed = 30
+acceleration_time = 0.1
+
+[node name="Ghost" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_6uth2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t551g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_m7lm7")
+texture = ExtResource("2_1rwt0")
+
+[node name="MovementMapper" type="Node" parent="."]
+script = ExtResource("3_ilgpx")
+movement_stats = SubResource("Resource_5q2uv")

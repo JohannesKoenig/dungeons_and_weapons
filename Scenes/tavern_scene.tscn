@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1wruq1vniqxl"]
+[gd_scene load_steps=19 format=3 uid="uid://c1wruq1vniqxl"]
 
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="1_i1q3x"]
 [ext_resource type="Script" path="res://scripts/GUI_elements/TavernGUI.gd" id="1_r07mv"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://c7dbnocijw28c" path="res://player/player_quick_access.tres" id="13_ylfwy"]
 [ext_resource type="PackedScene" uid="uid://dojlwdvovx2ic" path="res://GUI_elements/tavern_open/tavern_open.tscn" id="15_gan4x"]
 [ext_resource type="PackedScene" uid="uid://dqlw76ugakfeo" path="res://Scenes/GameMenu.tscn" id="17_pgggk"]
+[ext_resource type="PackedScene" uid="uid://b7g80uyx3ghok" path="res://health/health_bar.tscn" id="18_nodg4"]
 
 [node name="TavernScene" type="Control"]
 layout_mode = 3
@@ -67,10 +68,19 @@ horizontal_alignment = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 14.0
+offset_top = 8.0
+offset_right = 114.0
+offset_bottom = 28.0
 
-[node name="Options" type="Button" parent="MarginContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 11
+
+[node name="Options" type="Button" parent="MarginContainer2/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -78,6 +88,10 @@ mouse_filter = 1
 theme = ExtResource("1_i1q3x")
 icon = ExtResource("2_b1a5n")
 icon_alignment = 1
+
+[node name="Day" type="Label" parent="MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Day 1"
 
 [node name="ToggleComponent" parent="." instance=ExtResource("5_57lu4")]
 
@@ -108,6 +122,7 @@ offset_bottom = 40.0
 grow_vertical = 2
 
 [node name="InventoryPopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("6_vjcvr")]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -238,7 +253,12 @@ alignment = 1
 
 [node name="GameMenuToggle" parent="." instance=ExtResource("5_57lu4")]
 
-[connection signal="pressed" from="MarginContainer2/Options" to="ToggleComponent" method="activate"]
+[node name="HealthBar" parent="." instance=ExtResource("18_nodg4")]
+layout_mode = 1
+offset_top = 9.0
+offset_bottom = 9.0
+
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/Options" to="ToggleComponent" method="activate"]
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]
 [connection signal="deactivated" from="InventoryPopUp" to="InventoryToggle" method="deactivate"]
 [connection signal="value_changed" from="InventoryToggle" to="InventoryPopUp" method="set_active"]

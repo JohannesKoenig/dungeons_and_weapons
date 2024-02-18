@@ -27,6 +27,7 @@ func _on_item_changed(item: WeaponResource):
 		$HBoxContainer/Name.text = item.name
 		$HBoxContainer/CoinsContainer/Coins.text = str(item.price)
 	else:
+		visible = false
 		$HBoxContainer/Name.text = "-"
 		$HBoxContainer/CoinsContainer/Coins.text = "-"
 
@@ -35,7 +36,10 @@ func show_tooltip():
 		timer.stop()
 	timer.start(show_delay)
 	await timer.timeout
-	visible = true
+	if item:
+		visible = true
+	else:
+		visible = false
 
 
 func hide_tooltip():

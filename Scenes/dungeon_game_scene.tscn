@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dt1choghkaavl"]
+[gd_scene load_steps=21 format=3 uid="uid://dt1choghkaavl"]
 
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://interaction_handlers/PlayerInputHandler.tscn" id="1_ndabk"]
 [ext_resource type="Script" path="res://Scenes/dungeon_game_scene.gd" id="1_rgff1"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://b7sjloxcm3svx" path="res://audio/background_music_player.tscn" id="13_stig1"]
 [ext_resource type="AudioStream" uid="uid://bfmr1pjkm33fy" path="res://audio/DungeonTune.wav" id="14_q41g7"]
 [ext_resource type="PackedScene" uid="uid://dksngbj7j06b3" path="res://daynight/day_night_timer.tscn" id="15_meqfy"]
+[ext_resource type="PackedScene" uid="uid://oa1t6hcwqt6u" path="res://rent_paying_component/rent_paying_component.tscn" id="16_yte62"]
+[ext_resource type="PackedScene" uid="uid://du6nh8euyengr" path="res://ghost/ghost.tscn" id="17_p5y04"]
 
 [sub_resource type="Resource" id="Resource_vjepf"]
 script = ExtResource("4_5jtbs")
@@ -36,7 +38,7 @@ y_sort_enabled = true
 script = ExtResource("1_rgff1")
 
 [node name="Fog" parent="." instance=ExtResource("2_8egu5")]
-z_index = 1
+z_index = 2
 
 [node name="Behaviours" type="Node" parent="."]
 
@@ -89,5 +91,12 @@ max_distance = 200000.0
 fade_in_duration = 3.0
 
 [node name="DayNightTimer" parent="." instance=ExtResource("15_meqfy")]
+running = true
+
+[node name="RentPayingComponent" parent="." instance=ExtResource("16_yte62")]
+
+[node name="Ghost" parent="." node_paths=PackedStringArray("target") instance=ExtResource("17_p5y04")]
+position = Vector2(0, 225)
+target = NodePath("../Entities/Player")
 
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]

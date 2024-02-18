@@ -54,7 +54,6 @@ func _change_sounds(mat: String):
 	var stream_length = stream.streams_count
 	for i in range(stream_length):
 		stream.remove_stream(0)
-		print(stream.streams_count)
 	if !(mat in footsteps):
 		mat = "stone"
 	var new_streams = footsteps[mat]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://cj7pjmcya35op"]
+[gd_scene load_steps=69 format=3 uid="uid://cj7pjmcya35op"]
 
 [ext_resource type="Script" path="res://Scenes/Intro/intro_scene.gd" id="1_ggyls"]
 [ext_resource type="Texture2D" uid="uid://bspjin4ruk1a4" path="res://art/sprites/tilesets/Outdoor.png" id="2_kjii3"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://vrfwipd3m6p8" path="res://flickering_light/flickering_light.tscn" id="24_bx2dk"]
 [ext_resource type="PackedScene" uid="uid://iawl1x05f6b2" path="res://Scenes/Intro/cut_scene_manager.tscn" id="24_mqmss"]
 [ext_resource type="PackedScene" uid="uid://dksngbj7j06b3" path="res://daynight/day_night_timer.tscn" id="25_3bodp"]
+[ext_resource type="PackedScene" uid="uid://bdi2y8ylb7lv3" path="res://speech_bubble/speech_bubble.tscn" id="25_xbh5g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgtce"]
 texture = ExtResource("2_kjii3")
@@ -743,16 +744,16 @@ position = Vector2(105, 154)
 position = Vector2(177, 248)
 
 [node name="PlayerIntroSpawnPoint" type="Marker2D" parent="Entities/Marker"]
-position = Vector2(163, 318)
+position = Vector2(159, 370)
 
 [node name="PlayerConversationPoint" type="Marker2D" parent="Entities/Marker"]
-position = Vector2(163, 261)
+position = Vector2(166, 250)
 
 [node name="MajorConversationPoint" type="Marker2D" parent="Entities/Marker"]
-position = Vector2(189, 261)
+position = Vector2(186, 252)
 
 [node name="MajorIntroSpawnPoint" type="Marker2D" parent="Entities/Marker"]
-position = Vector2(189, 318)
+position = Vector2(194, 378)
 
 [node name="NpcSpawner" parent="Entities" instance=ExtResource("8_c525o")]
 position = Vector2(177, 248)
@@ -929,7 +930,15 @@ flicker_time = 0.3
 [node name="DayNightTimer" parent="." instance=ExtResource("25_3bodp")]
 
 [node name="CutSceneCamera" type="Camera2D" parent="."]
-position = Vector2(172, 211)
-zoom = Vector2(1.5, 1.5)
+position = Vector2(76, 268)
 
-[node name="CutSceneManager" parent="." instance=ExtResource("24_mqmss")]
+[node name="CutSceneManager" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("24_mqmss")]
+camera = NodePath("../CutSceneCamera")
+camera_offset = Vector2(100, -20)
+pan_duration = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SpeechBubble" parent="CanvasLayer" instance=ExtResource("25_xbh5g")]
+offset_top = -105.0
+offset_bottom = -25.0
