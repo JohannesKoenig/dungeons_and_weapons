@@ -1,8 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://bph32xoowbi6c"]
+[gd_scene load_steps=35 format=3 uid="uid://bph32xoowbi6c"]
 
 [ext_resource type="Script" path="res://adventurer/adventurer.gd" id="1_bmppq"]
 [ext_resource type="Material" uid="uid://crqpbylxx3ay1" path="res://art/shader/Game/Units/character.tres" id="1_jlo2m"]
 [ext_resource type="SpriteFrames" uid="uid://cg6xjmjhhqm0" path="res://adventurer/adventurer_sprite_frame.tres" id="1_s6g8s"]
+[ext_resource type="Texture2D" uid="uid://bgxqho1p3kmav" path="res://art/sprites/shadow.png" id="3_40bgy"]
 [ext_resource type="Texture2D" uid="uid://1lj62kv7to5f" path="res://art/sprites/Character_uv.png" id="4_8l170"]
 [ext_resource type="PackedScene" uid="uid://dhxcyp4w5ds6t" path="res://inventory/Inventory.tscn" id="4_8200s"]
 [ext_resource type="Texture2D" uid="uid://v1ub3uvyf0qj" path="res://art/sprites/Character_walking.png" id="5_jgug5"]
@@ -482,6 +483,12 @@ position = Vector2(2.08165e-12, -4)
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_bmppq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.0705882)
+light_mask = 7
+position = Vector2(-2.08165e-12, 5)
+texture = ExtResource("3_40bgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
