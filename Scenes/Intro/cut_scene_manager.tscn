@@ -1,6 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://iawl1x05f6b2"]
+[gd_scene load_steps=11 format=3 uid="uid://iawl1x05f6b2"]
 
 [ext_resource type="Script" path="res://Scenes/Intro/CutSceneManager.gd" id="1_4bqv0"]
+[ext_resource type="Texture2D" uid="uid://8tuoa3l0vwh3" path="res://skin_builder/body/noble_body.png" id="2_a2fic"]
+[ext_resource type="Texture2D" uid="uid://colfc47xcdsxa" path="res://skin_builder/head/noble_head.png" id="3_bqn0d"]
+[ext_resource type="Script" path="res://inventory/inventory_resource.gd" id="4_1qnhi"]
+[ext_resource type="Texture2D" uid="uid://bfcen084db3cd" path="res://skin_builder/legs/noble_legs.png" id="5_d30tn"]
+[ext_resource type="Script" path="res://player/quick_access_resource.gd" id="6_84cbb"]
+[ext_resource type="Script" path="res://adventurer/adventurer_resource.gd" id="7_t0opn"]
+
+[sub_resource type="Resource" id="Resource_p8hud"]
+script = ExtResource("4_1qnhi")
+size = 1
+items = [null]
+
+[sub_resource type="Resource" id="Resource_k0df3"]
+script = ExtResource("6_84cbb")
+inventory_resource = SubResource("Resource_p8hud")
+size = 1
+selected_index = 0
+
+[sub_resource type="Resource" id="Resource_fxpfl"]
+script = ExtResource("7_t0opn")
+coins = 0
+inventory = SubResource("Resource_p8hud")
+quick_access = SubResource("Resource_k0df3")
+head = ExtResource("3_bqn0d")
+body = ExtResource("2_a2fic")
+legs = ExtResource("5_d30tn")
 
 [node name="CutSceneManager" type="Node2D"]
 script = ExtResource("1_4bqv0")
+major_resource = SubResource("Resource_fxpfl")

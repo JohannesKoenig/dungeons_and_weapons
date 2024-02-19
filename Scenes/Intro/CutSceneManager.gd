@@ -6,12 +6,14 @@ var player_intro_strategy: Dictionary
 var major_intro_strategy: Dictionary
 var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 
+var _real_player_resource: PlayerResource = preload("res://player/player_resource.tres")
 @export var player_resource: AdventurerResource
 @export var major_resource: AdventurerResource
 @export var camera: Camera2D
 @export var camera_offset: Vector2
 @export var pan_duration: float
 
+var _factory: AdventurerFactory = preload("res://adventurer/adventurer_factory.tres")
 var player: Visitor
 var major: Visitor
 
@@ -46,7 +48,12 @@ func _ready():
 # ------------------------------------------------------------------------------
 func start():
 	player = visitor_resource.instantiate()
-	player.set_adventurer_resource(player_resource)
+	var fake_player_resource = _factory.get_random()
+	fake_player_resource.head = _real_player_resource.head
+	fake_player_resource.body = _real_player_resource.body
+	fake_player_resource.legs = _real_player_resource.legs
+	
+	player.set_adventurer_resource(fake_player_resource)
 	player.set_strategy(player_intro_strategy)
 	add_child(player)
 	player.global_position = ai_path_markers.position_register["player_intro_spawn_position"].global_position

@@ -3,12 +3,15 @@ extends Control
 @export var menu_save_resource: MenuSaveResource = preload("res://savegame/menu_save_resource.tres")
 var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 @onready var name_input = $VBoxContainer/NameInput
+@onready var skin_builder_gui: SkinBuilderGui = $VBoxContainer/SkinBuilderGui
 
+var _skin_builder: SkinBuilder
 var _save_slot: int = 1
 var _name_text: String = ""
 
 func _ready():
 	$VBoxContainer/HBoxContainer/Create.grab_focus()
+	_skin_builder = SkinBuilder.new()
 
 
 func _on_create_pressed():
@@ -18,6 +21,9 @@ func _on_create_pressed():
 	var savegame_resource = SaveGameResource.new()
 	savegame_resource.name = _name_text
 	savegame_resource.slot = _save_slot
+	savegame_resource.player_resource.head = _skin_builder.heads[skin_builder_gui.head_index]
+	savegame_resource.player_resource.body = _skin_builder.bodies[skin_builder_gui.body_index]
+	savegame_resource.player_resource.legs = _skin_builder.legs[skin_builder_gui.legs_index]
 	savegame_resource.create_new_savegame(_save_slot)
 	savegame_resource.write_savegame(_save_slot)
 	menu_save_resource.saveslot_resources[_save_slot] = save_slot_resource

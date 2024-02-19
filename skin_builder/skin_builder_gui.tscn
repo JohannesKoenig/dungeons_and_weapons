@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3gdbsjvkgk7g"]
+
+[ext_resource type="Texture2D" uid="uid://dc7n8s67r7kwm" path="res://art/sprites/icons/coin.png" id="1_bfkfv"]
+[ext_resource type="Script" path="res://skin_builder/skin_builder_gui.gd" id="1_nrnom"]
+[ext_resource type="Material" uid="uid://crqpbylxx3ay1" path="res://art/shader/Game/Units/character.tres" id="2_18jdw"]
+[ext_resource type="Texture2D" uid="uid://c01jv7civ1rb" path="res://skin_builder/builder_map.png" id="3_e27u6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3u5x4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yysy6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kkixl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k4epp"]
+
+[node name="SkinBuilderGui" type="HBoxContainer"]
+offset_right = 140.0
+offset_bottom = 100.0
+script = ExtResource("1_nrnom")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HeadL" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("1_bfkfv")
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3u5x4")
+
+[node name="BodyL" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("1_bfkfv")
+
+[node name="Panel2" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yysy6")
+
+[node name="LegsL" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("1_bfkfv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("2_18jdw")
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_e27u6")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HeadR" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+icon = ExtResource("1_bfkfv")
+
+[node name="Panel3" type="Panel" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kkixl")
+
+[node name="BodyR" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+icon = ExtResource("1_bfkfv")
+
+[node name="Panel4" type="Panel" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k4epp")
+
+[node name="LegsR" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+icon = ExtResource("1_bfkfv")
+
+[connection signal="pressed" from="VBoxContainer/HeadL" to="." method="_on_head_l_pressed"]
+[connection signal="pressed" from="VBoxContainer/BodyL" to="." method="_on_body_l_pressed"]
+[connection signal="pressed" from="VBoxContainer/LegsL" to="." method="_on_legs_l_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HeadR" to="." method="_on_head_r_pressed"]
+[connection signal="pressed" from="VBoxContainer2/BodyR" to="." method="_on_body_r_pressed"]
+[connection signal="pressed" from="VBoxContainer2/LegsR" to="." method="_on_legs_r_pressed"]
