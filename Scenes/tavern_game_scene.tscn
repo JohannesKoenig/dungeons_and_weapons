@@ -831,6 +831,7 @@ position_marker = NodePath("../Marker/Shelve2Point3")
 index = 5
 
 [node name="Player" parent="Entities" instance=ExtResource("12_si50m")]
+material = null
 position = Vector2(128, 128)
 
 [node name="PlayerCamera" type="Camera2D" parent="Entities/Player"]

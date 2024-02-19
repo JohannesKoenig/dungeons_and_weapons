@@ -56,6 +56,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("8_p6pyq")]
+material = null
 position = Vector2(0, 4)
 
 [node name="PlayerCamera" type="Camera2D" parent="Entities/Player"]

@@ -26,7 +26,10 @@ func _ready():
 func set_adventurer_resource(resource: AdventurerResource):
 	adventurer_resource = resource
 	if is_ready:
-		$AnimatedSprite2D.material.set("shader_parameter/diffuse", adventurer_resource.texture)
+		$AnimatedSprite2D.material.set("shader_parameter/head", adventurer_resource.head)
+		$AnimatedSprite2D.material.set("shader_parameter/body", adventurer_resource.body)
+		$AnimatedSprite2D.material.set("shader_parameter/legs", adventurer_resource.legs)
+		
 		var inv: Inventory = $InventoryComponent
 		inv.set_inventory_resource(adventurer_resource.inventory)
 		var qa: QuickAccessComponent = $QickAccessComponent

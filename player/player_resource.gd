@@ -9,7 +9,9 @@ extends Resource
 		coins_changed.emit(value)
 		coins_changed_delta.emit(value, value - coins)
 		coins = value
-@export var texture: Texture
+@export var head: Texture
+@export var body: Texture
+@export var legs: Texture
 var tavern_global_position: Vector2 = Vector2(128, 128)
 var dungeon_global_position: Vector2 = Vector2(0, 4)
 
@@ -29,7 +31,9 @@ func serialize() -> Dictionary:
 			"size": quick_access.size,
 			"selected_index": quick_access.selected_index,
 		},
-		"texture": texture.resource_path,
+		"head": head.resource_path,
+		"body": body.resource_path,
+		"legs": legs.resource_path,
 		"health": health_resource.serialize(),
 		"tavern_global_position": {
 			"x": tavern_global_position.x,
@@ -46,7 +50,9 @@ func deserialize(data: Dictionary):
 	inventory.deserialize(data["inventory"])
 	quick_access.size = data["quick_access"]["size"]
 	quick_access.selected_index = data["quick_access"]["selected_index"]
-	texture = load(data["texture"])
+	head = load(data["head"])
+	body = load(data["body"])
+	legs = load(data["legs"])
 	health_resource.deserialize(data["health"])
 	tavern_global_position = Vector2(data["tavern_global_position"]["x"], data["tavern_global_position"]["y"])
 	dungeon_global_position = Vector2(data["dungeon_global_position"]["x"], data["dungeon_global_position"]["y"])

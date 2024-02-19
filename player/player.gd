@@ -29,7 +29,9 @@ func _ready():
 func set_resource(resource: PlayerResource):
 	player_resource = resource
 	if is_ready:
-		$AnimatedSprite2D.material.set("shader_parameter/diffuse", player_resource.texture)
+		$AnimatedSprite2D.material.set("shader_parameter/head", player_resource.head)
+		$AnimatedSprite2D.material.set("shader_parameter/body", player_resource.body)
+		$AnimatedSprite2D.material.set("shader_parameter/legs", player_resource.legs)
 
 func unlink_material():
 	var material: Material = $AnimatedSprite2D.material.duplicate()

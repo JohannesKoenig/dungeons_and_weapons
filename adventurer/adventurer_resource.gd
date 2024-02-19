@@ -4,13 +4,17 @@ class_name AdventurerResource
 @export var coins: int
 @export var inventory: InventoryResource
 @export var quick_access: QuickAccessResource
-@export var texture: Texture
+@export var head: Texture
+@export var body: Texture
+@export var legs: Texture
 
 func serialize() -> Dictionary:
 	return {
 		"coins": coins,
 		"inventory": inventory.serialize(),
-		"texture": texture.resource_path
+		"head": head.resource_path,
+		"body": body.resource_path,
+		"legs": legs.resource_path,
 	}
 
 static func deserialize_from_dict(dict: Dictionary) -> AdventurerResource:
@@ -19,5 +23,7 @@ static func deserialize_from_dict(dict: Dictionary) -> AdventurerResource:
 	adventurer.quick_access = QuickAccessResource.new()
 	adventurer.quick_access.selected_index = 0
 	adventurer.inventory = InventoryResource.deserialize_from_dict(dict["inventory"])
-	adventurer.texture = load(dict["texture"])
+	adventurer.head = load(dict["head"])
+	adventurer.body = load(dict["body"])
+	adventurer.legs = load(dict["legs"])
 	return adventurer

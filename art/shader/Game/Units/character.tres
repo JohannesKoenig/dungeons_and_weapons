@@ -1,10 +1,14 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://crqpbylxx3ay1"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://crqpbylxx3ay1"]
 
 [ext_resource type="Shader" uid="uid://c3v48sh65xxnb" path="res://art/shader/mapping_test.tres" id="1_t27rb"]
-[ext_resource type="Texture2D" uid="uid://l5upf6m8iynn" path="res://art/sprites/character_petuna_skin_2.png" id="2_hrujw"]
+[ext_resource type="Texture2D" uid="uid://ccdub36k8a2p6" path="res://skin_builder/body/commoner_body.png" id="2_neesm"]
+[ext_resource type="Texture2D" uid="uid://colfc47xcdsxa" path="res://skin_builder/head/noble_head.png" id="3_df8dq"]
 [ext_resource type="Texture2D" uid="uid://1lj62kv7to5f" path="res://art/sprites/Character_uv.png" id="3_u8kuf"]
+[ext_resource type="Texture2D" uid="uid://bfcen084db3cd" path="res://skin_builder/legs/noble_legs.png" id="4_5v1j7"]
 
 [resource]
 shader = ExtResource("1_t27rb")
 shader_parameter/uv = ExtResource("3_u8kuf")
-shader_parameter/diffuse = ExtResource("2_hrujw")
+shader_parameter/legs = ExtResource("4_5v1j7")
+shader_parameter/body = ExtResource("2_neesm")
+shader_parameter/head = ExtResource("3_df8dq")

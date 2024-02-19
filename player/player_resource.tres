@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="PlayerResource" load_steps=6 format=3 uid="uid://d3se5wucuuebd"]
+[gd_resource type="Resource" script_class="PlayerResource" load_steps=8 format=3 uid="uid://d3se5wucuuebd"]
 
 [ext_resource type="Resource" uid="uid://bg7w53bgvntt8" path="res://player/player_health_resource.tres" id="1_0vhi2"]
 [ext_resource type="Resource" uid="uid://dem2m3ldyh10n" path="res://player/player_inventory.tres" id="1_8cxtc"]
 [ext_resource type="Script" path="res://player/player_resource.gd" id="1_axll6"]
+[ext_resource type="Texture2D" uid="uid://ccdub36k8a2p6" path="res://skin_builder/body/commoner_body.png" id="1_fro82"]
 [ext_resource type="Resource" uid="uid://c7dbnocijw28c" path="res://player/player_quick_access.tres" id="2_i1nej"]
-[ext_resource type="Texture2D" uid="uid://l5upf6m8iynn" path="res://art/sprites/character_petuna_skin_2.png" id="2_o30h4"]
+[ext_resource type="Texture2D" uid="uid://drghgcmdo6msh" path="res://skin_builder/head/commoner_head.png" id="2_yuns8"]
+[ext_resource type="Texture2D" uid="uid://c2rmatmge1npn" path="res://skin_builder/legs/commoner_legs.png" id="5_4nky3"]
 
 [resource]
 script = ExtResource("1_axll6")
@@ -12,4 +14,6 @@ inventory = ExtResource("1_8cxtc")
 quick_access = ExtResource("2_i1nej")
 health_resource = ExtResource("1_0vhi2")
 coins = 50
-texture = ExtResource("2_o30h4")
+head = ExtResource("2_yuns8")
+body = ExtResource("1_fro82")
+legs = ExtResource("5_4nky3")
