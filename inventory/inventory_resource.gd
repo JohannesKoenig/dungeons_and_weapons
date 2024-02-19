@@ -78,3 +78,10 @@ func _deserialize_item(dict: Dictionary) -> Item:
 		return null
 	else:
 		return _item_factory.item_table[dict["id"]]
+
+func count_items() -> int:
+	var counter = 0
+	for item in items:
+		if item:
+			counter +=1
+	return counter

@@ -8,6 +8,7 @@ class_name DungeonPieceResource extends Resource
 		offset = value
 		offset_changed.emit(value)
 signal offset_changed(offset: Vector2)
+var depth: int = 0
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------

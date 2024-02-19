@@ -15,7 +15,7 @@ var pixel_width = 128
 var pixel_height = 128
 var x_width = 7
 var y_width = 7
-var start_x = 2
+var start_x = 3
 var start_y = 1
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
@@ -68,7 +68,8 @@ func get_layout() -> Array:
 	var dungeon_layout = assemble(options,x_width,y_width)
 	# remove all unconnected dungeon pieces ----------
 	var is_connected = get_connected_indexes(start_x, start_y, dungeon_layout)
-	var not_connected = range(0, len(options)).filter(func(i): return !(i in is_connected))
+	var is_connected_indexes = is_connected.map(func(x): return x["index"])
+	var not_connected = range(0, len(options)).filter(func(i): return !(i in is_connected_indexes))
 	for index in not_connected:
 		dungeon_layout[index] = [wall_dungeon_piece_resource]
 	# ------------------------------------------------
@@ -79,12 +80,24 @@ func get_layout() -> Array:
 			if len(piece_list) > 0:
 				var piece: DungeonPieceResource = piece_list[0]
 				var duplicated: DungeonPieceResource = piece.duplicate()
+				if !(piece == wall_dungeon_piece_resource):
+					for elem in is_connected:
+						if elem["index"] == _to_1D(x, y, x_width):
+							duplicated.depth = elem["depth"]
+							break
+				else:
+					duplicated.depth = -1
 				duplicated.offset = Vector2(x * pixel_width, y * pixel_height)
 				pieces.append(duplicated)
 	return pieces
 
 func get_connected_indexes(start_x: int, start_y: int, layout: Array) -> Array:
-	var indexes = [_to_1D(start_x, start_y, x_width)]
+	var depth = 0
+	var indexes = [
+		{
+			"index": _to_1D(start_x, start_y, x_width),
+			"depth": depth
+	}]
 	var pieces = layout[_to_1D(start_x, start_y, x_width)]
 	var rule: DungeonPieceRule = rules[pieces[0]]
 	var processing_guide = {}
@@ -93,6 +106,7 @@ func get_connected_indexes(start_x: int, start_y: int, layout: Array) -> Array:
 	}
 	var open_processes = processing_guide.keys().filter(func(key): return processing_guide[key]["status"] == _TODO)
 	while !open_processes.is_empty():
+		depth += 1
 		var index = open_processes[0]
 		var y = index % x_width
 		var x = (index - y)/x_width
@@ -104,28 +118,48 @@ func get_connected_indexes(start_x: int, start_y: int, layout: Array) -> Array:
 		if rule.edges["N"] == _HALL and y-1 >= 0:
 			var neightbour_index = _to_1D(x, y-1, x_width)
 			if !(neightbour_index in processing_guide):
-				indexes.append(neightbour_index)
+				indexes.append(
+					{
+						"index": neightbour_index,
+						"depth": depth
+					}
+				)
 				processing_guide[neightbour_index] = {
 					"status": _TODO
 				}
 		if rule.edges["W"] == _HALL and x-1 >= 0:
 			var neightbour_index = _to_1D(x-1, y, x_width)
 			if !(neightbour_index in processing_guide):
-				indexes.append(neightbour_index)
+				indexes.append(
+					{
+						"index": neightbour_index,
+						"depth": depth
+					}
+				)
 				processing_guide[neightbour_index] = {
 					"status": _TODO
 				}
 		if rule.edges["E"] == _HALL and x+1 < x_width:
 			var neightbour_index = _to_1D(x+1, y, x_width)
 			if !(neightbour_index in processing_guide):
-				indexes.append(neightbour_index)
+				indexes.append(
+					{
+						"index": neightbour_index,
+						"depth": depth
+					}
+				)
 				processing_guide[neightbour_index] = {
 					"status": _TODO
 				}
 		if rule.edges["S"] == _HALL and y+1 < y_width:
 			var neightbour_index = _to_1D(x, y+1, x_width)
 			if !(neightbour_index in processing_guide):
-				indexes.append(neightbour_index)
+				indexes.append(
+					{
+						"index": neightbour_index,
+						"depth": depth
+					}
+				)
 				processing_guide[neightbour_index] = {
 					"status": _TODO
 				}

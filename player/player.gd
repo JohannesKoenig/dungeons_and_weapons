@@ -9,14 +9,21 @@ class_name Player
 var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 var view_direction: Vector2
 var is_ready = false
+var _invincibility_timer: Timer
 
 func _ready():
+	_invincibility_timer = Timer.new()
+	add_child(_invincibility_timer)
+	_invincibility_timer.autostart = false
+	_invincibility_timer.one_shot = true
 	is_ready = true
 	unlink_material()
 	set_resource(player_resource)
 	if !((_message_dispatcher.game_state is DungeonState) or _message_dispatcher.game_state is TavernAfterDungeonState):
 		global_position = player_resource.tavern_global_position
 		$PlayerCamera._on_game_state_changed(_message_dispatcher.game_state)
+	_message_dispatcher.game_state_changed.connect(_heal_full)
+	_heal_full(_message_dispatcher.game_state)
 
 
 func set_resource(resource: PlayerResource):
@@ -52,4 +59,10 @@ func pickup_item(item: Item):
 		$ItemPickupPlayer.play()
 
 func take_damage(damage: int):
-	player_resource.health_resource.take_damage(damage)
+	if _invincibility_timer.is_stopped():
+		player_resource.health_resource.take_damage(damage)
+		_invincibility_timer.start(0.3)
+
+func _heal_full(state: State):
+	if state is NightState:
+		player_resource.health_resource.heal(player_resource.health_resource.max_health)

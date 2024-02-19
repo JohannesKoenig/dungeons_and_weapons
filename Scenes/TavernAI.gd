@@ -9,7 +9,8 @@ func calculate_strategies(
 	item_stock: Array,
 	adventurers: Array
 ) -> Dictionary:
-	var item_to_buyer_map := _map_items_to_buyer(adventurers)
+	var adventurers_with_inventory_space = adventurers.filter(func(x: AdventurerResource): return x.inventory.count_items() < x.inventory.size)
+	var item_to_buyer_map := _map_items_to_buyer(adventurers_with_inventory_space)
 	var adventurers_to_strategy_map = {}
 	# all adventurers in map need buyer strategy
 	for elem in item_to_buyer_map:

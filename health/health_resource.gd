@@ -16,7 +16,6 @@ signal healed(amount: int)
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
 func take_damage(damage: int):
-	print(damage)
 	if current_health - damage <= 0:
 		current_health = 0
 		dead = true

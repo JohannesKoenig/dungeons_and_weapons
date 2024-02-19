@@ -19,3 +19,4 @@ func spawn_dungeon():
 		dungeon_pieces.append(scene)
 		scene.dungeon_piece_resource = piece
 		add_child(scene)
+
