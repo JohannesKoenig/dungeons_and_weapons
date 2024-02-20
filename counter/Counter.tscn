@@ -69,6 +69,7 @@ shape = SubResource("CircleShape2D_k4pq3")
 [node name="InputHint" parent="TavernOpen" instance=ExtResource("4_457bb")]
 position = Vector2(-8, -22)
 texture = ExtResource("5_diom0")
+controller_texture = ExtResource("5_diom0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
