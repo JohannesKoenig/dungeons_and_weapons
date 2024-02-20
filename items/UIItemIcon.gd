@@ -1,4 +1,4 @@
-extends Control
+class_name UIItemIcon extends Control
 
 @export var resource: Resource
 signal resource_changed(resource: Resource)
@@ -6,11 +6,19 @@ signal right_clicked(resource: Resource)
 @export var default_texture: Texture
 @export var enable_drag_and_drop: bool = true
 var mouse_insight = false
+var input_type_resource: InputTypeResource = preload("res://Resources/input_type_resource.tres")
+var hint_texture: Texture
 
 func _ready():
 	set_resource(resource)
 	set_highlighted(false)
+	on_input_type_changed()
+	input_type_resource.type_changed.connect(on_input_type_changed)
+	set_hint_texture(hint_texture)
 
+func set_hint_texture(tex: Texture):
+	hint_texture = tex
+	$TextureRect.texture = tex
 
 func _process(delta):
 	if Input.is_action_just_pressed("Right Mouse") and mouse_insight:
@@ -66,4 +74,9 @@ func set_highlighted(value: bool):
 		panel.theme_type_variation = "HighlightedPanel"
 	else:
 		panel.theme_type_variation = "ItemBackgroundPanel"
-		
+
+func on_input_type_changed():
+	if input_type_resource.is_keyboard:
+		$TextureRect.visible = true
+	else:
+		$TextureRect.visible = false
