@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://blju14eccfr53"]
+[gd_scene load_steps=12 format=3 uid="uid://blju14eccfr53"]
 
 [ext_resource type="Script" path="res://scripts/Game/ItemDisplay.gd" id="1_q5mcy"]
 [ext_resource type="PackedScene" uid="uid://qt8yey64vkjj" path="res://utils/ToggleComponent/ToggleComponent.tscn" id="2_eikxv"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://73mvo4p2s0t5" path="res://counter/input_hint.tscn" id="7_3miev"]
 [ext_resource type="Texture2D" uid="uid://4lqrfxt1uqa5" path="res://icons/X.png" id="8_dlsft"]
 [ext_resource type="PackedScene" uid="uid://dg5nybf67hpca" path="res://tooltip/tooltip.tscn" id="9_vvl3i"]
+[ext_resource type="Texture2D" uid="uid://bgxqho1p3kmav" path="res://art/sprites/shadow.png" id="10_sl1ty"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sjws"]
 
@@ -49,6 +50,12 @@ texture = ExtResource("8_dlsft")
 
 [node name="Tooltip" parent="." instance=ExtResource("9_vvl3i")]
 visible = false
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.0705882)
+z_index = 2
+position = Vector2(0, 1)
+texture = ExtResource("10_sl1ty")
 
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]
 [connection signal="resource_changed" from="PopUpGuiComponent/UIItem" to="." method="_on_ui_item_resource_changed"]

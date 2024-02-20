@@ -34,10 +34,12 @@ func set_resource(items: Array):
 		$ItemSprite.visible = true
 		$ItemSprite.texture = item.ingame_texture
 		$Tooltip.item = item
+		$Shadow.visible = true
 	else:
 		$ItemSprite.visible = false
 		$ItemSprite.texture = null
 		$Tooltip.item = null
+		$Shadow.visible = false
 
 
 func _on_actionable_is_closest_to_player_changed(value):

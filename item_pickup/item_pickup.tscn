@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://0nqay38481la"]
+[gd_scene load_steps=10 format=3 uid="uid://0nqay38481la"]
 
 [ext_resource type="Script" path="res://item_pickup/item_pickup.gd" id="1_p8cnt"]
 [ext_resource type="Resource" uid="uid://c5tc5pfapdxlx" path="res://dungeon/dungeon_inventory.tres" id="2_4b4fw"]
 [ext_resource type="PackedScene" uid="uid://dtm8kpm4rwo5u" path="res://utils/BoppingComponent/BoppingComponent.tscn" id="2_hcs2g"]
 [ext_resource type="PackedScene" uid="uid://phmysi5nhblq" path="res://Scenes/helper/Actionable.tscn" id="2_u3n5o"]
+[ext_resource type="Texture2D" uid="uid://bgxqho1p3kmav" path="res://art/sprites/shadow.png" id="4_2ifvr"]
 [ext_resource type="PackedScene" uid="uid://73mvo4p2s0t5" path="res://counter/input_hint.tscn" id="5_k70vw"]
 [ext_resource type="Texture2D" uid="uid://4lqrfxt1uqa5" path="res://icons/X.png" id="6_y37a5"]
 [ext_resource type="PackedScene" uid="uid://dg5nybf67hpca" path="res://tooltip/tooltip.tscn" id="7_5xfc2"]
@@ -11,10 +12,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnqoi"]
 
 [node name="ItemPickup" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_p8cnt")
 inventory = ExtResource("2_4b4fw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 
 [node name="BoppingComponent" parent="Sprite2D" instance=ExtResource("2_hcs2g")]
 offset = Vector2(2.08165e-12, -3)
@@ -29,6 +32,13 @@ texture = ExtResource("6_y37a5")
 
 [node name="Tooltip" parent="." instance=ExtResource("7_5xfc2")]
 visible = false
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.25098)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, 4)
+texture = ExtResource("4_2ifvr")
 
 [connection signal="action" from="Actionable" to="." method="on_collect"]
 [connection signal="is_closest_to_player_changed" from="Actionable" to="." method="_on_actionable_is_closest_to_player_changed"]
