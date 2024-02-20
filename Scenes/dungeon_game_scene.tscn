@@ -88,7 +88,6 @@ dungeon_resource = ExtResource("11_0hnuh")
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource("13_stig1")]
 stream = ExtResource("14_q41g7")
 volume_db = -4.0
-max_distance = 200000.0
 fade_in_duration = 3.0
 
 [node name="DayNightTimer" parent="." instance=ExtResource("15_meqfy")]

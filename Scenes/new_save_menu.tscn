@@ -46,6 +46,8 @@ layout_mode = 2
 
 [node name="Create" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../NameInput")
+focus_neighbor_right = NodePath("../Back")
 disabled = true
 text = "Create"
 
@@ -56,6 +58,8 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_ynugm")
 
 [node name="Back" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Create")
+focus_neighbor_top = NodePath("../../NameInput")
 shortcut = ExtResource("2_ow7hs")
 text = "Back"
 

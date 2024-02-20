@@ -1,4 +1,4 @@
-class_name BackgroundMusicPlayer extends AudioStreamPlayer2D
+class_name BackgroundMusicPlayer extends AudioStreamPlayer
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------

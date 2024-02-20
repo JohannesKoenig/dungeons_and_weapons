@@ -3,11 +3,8 @@
 [ext_resource type="AudioStream" uid="uid://bvh6r1jv7gsv4" path="res://audio/TavernTune.wav" id="1_682y2"]
 [ext_resource type="Script" path="res://audio/background_music_player.gd" id="2_6m0jx"]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
-position = Vector2(138, 118)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_682y2")
 autoplay = true
-max_distance = 20000.0
 bus = &"Music"
-area_mask = 0
 script = ExtResource("2_6m0jx")
