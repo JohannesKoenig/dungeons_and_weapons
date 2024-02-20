@@ -22,7 +22,7 @@ func _process(delta):
 	direction = Vector2(horizontal, vertical)
 	if !target:
 		return
-	if !(_message_dispatcher.game_state is ShopState):
+	if !(_message_dispatcher.game_state is ShopState or _message_dispatcher.game_state is DeathState):
 		target.velocity = direction.normalized() * movement_stats.movement_speed
 	else:
 		target.velocity = Vector2.ZERO

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://cque2i4ioj040"]
+
+[ext_resource type="Script" path="res://items/weapon/weapon_resource.gd" id="1_28oul"]
+[ext_resource type="Texture2D" uid="uid://c6h5t3lc7iynh" path="res://Resources/weapons/holy_greatsword/icon.png" id="1_iaakd"]
+
+[resource]
+script = ExtResource("1_28oul")
+price = 113
+id = "holy_greatsword"
+name = "Holy Greatsword"
+value = 113
+icon_texture = ExtResource("1_iaakd")
+ingame_texture = ExtResource("1_iaakd")
+level = 0

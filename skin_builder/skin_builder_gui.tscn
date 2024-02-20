@@ -89,9 +89,15 @@ theme = ExtResource("2_fnnfc")
 theme_type_variation = &"IconButton"
 icon = ExtResource("5_t416c")
 
+[connection signal="focus_entered" from="VBoxContainer/HeadL" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer/HeadL" to="." method="_on_head_l_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/BodyL" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer/BodyL" to="." method="_on_body_l_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/LegsL" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer/LegsL" to="." method="_on_legs_l_pressed"]
+[connection signal="focus_entered" from="VBoxContainer2/HeadR" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer2/HeadR" to="." method="_on_head_r_pressed"]
+[connection signal="focus_entered" from="VBoxContainer2/BodyR" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer2/BodyR" to="." method="_on_body_r_pressed"]
+[connection signal="focus_entered" from="VBoxContainer2/LegsR" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer2/LegsR" to="." method="_on_legs_r_pressed"]

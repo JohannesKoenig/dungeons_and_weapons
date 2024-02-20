@@ -185,9 +185,15 @@ layout_mode = 2
 text = "v0.2"
 horizontal_alignment = 2
 
+[connection signal="focus_entered" from="VBoxContainer/VBoxContainer/SaveExists/Continue" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/SaveExists/Continue" to="." method="_on_continue_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/VBoxContainer/SaveExists/Button" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/SaveExists/Button" to="." method="_on_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/VBoxContainer/Options" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/Credits" to="." method="_on_focus"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Credits" to="." method="_on_credits_pressed"]

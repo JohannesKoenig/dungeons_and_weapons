@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dt1choghkaavl"]
+[gd_scene load_steps=22 format=3 uid="uid://dt1choghkaavl"]
 
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://interaction_handlers/PlayerInputHandler.tscn" id="1_ndabk"]
 [ext_resource type="Script" path="res://Scenes/dungeon_game_scene.gd" id="1_rgff1"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c1wruq1vniqxl" path="res://Scenes/tavern_scene.tscn" id="9_ti3ea"]
 [ext_resource type="PackedScene" uid="uid://cf5upld42l5mj" path="res://item_pickup_spawner/item_pickup_spawner.tscn" id="10_2l83o"]
 [ext_resource type="PackedScene" uid="uid://dqpd85ie6hc02" path="res://dungeon_door/dungeon_door.tscn" id="10_j2umu"]
+[ext_resource type="PackedScene" uid="uid://boths4nmldb78" path="res://death_fader/death_fader.tscn" id="10_j3yoc"]
 [ext_resource type="PackedScene" uid="uid://bcy7yr4ag3rcy" path="res://dungeon_spawner/dungeon_spawner.tscn" id="10_vrn8s"]
 [ext_resource type="Resource" uid="uid://b20jkm7hy5t00" path="res://dungeon_spawner/dungeon_resource.tres" id="11_0hnuh"]
 [ext_resource type="PackedScene" uid="uid://b7sjloxcm3svx" path="res://audio/background_music_player.tscn" id="13_stig1"]
@@ -75,6 +76,8 @@ color = Color(0, 0, 0, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TavernScene" parent="CanvasLayer" instance=ExtResource("9_ti3ea")]
+
+[node name="DeathFader" parent="CanvasLayer" instance=ExtResource("10_j3yoc")]
 
 [node name="ItemPickupSpawner" parent="." instance=ExtResource("10_2l83o")]
 position = Vector2(198, 240)

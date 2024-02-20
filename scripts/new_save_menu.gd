@@ -8,13 +8,18 @@ var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDis
 var _skin_builder: SkinBuilder
 var _save_slot: int = 1
 var _name_text: String = ""
+var button_click_player
+var init_ready = false
 
 func _ready():
+	button_click_player = $"/root/ButtonClick"
 	$VBoxContainer/HBoxContainer/Create.grab_focus()
 	_skin_builder = SkinBuilder.new()
+	init_ready = true
 
 
 func _on_create_pressed():
+	button_click_player.play_click()
 	var save_slot_resource = SaveslotResource.new()
 	save_slot_resource.player_name = _name_text
 	save_slot_resource.slot = _save_slot
@@ -32,13 +37,20 @@ func _on_create_pressed():
 
 
 func _on_back_pressed():
+	button_click_player.play_click()
 	menu_save_resource.write_savegame()
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 
 func _on_name_input_text_changed(new_line: String):
+	if init_ready:
+		button_click_player.play_focus()
 	_name_text = new_line
 	if _name_text != "":
 		$VBoxContainer/HBoxContainer/Create.disabled = false
 	else:
 		$VBoxContainer/HBoxContainer/Create.disabled = true
+
+func _on_focus():
+	if init_ready:
+		button_click_player.play_focus()

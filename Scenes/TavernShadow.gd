@@ -76,7 +76,7 @@ func on_daytime_changed(is_day: bool, hour: int, minute: int) -> void:
 		var delta = between((dawn_time - sun_up_duration/2 * 60), time_in_minutes, (dusk_time + sun_down_duration * 60))
 		skew_degree = lerp(40,-40, delta)
 	shadow_color.a = alpha
-	skew = deg_to_rad(skew_degree)
+	# skew = deg_to_rad(skew_degree)
 	modulate = shadow_color
 	
 func between(start: int, value: int, end: int) -> float:

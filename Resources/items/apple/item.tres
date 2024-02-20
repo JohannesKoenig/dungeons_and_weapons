@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://xsthbqcljnah"]
+
+[ext_resource type="Script" path="res://items/item/item.gd" id="1_c6k0l"]
+[ext_resource type="Texture2D" uid="uid://dkelevyrfp550" path="res://Resources/items/apple/icon.png" id="1_g8ref"]
+
+[resource]
+script = ExtResource("1_c6k0l")
+id = "apple"
+name = "Apple"
+value = 3
+icon_texture = ExtResource("1_g8ref")
+ingame_texture = ExtResource("1_g8ref")
+level = 0

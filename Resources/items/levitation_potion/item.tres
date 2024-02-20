@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://e2gcnj85nb42"]
+
+[ext_resource type="Script" path="res://items/item/item.gd" id="1_1iitg"]
+[ext_resource type="Texture2D" uid="uid://b4jm68rob1jj2" path="res://Resources/items/levitation_potion/icon.png" id="1_exy6k"]
+
+[resource]
+script = ExtResource("1_1iitg")
+id = "levitation_potion"
+name = "Levitation Potion"
+value = 32
+icon_texture = ExtResource("1_exy6k")
+ingame_texture = ExtResource("1_exy6k")
+level = 0

@@ -7,6 +7,7 @@ class_name Player
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var item_holding_component: ItemHoldingComponent = $ItemHoldingComponent
 var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
+var dungeon_inventory: InventoryResource = preload("res://dungeon/dungeon_inventory.tres")
 var view_direction: Vector2
 var is_ready = false
 var _invincibility_timer: Timer
@@ -24,6 +25,9 @@ func _ready():
 		$PlayerCamera._on_game_state_changed(_message_dispatcher.game_state)
 	_message_dispatcher.game_state_changed.connect(_heal_full)
 	_heal_full(_message_dispatcher.game_state)
+	player_resource.health_resource.died.connect(_on_death)
+	if player_resource.health_resource.dead:
+		_on_death()
 
 
 func set_resource(resource: PlayerResource):
@@ -63,8 +67,16 @@ func pickup_item(item: Item):
 func take_damage(damage: int):
 	if _invincibility_timer.is_stopped():
 		player_resource.health_resource.take_damage(damage)
+		
 		_invincibility_timer.start(0.3)
 
 func _heal_full(state: State):
-	if state is NightState:
+	if state is TavernAfterDungeonState:
 		player_resource.health_resource.heal(player_resource.health_resource.max_health)
+
+func _on_death():
+	var items = player_resource.inventory.items.duplicate()
+	for item in items:
+		dungeon_inventory.add(item)
+	player_resource.inventory.clear()
+	_message_dispatcher.requested_death.emit()

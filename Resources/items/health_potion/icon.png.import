@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6s6s225wtutx"
-path="res://.godot/imported/icon.png-3eb3871a4f92d70a03112fc0cff92ae2.ctex"
+uid="uid://c8a1uq4ffskh0"
+path="res://.godot/imported/icon.png-9b4664bf7dea7ad73f0a4235809598be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/weapons/training_sword/icon.png"
-dest_files=["res://.godot/imported/icon.png-3eb3871a4f92d70a03112fc0cff92ae2.ctex"]
+source_file="res://Resources/items/health_potion/icon.png"
+dest_files=["res://.godot/imported/icon.png-9b4664bf7dea7ad73f0a4235809598be.ctex"]
 
 [params]
 

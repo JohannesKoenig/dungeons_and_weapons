@@ -5,6 +5,7 @@ extends Node
 var _music_bus = AudioServer.get_bus_index("Music")
 var _ambient_bus = AudioServer.get_bus_index("Ambient")
 var _combat_bus = AudioServer.get_bus_index("Combat")
+var _ui_bus = AudioServer.get_bus_index("Ui")
 var menu_save_resource: MenuSaveResource = preload("res://savegame/menu_save_resource.tres")
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
@@ -18,6 +19,7 @@ func _ready():
 
 	menu_save_resource.combat_sound_level_changed.connect(_on_combat_volume_changed)
 	_on_combat_volume_changed(menu_save_resource.combat_sound_level)
+	
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------

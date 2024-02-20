@@ -7,7 +7,7 @@ class_name HealthResource extends Resource
 var dead: bool = false:
 	set(value):
 		dead = value
-		if !value:
+		if value:
 			died.emit()
 signal died
 signal damaged(amount: int)
@@ -26,6 +26,8 @@ func take_damage(damage: int):
 func heal(amount: int):
 	current_health = min(max_health, current_health + amount)
 	healed.emit(amount)
+	if current_health > 0:
+		dead = false
 
 func serialize() -> Dictionary:
 	return {

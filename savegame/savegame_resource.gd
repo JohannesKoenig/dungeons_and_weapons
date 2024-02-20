@@ -47,6 +47,8 @@ func write_savegame(slot: int = 1):
 
 func write_reset():
 	var file := FileAccess.open("user://temp.json", FileAccess.WRITE)
+	item_factory.load_items()
+	item_factory.load_weapons()
 	var data := {
 		"name": name,
 		"slot": slot,

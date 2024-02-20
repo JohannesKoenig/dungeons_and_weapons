@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bkrkeaaqpuc03"]
+
+[ext_resource type="Texture2D" uid="uid://baw0rkujl4brq" path="res://Resources/items/ink/icon.png" id="1_7fcx7"]
+[ext_resource type="Script" path="res://items/item/item.gd" id="1_q2stp"]
+
+[resource]
+script = ExtResource("1_q2stp")
+id = "ink"
+name = "Ink"
+value = 11
+icon_texture = ExtResource("1_7fcx7")
+ingame_texture = ExtResource("1_7fcx7")
+level = 0

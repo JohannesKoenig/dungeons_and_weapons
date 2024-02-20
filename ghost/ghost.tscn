@@ -1,14 +1,51 @@
-[gd_scene load_steps=8 format=3 uid="uid://du6nh8euyengr"]
+[gd_scene load_steps=14 format=3 uid="uid://du6nh8euyengr"]
 
 [ext_resource type="Script" path="res://ghost/ghost.gd" id="1_6uth2"]
-[ext_resource type="Texture2D" uid="uid://cwu82l3jopdt" path="res://art/sprites/tilesets/Sapling.png" id="2_1rwt0"]
+[ext_resource type="Texture2D" uid="uid://cmo72m7k6ne0b" path="res://ghost/Ghost.png" id="2_uet8p"]
 [ext_resource type="Script" path="res://ghost/MovementMapper.gd" id="3_ilgpx"]
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="4_ogtj5"]
+[ext_resource type="PackedScene" uid="uid://vrfwipd3m6p8" path="res://flickering_light/flickering_light.tscn" id="5_606j1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t551g"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m7lm7"]
 light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54brd"]
+atlas = ExtResource("2_uet8p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2o0p"]
+atlas = ExtResource("2_uet8p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtfgh"]
+atlas = ExtResource("2_uet8p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj151"]
+atlas = ExtResource("2_uet8p")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i00bu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54brd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2o0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtfgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj151")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Resource" id="Resource_5q2uv"]
 script = ExtResource("4_ogtj5")
@@ -23,11 +60,19 @@ script = ExtResource("1_6uth2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t551g")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 0
 z_index = 1
 material = SubResource("CanvasItemMaterial_m7lm7")
-texture = ExtResource("2_1rwt0")
+sprite_frames = SubResource("SpriteFrames_i00bu")
+autoplay = "default"
+frame_progress = 0.753012
 
 [node name="MovementMapper" type="Node" parent="."]
 script = ExtResource("3_ilgpx")
 movement_stats = SubResource("Resource_5q2uv")
+
+[node name="FlickeringLight" parent="." instance=ExtResource("5_606j1")]
+light_mask = 0
+color = Color(0.47451, 0.815686, 0.384314, 1)
+shadow_enabled = false

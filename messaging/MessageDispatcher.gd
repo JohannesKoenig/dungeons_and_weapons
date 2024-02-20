@@ -31,6 +31,7 @@ signal requested_tavern_night
 signal requested_tavern_day
 signal requested_dungeon
 signal requested_tavern_after_dungeon
+signal requested_death
 var shoppers_active: bool = false
 var skip_intro: bool = false
 

@@ -1,6 +1,7 @@
 extends Node
 
 var dnr: DayNightResource = preload("res://daynight/day_night_resource.tres")
+var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 var timer: Timer
 @export var running = false
 func _ready():
@@ -17,7 +18,7 @@ func _bump_day():
 	dnr.day_counter += 1
 
 func _process(_delta: float):
-	if !running:
+	if !running or _message_dispatcher.game_state is DeathState:
 		return
 	var remaining_time = timer.get_time_left()
 	dnr.remaining_time = remaining_time

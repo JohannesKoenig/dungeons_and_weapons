@@ -19,6 +19,9 @@ func _ready():
 		states["dungeon"]= _instantiate_state(load("res://state_machines/game_state_machine/dungeon_state.gd"))
 	if !("tavern_after_dungeon" in states):
 		states["tavern_after_dungeon"]= _instantiate_state(load("res://state_machines/game_state_machine/tavern_after_dungeon_state.gd"))
+	if !("death" in states):
+		states["death"]= _instantiate_state(load("res://state_machines/game_state_machine/death_state.gd"))
+	
 	_register_states()
 	var loaded_game_state = _message_dispatcher.loaded_game_state
 	_message_dispatcher.loaded_game_state_changed.connect(_on_transition)

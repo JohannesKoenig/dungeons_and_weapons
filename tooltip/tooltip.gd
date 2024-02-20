@@ -1,11 +1,11 @@
 class_name Tooltip extends Control
 
 @export var show_delay: float = 1.0
-@export var item: WeaponResource:
+@export var item: Item:
 	set(value):
 		item = value
 		item_changed.emit(value)
-signal item_changed(item: WeaponResource)
+signal item_changed(item: Item)
 
 var timer: Timer
 
@@ -17,15 +17,15 @@ func _ready():
 	add_child(timer)
 
 
-static func with_item(item: WeaponResource) -> Tooltip:
+static func with_item(item: Item) -> Tooltip:
 	var new_instance = Tooltip.new()
 	new_instance.item = item
 	return new_instance
 	
-func _on_item_changed(item: WeaponResource):
+func _on_item_changed(item: Item):
 	if item:
 		$HBoxContainer/Name.text = item.name
-		$HBoxContainer/CoinsContainer/Coins.text = str(item.price)
+		$HBoxContainer/CoinsContainer/Coins.text = str(item.value)
 	else:
 		visible = false
 		$HBoxContainer/Name.text = "-"

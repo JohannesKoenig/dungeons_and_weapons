@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dpkih1qcbm2o1"]
+
+[ext_resource type="Texture2D" uid="uid://bqi17beg4uul5" path="res://Resources/items/water_skin/icon.png" id="1_kv7wi"]
+[ext_resource type="Script" path="res://items/item/item.gd" id="1_nrrhm"]
+
+[resource]
+script = ExtResource("1_nrrhm")
+id = "water_skin"
+name = "Water skin"
+value = 8
+icon_texture = ExtResource("1_kv7wi")
+ingame_texture = ExtResource("1_kv7wi")
+level = 0

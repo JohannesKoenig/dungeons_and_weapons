@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dn4jx2sfdganc"]
+
+[ext_resource type="Script" path="res://items/item/item.gd" id="1_fkfvr"]
+[ext_resource type="Texture2D" uid="uid://cb5ruffxweiq2" path="res://Resources/items/cheese/icon.png" id="1_y47fp"]
+
+[resource]
+script = ExtResource("1_fkfvr")
+id = "cheese"
+name = "Cheese"
+value = 12
+icon_texture = ExtResource("1_y47fp")
+ingame_texture = ExtResource("1_y47fp")
+level = 0

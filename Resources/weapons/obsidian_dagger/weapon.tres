@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://crsamctpt7cax"]
+
+[ext_resource type="Texture2D" uid="uid://drkt4v3tq0l3k" path="res://Resources/weapons/obsidian_dagger/icon.png" id="1_27k8o"]
+[ext_resource type="Script" path="res://items/weapon/weapon_resource.gd" id="1_71btc"]
+
+[resource]
+script = ExtResource("1_71btc")
+price = 18
+id = "obsidian_dagger"
+name = "Obsidian Dagger"
+value = 18
+icon_texture = ExtResource("1_27k8o")
+ingame_texture = ExtResource("1_27k8o")
+level = 0

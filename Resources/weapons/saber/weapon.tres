@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://c8o03gk6lfkw2"]
+
+[ext_resource type="Script" path="res://items/weapon/weapon_resource.gd" id="1_2ap36"]
+[ext_resource type="Texture2D" uid="uid://de0lg3g10oo88" path="res://Resources/weapons/saber/icon.png" id="1_urtup"]
+
+[resource]
+script = ExtResource("1_2ap36")
+price = 41
+id = "saber"
+name = "Saber"
+value = 41
+icon_texture = ExtResource("1_urtup")
+ingame_texture = ExtResource("1_urtup")
+level = 0

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://p4uo6ak432us"]
+
+[ext_resource type="AudioStream" uid="uid://cqcyqwdhcbtou" path="res://audio/button_focus.wav" id="1_irntu"]
+[ext_resource type="Script" path="res://Scenes/ButtonClick.gd" id="2_vp0cd"]
+
+[node name="ButtonClick" type="AudioStreamPlayer"]
+stream = ExtResource("1_irntu")
+volume_db = -20.0
+bus = &"Ui"
+script = ExtResource("2_vp0cd")

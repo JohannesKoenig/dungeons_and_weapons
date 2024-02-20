@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://d2lvfqmfeqwc0"]
+
+[ext_resource type="Script" path="res://items/weapon/weapon_resource.gd" id="1_4idks"]
+[ext_resource type="Texture2D" uid="uid://ckxpkcrhmsni4" path="res://Resources/weapons/trident/icon.png" id="1_18xs5"]
+
+[resource]
+script = ExtResource("1_4idks")
+price = 82
+id = "trident"
+name = "Trident"
+value = 82
+icon_texture = ExtResource("1_18xs5")
+ingame_texture = ExtResource("1_18xs5")
+level = 0

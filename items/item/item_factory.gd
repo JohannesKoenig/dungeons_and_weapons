@@ -1,12 +1,38 @@
 class_name ItemFactory
 extends Resource
 
-@export var item_table = {
-	"curved_axe": preload("res://Resources/weapons/curved_axe/weapon.tres"),
-	"hammer": preload("res://Resources/weapons/hammer/weapon.tres"),
-	"training_sword": preload("res://Resources/weapons/training_sword/weapon.tres")
-}
+@export var items = {}
 
 func get_random() -> Item:
-	var item = item_table.values().pick_random()
+	var item = items.values().pick_random()
 	return item.duplicate()
+
+func load_weapons():
+	var base_path = "res://Resources/weapons"
+	var dir = DirAccess.open(base_path)
+	dir.list_dir_begin()
+	while true:
+		var sub_dir = dir.get_next()
+		if sub_dir == "":
+			#break the while loop when get_next() returns ""
+			break
+		var sub_path = base_path + "/" + sub_dir
+		if DirAccess.dir_exists_absolute(sub_path):
+			var resource_path = sub_path + "/weapon.tres"
+			items[sub_dir] = load(resource_path)
+	dir.list_dir_end()
+
+func load_items():
+	var base_path = "res://Resources/items"
+	var dir = DirAccess.open(base_path)
+	dir.list_dir_begin()
+	while true:
+		var sub_dir = dir.get_next()
+		if sub_dir == "":
+			#break the while loop when get_next() returns ""
+			break
+		var sub_path = base_path + "/" + sub_dir
+		if DirAccess.dir_exists_absolute(sub_path):
+			var resource_path = sub_path + "/item.tres"
+			items[sub_dir] = load(resource_path)
+	dir.list_dir_end()

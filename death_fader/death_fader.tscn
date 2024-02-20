@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://boths4nmldb78"]
+
+[ext_resource type="Script" path="res://death_fader/death_fader.gd" id="1_e1xbc"]
+
+[sub_resource type="Gradient" id="Gradient_bocpw"]
+offsets = PackedFloat32Array(0, 0.02, 0.995, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_golv7"]
+gradient = SubResource("Gradient_bocpw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vajfd"]
+
+[node name="DeathFader" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_golv7")
+script = ExtResource("1_e1xbc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.552941, 0, 0.0431373, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_vajfd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -25.0
+offset_right = 46.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "K. O."
+horizontal_alignment = 1

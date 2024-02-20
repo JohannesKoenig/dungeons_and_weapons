@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://djfere13vg8vp"]
+
+[ext_resource type="Texture2D" uid="uid://iw5ydtj3u0sc" path="res://Resources/items/protection_potion/icon.png" id="1_b434u"]
+[ext_resource type="Script" path="res://items/item/item.gd" id="1_esbn3"]
+
+[resource]
+script = ExtResource("1_esbn3")
+id = "protection_potion"
+name = "Protection Potion"
+value = 15
+icon_texture = ExtResource("1_b434u")
+ingame_texture = ExtResource("1_b434u")
+level = 0

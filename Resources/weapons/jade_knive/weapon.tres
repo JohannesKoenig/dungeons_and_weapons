@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://bppkpuxbnw4kd"]
+
+[ext_resource type="Script" path="res://items/weapon/weapon_resource.gd" id="1_c51n1"]
+[ext_resource type="Texture2D" uid="uid://b2g3sr4exwofl" path="res://Resources/weapons/jade_knive/icon.png" id="1_md034"]
+
+[resource]
+script = ExtResource("1_c51n1")
+price = 24
+id = "jade_knive"
+name = "Jade Knive"
+value = 24
+icon_texture = ExtResource("1_md034")
+ingame_texture = ExtResource("1_md034")
+level = 0
