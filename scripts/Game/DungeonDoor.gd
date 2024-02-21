@@ -21,5 +21,5 @@ func _on_actionable_action(source):
 		_message_dispatcher.requested_dungeon.emit()
 	if source is Visitor and _message_dispatcher.game_state is ShopState:
 		var resource: AdventurerResource = source.adventurer_resource
-		resource.coins = max(0, resource.coins - 10)
-		player_resource.set_coins(player_resource.coins + 10)
+		# resource.coins = max(0, resource.coins - 10)
+		player_resource.set_coins(player_resource.coins + 5)

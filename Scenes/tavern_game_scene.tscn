@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=80 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://d3se5wucuuebd" path="res://player/player_resource.tres" id="16_sxamc"]
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://interaction_handlers/PlayerInputHandler.tscn" id="16_v5hdu"]
 [ext_resource type="Texture2D" uid="uid://cbshdt1t43px" path="res://art/sprites/tilesets/Tavern_open_2.png" id="17_7lae8"]
+[ext_resource type="Script" path="res://Scenes/Tavern_open.gd" id="18_fbjg0"]
 [ext_resource type="PackedScene" uid="uid://bigcq1dyqr61g" path="res://Scenes/Game/AIDirector.tscn" id="18_ghi10"]
 [ext_resource type="PackedScene" uid="uid://nu58iqeehn5c" path="res://Scenes/TavernAI.tscn" id="19_2wblc"]
 [ext_resource type="PackedScene" uid="uid://m6w2er7cnnh7" path="res://sprite_shadow.tscn" id="19_sjjon"]
@@ -658,6 +659,9 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 metadata/_snap_enabled = true
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8wr8"]
+size = Vector2(155, 168)
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_h556j"]
 diffuse_texture = ExtResource("24_j1c6b")
 normal_texture = ExtResource("25_eop8i")
@@ -847,11 +851,21 @@ tavern_resource = ExtResource("25_35v82")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Entities/TavernCollider"]
 polygon = PackedVector2Array(48, 32, 48, 208, 160, 208, 160, 200, 56, 200, 56, 40, 199, 40, 199, 200, 192, 200, 192, 208, 208, 208, 208, 32)
 
-[node name="Tavern_open" type="Sprite2D" parent="Entities"]
+[node name="Tavern_open" type="Sprite2D" parent="Entities" node_paths=PackedStringArray("tavern_closed")]
 light_mask = 0
 z_index = 2
 position = Vector2(128, 96)
 texture = ExtResource("17_7lae8")
+script = ExtResource("18_fbjg0")
+tavern_closed = NodePath("../Tavern_closed")
+
+[node name="Area2D" type="Area2D" parent="Entities/Tavern_open"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Tavern_open/Area2D"]
+position = Vector2(-0.5, 23)
+shape = SubResource("RectangleShape2D_g8wr8")
 
 [node name="Tavern_closed" type="Sprite2D" parent="Entities"]
 self_modulate = Color(1, 1, 1, 0)
@@ -979,5 +993,7 @@ running = true
 
 [node name="RentPayingComponent" parent="." instance=ExtResource("34_ll26b")]
 
+[connection signal="body_entered" from="Entities/Tavern_open/Area2D" to="Entities/Tavern_open" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Entities/Tavern_open/Area2D" to="Entities/Tavern_open" method="_on_area_2d_body_exited"]
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]
 [connection signal="toggle_menu" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_game_menu"]

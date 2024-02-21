@@ -51,7 +51,6 @@ func _update_hint(on_counter: bool, state: State):
 		$TavernOpen/InputHint.hide_hint()
 
 func _update_position_marker(state: State):
-	print(state)
 	if state is DayState:
 		$AnimatedSprite2D.visible = true
 	else:

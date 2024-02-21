@@ -1,28 +1,34 @@
-class_name TavernAfterDungeonState extends State
+class_name TavernOpen extends Sprite2D
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
-var dnr: DayNightResource = preload("res://daynight/day_night_resource.tres")
-
+@export var tavern_closed: Sprite2D
+@export var fade_duration: float = 1
+var tween: Tween
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
-func _init():
-	state_name = "tavern_after_dungeon"
+func _ready():
+	tavern_closed.self_modulate.a = 0
 
-func on_enter():
-	dnr.night_ended.connect(_on_night_ended)
-
-func process():
-	if dnr.is_day:
-		_on_night_ended()
-
-func on_exit():
-	dnr.night_ended.disconnect(_on_night_ended)
-	
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
-func _on_night_ended():
-	transitioned.emit("day")
-	
+
+
+
+func _on_area_2d_body_entered(body):
+	if body is Player:
+		if tween:
+			tween.kill()
+		tween = create_tween()
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(tavern_closed, "self_modulate:a", 0, fade_duration)
+
+func _on_area_2d_body_exited(body):
+	if body is Player:
+		if tween:
+			tween.kill()
+		tween = create_tween()
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(tavern_closed, "self_modulate:a", 1, fade_duration)

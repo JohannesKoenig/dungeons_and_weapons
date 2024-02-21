@@ -29,3 +29,4 @@ func _on_night_ended():
 
 func _on_taver_after_dungeon():
 	transitioned.emit("tavern_after_dungeon")
+	get_tree().change_scene_to_file("res://Scenes/tavern_game_scene.tscn")

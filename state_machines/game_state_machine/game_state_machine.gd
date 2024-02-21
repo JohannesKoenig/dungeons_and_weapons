@@ -26,7 +26,7 @@ func _ready():
 	var loaded_game_state = _message_dispatcher.loaded_game_state
 	_message_dispatcher.loaded_game_state_changed.connect(_on_transition)
 	if loaded_game_state == "empty":
-		loaded_game_state = "day"
+		return
 	_on_transition(loaded_game_state)
 
 func _register_states():
@@ -35,6 +35,11 @@ func _register_states():
 		state.transitioned.connect(_on_transition)
 
 func _on_transition(next: String):
+	if current_state:
+		print("Next: %s, Current: %s" % [next, current_state.state_name])
+	else:
+		print("Next: %s, Current: null" % next)
+
 	if !(next in states):
 		return
 	var next_state = states[next]

@@ -24,6 +24,7 @@ func on_enter():
 	player_resource.inventory.clear()
 
 func on_exit():
+	get_tree().change_scene_to_file("res://Scenes/tavern_game_scene.tscn")
 	pass
 
 func _on_timeout():
