@@ -66,8 +66,8 @@ shortcut = ExtResource("3_h0uo7")
 text = "Back"
 
 [connection signal="focus_entered" from="VBoxContainer/HBoxContainer/save-button" to="." method="_on_focus"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/save-button" to="." method="_on_savebutton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/save-button" to="." method="_on_close"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/save-button" to="." method="_on_savebutton_pressed"]
 [connection signal="focus_entered" from="VBoxContainer/HBoxContainer/back-button" to="." method="_on_focus"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/back-button" to="." method="_on_backbutton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/back-button" to="." method="_on_close"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/back-button" to="." method="_on_backbutton_pressed"]

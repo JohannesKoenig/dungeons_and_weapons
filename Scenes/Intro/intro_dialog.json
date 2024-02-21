@@ -2,7 +2,7 @@
 	"dialog": [
 		{
 			"speaker": "Major",
-			"line": "Good day, Player.",
+			"line": "Good day, <name>.",
 			"align": "R"
 		},
 		{
@@ -16,7 +16,7 @@
 			"align": "R"
 		},
 		{
-			"speaker": "Player",
+			"speaker": "<name>",
 			"line": "...",
 			"align": "L"
 		},
@@ -41,7 +41,7 @@
 			"align": "R"
 		},
 		{
-			"speaker": "Player",
+			"speaker": "<name>",
 			"line": "...",
 			"align": "L"
 		},

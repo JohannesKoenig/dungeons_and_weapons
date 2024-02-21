@@ -11,6 +11,7 @@ func _ready():
 		"menu": _instantiate_state(load("res://state_machines/main_state_machine/menu_state.gd")),
 		"load": _instantiate_state(load("res://state_machines/main_state_machine/load_game_state.gd")),
 		"game": _instantiate_state(load("res://state_machines/main_state_machine/game_state.gd")),
+		"game_over": _instantiate_state(load("res://state_machines/main_state_machine/game_over_state.gd")),
 		"save": _instantiate_state(load("res://state_machines/main_state_machine/save_game_state.gd")),
 		"save_and_exit": _instantiate_state(load("res://state_machines/main_state_machine/save_and_exit_game_state.gd")),
 	}

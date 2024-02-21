@@ -872,7 +872,6 @@ texture = ExtResource("20_h8wp4")
 
 [node name="SpriteShadow" parent="Entities/Sapling" instance=ExtResource("19_sjjon")]
 position = Vector2(-1, 23)
-shadow_color = Color(0, 0, 0, 0.258824)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Entities/Sapling"]
 collision_mask = 3

@@ -32,7 +32,7 @@ func _get_drag_data(at_position):
 	if not enable_drag_and_drop:
 		return null
 	if resource:
-		var drag_preview_texture = load("res://items/UIItemDragPreview.tscn").instantiate()
+		var drag_preview_texture = ResourceLoader.load("res://items/UIItemDragPreview.tscn").instantiate()
 		drag_preview_texture.texture = resource.icon_texture
 		get_node("/root/DragAndDropLayer").get_canvas_layer().add_child(drag_preview_texture)
 		drag_preview_texture.size = Vector2(0.1,0.1)  # No idea why this works

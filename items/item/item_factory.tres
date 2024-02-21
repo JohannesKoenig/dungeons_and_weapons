@@ -7,8 +7,3 @@
 
 [resource]
 script = ExtResource("1_j34ut")
-item_table = {
-"curved_axe": ExtResource("1_2smj4"),
-"hammer": ExtResource("2_kth7c"),
-"training_sword": ExtResource("3_vmqcr")
-}

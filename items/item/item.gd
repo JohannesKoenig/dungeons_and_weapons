@@ -9,7 +9,7 @@ extends Resource
 @export var level: int
 
 static func get_random() -> Item:
-	return load("res://Resources/weapons/curved_axe/weapon.tres")
+	return ResourceLoader.load("res://Resources/weapons/curved_axe/weapon.tres")
 
 func serialize() -> Dictionary:
 	return {

@@ -7,6 +7,7 @@ var ai_path_markers: AiPathMarkers
 var dialog_resource: Dictionary
 @onready var speech_bubble: SpeechBubble = $CanvasLayer/SpeechBubble
 var timer: Timer
+var player_resource: PlayerResource = preload("res://player/player_resource.tres")
 signal action_pressed
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
@@ -40,7 +41,12 @@ func _process(delta):
 func _start_dialog():
 	var dialog_pieces = dialog_resource["dialog"]
 	for dialog_piece in dialog_pieces:
-		speech_bubble.set_line(dialog_piece)
+		speech_bubble.set_line(_replace_strings(dialog_piece))
 		await action_pressed
 	speech_bubble.set_line({})
 	cut_scene_manager.conversation_over()
+
+func _replace_strings(dialog_piece: Dictionary) -> Dictionary:
+	dialog_piece["line"]= dialog_piece["line"].replace("<name>", player_resource.player_name)
+	dialog_piece["speaker"] = dialog_piece["speaker"].replace("<name>", player_resource.player_name)
+	return dialog_piece

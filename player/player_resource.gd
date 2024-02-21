@@ -14,6 +14,7 @@ extends Resource
 @export var legs: Texture
 var tavern_global_position: Vector2 = Vector2(128, 128)
 var dungeon_global_position: Vector2 = Vector2(0, 4)
+var player_name: String
 
 signal coins_changed(coins: int)
 signal coins_changed_delta(coins: int, delta: int)
@@ -42,7 +43,8 @@ func serialize() -> Dictionary:
 		"dungeon_global_position": {
 			"x": dungeon_global_position.x,
 			"y": dungeon_global_position.y
-		}
+		},
+		"player_name": player_name
 	}
 
 func deserialize(data: Dictionary):
@@ -50,9 +52,10 @@ func deserialize(data: Dictionary):
 	inventory.deserialize(data["inventory"])
 	quick_access.size = data["quick_access"]["size"]
 	quick_access.selected_index = data["quick_access"]["selected_index"]
-	head = load(data["head"])
-	body = load(data["body"])
-	legs = load(data["legs"])
+	head = ResourceLoader.load(data["head"])
+	body = ResourceLoader.load(data["body"])
+	legs = ResourceLoader.load(data["legs"])
 	health_resource.deserialize(data["health"])
 	tavern_global_position = Vector2(data["tavern_global_position"]["x"], data["tavern_global_position"]["y"])
 	dungeon_global_position = Vector2(data["dungeon_global_position"]["x"], data["dungeon_global_position"]["y"])
+	player_name = data["player_name"]

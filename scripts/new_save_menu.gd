@@ -26,6 +26,7 @@ func _on_create_pressed():
 	var savegame_resource = SaveGameResource.new()
 	savegame_resource.name = _name_text
 	savegame_resource.slot = _save_slot
+	savegame_resource.player_resource.player_name = _name_text
 	savegame_resource.player_resource.head = _skin_builder.heads[skin_builder_gui.head_index]
 	savegame_resource.player_resource.body = _skin_builder.bodies[skin_builder_gui.body_index]
 	savegame_resource.player_resource.legs = _skin_builder.legs[skin_builder_gui.legs_index]

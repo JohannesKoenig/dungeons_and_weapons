@@ -299,7 +299,7 @@ func save_rules():
 			if dir.current_is_dir():
 				var piece_name = file_name.trim_prefix("dungeon_piece_")
 				var tres_name = base_path + "/" + file_name + "/" + "dungeon_piece_rule_" + piece_name + ".tres"
-				var resource: DungeonPieceRule = load(tres_name)
+				var resource: DungeonPieceRule = ResourceLoader.load(tres_name)
 				save_dict["rules"].append({
 					"name": piece_name,
 					"N": resource.N.map(func(x): return _resource_to_path(x)),
@@ -329,12 +329,8 @@ func load_rules():
 
 	for elem in data["rules"]:
 		var path = base_path + "/dungeon_piece_" + elem["name"] + "/dungeon_piece_rule_" + elem["name"] + ".tres"
-		var res: DungeonPieceRule = load(path)
+		var res: DungeonPieceRule = ResourceLoader.load(path)
 		rules[res.dungeon_piece] = res
-		#res.N = elem["N"].map(func(x): return load(x))
-		#res.W = elem["W"].map(func(x): return load(x))
-		#res.E = elem["E"].map(func(x): return load(x))
-		#res.S = elem["S"].map(func(x): return load(x))
 		res.N = []
 		res.W = []
 		res.E = []

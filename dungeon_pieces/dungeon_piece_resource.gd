@@ -22,7 +22,7 @@ func serialize() -> Dictionary:
 	}
 
 func deserialize(dict: Dictionary):
-	scene = load(dict["scene"])
+	scene = ResourceLoader.load(dict["scene"])
 	offset = Vector2(dict["offset"]["x"], dict["offset"]["y"])
 
 static func deserialize_from_dict(dict: Dictionary) -> DungeonPieceResource:

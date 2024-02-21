@@ -11,7 +11,7 @@ var _heart_scene: PackedScene
 func _ready():
 	health_resource.damaged.connect(_on_damaged)
 	health_resource.healed.connect(_on_healed)
-	_heart_scene = load("res://health/health_heart.tscn")
+	_heart_scene = ResourceLoader.load("res://health/health_heart.tscn")
 	_init_hearts()
 	_on_damaged(health_resource.max_health - health_resource.current_health)
 # ------------------------------------------------------------------------------

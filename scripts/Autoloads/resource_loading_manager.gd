@@ -3,7 +3,7 @@ extends Node
 var path_to_texture: Dictionary = {}
 
 func load_resource(path: String) -> Resource:
-	return load(path)
+	return ResourceLoader.load(path)
 
 func get_texture(path: String) -> Texture:
 	if path not in path_to_texture:

@@ -23,6 +23,7 @@ signal game_state_changed(state)
 signal requested_load
 signal requested_save
 signal requested_exit_game
+signal requested_game_over
 
 #Ingame requests
 signal requested_shop_open

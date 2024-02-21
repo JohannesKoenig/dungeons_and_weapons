@@ -24,8 +24,9 @@ static func import_from_folder(path: String) -> Array:
 		if file_name == "":
 			#break the while loop when get_next() returns ""
 			break
-		elif !file_name.begins_with(".") and !file_name.ends_with(".import"):
+		elif !file_name.begins_with(".") and file_name.ends_with(".import"):
 			#if !file_name.ends_with(".import"):
-			pics.append(load(path + "/" + file_name))
+			var no_import = file_name.trim_suffix(".import")
+			pics.append(ResourceLoader.load(path + "/" + no_import))
 	dir.list_dir_end()
 	return pics

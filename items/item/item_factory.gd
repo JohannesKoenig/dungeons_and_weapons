@@ -19,7 +19,7 @@ func load_weapons():
 		var sub_path = base_path + "/" + sub_dir
 		if DirAccess.dir_exists_absolute(sub_path):
 			var resource_path = sub_path + "/weapon.tres"
-			items[sub_dir] = load(resource_path)
+			items[sub_dir] = ResourceLoader.load(resource_path)
 	dir.list_dir_end()
 
 func load_items():
@@ -34,5 +34,5 @@ func load_items():
 		var sub_path = base_path + "/" + sub_dir
 		if DirAccess.dir_exists_absolute(sub_path):
 			var resource_path = sub_path + "/item.tres"
-			items[sub_dir] = load(resource_path)
+			items[sub_dir] = ResourceLoader.load(resource_path)
 	dir.list_dir_end()

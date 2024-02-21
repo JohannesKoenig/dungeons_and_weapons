@@ -28,7 +28,7 @@ func serialize() -> Dictionary:
 	}
 
 func deserialize(dict: Dictionary):
-	N = dict["N"].map(func(x): load(x))
-	W = dict["W"].map(func(x): load(x))
-	E = dict["E"].map(func(x): load(x))
-	S = dict["S"].map(func(x): load(x))
+	N = dict["N"].map(func(x): ResourceLoader.load(x))
+	W = dict["W"].map(func(x): ResourceLoader.load(x))
+	E = dict["E"].map(func(x): ResourceLoader.load(x))
+	S = dict["S"].map(func(x): ResourceLoader.load(x))

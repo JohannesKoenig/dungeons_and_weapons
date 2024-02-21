@@ -21,6 +21,7 @@ signal combat_sound_level_changed(value:int)
 var selected_saveslot: int = 1
 var MENU_SAVE_PATH = "user://menu_save.json"
 signal saveslot_resource_changed(slots: Array)
+var highscore = 0
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
@@ -50,7 +51,8 @@ func serialize() -> Dictionary:
 		"save_slots": saveslot_resources.values().map(func(x): return x.serialize()),
 		"ambient": ambient_sound_level,
 		"music": music_sound_level,
-		"combat": combat_sound_level
+		"combat": combat_sound_level,
+		"highscore": highscore
 	}
 
 func deserialize(data: Dictionary):
@@ -62,6 +64,7 @@ func deserialize(data: Dictionary):
 	ambient_sound_level = data["ambient"]
 	music_sound_level = data["music"]
 	combat_sound_level = data["combat"]
+	highscore = data["highscore"]
 	saveslot_resource_changed.emit(saveslot_resources.values())
 	
 

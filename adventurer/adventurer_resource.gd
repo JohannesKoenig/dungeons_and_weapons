@@ -23,7 +23,7 @@ static func deserialize_from_dict(dict: Dictionary) -> AdventurerResource:
 	adventurer.quick_access = QuickAccessResource.new()
 	adventurer.quick_access.selected_index = 0
 	adventurer.inventory = InventoryResource.deserialize_from_dict(dict["inventory"])
-	adventurer.head = load(dict["head"])
-	adventurer.body = load(dict["body"])
-	adventurer.legs = load(dict["legs"])
+	adventurer.head = ResourceLoader.load(dict["head"])
+	adventurer.body = ResourceLoader.load(dict["body"])
+	adventurer.legs = ResourceLoader.load(dict["legs"])
 	return adventurer
