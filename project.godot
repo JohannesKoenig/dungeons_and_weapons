@@ -27,6 +27,7 @@ AudioMixer="*res://audio/mixer/audio_mixer.gd"
 ResourceResetter="*res://scripts/Autoloads/resource_resetter.gd"
 InputTypeChecker="*res://scripts/Autoloads/input_type_checker.gd"
 ButtonClick="*res://Scenes/button_click.tscn"
+MenuMusicPlayer="*res://Scenes/Autoloads/MenuMusicPlayer.tscn"
 
 [display]
 

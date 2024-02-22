@@ -31,6 +31,7 @@ step = 10.0
 rounded = true
 
 [node name="AmbientValue" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "100%"
@@ -52,6 +53,7 @@ step = 10.0
 rounded = true
 
 [node name="MusicValue" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "100%
@@ -62,7 +64,7 @@ vertical_alignment = 1
 [node name="Combat" type="Label" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "Combat"
+text = "Interface"
 
 [node name="CombatSlider" type="HSlider" parent="GridContainer"]
 layout_mode = 2
@@ -71,6 +73,7 @@ step = 10.0
 rounded = true
 
 [node name="CombatValue" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "100%"

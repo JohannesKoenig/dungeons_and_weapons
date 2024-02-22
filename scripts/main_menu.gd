@@ -4,8 +4,11 @@ var menu_save_resource: MenuSaveResource = preload("res://savegame/menu_save_res
 var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 var button_click_player: AudioStreamPlayer
 var init_ready = false
+@onready var menu_music: BackgroundMusicPlayer = $/root/MenuMusicPlayer
 
 func _ready():
+	if !menu_music.playing:
+		menu_music.play()
 	button_click_player = $"/root/ButtonClick"
 	menu_save_resource.load_savegame()
 	if menu_save_resource.saveslot_resources.is_empty():
@@ -17,6 +20,7 @@ func _ready():
 		$VBoxContainer/VBoxContainer/SaveExists.visible = true
 		$VBoxContainer/VBoxContainer/SaveExists/Continue.grab_focus()
 	init_ready = true
+	_message_dispatcher.requested_load.connect(menu_music.stop)
 		
 
 func _on_start_pressed():

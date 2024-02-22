@@ -23,7 +23,7 @@ var current_day_time: int = 360:
 		current_minutes = int(floor(value % 60))
 		current_day_time = value
 		time_changed.emit(is_day, current_hours, current_minutes)
-var remaining_time: float = 30
+var remaining_time: float = day_length_in_seconds / 2
 var current_hours: int = 6
 var current_minutes: int = 0
 var is_day: bool = true
