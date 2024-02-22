@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dt1choghkaavl"]
+[gd_scene load_steps=24 format=3 uid="uid://dt1choghkaavl"]
 
 [ext_resource type="PackedScene" uid="uid://b1mwlja06w4h8" path="res://interaction_handlers/PlayerInputHandler.tscn" id="1_ndabk"]
 [ext_resource type="Script" path="res://Scenes/dungeon_game_scene.gd" id="1_rgff1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://coh6x8in6t67w" path="res://interaction_handlers/player_movement_mapper.tscn" id="3_rdwn8"]
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="4_5jtbs"]
 [ext_resource type="PackedScene" uid="uid://1dyua8285is8" path="res://player/player.tscn" id="8_p6pyq"]
+[ext_resource type="Script" path="res://Scenes/DungeonPlayerCamera.gd" id="9_dsi20"]
 [ext_resource type="PackedScene" uid="uid://c1wruq1vniqxl" path="res://Scenes/tavern_scene.tscn" id="9_ti3ea"]
 [ext_resource type="PackedScene" uid="uid://cf5upld42l5mj" path="res://item_pickup_spawner/item_pickup_spawner.tscn" id="10_2l83o"]
 [ext_resource type="PackedScene" uid="uid://dqpd85ie6hc02" path="res://dungeon_door/dungeon_door.tscn" id="10_j2umu"]
@@ -18,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dksngbj7j06b3" path="res://daynight/day_night_timer.tscn" id="15_meqfy"]
 [ext_resource type="PackedScene" uid="uid://oa1t6hcwqt6u" path="res://rent_paying_component/rent_paying_component.tscn" id="16_yte62"]
 [ext_resource type="PackedScene" uid="uid://du6nh8euyengr" path="res://ghost/ghost.tscn" id="17_p5y04"]
+[ext_resource type="AudioStream" uid="uid://uvkgcp24dk06" path="res://audio/DeathTune.wav" id="19_dmxhb"]
 
 [sub_resource type="Resource" id="Resource_vjepf"]
 script = ExtResource("4_5jtbs")
@@ -61,6 +63,7 @@ material = null
 position = Vector2(0, 4)
 
 [node name="PlayerCamera" type="Camera2D" parent="Entities/Player"]
+script = ExtResource("9_dsi20")
 
 [node name="PointLight2D" type="PointLight2D" parent="Entities/Player"]
 color = Color(0.878431, 0.576471, 0.466667, 1)
@@ -88,7 +91,7 @@ visibility_layer = 7
 position = Vector2(-384, -80)
 dungeon_resource = ExtResource("11_0hnuh")
 
-[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("13_stig1")]
+[node name="BackgroundMusic" parent="." instance=ExtResource("13_stig1")]
 stream = ExtResource("14_q41g7")
 volume_db = -4.0
 fade_in_duration = 3.0
@@ -101,5 +104,10 @@ running = true
 [node name="Ghost" parent="." node_paths=PackedStringArray("target") instance=ExtResource("17_p5y04")]
 position = Vector2(0, 225)
 target = NodePath("../Entities/Player")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_dmxhb")
+volume_db = -2.0
+bus = &"Music"
 
 [connection signal="toggle_inventory" from="Behaviours/PlayerInputHandler" to="CanvasLayer/TavernScene" method="toggle_inventory"]

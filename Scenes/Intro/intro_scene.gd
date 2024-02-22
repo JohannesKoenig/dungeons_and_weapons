@@ -6,6 +6,7 @@ var ai_path_markers: AiPathMarkers
 @onready var cut_scene_manager: CutSceneManager = $CutSceneManager
 var dialog_resource: Dictionary
 @onready var speech_bubble: SpeechBubble = $CanvasLayer/SpeechBubble
+@onready var contract: Contract = $CanvasLayer/Contract
 var timer: Timer
 var player_resource: PlayerResource = preload("res://player/player_resource.tres")
 signal action_pressed
@@ -30,7 +31,6 @@ func _ready():
 	
 	cut_scene_manager.start()
 	cut_scene_manager.start_dialog_changed.connect(_start_dialog)
-	$AudioStreamPlayer.play()
 
 func _process(delta):
 	if Input.is_action_just_pressed("action"):
@@ -45,6 +45,17 @@ func _start_dialog():
 		speech_bubble.set_line(_replace_strings(dialog_piece))
 		await action_pressed
 	speech_bubble.set_line({})
+	contract.show_contract()
+	contract.unroll_contract()
+	timer.start(1)
+	await timer.timeout
+	contract.show_hint()
+	await action_pressed
+	contract.hide_hint()
+	contract.sign_contract()
+	timer.start(2)
+	await timer.timeout
+	contract.hide_contract()
 	cut_scene_manager.conversation_over()
 
 func _replace_strings(dialog_piece: Dictionary) -> Dictionary:

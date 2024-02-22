@@ -4,6 +4,8 @@ extends Node2D
 var customers_resource: CustomersResource = preload("res://customers/customers_resource.tres")
 @onready var dungeon_spawner: DungeonSpawner = $DungeonSpawner
 @onready var item_pickup_spawner: ItemPickupSpawner = $ItemPickupSpawner
+var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
+var dead = false
 
 func _ready():
 	var game_saver = get_node("/root/GameSaver")
@@ -22,7 +24,13 @@ func _ready():
 		var global_point = local_point + piece.dungeon_piece_resource.offset + dungeon_spawner.global_position
 		spawn_points.append(global_point)
 	item_pickup_spawner.spawn_pickups(spawn_points)
+	_message_dispatcher.requested_death.connect(play_death_sound)
 	
+func play_death_sound():
+	if !dead:
+		$DeathSound.play()
+		$BackgroundMusicPlayer.stop()
+		dead = true
 
 
 func _get_items_to_spawn() -> Array:

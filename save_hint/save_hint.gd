@@ -1,29 +1,27 @@
-class_name DayState extends State
+class_name SaveHint extends AnimatedSprite2D
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
-var dnr: DayNightResource = preload("res://daynight/day_night_resource.tres")
-
+var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
+var timer: Timer
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------
-func _init():
-	state_name = "day"
+func _ready():
+	_message_dispatcher.game_saved.connect(save)
+	timer = Timer.new()
+	add_child(timer)
+	timer.one_shot = true
+	visible = false
 
-func on_enter():
-	_message_dispatcher.requested_shop_open.connect(_on_shop_open)
-	dnr.day_ended.connect(_on_day_ended)
-
-func on_exit():
-	_message_dispatcher.requested_shop_open.disconnect(_on_shop_open)
-	dnr.day_ended.disconnect(_on_day_ended)
-	
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
-func _on_shop_open():
-	if dnr.is_day:
-		transitioned.emit("shop")
-
-func _on_day_ended():
-	transitioned.emit("night")
+func save():
+	print("save")
+	visible = true
+	play()
+	timer.start(2)
+	await timer.timeout
+	visible = false
+	print("invisible")

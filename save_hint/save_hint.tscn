@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://d1x4ub6u2utr8"]
+
+[ext_resource type="Texture2D" uid="uid://dlrl631oduw02" path="res://save_hint/save_hint.png" id="1_s0fyr"]
+[ext_resource type="Script" path="res://save_hint/save_hint.gd" id="2_ssl7v"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xvubx"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06pif"]
+atlas = ExtResource("1_s0fyr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klv8w"]
+atlas = ExtResource("1_s0fyr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_607gw"]
+atlas = ExtResource("1_s0fyr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve4ek"]
+atlas = ExtResource("1_s0fyr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjk37"]
+atlas = ExtResource("1_s0fyr")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w03y8"]
+atlas = ExtResource("1_s0fyr")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18sd8"]
+atlas = ExtResource("1_s0fyr")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2inn3"]
+atlas = ExtResource("1_s0fyr")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_degu0"]
+atlas = ExtResource("1_s0fyr")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pugxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06pif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klv8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_607gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve4ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjk37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w03y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18sd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2inn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_degu0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SaveHint" type="AnimatedSprite2D"]
+z_index = 3
+material = SubResource("CanvasItemMaterial_xvubx")
+sprite_frames = SubResource("SpriteFrames_pugxc")
+frame = 8
+frame_progress = 1.0
+script = ExtResource("2_ssl7v")

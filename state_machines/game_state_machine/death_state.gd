@@ -16,7 +16,7 @@ func on_enter():
 	timer = Timer.new()
 	add_child(timer)
 	timer.one_shot = true
-	timer.start(4)
+	timer.start(7)
 	timer.timeout.connect(_on_timeout)
 	var items = player_resource.inventory.items.duplicate()
 	for item in items:

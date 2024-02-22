@@ -42,7 +42,6 @@ func _ready():
 	
 	resource = FileAccess.open("res://Resources/ai/major_intro_strategy.json", FileAccess.READ)
 	major_intro_strategy = JSON.parse_string(resource.get_as_text())
-
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------

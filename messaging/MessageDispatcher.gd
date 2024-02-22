@@ -24,6 +24,7 @@ signal requested_load
 signal requested_save
 signal requested_exit_game
 signal requested_game_over
+signal finished_intro
 
 #Ingame requests
 signal requested_shop_open
@@ -36,6 +37,7 @@ signal requested_death
 var shoppers_active: bool = false
 var skip_intro: bool = false
 
+signal game_saved
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
 # ------------------------------------------------------------------------------

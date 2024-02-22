@@ -51,6 +51,14 @@ func _ready():
 	if _message_dispatcher.game_state is TavernAfterDungeonState:
 		var pos = ai_path_markers.position_register["dungeon_position"].global_position
 		$Entities/Player.global_position = pos
+	
+	_message_dispatcher.game_state_changed.connect(save)
+	save(_message_dispatcher.game_state)
+
+func save(state: State):
+	if state is DayState:
+		SaveGameResource.new().write_savegame(1)
+		_message_dispatcher.game_saved.emit()
 
 func get_items_on_display() -> Array:
 	return [

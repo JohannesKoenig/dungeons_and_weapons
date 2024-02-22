@@ -14,5 +14,5 @@ func _init():
 # ------------------------------------------------------------------------------
 func on_enter():
 	var save_slot = _menu_save_resource.selected_saveslot
-	_save_game_resource.write_savegame(save_slot)
+	# _save_game_resource.write_savegame(save_slot)
 	transitioned.emit("menu")

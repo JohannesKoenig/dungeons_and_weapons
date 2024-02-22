@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cj7pjmcya35op"]
+[gd_scene load_steps=72 format=3 uid="uid://cj7pjmcya35op"]
 
 [ext_resource type="Script" path="res://Scenes/Intro/intro_scene.gd" id="1_ggyls"]
 [ext_resource type="Texture2D" uid="uid://bspjin4ruk1a4" path="res://art/sprites/tilesets/Outdoor.png" id="2_kjii3"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://iawl1x05f6b2" path="res://Scenes/Intro/cut_scene_manager.tscn" id="24_mqmss"]
 [ext_resource type="PackedScene" uid="uid://dksngbj7j06b3" path="res://daynight/day_night_timer.tscn" id="25_3bodp"]
 [ext_resource type="PackedScene" uid="uid://bdi2y8ylb7lv3" path="res://speech_bubble/speech_bubble.tscn" id="25_xbh5g"]
+[ext_resource type="PackedScene" uid="uid://c6mief5np0vqf" path="res://Scenes/Intro/contract.tscn" id="26_8wpr4"]
 [ext_resource type="AudioStream" uid="uid://qayrlkrtj2h8" path="res://audio/IntroTune.wav" id="27_k124i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgtce"]
@@ -664,6 +665,9 @@ height = 40.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t238w"]
 polygon = PackedVector2Array(48, 32, 48, 199, 152, 200, 152, 208, 160, 208, 160, 199, 49, 198, 49, 33, 207, 33, 207, 199, 192, 199, 192, 208, 208, 208, 208, 32)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m55kr"]
+light_mode = 1
+
 [node name="IntroScene" type="Node2D"]
 script = ExtResource("1_ggyls")
 
@@ -934,6 +938,7 @@ flicker_time = 0.3
 position = Vector2(76, 268)
 
 [node name="CutSceneManager" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("24_mqmss")]
+material = SubResource("CanvasItemMaterial_m55kr")
 camera = NodePath("../CutSceneCamera")
 camera_offset = Vector2(100, -20)
 pan_duration = 3.0
@@ -944,7 +949,12 @@ pan_duration = 3.0
 offset_top = -105.0
 offset_bottom = -25.0
 
+[node name="Contract" parent="CanvasLayer" instance=ExtResource("26_8wpr4")]
+position = Vector2(127, 141)
+scale = Vector2(2, 2)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_k124i")
 volume_db = -10.0
+autoplay = true
 bus = &"Music"
