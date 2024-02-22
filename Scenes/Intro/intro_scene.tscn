@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cj7pjmcya35op"]
+[gd_scene load_steps=70 format=3 uid="uid://cj7pjmcya35op"]
 
 [ext_resource type="Script" path="res://Scenes/Intro/intro_scene.gd" id="1_ggyls"]
 [ext_resource type="Texture2D" uid="uid://bspjin4ruk1a4" path="res://art/sprites/tilesets/Outdoor.png" id="2_kjii3"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://iawl1x05f6b2" path="res://Scenes/Intro/cut_scene_manager.tscn" id="24_mqmss"]
 [ext_resource type="PackedScene" uid="uid://dksngbj7j06b3" path="res://daynight/day_night_timer.tscn" id="25_3bodp"]
 [ext_resource type="PackedScene" uid="uid://bdi2y8ylb7lv3" path="res://speech_bubble/speech_bubble.tscn" id="25_xbh5g"]
+[ext_resource type="AudioStream" uid="uid://qayrlkrtj2h8" path="res://audio/IntroTune.wav" id="27_k124i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgtce"]
 texture = ExtResource("2_kjii3")
@@ -942,3 +943,8 @@ pan_duration = 3.0
 [node name="SpeechBubble" parent="CanvasLayer" instance=ExtResource("25_xbh5g")]
 offset_top = -105.0
 offset_bottom = -25.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_k124i")
+volume_db = -10.0
+bus = &"Music"

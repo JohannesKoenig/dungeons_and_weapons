@@ -30,6 +30,7 @@ func _ready():
 	
 	cut_scene_manager.start()
 	cut_scene_manager.start_dialog_changed.connect(_start_dialog)
+	$AudioStreamPlayer.play()
 
 func _process(delta):
 	if Input.is_action_just_pressed("action"):
