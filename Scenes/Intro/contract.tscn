@@ -1,10 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6mief5np0vqf"]
+[gd_scene load_steps=24 format=3 uid="uid://c6mief5np0vqf"]
 
 [ext_resource type="Texture2D" uid="uid://bud0teaa34nb2" path="res://Scenes/Intro/Contract.png" id="1_dpw8y"]
 [ext_resource type="Script" path="res://Scenes/Intro/contract.gd" id="2_mvnkr"]
 [ext_resource type="Texture2D" uid="uid://bapb5xqj5ng7x" path="res://Scenes/Intro/Sign.png" id="3_cmkql"]
 [ext_resource type="PackedScene" uid="uid://73mvo4p2s0t5" path="res://counter/input_hint.tscn" id="4_bglyo"]
 [ext_resource type="Texture2D" uid="uid://4lqrfxt1uqa5" path="res://icons/X.png" id="5_lu1vy"]
+[ext_resource type="AudioStream" uid="uid://dm5mbls5nbjvt" path="res://audio/scroll.wav" id="6_j1na2"]
+[ext_resource type="AudioStream" uid="uid://cgn7fbym5bneo" path="res://audio/signature.wav" id="7_63fqs"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wl87b"]
 light_mode = 1
@@ -35,7 +37,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 8.0
+"speed": 5.0
 }]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_40gv1"]
@@ -109,7 +111,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 8.0
+"speed": 5.0
 }]
 
 [node name="Contract" type="AnimatedSprite2D"]
@@ -129,3 +131,11 @@ sprite_frames = SubResource("SpriteFrames_gms7x")
 z_index = 3
 position = Vector2(31, 20)
 texture = ExtResource("5_lu1vy")
+
+[node name="Scroll" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_j1na2")
+bus = &"Ui"
+
+[node name="Signature" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_63fqs")
+bus = &"Ui"

@@ -6,6 +6,7 @@ class_name Tooltip extends Control
 		item = value
 		item_changed.emit(value)
 signal item_changed(item: Item)
+var _tooltip_shown = false
 
 var timer: Timer
 
@@ -26,6 +27,9 @@ func _on_item_changed(item: Item):
 	if item:
 		$HBoxContainer/Name.text = item.name
 		$HBoxContainer/CoinsContainer/Coins.text = str(item.value)
+		if _tooltip_shown:
+			show_tooltip()
+		
 	else:
 		visible = false
 		$HBoxContainer/Name.text = "-"
@@ -36,6 +40,7 @@ func show_tooltip():
 		timer.stop()
 	timer.start(show_delay)
 	await timer.timeout
+	_tooltip_shown = true
 	if item:
 		visible = true
 	else:
@@ -45,4 +50,5 @@ func show_tooltip():
 func hide_tooltip():
 	if !timer.paused:
 		timer.stop()
+	_tooltip_shown = false
 	visible = false

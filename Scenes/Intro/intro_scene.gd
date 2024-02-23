@@ -53,7 +53,7 @@ func _start_dialog():
 	await action_pressed
 	contract.hide_hint()
 	contract.sign_contract()
-	timer.start(2)
+	timer.start(4)
 	await timer.timeout
 	contract.hide_contract()
 	cut_scene_manager.conversation_over()

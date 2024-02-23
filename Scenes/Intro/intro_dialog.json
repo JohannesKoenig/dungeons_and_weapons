@@ -1,18 +1,23 @@
 {
 	"dialog": [
 		{
-			"speaker": "Major",
+			"speaker": "Mayor",
 			"line": "Good day, <name>.",
 			"align": "R"
 		},
 		{
-			"speaker": "Major",
-			"line": "I am very happy that you want to be the new steward of this old tavern.",
+			"speaker": "Mayor",
+			"line": "I am very happy that you want to be the new innkeeper of this old tavern.",
 			"align": "R"
 		},
 		{
-			"speaker": "Major",
-			"line": "People really seem to like this place somehow ...",
+			"speaker": "Mayor",
+			"line": "Legend has it that the tavern's dungeon is the best in the land.",
+			"align": "R"
+		},
+		{
+			"speaker": "Mayor",
+			"line": "Some people even say that the dungeon is different every time they come to visit.",
 			"align": "R"
 		},
 		{
@@ -21,23 +26,28 @@
 			"align": "L"
 		},
 		{
-			"speaker": "Major",
-			"line": "The previous owner sold a bunch of weapons to the tavern folk to make some money.",
+			"speaker": "Mayor",
+			"line": "No idea how that would work but whatever makes the poeple pay the entrance fee, right? Ha ha ha!",
 			"align": "R"
 		},
 		{
-			"speaker": "Major",
+			"speaker": "<name>",
+			"line": "...",
+			"align": "L"
+		},
+		{
+			"speaker": "Mayor",
+			"line": "Anyhow. The previous owner sold a bunch of weapons and other goods to the dungeoneers to make ends meet.",
+			"align": "R"
+		},
+		{
+			"speaker": "Mayor",
 			"line": "Not sure where he got them to be honest.",
 			"align": "R"
 		},
 		{
-			"speaker": "Major",
-			"line": "But some questions need no answering I guess.",
-			"align": "R"
-		},
-		{
-			"speaker": "Major",
-			"line": "At least not as long as the money is right.",
+			"speaker": "Mayor",
+			"line": "If I were you, I would take a look inside your dungeon. Maybe you can pick up some of the loot you customers left in there.",
 			"align": "R"
 		},
 		{
@@ -46,18 +56,28 @@
 			"align": "L"
 		},
 		{
-			"speaker": "Major",
-			"line": "On that point, make sure you pay your rent in time.",
+			"speaker": "Mayor",
+			"line": "On that point, make sure you pay your rent in time. We don't want to have to go looking for a new tavern keeper again, right? Ha ha ha!",
 			"align": "R"
 		},
 		{
-			"speaker": "Major",
-			"line": "Otherwise we might have to go looking for a new tavern keeper again ...",
+			"speaker": "<name>",
+			"line": "...",
+			"align": "L"
+		},
+		{
+			"speaker": "Mayor",
+			"line": "With that I'll leave you to it, <name>.",
 			"align": "R"
 		},
 		{
-			"speaker": "Major",
-			"line": "Best of luck to you, I guess.",
+			"speaker": "Mayor",
+			"line": "...",
+			"align": "R"
+		},
+		{
+			"speaker": "Mayor",
+			"line": "Ahh! Before I forget, make sure to sign your lease! He he.",
 			"align": "R"
 		},
 	]

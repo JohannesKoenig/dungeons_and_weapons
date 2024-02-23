@@ -26,6 +26,7 @@ func hide_contract():
 
 func unroll_contract():
 	play()
+	$Scroll.play()
 
 func show_hint():
 	$InputHint.visible = true
@@ -36,3 +37,4 @@ func hide_hint():
 func sign_contract():
 	$Sign.visible = true
 	$Sign.play()
+	$Signature.play()
