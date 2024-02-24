@@ -10,7 +10,7 @@ var items: Array
 var adventurer_resources: Array
 var dnr: DayNightResource = preload("res://daynight/day_night_resource.tres")
 var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
-@export var max_adventurers_per_hour: int = 1
+@export var max_adventurers_per_hour: int = 4
 
 func _ready():
 	_message_dispatcher.game_state_changed.connect(trigger_ai_on_tavern_open)

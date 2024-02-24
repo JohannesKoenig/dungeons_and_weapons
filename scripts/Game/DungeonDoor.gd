@@ -22,4 +22,5 @@ func _on_actionable_action(source):
 	if source is Visitor and _message_dispatcher.game_state is ShopState:
 		var resource: AdventurerResource = source.adventurer_resource
 		# resource.coins = max(0, resource.coins - 10)
-		player_resource.set_coins(player_resource.coins + 5)
+		if !resource.is_returning:
+			player_resource.set_coins(player_resource.coins + 5)

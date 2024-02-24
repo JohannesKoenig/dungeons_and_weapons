@@ -15,6 +15,7 @@ movement_speed = 50
 acceleration_time = 2.08165e-12
 
 [node name="Player" groups=["player"] instance=ExtResource("1_lgk36")]
+collision_mask = 5
 script = ExtResource("2_3yalk")
 player_resource = ExtResource("3_m1rlj")
 

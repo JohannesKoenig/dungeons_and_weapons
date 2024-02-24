@@ -48,6 +48,7 @@ func _ready():
 func start():
 	player = visitor_resource.instantiate()
 	var fake_player_resource = _factory.get_random()
+	fake_player_resource.inventory.clear()
 	fake_player_resource.head = _real_player_resource.head
 	fake_player_resource.body = _real_player_resource.body
 	fake_player_resource.legs = _real_player_resource.legs

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://4ulyv566r1r2"]
+
+[ext_resource type="Script" path="res://dropped_item_display/dropped_item.gd" id="1_gmdax"]
+[ext_resource type="Texture2D" uid="uid://de0lg3g10oo88" path="res://Resources/weapons/saber/icon.png" id="1_ipcms"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_plbr0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lof3g"]
+radius = 7.0
+
+[node name="DroppedItem" type="RigidBody2D"]
+collision_layer = 2048
+collision_mask = 2048
+physics_material_override = SubResource("PhysicsMaterial_plbr0")
+script = ExtResource("1_gmdax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lof3g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ipcms")

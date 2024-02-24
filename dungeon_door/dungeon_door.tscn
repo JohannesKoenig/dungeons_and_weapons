@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqpd85ie6hc02"]
+[gd_scene load_steps=17 format=3 uid="uid://dqpd85ie6hc02"]
 
 [ext_resource type="Script" path="res://dungeon_door/dungeon_door.gd" id="1_p7il1"]
 [ext_resource type="Texture2D" uid="uid://km3t12jn74uc" path="res://art/sprites/DungeonGate.png" id="2_qtp5h"]
@@ -64,6 +64,9 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_vac40")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvpcw"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6utf6"]
+polygon = PackedVector2Array(-16, -16, -16, -25, -10, -34, 0, -38, 10, -34, 16, -25, 16, -16, 20, -16, 20, -41, -22, -41, -22, -16)
+
 [node name="DungeonDoor" type="Node2D"]
 script = ExtResource("1_p7il1")
 
@@ -112,5 +115,9 @@ collision_mask = 2
 position = Vector2(0, -7)
 scale = Vector2(1.92, 1)
 shape = SubResource("RectangleShape2D_tvpcw")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_6utf6")
+occluder_light_mask = 7
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

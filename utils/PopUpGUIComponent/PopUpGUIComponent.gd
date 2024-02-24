@@ -28,3 +28,4 @@ func deactivate():
 func set_content(content: Control):
 	content.reparent($Margin/MainLayout)
 	content.size_flags_vertical = Control.SIZE_EXPAND
+	content.set_anchors_and_offsets_preset(Control.PRESET_CENTER)

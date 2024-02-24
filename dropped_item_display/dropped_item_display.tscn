@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://buuak5l6bak3f"]
+
+[ext_resource type="Script" path="res://dropped_item_display/dropped_item_display.gd" id="1_r5egh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ibjks"]
+
+[node name="DroppedItemDisplay" type="Node2D" node_paths=PackedStringArray("spawn_point")]
+position = Vector2(2.08165e-12, 2.08165e-12)
+script = ExtResource("1_r5egh")
+spawn_point = NodePath("Marker2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2048
+collision_mask = 2048
+physics_material_override = SubResource("PhysicsMaterial_ibjks")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(32, -112, 40, -112, 40, 56, -40, 56, -40, -112, -32, -112, -32, 48, 32, 48)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -104)

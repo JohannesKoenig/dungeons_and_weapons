@@ -3,17 +3,17 @@ class_name MenuSaveResource extends Resource
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
 var saveslot_resources: Dictionary = {}
-var ambient_sound_level: int = 0:
+var ambient_sound_level: int = 50:
 	set(value):
 		ambient_sound_level = value
 		ambiant_sound_level_changed.emit(value)
 signal ambiant_sound_level_changed(value:int)
-var music_sound_level: int = 0:
+var music_sound_level: int = 50:
 	set(value):
 		music_sound_level = value
 		music_sound_level_changed.emit(value)
 signal music_sound_level_changed(value:int)
-var combat_sound_level: int = 0:
+var combat_sound_level: int = 50:
 	set(value):
 		combat_sound_level = value
 		combat_sound_level_changed.emit(value)

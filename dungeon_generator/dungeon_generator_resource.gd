@@ -5,6 +5,8 @@ class_name DungeonGeneratorResource extends Resource
 @export var rules: Dictionary = {}
 @export var start_dungeon_piece_resource: DungeonPieceResource
 @export var wall_dungeon_piece_resource: DungeonPieceResource
+var dropped_items: Array = []
+signal item_dropped(item: Item)
 var _UNKNOWN = 0
 var _TODO = 1
 var _DONE = 2

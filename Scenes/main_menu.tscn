@@ -1052,7 +1052,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_agi0w")
 [node name="Version" type="Label" parent="VBoxContainer/HBoxContainer"]
 light_mask = 16
 layout_mode = 2
-text = "v0.2"
+text = "v0.3"
 horizontal_alignment = 2
 
 [connection signal="focus_entered" from="VBoxContainer/VBoxContainer/SaveExists/Continue" to="." method="_on_focus"]

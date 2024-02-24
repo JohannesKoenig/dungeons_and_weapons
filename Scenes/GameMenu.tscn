@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqlw76ugakfeo"]
+[gd_scene load_steps=3 format=3 uid="uid://dqlw76ugakfeo"]
 
 [ext_resource type="Script" path="res://Scenes/GameMenu.gd" id="1_3pp20"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pb5nq"]
 
 [node name="GameMenu" type="VBoxContainer"]
 anchors_preset = 8
@@ -16,10 +18,52 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3pp20")
 
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pb5nq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+text = "Hints:"
+fit_content = true
+scroll_active = false
+drag_and_drop_selection_enabled = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+text = "Open your tavern in the morning."
+fit_content = true
+scroll_active = false
+drag_and_drop_selection_enabled = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+text = "Sell items by placing them on the shelves."
+fit_content = true
+scroll_active = false
+drag_and_drop_selection_enabled = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+text = "Visit your dungeon in the night to gather loot to sell."
+fit_content = true
+scroll_active = false
+drag_and_drop_selection_enabled = false
+
 [node name="Exit" type="Button" parent="."]
 custom_minimum_size = Vector2(60, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Exit"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pb5nq")
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

@@ -7,6 +7,7 @@ class_name AdventurerResource
 @export var head: Texture
 @export var body: Texture
 @export var legs: Texture
+var is_returning = false
 
 func serialize() -> Dictionary:
 	return {

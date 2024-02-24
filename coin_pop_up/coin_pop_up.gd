@@ -4,6 +4,7 @@ class_name CoinPopUp extends Node2D
 # ------------------------------------------------------------------------------
 @export var height: float = 10.0
 @export var duration: float = 1.0
+@onready var _label: Label = $Label
 
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================
@@ -18,4 +19,12 @@ func _ready():
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
 func set_value(value: int):
-	$Label.text = "+%s" % value
+	_label = $Label
+	if value > 0:
+		_label.text = "+%s" % value
+	elif value == 0:
+		_label.text = "%s" % value
+	else:
+		_label.text = "%s" % value
+		_label.add_theme_font_size_override("font_size", 32)
+		_label.add_theme_color_override("font_color", Color.RED)

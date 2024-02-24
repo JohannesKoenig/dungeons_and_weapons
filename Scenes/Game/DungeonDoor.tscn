@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cr2pgbgjac4je"]
+[gd_scene load_steps=22 format=3 uid="uid://cr2pgbgjac4je"]
 
 [ext_resource type="Script" path="res://scripts/Game/DungeonDoor.gd" id="1_q7vtv"]
 [ext_resource type="Texture2D" uid="uid://km3t12jn74uc" path="res://art/sprites/DungeonGate.png" id="2_31dao"]
 [ext_resource type="Texture2D" uid="uid://oimikb3wpcdj" path="res://art/sprites/DungeonGateNormals.png" id="3_3ng10"]
 [ext_resource type="Shader" path="res://art/shader/Game/DungeonDoorDistort.gdshader" id="3_fxokg"]
 [ext_resource type="Shader" path="res://art/shader/Game/DungeonDoor.gdshader" id="3_qm8h3"]
+[ext_resource type="PackedScene" uid="uid://vrfwipd3m6p8" path="res://flickering_light/flickering_light.tscn" id="6_elk00"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qk0em"]
 diffuse_texture = ExtResource("2_31dao")
@@ -77,18 +78,26 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_l5wqj")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmr0q"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52edo"]
+size = Vector2(64, 33)
+
 [node name="DungeonDoor" type="Node2D"]
+light_mask = 7
+y_sort_enabled = true
 script = ExtResource("1_q7vtv")
 
 [node name="Wall" type="TileMap" parent="."]
-light_mask = 2
+light_mask = 7
+y_sort_enabled = true
 position = Vector2(8, 8)
 tile_set = SubResource("TileSet_3ltxy")
 format = 2
+layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(-65537, 1, 0)
 
 [node name="Portal" type="Sprite2D" parent="."]
 light_mask = 2
+z_index = 1
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_weqjl")
 position = Vector2(0, -17)
@@ -100,13 +109,14 @@ y_sort_enabled = true
 position = Vector2(-1.14794e-41, 6)
 scale = Vector2(0.625, 0.625)
 color = Color(0, 0.929412, 0.65098, 1)
-energy = 1.7
-range_item_cull_mask = 2
+energy = 3.55
+range_item_cull_mask = 6
 texture = SubResource("GradientTexture2D_0nfu2")
 texture_scale = 1.79
 
 [node name="PortalDistort" type="Sprite2D" parent="."]
 light_mask = 2
+z_index = 1
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_q0y1x")
 position = Vector2(0, -17)
@@ -121,5 +131,20 @@ collision_mask = 2
 position = Vector2(0, -7)
 scale = Vector2(1.92, 1)
 shape = SubResource("RectangleShape2D_vmr0q")
+
+[node name="FlickeringLight" parent="." instance=ExtResource("6_elk00")]
+visible = false
+position = Vector2(0, 6)
+color = Color(0, 0.8, 0.560784, 1)
+energy = 1.0
+range_item_cull_mask = 7
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -17.5)
+shape = SubResource("RectangleShape2D_52edo")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_actionable_action"]

@@ -13,7 +13,7 @@ config_version=5
 config/name="Dungeons And Weapons"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://art/sprites/icons/coin.png"
+config/icon="res://Icon.png"
 
 [autoload]
 
@@ -33,7 +33,6 @@ MenuMusicPlayer="*res://Scenes/Autoloads/MenuMusicPlayer.tscn"
 
 window/size/viewport_width=512
 window/size/viewport_height=512
-window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/scale=2.0
 window/stretch/scale_mode="integer"
@@ -191,8 +190,14 @@ scroll_inventory_left={
 2d_render/layer_5="UI_lit"
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="Units"
+2d_physics/layer_3="Portal"
 2d_physics/layer_9="Actionable"
 2d_physics/layer_10="ActionableFinder"
+2d_physics/layer_12="UiItems"
+
+[physics]
+
+2d/default_gravity=98.0
 
 [rendering]
 

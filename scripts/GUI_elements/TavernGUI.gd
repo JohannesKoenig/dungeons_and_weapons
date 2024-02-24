@@ -18,6 +18,8 @@ func _ready():
 	show_tavern_open(_message_dispatcher.game_state)
 	dnr.day_counter_changed.connect(_update_day)
 	_update_day(dnr.day_counter)
+	_message_dispatcher.game_state_changed.connect(show_day_time_pop_up)
+	_message_dispatcher.game_state_changed.connect(show_night_time_pop_up)
 
 func _process(delta):
 	_update_coin_label(player_resource.coins)
@@ -44,11 +46,13 @@ func set_player_resource(player_resource: PlayerResource):
 func _update_coin_label(value: int):
 	$MarginContainer/HBoxContainer/Coins.text = str(value)
 
-func show_day_time_pop_up():
-	$DayTimePopUp.show_content()
+func show_day_time_pop_up(state: State):
+	if state is ReturnState:
+		$TavernClosedPopUp.show_content()
 
-func show_night_time_pop_up():
-	$NightTimePopUp.show_content()
+func show_night_time_pop_up(state: State):
+	if state is NightState:
+		$NightTimePopUp.show_content()
 
 func show_tavern_open(state: State):
 	if state is ShopState:

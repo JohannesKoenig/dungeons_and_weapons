@@ -17,8 +17,12 @@ var adventurer_textures = [
 var rng: RandomNumberGenerator
 var game_saver: GameSaver
 var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
+var _master_bus = AudioServer.get_bus_index("Master")
+
 
 func _ready():
+	AudioServer.remove_bus_effect(_master_bus, 0)
+	dungeon_generator_resource.dropped_items = []
 	game_saver = get_node("/root/GameSaver")
 	# game_saver.load_game_from_resources()
 	# dnr.day_ended.connect(game_saver.save_game_from_resources)

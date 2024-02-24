@@ -148,7 +148,7 @@ anchor_right = 0.5
 grow_vertical = 0
 quick_access_resource = ExtResource("13_ylfwy")
 
-[node name="DayTimePopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("10_uiwp6")]
+[node name="TavernClosedPopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("10_uiwp6")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -158,9 +158,10 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 content = NodePath("DayTimeChangedLabel")
-duration = 5.0
+duration = 2.5
+fade_duration = 0.3
 
-[node name="DayTimeChangedLabel" type="Label" parent="DayTimePopUp"]
+[node name="DayTimeChangedLabel" type="Label" parent="TavernClosedPopUp"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -173,8 +174,8 @@ offset_right = 20.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Day"
+theme_override_font_sizes/font_size = 16
+text = "Tavern closed"
 horizontal_alignment = 1
 
 [node name="NightTimePopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("10_uiwp6")]
@@ -187,7 +188,8 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 content = NodePath("NightTimeChangedLabel")
-duration = 5.0
+duration = 2.5
+fade_duration = 0.3
 
 [node name="NightTimeChangedLabel" type="Label" parent="NightTimePopUp"]
 layout_mode = 1
@@ -202,8 +204,8 @@ offset_right = 26.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Night"
+theme_override_font_sizes/font_size = 16
+text = "Dungeon open"
 horizontal_alignment = 1
 
 [node name="TavernOpenTimedPopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("10_uiwp6")]
