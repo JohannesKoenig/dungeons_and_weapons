@@ -19,6 +19,7 @@ var game_saver: GameSaver
 var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 var _master_bus = AudioServer.get_bus_index("Master")
 
+var _is_speed_up = false
 
 func _ready():
 	AudioServer.remove_bus_effect(_master_bus, 0)
@@ -59,6 +60,19 @@ func _ready():
 	_message_dispatcher.game_state_changed.connect(save)
 	save(_message_dispatcher.game_state)
 
+func _process(delta):
+	if Input.is_action_just_pressed("action"):
+		if _message_dispatcher.game_state is ShopState:
+			if !_is_speed_up:
+				_speed_up()
+				_is_speed_up = true
+			else:
+				_speed_down()
+				_is_speed_up = false
+
+	if !(_message_dispatcher.game_state is ShopState):
+		_speed_down()
+
 func save(state: State):
 	if state is DayState:
 		SaveGameResource.new().write_savegame(1)
@@ -90,3 +104,8 @@ func _generate_dungeon():
 	var pieces = dungeon_generator_resource.get_layout()
 	dungeon_resource.dungeon_pieces = pieces
 
+func _speed_up():
+	Engine.time_scale = 3
+
+func _speed_down():
+	Engine.time_scale = 1
