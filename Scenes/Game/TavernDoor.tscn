@@ -202,58 +202,6 @@ tracks/3/keys = {
 "values": [-1.39626, -1.0472, -0.436332, 3.48787e-16]
 }
 
-[sub_resource type="Animation" id="Animation_b8ido"]
-resource_name = "open"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Door:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"open"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Door:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Door_L_Angle:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [3.48787e-16, 0.436332, 1.0472, 1.39626]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Door_R_Angle:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [3.48787e-16, -0.436332, -1.0472, -1.39626]
-}
-
 [sub_resource type="Animation" id="Animation_s1qq2"]
 resource_name = "closed"
 length = 0.1
@@ -304,6 +252,58 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [3.48787e-16]
+}
+
+[sub_resource type="Animation" id="Animation_b8ido"]
+resource_name = "open"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"open"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Door_L_Angle:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3.48787e-16, 0.436332, 1.0472, 1.39626]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Door_R_Angle:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3.48787e-16, -0.436332, -1.0472, -1.39626]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lts5n"]
@@ -380,7 +380,7 @@ script = ExtResource("1_7qtlc")
 [node name="Door" type="AnimatedSprite2D" parent="."]
 light_mask = 4
 y_sort_enabled = true
-position = Vector2(2.08165e-12, 13.76)
+position = Vector2(0, 1.76)
 sprite_frames = SubResource("SpriteFrames_5qx3e")
 animation = &"open"
 offset = Vector2(2.08165e-12, -13.76)
@@ -409,12 +409,14 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="Actionable" parent="." instance=ExtResource("4_oox3w")]
+position = Vector2(0, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_2qtpi")
 
 [node name="Wall_L" type="StaticBody2D" parent="."]
+position = Vector2(0, -12)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_L"]
@@ -423,6 +425,7 @@ position = Vector2(-24, 11)
 shape = SubResource("RectangleShape2D_a24w4")
 
 [node name="Wall_R" type="StaticBody2D" parent="."]
+position = Vector2(0, -12)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_R"]
@@ -431,7 +434,7 @@ position = Vector2(24, 11)
 shape = SubResource("RectangleShape2D_a24w4")
 
 [node name="Door_L_Angle" type="Marker2D" parent="."]
-position = Vector2(-16, 14)
+position = Vector2(-16, 2)
 
 [node name="Door_L" type="RigidBody2D" parent="Door_L_Angle"]
 position = Vector2(16, -14)
@@ -447,7 +450,7 @@ shape = SubResource("RectangleShape2D_irh08")
 occluder = SubResource("OccluderPolygon2D_a8gsu")
 
 [node name="Door_R_Angle" type="Marker2D" parent="."]
-position = Vector2(16, 14)
+position = Vector2(16, 2)
 
 [node name="Door_R" type="RigidBody2D" parent="Door_R_Angle"]
 position = Vector2(-16, -14)
@@ -463,6 +466,7 @@ shape = SubResource("RectangleShape2D_w6g6g")
 occluder = SubResource("OccluderPolygon2D_e6dvx")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -12)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

@@ -5,7 +5,11 @@
 			"name": "init",
 			"type": "movement",
 			"parameters": {
-				"target": "spawn_position"
+				"target": "spawn_position",
+				"offset": {
+					"x": 5,
+					"y": 5
+				}
 			},
 			"next": "door"
 		},
@@ -13,7 +17,11 @@
 			"name": "door",
 			"type": "movement",
 			"parameters": {
-				"target": "door_position"
+				"target": "door_position",
+				"offset": {
+					"x": 3,
+					"y": 3
+				}
 			},
 			"next": "hallway"
 		},
@@ -21,7 +29,11 @@
 			"name": "hallway",
 			"type": "movement",
 			"parameters": {
-				"target": "hallway_position"
+				"target": "hallway_position",
+				"offset": {
+					"x": 10,
+					"y": 10
+				}
 			},
 			"next": "dungeon"
 		},
@@ -29,7 +41,11 @@
 			"name": "dungeon",
 			"type": "movement",
 			"parameters": {
-				"target": "despawn_position"
+				"target": "despawn_position",
+				"offset": {
+					"x": 5,
+					"y": 0
+				}
 			},
 			"next": "despawn"
 		},

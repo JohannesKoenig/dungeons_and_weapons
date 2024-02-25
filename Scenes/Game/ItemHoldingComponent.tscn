@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://Scenes/Game/ItemHoldingComponent.gd" id="1_v4opq"]
 
 [node name="ItemHoldingComponent" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_v4opq")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(2.08165e-12, -10)

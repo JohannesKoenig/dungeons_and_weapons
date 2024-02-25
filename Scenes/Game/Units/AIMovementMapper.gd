@@ -12,6 +12,8 @@ var state = null
 var conversation_over: bool = false
 var signaled = false
 signal start_await_state(mapper: AIMovementMapper)
+var offset = Vector2.ZERO
+var offset_calculated = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var parent = get_parent()
@@ -51,21 +53,32 @@ func start():
 		self.state = get_state_with_name("init", self.strategy["states"])
 
 func _execute_movement_state(movement_state: Dictionary):
+	if !offset_calculated:
+		if "offset" in movement_state["parameters"]:
+			var x = movement_state["parameters"]["offset"]["x"]
+			var y = movement_state["parameters"]["offset"]["y"]
+			offset = Vector2(randf_range(-x, x), randf_range(-y, y))
+		else:
+			offset = Vector2.ZERO
+		offset_calculated = true
 	var target_name = movement_state["parameters"]["target"]
+
 	var target = null
 	if target_name is String:
 		target = ai_path_markers.position_register[target_name]
 	else:
 		target = target_name
-	var direction = target.global_position - actor.global_position
+	var direction = target.global_position + offset - actor.global_position
 	var dist = direction.length()
 	if dist <= delta:
 		actor.velocity = Vector2.ZERO
 		var next_state_name = self.state["next"]
 		if next_state_name:
 			self.state = get_state_with_name(next_state_name,self.strategy["states"])
+			offset_calculated = false
 		else: 
 			self.state = null
+			offset_calculated = false
 		return
 	else:
 		actor.velocity = direction.normalized() * movement_stats.movement_speed

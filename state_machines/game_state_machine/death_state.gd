@@ -21,9 +21,9 @@ func on_enter():
 	var items = player_resource.inventory.items.duplicate()
 	for item in items:
 		dungeon_inventory.add(item)
-	player_resource.inventory.clear()
 
 func on_exit():
+	player_resource.inventory.clear()
 	get_tree().change_scene_to_file("res://Scenes/tavern_game_scene.tscn")
 	pass
 

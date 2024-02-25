@@ -13,7 +13,11 @@
 			"name": "door",
 			"type": "movement",
 			"parameters": {
-				"target": "door_position"
+				"target": "door_position",
+				"offset": {
+					"x": 3,
+					"y": 3
+				}
 			},
 			"next": "hallway"
 		},
@@ -21,7 +25,11 @@
 			"name": "hallway",
 			"type": "movement",
 			"parameters": {
-				"target": "hallway_position"
+				"target": "hallway_position",
+				"offset": {
+					"x": 10,
+					"y": 10
+				}
 			},
 			"next": "store"
 		},
@@ -29,7 +37,11 @@
 			"name": "store",
 			"type": "movement",
 			"parameters": {
-				"target": "store_position"
+				"target": "store_position",
+				"offset": {
+					"x": 10,
+					"y": 10
+				}
 			},
 			"next": "shelve"
 		},
@@ -79,7 +91,11 @@
 			"name": "hallway_return",
 			"type": "movement",
 			"parameters": {
-				"target": "hallway_position"
+				"target": "hallway_position",
+				"offset": {
+					"x": 10,
+					"y": 10
+				}
 			},
 			"next": "dungeon"
 		},

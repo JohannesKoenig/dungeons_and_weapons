@@ -29,7 +29,8 @@ func interact_buy_item(source: Node2D):
 
 
 func sell(item: Item):
-	player_resource.coins += item.value
+	if item:
+		player_resource.coins += item.value
 
 
 func interact_open_tavern(source):

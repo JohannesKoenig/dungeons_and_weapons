@@ -14,17 +14,22 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sjws"]
 
 [node name="ItemDisplay" type="Marker2D" groups=["item_display"]]
+y_sort_enabled = true
 script = ExtResource("1_q5mcy")
 tavern_inventory_resource = ExtResource("2_wqxd7")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
-z_index = 1
+y_sort_enabled = true
+position = Vector2(0, 8)
+offset = Vector2(2.08165e-12, -8)
 
 [node name="ToggleComponent" parent="." instance=ExtResource("2_eikxv")]
 
 [node name="PopUpGuiComponent" parent="." node_paths=PackedStringArray("content") instance=ExtResource("3_yygff")]
 visible = false
 light_mask = 0
+z_index = 0
+y_sort_enabled = true
 offset_left = -70.0
 offset_top = -70.0
 offset_right = 0.0
@@ -34,6 +39,7 @@ margin = 6
 
 [node name="UIItem" parent="PopUpGuiComponent" instance=ExtResource("4_b52ua")]
 light_mask = 0
+y_sort_enabled = true
 layout_mode = 1
 
 [node name="Actionable" type="Area2D" parent="."]
@@ -53,9 +59,10 @@ visible = false
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.0705882)
-z_index = 2
-position = Vector2(0, 1)
+y_sort_enabled = true
+position = Vector2(0, 7)
 texture = ExtResource("10_sl1ty")
+offset = Vector2(2.08165e-12, -7)
 
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]
 [connection signal="resource_changed" from="PopUpGuiComponent/UIItem" to="." method="_on_ui_item_resource_changed"]
