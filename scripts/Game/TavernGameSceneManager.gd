@@ -106,6 +106,8 @@ func _generate_dungeon():
 
 func _speed_up():
 	Engine.time_scale = 3
+	_message_dispatcher.speed_up = true
 
 func _speed_down():
 	Engine.time_scale = 1
+	_message_dispatcher.speed_up = false

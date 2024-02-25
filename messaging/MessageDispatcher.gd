@@ -37,6 +37,12 @@ signal requested_death
 var shoppers_active: bool = false
 var skip_intro: bool = false
 
+var speed_up: bool = false:
+	set(value):
+		speed_up = value
+		speed_up_changed.emit(value)
+signal speed_up_changed(value: bool)
+
 signal game_saved
 # ------------------------------------------------------------------------------
 # Live Cycle ===================================================================

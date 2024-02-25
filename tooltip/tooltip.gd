@@ -28,18 +28,19 @@ func _on_item_changed(item: Item):
 		$HBoxContainer/Name.text = item.name
 		$HBoxContainer/CoinsContainer/Coins.text = str(item.value)
 		if _tooltip_shown:
-			show_tooltip()
+			show_tooltip(true)
 		
 	else:
 		visible = false
 		$HBoxContainer/Name.text = "-"
 		$HBoxContainer/CoinsContainer/Coins.text = "-"
 
-func show_tooltip():
+func show_tooltip(skip_timeout: bool = false):
 	if !timer.paused:
 		timer.stop()
-	timer.start(show_delay)
-	await timer.timeout
+	if !skip_timeout:
+		timer.start(show_delay)
+		await timer.timeout
 	_tooltip_shown = true
 	if item:
 		visible = true

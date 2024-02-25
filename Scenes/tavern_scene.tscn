@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1wruq1vniqxl"]
+[gd_scene load_steps=21 format=3 uid="uid://c1wruq1vniqxl"]
 
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="1_i1q3x"]
 [ext_resource type="Script" path="res://scripts/GUI_elements/TavernGUI.gd" id="1_r07mv"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dqlw76ugakfeo" path="res://Scenes/GameMenu.tscn" id="17_pgggk"]
 [ext_resource type="PackedScene" uid="uid://b7g80uyx3ghok" path="res://health/health_bar.tscn" id="18_nodg4"]
 [ext_resource type="PackedScene" uid="uid://d1x4ub6u2utr8" path="res://save_hint/save_hint.tscn" id="19_crk42"]
+[ext_resource type="PackedScene" uid="uid://ds1y2abvtloyc" path="res://speed_up_hint/speed_up_hint.tscn" id="20_ca6me"]
 
 [node name="TavernScene" type="Control"]
 layout_mode = 3
@@ -264,6 +265,18 @@ offset_bottom = 9.0
 [node name="SaveHint" parent="." instance=ExtResource("19_crk42")]
 position = Vector2(22, 194)
 scale = Vector2(2, 2)
+
+[node name="SpeedUpHint" parent="." instance=ExtResource("20_ca6me")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 71.0
+offset_top = 13.0
+offset_right = 103.0
+offset_bottom = 23.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="MarginContainer2/HBoxContainer/Options" to="ToggleComponent" method="activate"]
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]
