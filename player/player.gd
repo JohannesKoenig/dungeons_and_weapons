@@ -6,6 +6,7 @@ class_name Player
 @onready var quick_access_component: QuickAccessComponent = $QickAccessComponent
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var item_holding_component: ItemHoldingComponent = $ItemHoldingComponent
+@onready var hit_player: AudioStreamPlayer2D = $HitPlayer
 var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDispatcher.tres")
 var dungeon_inventory: InventoryResource = preload("res://dungeon/dungeon_inventory.tres")
 var view_direction: Vector2
@@ -22,12 +23,15 @@ func _ready():
 	set_resource(player_resource)
 	if !((_message_dispatcher.game_state is DungeonState) or _message_dispatcher.game_state is TavernAfterDungeonState):
 		global_position = player_resource.tavern_global_position
-		$PlayerCamera._on_game_state_changed(_message_dispatcher.game_state)
+		$PlayerCamera.tween_global_pos(global_position)
 	_message_dispatcher.game_state_changed.connect(_heal_full)
+	if _message_dispatcher.game_state is DayState:
+		player_resource.tavern_global_position = global_position
 	_heal_full(_message_dispatcher.game_state)
 	player_resource.health_resource.died.connect(_on_death)
 	if player_resource.health_resource.dead:
 		_on_death()
+	player_resource.health_resource.damaged.connect(_on_hit)
 
 
 func set_resource(resource: PlayerResource):
@@ -48,7 +52,7 @@ func _process(delta):
 		view_direction = velocity
 	animation_tree["parameters/Walking/blend_position"] = view_direction
 	animation_tree["parameters/Idle/blend_position"] = view_direction
-	if !(_message_dispatcher.game_state is DungeonState):
+	if !(_message_dispatcher.game_state is DungeonState or _message_dispatcher.game_state is DeathState):
 		player_resource.tavern_global_position = global_position
 
 
@@ -75,8 +79,7 @@ func _heal_full(state: State):
 		player_resource.health_resource.heal(player_resource.health_resource.max_health)
 
 func _on_death():
-	var items = player_resource.inventory.items.duplicate()
-	for item in items:
-		dungeon_inventory.add(item)
-	player_resource.inventory.clear()
 	_message_dispatcher.requested_death.emit()
+
+func _on_hit(damage: int):
+	hit_player.play()

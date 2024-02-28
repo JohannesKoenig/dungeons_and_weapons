@@ -69,8 +69,8 @@ func start():
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_parallel(true)
-	tween.tween_property(camera, "zoom:x", 1.5, pan_duration)
-	tween.tween_property(camera, "zoom:y", 1.5, pan_duration)
+	tween.tween_property(camera, "zoom:x", 2, pan_duration)
+	tween.tween_property(camera, "zoom:y", 2, pan_duration)
 	tween.tween_property(camera, "position:x", camera.position.x + camera_offset.x, pan_duration)
 	tween.tween_property(camera, "position:y", camera.position.y + camera_offset.y, pan_duration)
 	

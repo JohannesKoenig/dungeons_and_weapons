@@ -2,11 +2,19 @@ class_name ItemPickup extends Node2D
 
 @export var inventory: InventoryResource 
 @export var index: int
+var sparkle_timer: Timer
+@onready var sparkle_animation: AnimatedSprite2D = $Sparkle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if inventory:
 		set_inventory(inventory)
+	sparkle_timer = Timer.new()
+	add_child(sparkle_timer)
+	sparkle_timer.one_shot = true
+	sparkle_timer.timeout.connect(_sparkle)
+	start_sparkle_timer()
+	sparkle_animation.visible = false
 
 func set_inventory(inventory: InventoryResource):
 	self.inventory = inventory
@@ -23,6 +31,15 @@ func _update_sprite(items: Array, index: int):
 		$Tooltip.item = null
 		visible = false
 
+func _sparkle():
+	sparkle_animation.visible = true
+	sparkle_animation.play()
+	await sparkle_animation.animation_finished
+	sparkle_animation.visible = false
+	start_sparkle_timer()
+
+func start_sparkle_timer():
+	sparkle_timer.start(randf_range(3,6))
 
 func update_index(index: int):
 	self.index = index

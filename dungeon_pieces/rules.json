@@ -1,1 +1,335 @@
-{"rules":[{"E":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"N":["res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"S":["res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"W":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"edges":{"E":"wall","N":"wall","S":"hall","W":"wall"},"name":"03"},{"E":["res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"N":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"S":["res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"W":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"edges":{"E":"hall","N":"hall","S":"hall","W":"wall"},"name":"04"},{"E":["res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"N":["res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"S":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"W":["res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres"],"edges":{"E":"hall","N":"wall","S":"wall","W":"hall"},"name":"05"},{"E":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"N":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"S":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"W":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"edges":{"E":"wall","N":"hall","S":"wall","W":"wall"},"name":"02"},{"E":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"N":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"S":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"W":["res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres"],"edges":{"E":"wall","N":"hall","S":"wall","W":"hall"},"name":"07"},{"E":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"N":["res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"S":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"W":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"edges":{"E":"wall","N":"wall","S":"wall","W":"wall"},"name":"00"},{"E":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"N":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"S":["res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"W":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"edges":{"E":"wall","N":"hall","S":"hall","W":"wall"},"name":"01"},{"E":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"],"N":["res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres","res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres","res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"S":["res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres","res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres","res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres","res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"],"W":["res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres","res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres"],"edges":{"E":"wall","N":"wall","S":"wall","W":"hall"},"name":"06"}]}
+{
+	"rules": [
+		{
+			"E": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"N": [
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"S": [
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"W": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"edges": {
+				"E": "wall",
+				"N": "wall",
+				"S": "hall",
+				"W": "wall"
+			},
+			"name": "start"
+		},
+		{
+			"E": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"N": [
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"S": [
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"W": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"edges": {
+				"E": "wall",
+				"N": "wall",
+				"S": "hall",
+				"W": "wall"
+			},
+			"name": "03"
+		},
+		{
+			"E": [
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"N": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"S": [
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"W": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"edges": {
+				"E": "hall",
+				"N": "hall",
+				"S": "hall",
+				"W": "wall"
+			},
+			"name": "04"
+		},
+		{
+			"E": [
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"N": [
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"S": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"W": [
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres"
+			],
+			"edges": {
+				"E": "hall",
+				"N": "wall",
+				"S": "wall",
+				"W": "hall"
+			},
+			"name": "05"
+		},
+		{
+			"E": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"N": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"S": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"W": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"edges": {
+				"E": "wall",
+				"N": "hall",
+				"S": "wall",
+				"W": "wall"
+			},
+			"name": "02"
+		},
+		{
+			"E": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"N": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"S": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"W": [
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres"
+			],
+			"edges": {
+				"E": "wall",
+				"N": "hall",
+				"S": "wall",
+				"W": "hall"
+			},
+			"name": "07"
+		},
+		{
+			"E": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"N": [
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"S": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"W": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"edges": {
+				"E": "wall",
+				"N": "wall",
+				"S": "wall",
+				"W": "wall"
+			},
+			"name": "00"
+		},
+		{
+			"E": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"N": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"S": [
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"W": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"edges": {
+				"E": "wall",
+				"N": "hall",
+				"S": "hall",
+				"W": "wall"
+			},
+			"name": "01"
+		},
+		{
+			"E": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_01/dungeon_piece_resource_01.tres"
+			],
+			"N": [
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_02/dungeon_piece_resource_02.tres",
+				"res://dungeon_pieces/dungeon_piece_07/dungeon_piece_resource_07.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"S": [
+				"res://dungeon_pieces/dungeon_piece_start/dungeon_piece_resource_start.tres",
+				"res://dungeon_pieces/dungeon_piece_03/dungeon_piece_resource_03.tres",
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres",
+				"res://dungeon_pieces/dungeon_piece_00/dungeon_piece_resource_00.tres",
+				"res://dungeon_pieces/dungeon_piece_06/dungeon_piece_resource_06.tres"
+			],
+			"W": [
+				"res://dungeon_pieces/dungeon_piece_04/dungeon_piece_resource_04.tres",
+				"res://dungeon_pieces/dungeon_piece_05/dungeon_piece_resource_05.tres"
+			],
+			"edges": {
+				"E": "wall",
+				"N": "wall",
+				"S": "wall",
+				"W": "hall"
+			},
+			"name": "06"
+		}
+	]
+}

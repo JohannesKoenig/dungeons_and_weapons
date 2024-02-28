@@ -1,9 +1,55 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqpd85ie6hc02"]
+[gd_scene load_steps=30 format=3 uid="uid://dqpd85ie6hc02"]
 
 [ext_resource type="Script" path="res://dungeon_door/dungeon_door.gd" id="1_p7il1"]
 [ext_resource type="Texture2D" uid="uid://km3t12jn74uc" path="res://art/sprites/DungeonGate.png" id="2_qtp5h"]
+[ext_resource type="Texture2D" uid="uid://dhrl3idwkfx68" path="res://Scenes/Game/DungeonGateActive.png" id="3_3tyr2"]
 [ext_resource type="Shader" path="res://art/shader/Game/DungeonDoor.gdshader" id="3_70kjw"]
+[ext_resource type="Texture2D" uid="uid://diy3nm3n7fsvh" path="res://art/sprites/DungeonGate 3.png" id="3_jatlp"]
 [ext_resource type="Shader" path="res://art/shader/Game/DungeonDoorDistort.gdshader" id="4_v0npf"]
+[ext_resource type="Material" uid="uid://det2b34nslptj" path="res://Scenes/Game/DungeonDoor_particles.tres" id="6_kw8og"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnahf"]
+atlas = ExtResource("3_3tyr2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37k6p"]
+atlas = ExtResource("3_3tyr2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bkbi"]
+atlas = ExtResource("3_3tyr2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1p8i"]
+atlas = ExtResource("3_3tyr2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikser"]
+atlas = ExtResource("3_3tyr2")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r1smp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnahf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37k6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bkbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1p8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikser")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_sed2c"]
 seed = 1
@@ -62,21 +108,53 @@ shader_parameter/distortion_strength = 0.0880001
 shader_parameter/color = Color(0, 0.823529, 0.709804, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_vac40")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvpcw"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_cebpj"]
+radius = 12.0416
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6utf6"]
 polygon = PackedVector2Array(-16, -16, -16, -25, -10, -34, 0, -38, 10, -34, 16, -25, 16, -16, 20, -16, 20, -41, -22, -41, -22, -16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1p06"]
+size = Vector2(64, 33)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7rio4"]
+radius = 27.0
+
+[sub_resource type="Gradient" id="Gradient_loael"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_stpgn"]
+gradient = SubResource("Gradient_loael")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
+metadata/_snap_enabled = true
 
 [node name="DungeonDoor" type="Node2D"]
 script = ExtResource("1_p7il1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 light_mask = 7
 visibility_layer = 2
 y_sort_enabled = true
 position = Vector2(2.08165e-12, -6)
 texture = ExtResource("2_qtp5h")
 offset = Vector2(2.08165e-12, -10)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+light_mask = 7
+y_sort_enabled = true
+position = Vector2(0, -16)
+texture = ExtResource("3_jatlp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.694118)
+light_mask = 7
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_r1smp")
+autoplay = "default"
+frame_progress = 0.109977
 
 [node name="Portal" type="Sprite2D" parent="."]
 light_mask = 2
@@ -87,18 +165,19 @@ scale = Vector2(0.4, 0.4)
 texture = SubResource("GradientTexture2D_8fsht")
 offset = Vector2(2.08165e-12, -25)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D2" type="PointLight2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 4)
+position = Vector2(0, -16)
 scale = Vector2(0.625, 0.625)
 color = Color(0, 0.929412, 0.65098, 1)
-energy = 1.7
-range_item_cull_mask = 2
+energy = 1.28
+range_item_cull_mask = 7
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_g3b6a")
 texture_scale = 1.79
 
 [node name="PortalDistort" type="Sprite2D" parent="."]
+visible = false
 light_mask = 2
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_27e58")
@@ -111,13 +190,45 @@ offset = Vector2(2.08165e-12, -25)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -7)
-scale = Vector2(1.92, 1)
-shape = SubResource("RectangleShape2D_tvpcw")
+shape = SubResource("CircleShape2D_cebpj")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_6utf6")
 occluder_light_mask = 7
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -17.5)
+shape = SubResource("RectangleShape2D_h1p06")
+
+[node name="EffectsArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectsArea"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_7rio4")
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+modulate = Color(0, 0.992157, 0.584314, 1)
+position = Vector2(0, -16)
+process_material = ExtResource("6_kw8og")
+
+[node name="PortalLight" type="PointLight2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -9)
+scale = Vector2(0.625, 0.625)
+color = Color(0, 0.760784, 0.529412, 1)
+energy = 0.0
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_stpgn")
+texture_scale = 1.2
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="EffectsArea" to="." method="_on_effects_area_body_entered"]
+[connection signal="body_exited" from="EffectsArea" to="." method="_on_effects_area_body_exited"]

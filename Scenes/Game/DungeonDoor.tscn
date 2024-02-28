@@ -1,63 +1,51 @@
-[gd_scene load_steps=33 format=3 uid="uid://cr2pgbgjac4je"]
+[gd_scene load_steps=29 format=3 uid="uid://cr2pgbgjac4je"]
 
 [ext_resource type="Script" path="res://scripts/Game/DungeonDoor.gd" id="1_q7vtv"]
-[ext_resource type="Texture2D" uid="uid://km3t12jn74uc" path="res://art/sprites/DungeonGate.png" id="2_31dao"]
-[ext_resource type="Texture2D" uid="uid://oimikb3wpcdj" path="res://art/sprites/DungeonGateNormals.png" id="3_3ng10"]
+[ext_resource type="Texture2D" uid="uid://diy3nm3n7fsvh" path="res://art/sprites/DungeonGate 3.png" id="2_ke104"]
 [ext_resource type="Shader" path="res://art/shader/Game/DungeonDoorDistort.gdshader" id="3_fxokg"]
 [ext_resource type="Shader" path="res://art/shader/Game/DungeonDoor.gdshader" id="3_qm8h3"]
 [ext_resource type="Texture2D" uid="uid://dhrl3idwkfx68" path="res://Scenes/Game/DungeonGateActive.png" id="4_gidvb"]
 [ext_resource type="PackedScene" uid="uid://vrfwipd3m6p8" path="res://flickering_light/flickering_light.tscn" id="6_elk00"]
+[ext_resource type="Material" uid="uid://det2b34nslptj" path="res://Scenes/Game/DungeonDoor_particles.tres" id="7_u8o0l"]
 [ext_resource type="Texture2D" uid="uid://f125wghyka5c" path="res://Scenes/Game/Particle 2.png" id="8_lxcqb"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_qk0em"]
-diffuse_texture = ExtResource("2_31dao")
-normal_texture = ExtResource("3_3ng10")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3qjer"]
-texture = SubResource("CanvasTexture_qk0em")
-0:0/size_in_atlas = Vector2i(4, 4)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_3ltxy"]
-sources/1 = SubResource("TileSetAtlasSource_3qjer")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gnahf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_14goi"]
 atlas = ExtResource("4_gidvb")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_37k6p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8ryc"]
 atlas = ExtResource("4_gidvb")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5bkbi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv3ot"]
 atlas = ExtResource("4_gidvb")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h1p8i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnwaw"]
 atlas = ExtResource("4_gidvb")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ikser"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytf0m"]
 atlas = ExtResource("4_gidvb")
 region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_fr3oe"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibvym"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gnahf")
+"texture": SubResource("AtlasTexture_14goi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_37k6p")
+"texture": SubResource("AtlasTexture_u8ryc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5bkbi")
+"texture": SubResource("AtlasTexture_mv3ot")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h1p8i")
+"texture": SubResource("AtlasTexture_dnwaw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ikser")
+"texture": SubResource("AtlasTexture_ytf0m")
 }],
 "loop": true,
 "name": &"default",
@@ -68,7 +56,7 @@ animations = [{
 seed = 1
 frequency = 0.0005
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g2jjb"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yrbqd"]
 seamless = true
 seamless_blend_skirt = 0.544
 noise = SubResource("FastNoiseLite_b56gm")
@@ -80,23 +68,23 @@ shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/strength = 1.95
 shader_parameter/distortion_strength = 0.0680001
 shader_parameter/color = Color(0, 0.85098, 0.694118, 1)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_g2jjb")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_yrbqd")
 
-[sub_resource type="Gradient" id="Gradient_fh75l"]
+[sub_resource type="Gradient" id="Gradient_x4he2"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ytbqk"]
-gradient = SubResource("Gradient_fh75l")
+gradient = SubResource("Gradient_x4he2")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 metadata/_snap_enabled = true
 
-[sub_resource type="Gradient" id="Gradient_loael"]
+[sub_resource type="Gradient" id="Gradient_l48mn"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0nfu2"]
-gradient = SubResource("Gradient_loael")
+gradient = SubResource("Gradient_l48mn")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0.5)
@@ -128,53 +116,30 @@ radius = 27.0
 radius = 12.0416
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52edo"]
-size = Vector2(64, 33)
+size = Vector2(32, 40)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8j867"]
 blend_mode = 1
 light_mode = 1
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h6yr4"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(10, 10, 1)
-emission_shape = 2
-emission_sphere_radius = 1.0
-radial_velocity_min = 1.0
-radial_velocity_max = 1.0
-gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
-radial_accel_min = -100.0
-radial_accel_max = 2.08167e-15
-tangential_accel_min = -100.0
-tangential_accel_max = -100.0
 
 [node name="DungeonDoor" type="Node2D"]
 light_mask = 7
 y_sort_enabled = true
 script = ExtResource("1_q7vtv")
 
-[node name="Wall" type="TileMap" parent="."]
-visible = false
-light_mask = 7
-y_sort_enabled = true
-position = Vector2(8, 8)
-tile_set = SubResource("TileSet_3ltxy")
-format = 2
-layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(-65537, 1, 0)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 7
 y_sort_enabled = true
 position = Vector2(0, -16)
-texture = ExtResource("2_31dao")
+texture = ExtResource("2_ke104")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.694118)
+modulate = Color(1, 1, 1, 0.698039)
 light_mask = 7
 position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_fr3oe")
+sprite_frames = SubResource("SpriteFrames_ibvym")
 autoplay = "default"
-frame_progress = 0.541963
+frame_progress = 0.849299
 
 [node name="Portal" type="Sprite2D" parent="."]
 light_mask = 2
@@ -184,7 +149,6 @@ scale = Vector2(0.4, 0.4)
 texture = SubResource("GradientTexture2D_ytbqk")
 
 [node name="PortalLight" type="PointLight2D" parent="."]
-visible = false
 y_sort_enabled = true
 position = Vector2(0, -9)
 scale = Vector2(0.625, 0.625)
@@ -194,16 +158,15 @@ range_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_0nfu2")
 texture_scale = 1.2
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
+[node name="Flash" type="PointLight2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 7)
+position = Vector2(0, -16)
 scale = Vector2(0.625, 0.625)
 color = Color(0, 0.929412, 0.65098, 1)
-energy = 1.87
+energy = 0.0
 range_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_0nfu2")
-texture_scale = 1.27
+texture_scale = 0.6
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 y_sort_enabled = true
@@ -253,7 +216,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -17.5)
+position = Vector2(0, -21)
 shape = SubResource("RectangleShape2D_52edo")
 
 [node name="Particles" type="GPUParticles2D" parent="."]
@@ -262,7 +225,7 @@ material = SubResource("CanvasItemMaterial_8j867")
 position = Vector2(0, -16)
 amount = 100
 amount_ratio = 0.1
-process_material = SubResource("ParticleProcessMaterial_h6yr4")
+process_material = ExtResource("7_u8o0l")
 texture = ExtResource("8_lxcqb")
 lifetime = 0.85
 preprocess = 1.0

@@ -23,14 +23,6 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pb5nq")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(120, 2.08165e-12)
-layout_mode = 2
-text = "Hints:"
-fit_content = true
-scroll_active = false
-drag_and_drop_selection_enabled = false
-
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(120, 2.08165e-12)
 layout_mode = 2

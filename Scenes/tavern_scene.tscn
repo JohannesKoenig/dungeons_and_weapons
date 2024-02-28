@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1wruq1vniqxl"]
+[gd_scene load_steps=40 format=3 uid="uid://c1wruq1vniqxl"]
 
 [ext_resource type="Theme" uid="uid://b7cxggxiumhyf" path="res://themes/default_theme.tres" id="1_i1q3x"]
 [ext_resource type="Script" path="res://scripts/GUI_elements/TavernGUI.gd" id="1_r07mv"]
@@ -16,10 +16,119 @@
 [ext_resource type="PackedScene" uid="uid://dmegvhl0tg3gx" path="res://GUI_elements/HotbarGUI.tscn" id="12_j558f"]
 [ext_resource type="Resource" uid="uid://c7dbnocijw28c" path="res://player/player_quick_access.tres" id="13_ylfwy"]
 [ext_resource type="PackedScene" uid="uid://dojlwdvovx2ic" path="res://GUI_elements/tavern_open/tavern_open.tscn" id="15_gan4x"]
+[ext_resource type="Texture2D" uid="uid://b18rbsvsudijg" path="res://Scenes/Tavern Closed.png" id="15_gh4wg"]
 [ext_resource type="PackedScene" uid="uid://dqlw76ugakfeo" path="res://Scenes/GameMenu.tscn" id="17_pgggk"]
 [ext_resource type="PackedScene" uid="uid://b7g80uyx3ghok" path="res://health/health_bar.tscn" id="18_nodg4"]
 [ext_resource type="PackedScene" uid="uid://d1x4ub6u2utr8" path="res://save_hint/save_hint.tscn" id="19_crk42"]
 [ext_resource type="PackedScene" uid="uid://ds1y2abvtloyc" path="res://speed_up_hint/speed_up_hint.tscn" id="20_ca6me"]
+[ext_resource type="Texture2D" uid="uid://c0qdfrh63ri18" path="res://art/Sundial.png" id="21_vhece"]
+[ext_resource type="Script" path="res://Scenes/SunDialAnimation.gd" id="22_7i2c2"]
+[ext_resource type="PackedScene" uid="uid://cksui80t86inp" path="res://coin_pop_up/coin_pop_up_spawner.tscn" id="24_jsi77"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24hyr"]
+bg_color = Color(0.658824, 0.494118, 0.388235, 1)
+corner_radius_bottom_left = 7
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpgc4"]
+bg_color = Color(0.768627, 0.643137, 0.54902, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_left = 20
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prodg"]
+atlas = ExtResource("21_vhece")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8cbw"]
+atlas = ExtResource("21_vhece")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ualma"]
+atlas = ExtResource("21_vhece")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkr2x"]
+atlas = ExtResource("21_vhece")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1lof"]
+atlas = ExtResource("21_vhece")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oln3m"]
+atlas = ExtResource("21_vhece")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qbrd"]
+atlas = ExtResource("21_vhece")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsvrv"]
+atlas = ExtResource("21_vhece")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7byo"]
+atlas = ExtResource("21_vhece")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deynl"]
+atlas = ExtResource("21_vhece")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hptfn"]
+atlas = ExtResource("21_vhece")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbkki"]
+atlas = ExtResource("21_vhece")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1nirs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prodg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8cbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ualma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkr2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1lof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oln3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qbrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsvrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7byo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deynl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hptfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbkki")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="TavernScene" type="Control"]
 layout_mode = 3
@@ -37,45 +146,30 @@ dnr = ExtResource("3_gxsul")
 tavern_resource = ExtResource("4_i2f5a")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+layout_direction = 2
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -73.0
-offset_top = 10.0
+offset_top = 15.0
 offset_right = -11.0
-offset_bottom = 20.0
+offset_bottom = 25.0
 grow_horizontal = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="Coins" type="Label" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "100"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="coin_icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_vp7g8")
-
-[node name="Clock" type="Label" parent="MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 2.08165e-12)
-layout_mode = 2
-text = "10:40"
-horizontal_alignment = 2
-
 [node name="MarginContainer2" type="MarginContainer" parent="."]
+visible = false
+layout_direction = 3
 layout_mode = 1
-offset_left = 14.0
-offset_top = 8.0
-offset_right = 114.0
-offset_bottom = 28.0
+offset_left = 11.0
+offset_top = 23.0
+offset_right = 111.0
+offset_bottom = 43.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+visible = false
+layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -91,9 +185,18 @@ theme = ExtResource("1_i1q3x")
 icon = ExtResource("2_b1a5n")
 icon_alignment = 1
 
-[node name="Day" type="Label" parent="MarginContainer2/HBoxContainer"]
-layout_mode = 2
-text = "Day 1"
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+visible = false
+layout_direction = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -503.0
+offset_top = 41.0
+offset_right = -469.0
+offset_bottom = 57.0
+grow_horizontal = 0
 
 [node name="ToggleComponent" parent="." instance=ExtResource("5_57lu4")]
 
@@ -158,56 +261,16 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-content = NodePath("DayTimeChangedLabel")
-duration = 2.5
+content = NodePath("Control")
+duration = 1.5
 fade_duration = 0.3
 
-[node name="DayTimeChangedLabel" type="Label" parent="TavernClosedPopUp"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -5.0
-offset_right = 20.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 16
-text = "Tavern closed"
-horizontal_alignment = 1
+[node name="Control" type="Control" parent="TavernClosedPopUp"]
+anchors_preset = 0
 
-[node name="NightTimePopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("10_uiwp6")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-content = NodePath("NightTimeChangedLabel")
-duration = 2.5
-fade_duration = 0.3
-
-[node name="NightTimeChangedLabel" type="Label" parent="NightTimePopUp"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -26.0
-offset_top = -10.0
-offset_right = 26.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 16
-text = "Dungeon open"
-horizontal_alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="TavernClosedPopUp/Control"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("15_gh4wg")
 
 [node name="TavernOpenTimedPopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("10_uiwp6")]
 layout_mode = 1
@@ -226,6 +289,7 @@ fade_duration = 0.3
 layout_mode = 1
 
 [node name="GameMenuPopUp" parent="." node_paths=PackedStringArray("content") instance=ExtResource("6_vjcvr")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -271,12 +335,117 @@ layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 71.0
-offset_top = 13.0
-offset_right = 103.0
-offset_bottom = 23.0
+offset_left = 17.0
+offset_top = 11.0
+offset_right = 49.0
+offset_bottom = 21.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="CoinPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 27.0
+offset_right = 4.0
+offset_bottom = 41.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_24hyr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -66.0
+offset_right = 12.0
+offset_bottom = 27.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jpgc4")
+
+[node name="Clock" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 14.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.92549, 0.87451, 0.835294, 1)
+text = "10:40"
+horizontal_alignment = 2
+
+[node name="Day" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -31.0
+offset_top = 14.0
+offset_right = -4.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.913725, 0.87451, 0.835294, 1)
+text = "Day 10
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -38.0
+offset_top = 26.0
+offset_right = -4.0
+offset_bottom = 42.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="coin_icon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_vp7g8")
+
+[node name="Coins" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 16
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SunDial" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -49.0
+offset_top = 13.0
+offset_right = -49.0
+offset_bottom = 13.0
+grow_horizontal = 0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="SunDial"]
+position = Vector2(-4, 0)
+sprite_frames = SubResource("SpriteFrames_1nirs")
+script = ExtResource("22_7i2c2")
+
+[node name="CoinPopUp" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 241.0
+offset_top = 51.0
+offset_right = 281.0
+offset_bottom = 91.0
+
+[node name="CoinPopUpSpawner" parent="CoinPopUp" instance=ExtResource("24_jsi77")]
 
 [connection signal="pressed" from="MarginContainer2/HBoxContainer/Options" to="ToggleComponent" method="activate"]
 [connection signal="value_changed" from="ToggleComponent" to="PopUpGuiComponent" method="set_active"]

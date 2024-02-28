@@ -208,7 +208,9 @@ func _collapseable_indexes(array: Array) -> Array:
 
 
 func collapse_tile(x: int, y: int, x_max: int, array: Array):
-	var tile = [array[_to_1D(x, y, x_max)].pick_random()]
+	var options: Array = array[_to_1D(x, y, x_max)]
+	var without_start = options.filter(func(x): return !(x == start_dungeon_piece_resource))
+	var tile = [without_start.pick_random()]
 	return tile
 
 func propagate(x: int, y: int, x_max: int, y_max: int, array: Array, guide: Dictionary, processing_guide: Array):

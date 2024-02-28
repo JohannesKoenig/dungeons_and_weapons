@@ -21,11 +21,17 @@ func on_enter():
 	var items = player_resource.inventory.items.duplicate()
 	for item in items:
 		dungeon_inventory.add(item)
+	player_resource.inventory.clear()
 
 func on_exit():
-	player_resource.inventory.clear()
+	dnr.current_day_time = 5 * 60 + 30
+	if dnr.is_day:
+		dnr.remaining_time = max(1, dnr.remaining_time)
+	else:
+		dnr.remaining_time = 1
+		dnr.is_day = false
 	get_tree().change_scene_to_file("res://Scenes/tavern_game_scene.tscn")
-	pass
+
 
 func _on_timeout():
 	transitioned.emit("tavern_after_dungeon")

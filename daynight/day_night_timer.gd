@@ -62,4 +62,3 @@ func start_day():
 func start_night():
 	start_night_timer()
 	dnr.night_started.emit()
-

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://1dyua8285is8"]
+[gd_scene load_steps=11 format=3 uid="uid://1dyua8285is8"]
 
 [ext_resource type="PackedScene" uid="uid://bph32xoowbi6c" path="res://adventurer/adventurer.tscn" id="1_lgk36"]
 [ext_resource type="Script" path="res://player/player.gd" id="2_3yalk"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://coh6x8in6t67w" path="res://interaction_handlers/player_movement_mapper.tscn" id="4_uob2g"]
 [ext_resource type="Resource" uid="uid://c7dbnocijw28c" path="res://player/player_quick_access.tres" id="5_0hr34"]
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="5_dcjke"]
+[ext_resource type="AudioStream" uid="uid://byhkj8yslab24" path="res://audio/player_hit.wav" id="9_kojqy"]
 
 [sub_resource type="Resource" id="Resource_v5gix"]
 script = ExtResource("5_dcjke")
@@ -24,9 +25,8 @@ inventory_resource = ExtResource("4_hlcuy")
 
 [node name="ActionableFinder" parent="Direction" index="0" groups=["player_actionable_finder"]]
 
-[node name="ItemHoldingComponent" parent="." index="7"]
-inventory_resource = ExtResource("4_hlcuy")
-quick_access = ExtResource("5_0hr34")
+[node name="QickAccessComponent" parent="." index="7"]
+quick_access_resource = ExtResource("5_0hr34")
 
 [node name="PlayerInteractionMapper" parent="." index="8" node_paths=PackedStringArray("actionable_finder") instance=ExtResource("3_452tt")]
 actionable_finder = NodePath("../Direction/ActionableFinder")
@@ -34,11 +34,16 @@ actionable_finder = NodePath("../Direction/ActionableFinder")
 [node name="PlayerMovementMapper" parent="." index="9" instance=ExtResource("4_uob2g")]
 movement_stats = SubResource("Resource_v5gix")
 
-[node name="QickAccessComponent" parent="." index="10"]
-quick_access_resource = ExtResource("5_0hr34")
-
-[node name="ItemPickupPlayer" parent="." index="13"]
+[node name="ItemPickupPlayer" parent="." index="12"]
 volume_db = -10.0
 
-[node name="ItemDropPlayer" parent="." index="14"]
+[node name="ItemDropPlayer" parent="." index="13"]
 volume_db = -10.0
+
+[node name="ItemHoldingComponent" parent="." index="14"]
+inventory_resource = ExtResource("4_hlcuy")
+quick_access = ExtResource("5_0hr34")
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="." index="15"]
+stream = ExtResource("9_kojqy")
+bus = &"Combat"

@@ -25,6 +25,8 @@ func _process(delta):
 # ------------------------------------------------------------------------------
 
 func add_item():
+	if len(dungeon_generator_resource.dropped_items) == 0:
+		return
 	var item = dungeon_generator_resource.dropped_items[index]
 	dropped_item_display.spawn_item(item)
 	index += 1

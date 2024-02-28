@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dbf3spf2ki5px"]
+[gd_scene load_steps=86 format=3 uid="uid://dbf3spf2ki5px"]
 
 [ext_resource type="Texture2D" uid="uid://wkvwfydg67pm" path="res://art/sprites/tilesets/tavern_flooring.png" id="1_4pst3"]
 [ext_resource type="Script" path="res://scripts/Game/TavernGameSceneManager.gd" id="1_tl1ne"]
@@ -29,9 +29,13 @@
 [ext_resource type="Texture2D" uid="uid://jw4xjcc1y1aw" path="res://art/sprites/tilesets/Tree.png" id="21_xp0n5"]
 [ext_resource type="Resource" uid="uid://co6aefe3hm0ou" path="res://tavern/tavern_resource.tres" id="25_35v82"]
 [ext_resource type="PackedScene" uid="uid://vrfwipd3m6p8" path="res://flickering_light/flickering_light.tscn" id="25_eyorj"]
+[ext_resource type="PackedScene" uid="uid://xhpknh3eoopg" path="res://fireplace/fireplace.tscn" id="27_maiif"]
 [ext_resource type="PackedScene" uid="uid://b7sjloxcm3svx" path="res://audio/background_music_player.tscn" id="28_dbcv7"]
+[ext_resource type="PackedScene" uid="uid://yrvn1cphxsyh" path="res://prop/prop.tscn" id="28_n5vbs"]
+[ext_resource type="Texture2D" uid="uid://bx2k1lcciyikk" path="res://art/sprites/SunFlower2.png" id="29_f21s0"]
+[ext_resource type="Texture2D" uid="uid://drciynfu0wi7j" path="res://art/sprites/Bush.png" id="29_o014o"]
 [ext_resource type="AudioStream" uid="uid://dgltsoh56mqok" path="res://audio/TavernAmbiance.mp3" id="29_uin4i"]
-[ext_resource type="PackedScene" uid="uid://cksui80t86inp" path="res://coin_pop_up/coin_pop_up_spawner.tscn" id="30_ws4ym"]
+[ext_resource type="Texture2D" uid="uid://dpqgmiillkl57" path="res://art/sprites/Bush2.png" id="30_w5ppk"]
 [ext_resource type="PackedScene" uid="uid://cb4qohghjri5g" path="res://Scenes/fog.tscn" id="31_u1wbl"]
 [ext_resource type="PackedScene" uid="uid://dksngbj7j06b3" path="res://daynight/day_night_timer.tscn" id="33_m4pko"]
 [ext_resource type="PackedScene" uid="uid://oa1t6hcwqt6u" path="res://rent_paying_component/rent_paying_component.tscn" id="34_ll26b"]
@@ -897,6 +901,7 @@ material = null
 position = Vector2(176, 107)
 
 [node name="PlayerCamera" type="Camera2D" parent="Entities/Player"]
+position_smoothing_speed = 8.0
 script = ExtResource("13_l06rj")
 
 [node name="Counter" parent="Entities" instance=ExtResource("2_2n6xp")]
@@ -987,6 +992,7 @@ dnr = ExtResource("10_iob6c")
 fog = NodePath("../Fog")
 
 [node name="FlickeringLight" parent="Entities" instance=ExtResource("25_eyorj")]
+visible = false
 position = Vector2(66, 55)
 scale = Vector2(1.5, 1.5)
 color = Color(0.941176, 0.419608, 0.262745, 1)
@@ -994,12 +1000,14 @@ energy = 0.59
 flicker_time = 0.3
 
 [node name="FlickeringLight2" parent="Entities" instance=ExtResource("25_eyorj")]
+visible = false
 position = Vector2(198, 157)
 color = Color(0.941176, 0.419608, 0.262745, 1)
 energy = 0.59
 flicker_time = 0.3
 
 [node name="FlickeringLight3" parent="Entities" instance=ExtResource("25_eyorj")]
+visible = false
 position = Vector2(96, 142)
 scale = Vector2(2.1, 2.1)
 color = Color(0.941176, 0.419608, 0.262745, 1)
@@ -1007,11 +1015,43 @@ energy = 0.59
 flicker_time = 0.3
 
 [node name="FlickeringLight4" parent="Entities" instance=ExtResource("25_eyorj")]
-position = Vector2(133, 55)
+position = Vector2(133, 117)
 scale = Vector2(3.5, 3.5)
 color = Color(0.941176, 0.419608, 0.262745, 1)
 energy = 0.59
 flicker_time = 0.3
+
+[node name="Fireplace" parent="Entities" instance=ExtResource("27_maiif")]
+position = Vector2(105, 38)
+
+[node name="SunFlower1" parent="Entities" instance=ExtResource("28_n5vbs")]
+
+[node name="Bush" parent="Entities" instance=ExtResource("28_n5vbs")]
+position = Vector2(67, 212)
+texture = ExtResource("29_o014o")
+offset = Vector2(2.08165e-12, -5)
+
+[node name="Bush4" parent="Entities" instance=ExtResource("28_n5vbs")]
+position = Vector2(217, 195)
+texture = ExtResource("29_o014o")
+offset = Vector2(2.08165e-12, -5)
+
+[node name="Bush2" parent="Entities" instance=ExtResource("28_n5vbs")]
+position = Vector2(35, 182)
+texture = ExtResource("30_w5ppk")
+offset = Vector2(2.08165e-12, -5)
+
+[node name="Bush3" parent="Entities" instance=ExtResource("28_n5vbs")]
+position = Vector2(149, 220)
+texture = ExtResource("30_w5ppk")
+offset = Vector2(2.08165e-12, -5)
+
+[node name="SunFlower3" parent="Entities" instance=ExtResource("28_n5vbs")]
+position = Vector2(40, 197)
+
+[node name="SunFlower2" parent="Entities" instance=ExtResource("28_n5vbs")]
+position = Vector2(112, 209)
+texture = ExtResource("29_f21s0")
 
 [node name="AlphaWall" type="StaticBody2D" parent="."]
 
@@ -1042,9 +1082,6 @@ autoplay = false
 stream = ExtResource("29_uin4i")
 volume_db = -2.0
 bus = &"Ambient"
-
-[node name="CoinPopUpSpawner" parent="." instance=ExtResource("30_ws4ym")]
-position = Vector2(118, 58)
 
 [node name="DayNightTimer" parent="." instance=ExtResource("33_m4pko")]
 running = true

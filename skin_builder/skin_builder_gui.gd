@@ -62,7 +62,7 @@ func _on_body_r_pressed():
 
 func _on_legs_r_pressed():
 	button_click_player.play_click()
-	legs_index = (legs_index - 1 + len(skin_builder.legs)) % len(skin_builder.legs)
+	legs_index = (legs_index + 1 + len(skin_builder.legs)) % len(skin_builder.legs)
 	tex.material.set("shader_parameter/legs", skin_builder.legs[legs_index])
 
 func _on_focus():

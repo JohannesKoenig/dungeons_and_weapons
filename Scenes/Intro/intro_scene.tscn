@@ -936,7 +936,7 @@ position = Vector2(76, 268)
 [node name="CutSceneManager" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("24_mqmss")]
 material = SubResource("CanvasItemMaterial_m55kr")
 camera = NodePath("../CutSceneCamera")
-camera_offset = Vector2(100, -20)
+camera_offset = Vector2(100, -10)
 pan_duration = 3.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

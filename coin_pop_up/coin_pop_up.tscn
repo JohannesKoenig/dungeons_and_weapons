@@ -30,7 +30,6 @@ light_mode = 1
 z_index = 2
 material = SubResource("CanvasItemMaterial_824p1")
 script = ExtResource("1_lr5ws")
-height = -10.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_lsa7t")

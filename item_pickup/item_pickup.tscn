@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0nqay38481la"]
+[gd_scene load_steps=17 format=3 uid="uid://0nqay38481la"]
 
 [ext_resource type="Script" path="res://item_pickup/item_pickup.gd" id="1_p8cnt"]
 [ext_resource type="Resource" uid="uid://c5tc5pfapdxlx" path="res://dungeon/dungeon_inventory.tres" id="2_4b4fw"]
@@ -8,8 +8,48 @@
 [ext_resource type="PackedScene" uid="uid://73mvo4p2s0t5" path="res://counter/input_hint.tscn" id="5_k70vw"]
 [ext_resource type="Texture2D" uid="uid://4lqrfxt1uqa5" path="res://icons/X.png" id="6_y37a5"]
 [ext_resource type="PackedScene" uid="uid://dg5nybf67hpca" path="res://tooltip/tooltip.tscn" id="7_5xfc2"]
+[ext_resource type="Texture2D" uid="uid://j2vf6gwdhign" path="res://item_pickup/Sparkle.png" id="9_13an7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnqoi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1q14j"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecjl1"]
+atlas = ExtResource("9_13an7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yy1i"]
+atlas = ExtResource("9_13an7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xytx"]
+atlas = ExtResource("9_13an7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4x5y"]
+atlas = ExtResource("9_13an7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ca2hs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecjl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yy1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xytx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4x5y")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="ItemPickup" type="Node2D"]
 y_sort_enabled = true
@@ -39,6 +79,12 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(0, 4)
 texture = ExtResource("4_2ifvr")
+
+[node name="Sparkle" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_1q14j")
+sprite_frames = SubResource("SpriteFrames_ca2hs")
+frame = 3
+frame_progress = 1.0
 
 [connection signal="action" from="Actionable" to="." method="on_collect"]
 [connection signal="is_closest_to_player_changed" from="Actionable" to="." method="_on_actionable_is_closest_to_player_changed"]

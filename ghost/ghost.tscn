@@ -1,10 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://du6nh8euyengr"]
+[gd_scene load_steps=27 format=3 uid="uid://du6nh8euyengr"]
 
 [ext_resource type="Script" path="res://ghost/ghost.gd" id="1_6uth2"]
 [ext_resource type="Texture2D" uid="uid://cmo72m7k6ne0b" path="res://ghost/Ghost.png" id="2_uet8p"]
 [ext_resource type="Script" path="res://ghost/MovementMapper.gd" id="3_ilgpx"]
 [ext_resource type="Script" path="res://Resources/movement_stats.gd" id="4_ogtj5"]
 [ext_resource type="PackedScene" uid="uid://vrfwipd3m6p8" path="res://flickering_light/flickering_light.tscn" id="5_606j1"]
+[ext_resource type="Texture2D" uid="uid://bxh7fjpubmuc8" path="res://ghost/Rage.png" id="6_rhpo3"]
+[ext_resource type="AudioStream" uid="uid://d3w4kmn301kox" path="res://audio/ghost_attack_state_sound_1.wav" id="7_uhjku"]
+[ext_resource type="AudioStream" uid="uid://dcf1xcuujnyd5" path="res://audio/ghost_attack_state_sound_2.wav" id="8_dtqc2"]
+[ext_resource type="AudioStream" uid="uid://c34rajd2bianv" path="res://audio/ghost_run_state_sound.wav" id="9_2n4yc"]
+[ext_resource type="AudioStream" uid="uid://ctraj6u5vyg3f" path="res://audio/ghost_enrage_state_sound_1.wav" id="10_00xlb"]
+[ext_resource type="AudioStream" uid="uid://mko3s33d10ax" path="res://audio/ghost_enrage_state_sound_2.wav" id="11_twob4"]
+[ext_resource type="AudioStream" uid="uid://sd22xngv64di" path="res://audio/ghost_enrage_state_sound_3.wav" id="12_67qgp"]
+[ext_resource type="AudioStream" uid="uid://d0x65ifl5td8k" path="res://audio/ghost_enrage_state_sound_4.wav" id="13_bnvvi"]
+[ext_resource type="AudioStream" uid="uid://djhhp3apj08kr" path="res://audio/ghost_enrage_state_sound_start.wav" id="14_gwnor"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t551g"]
 
@@ -52,6 +61,42 @@ script = ExtResource("4_ogtj5")
 movement_speed = 30
 acceleration_time = 0.1
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wgi7h"]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j8ol2"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 2, 1)
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_po7dp"]
+playback_mode = 1
+random_pitch = 1.02
+streams_count = 2
+stream_0/stream = ExtResource("7_uhjku")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("8_dtqc2")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_osyba"]
+random_pitch = 1.02
+streams_count = 4
+stream_0/stream = ExtResource("10_00xlb")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("11_twob4")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("12_67qgp")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("13_bnvvi")
+stream_3/weight = 1.0
+
 [node name="Ghost" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
@@ -76,3 +121,31 @@ movement_stats = SubResource("Resource_5q2uv")
 light_mask = 0
 color = Color(0.47451, 0.815686, 0.384314, 1)
 shadow_enabled = false
+
+[node name="EnrageParticle" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+material = SubResource("CanvasItemMaterial_wgi7h")
+position = Vector2(0, -14)
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_j8ol2")
+texture = ExtResource("6_rhpo3")
+
+[node name="AttackSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_po7dp")
+bus = &"Combat"
+
+[node name="RunSounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_2n4yc")
+bus = &"Combat"
+
+[node name="EnrageSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_osyba")
+volume_db = -8.0
+bus = &"Combat"
+
+[node name="EnrageStartSounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_gwnor")
+volume_db = -8.0
+bus = &"Combat"

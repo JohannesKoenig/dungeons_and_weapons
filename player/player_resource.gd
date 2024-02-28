@@ -12,7 +12,7 @@ extends Resource
 @export var head: Texture
 @export var body: Texture
 @export var legs: Texture
-var tavern_global_position: Vector2 = Vector2(128, 128)
+var tavern_global_position: Vector2 = Vector2(176, 97)
 var dungeon_global_position: Vector2 = Vector2(0, 4)
 var player_name: String
 

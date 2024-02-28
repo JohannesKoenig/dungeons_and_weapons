@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://xhpknh3eoopg"]
+
+[ext_resource type="Texture2D" uid="uid://5egydrv5osi4" path="res://fireplace/Fireplace.png" id="1_rkufo"]
+[ext_resource type="PackedScene" uid="uid://vrfwipd3m6p8" path="res://flickering_light/flickering_light.tscn" id="2_bxubd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws7lk"]
+atlas = ExtResource("1_rkufo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw874"]
+atlas = ExtResource("1_rkufo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi0tx"]
+atlas = ExtResource("1_rkufo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nj7d"]
+atlas = ExtResource("1_rkufo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axfr7"]
+atlas = ExtResource("1_rkufo")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe2vn"]
+atlas = ExtResource("1_rkufo")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbipl"]
+atlas = ExtResource("1_rkufo")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f784g"]
+atlas = ExtResource("1_rkufo")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_81r47"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws7lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw874")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi0tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nj7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axfr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe2vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbipl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f784g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lnvi"]
+size = Vector2(26, 27)
+
+[node name="Fireplace" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_81r47")
+autoplay = "default"
+frame_progress = 0.432032
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_6lnvi")
+
+[node name="FlickeringLight" parent="." instance=ExtResource("2_bxubd")]
+position = Vector2(0, 6)
+color = Color(0.929412, 0.482353, 0.196078, 1)
+flicker_time = 0.25
