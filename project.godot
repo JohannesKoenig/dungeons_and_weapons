@@ -13,7 +13,12 @@ config_version=5
 config/name="Dungeons And Weapons"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://art/splash_screen.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://Icon.png"
+boot_splash/minimum_display_time=3000
 
 [autoload]
 
@@ -33,6 +38,7 @@ MenuMusicPlayer="*res://Scenes/Autoloads/MenuMusicPlayer.tscn"
 
 window/size/viewport_width=512
 window/size/viewport_height=512
+window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/scale=2.0
 window/stretch/scale_mode="integer"

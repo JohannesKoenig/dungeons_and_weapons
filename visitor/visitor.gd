@@ -5,7 +5,6 @@ class_name Visitor
 @export var adventurer_resource: AdventurerResource
 @export var visitor_ai_resource: VisitorAiResource
 @onready var quick_access_component: QuickAccessComponent = $QickAccessComponent
-@onready var coin_bank_component: CoinBankComponent = $CoinBankComponent
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var item_holding_component: ItemHoldingComponent = $ItemHoldingComponent
 @onready var ai_movement_mapper: AIMovementMapper = $AiMovementMapper

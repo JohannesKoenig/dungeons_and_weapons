@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b41p28476i1im"]
+
+[ext_resource type="Shader" path="res://grass/grass.gdshader" id="1_sr7ny"]
+[ext_resource type="Texture2D" uid="uid://byboj50sfqfdi" path="res://art/sprites/SunFlower1.png" id="2_h3o70"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0dfus"]
+shader = ExtResource("1_sr7ny")
+shader_parameter/speed = 1.0
+shader_parameter/amplitude = 1.0
+shader_parameter/global_position = null
+shader_parameter/top_l = null
+shader_parameter/bottom_r = null
+
+[node name="Grass" type="Sprite2D"]
+material = SubResource("ShaderMaterial_0dfus")
+texture = ExtResource("2_h3o70")

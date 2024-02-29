@@ -38,10 +38,6 @@
 			"type": "movement",
 			"parameters": {
 				"target": "store_position",
-				"offset": {
-					"x": 10,
-					"y": 10
-				}
 			},
 			"next": "shelve"
 		},

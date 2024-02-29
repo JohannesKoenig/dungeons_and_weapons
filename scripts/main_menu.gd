@@ -5,8 +5,11 @@ var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDis
 var button_click_player: AudioStreamPlayer
 var init_ready = false
 @onready var menu_music: BackgroundMusicPlayer = $/root/MenuMusicPlayer
+@onready var highscore: Label = $VBoxContainer/VBoxContainer/Highscore
 
 func _ready():
+	Engine.time_scale = 1
+	_message_dispatcher.speed_up = false
 	if !menu_music.playing:
 		menu_music.play()
 	button_click_player = $"/root/ButtonClick"

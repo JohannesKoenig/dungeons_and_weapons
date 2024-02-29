@@ -35,7 +35,7 @@ func _on_actionable_action(source):
 		var resource: AdventurerResource = source.adventurer_resource
 		# resource.coins = max(0, resource.coins - 10)
 		if !resource.is_returning:
-			player_resource.set_coins(player_resource.coins + 5)
+			player_resource.set_coins(player_resource.coins + 2)
 
 	if source is Visitor:
 		travel_animation()

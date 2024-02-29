@@ -52,13 +52,10 @@ func get_layout() -> Array:
 				"source": [wall_dungeon_piece_resource]
 			})
 
-	var collapsed = [start_dungeon_piece_resource]
-
-
 	processing_guide.append({
 		"index": _to_1D(start_x, start_y, x_width),
 		"status": _TODO,
-		"source": collapsed
+		"source": [start_dungeon_piece_resource]
 	})
 	# propagate(start_x, start_y, x_count, options, processing_guide)
 	while not processing_guide.is_empty():

@@ -21,6 +21,9 @@ var _master_bus = AudioServer.get_bus_index("Master")
 
 var _is_speed_up = false
 
+@onready var tavern_ambiance: BackgroundMusicPlayer = $TavernAmbiance
+@onready var day_ambiance: BackgroundMusicPlayer = $DayAmbiance
+
 func _ready():
 	AudioServer.remove_bus_effect(_master_bus, 0)
 	dungeon_generator_resource.dropped_items = []
@@ -29,6 +32,12 @@ func _ready():
 	# dnr.day_ended.connect(game_saver.save_game_from_resources)
 	dnr.day_ended.connect(func(): tavern_resource.open_tavern(false))
 	dnr.day_ended.connect(_generate_dungeon)
+	dnr.day_started.connect(update_background_audio_day)
+	dnr.night_started.connect(update_background_audio_night)
+	if dnr.is_day:
+		update_background_audio_day()
+	else:
+		update_background_audio_night()
 	rng = RandomNumberGenerator.new()
 	ai_path_markers = get_node("/root/AiPathMarkers")
 	if ai_path_markers:
@@ -59,6 +68,12 @@ func _ready():
 	
 	_message_dispatcher.game_state_changed.connect(save)
 	save(_message_dispatcher.game_state)
+	_message_dispatcher.game_state_changed.connect(play_open_sound)
+	play_open_sound(_message_dispatcher.game_state)
+
+func play_open_sound(state: State):
+	if state is ShopState:
+		$TavernOpenSound.play()
 
 func _process(delta):
 	if Input.is_action_just_pressed("action"):
@@ -111,3 +126,43 @@ func _speed_up():
 func _speed_down():
 	Engine.time_scale = 1
 	_message_dispatcher.speed_up = false
+
+func update_background_audio_day():
+	fade_in_day_ambiance()
+	fade_out_tavern_ambiance()
+
+func update_background_audio_night():
+	fade_out_day_ambiance()
+	fade_in_tavern_ambiance()
+
+func fade_in_day_ambiance():
+	day_ambiance.volume_db = -80
+	day_ambiance.play()
+	var tween = create_tween()
+	if tween:
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(day_ambiance, "volume_db", -8, 1)
+
+func fade_out_day_ambiance():
+	var tween = create_tween()
+	if tween:
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(day_ambiance, "volume_db", -80, 1)
+		await tween.finished
+		day_ambiance.stop()
+
+func fade_in_tavern_ambiance():
+	tavern_ambiance.volume_db = -80
+	tavern_ambiance.play()
+	var tween = create_tween()
+	if tween:
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(tavern_ambiance, "volume_db", -2, 1)
+
+func fade_out_tavern_ambiance():
+	var tween = create_tween()
+	if tween:
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(tavern_ambiance, "volume_db", -80, 1)
+		await tween.finished
+		tavern_ambiance.stop()

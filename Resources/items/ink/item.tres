@@ -7,7 +7,7 @@
 script = ExtResource("1_q2stp")
 id = "ink"
 name = "Ink"
-value = 11
+value = 9
 icon_texture = ExtResource("1_7fcx7")
 ingame_texture = ExtResource("1_7fcx7")
 level = 0

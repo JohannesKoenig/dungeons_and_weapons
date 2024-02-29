@@ -7,7 +7,7 @@
 script = ExtResource("1_esbn3")
 id = "protection_potion"
 name = "Protection Potion"
-value = 15
+value = 8
 icon_texture = ExtResource("1_b434u")
 ingame_texture = ExtResource("1_b434u")
 level = 0

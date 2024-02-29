@@ -7,7 +7,7 @@
 script = ExtResource("1_nrrhm")
 id = "water_skin"
 name = "Water skin"
-value = 8
+value = 5
 icon_texture = ExtResource("1_kv7wi")
 ingame_texture = ExtResource("1_kv7wi")
 level = 0

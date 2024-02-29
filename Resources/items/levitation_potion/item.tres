@@ -7,7 +7,7 @@
 script = ExtResource("1_1iitg")
 id = "levitation_potion"
 name = "Levitation Potion"
-value = 32
+value = 16
 icon_texture = ExtResource("1_exy6k")
 ingame_texture = ExtResource("1_exy6k")
 level = 0

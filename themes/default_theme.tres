@@ -53,11 +53,18 @@ expand_margin_right = 4.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1bh2f"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_pybvl"]
-color = Color(0.854902, 0.854902, 0.854902, 1)
-grow_begin = 3.0
-grow_end = 3.0
-thickness = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhj0r"]
+bg_color = Color(0.658824, 0.494118, 0.388235, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.933333, 0.862745, 0.819608, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb5e2"]
 bg_color = Color(1, 1, 1, 0.0784314)
@@ -65,7 +72,11 @@ bg_color = Color(1, 1, 1, 0.0784314)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdpim"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fy3p"]
-bg_color = Color(0, 0, 0, 0.290196)
+bg_color = Color(0.658824, 0.494118, 0.388235, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd1q3"]
 bg_color = Color(0.827451, 0.627451, 0.517647, 1)
@@ -88,7 +99,7 @@ Button/styles/pressed = SubResource("StyleBoxFlat_pvq80")
 HiddenPanel/base_type = &"Panel"
 HiddenPanel/styles/panel = SubResource("StyleBoxEmpty_1bh2f")
 HighlightedPanel/base_type = &"Panel"
-HighlightedPanel/styles/panel = SubResource("StyleBoxLine_pybvl")
+HighlightedPanel/styles/panel = SubResource("StyleBoxFlat_xhj0r")
 IconButton/base_type = &"Button"
 IconButton/styles/focus = SubResource("StyleBoxFlat_eb5e2")
 IconButton/styles/normal = SubResource("StyleBoxEmpty_fdpim")

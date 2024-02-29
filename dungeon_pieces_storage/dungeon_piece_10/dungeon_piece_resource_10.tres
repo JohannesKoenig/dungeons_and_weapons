@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DungeonPieceResource" load_steps=3 format=3 uid="uid://ctgwuxy544idb"]
+
+[ext_resource type="PackedScene" uid="uid://pas2ejmlnrle" path="res://dungeon_pieces_storage/dungeon_piece_10/dungeon_piece_10.tscn" id="1_fqy0n"]
+[ext_resource type="Script" path="res://dungeon_pieces/dungeon_piece_resource.gd" id="2_2wvk1"]
+
+[resource]
+script = ExtResource("2_2wvk1")
+scene = ExtResource("1_fqy0n")
+offset = Vector2(0, 0)

@@ -92,5 +92,7 @@ func conversation_over():
 	tween.tween_property(camera, "position:y", 128, pan_duration)
 	timer.start(pan_duration)
 	await timer.timeout
+	timer.start(2)
+	await timer.timeout
 	_message_dispatcher.skip_intro = true
 	get_tree().change_scene_to_file("res://Scenes/tavern_game_scene.tscn")

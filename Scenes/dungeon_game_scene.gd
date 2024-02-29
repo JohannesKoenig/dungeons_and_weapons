@@ -18,6 +18,7 @@ func _ready():
 	var drag_and_drop_layer = get_node("/root/DragAndDropLayer")
 	drag_and_drop_layer.set_canvas_layer($CanvasLayer)
 	var items_to_spawn = dungeon_generator_resource.dropped_items
+	
 	dungeon_inventory.clear()
 	dungeon_spawner.spawn_dungeon()
 	var spawning_pieces = dungeon_spawner.dungeon_pieces.filter(func(x): return len(x.spawn_area.polygon) >= 3)

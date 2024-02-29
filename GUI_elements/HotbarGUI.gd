@@ -31,7 +31,9 @@ func set_quick_access_resource(quick_access_resource):
 		_create_ui_items(quick_access_resource.size)
 		_load_ui_items()
 		quick_access_resource.inventory_resource.items_changed.connect(_refresh_items)
+		_refresh_items(quick_access_resource.inventory_resource.items)
 		quick_access_resource.index_updated.connect(_selected_index_changed)
+		_selected_index_changed(quick_access_resource.selected_index)
 
 	_update_input_hints()
 	input_type_resource.type_changed.connect(_update_input_hints)

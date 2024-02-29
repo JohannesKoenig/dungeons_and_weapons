@@ -66,6 +66,7 @@ position = Vector2(0, 28)
 script = ExtResource("9_dsi20")
 
 [node name="PointLight2D" type="PointLight2D" parent="Entities/Player"]
+position = Vector2(0, -5)
 color = Color(0.878431, 0.576471, 0.466667, 1)
 energy = 1.42
 shadow_enabled = true

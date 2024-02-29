@@ -7,7 +7,7 @@
 script = ExtResource("1_lp4u4")
 id = "health_potion"
 name = "Health Potion"
-value = 25
+value = 13
 icon_texture = ExtResource("1_08dfg")
 ingame_texture = ExtResource("1_08dfg")
 level = 0

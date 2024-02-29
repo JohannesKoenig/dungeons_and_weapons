@@ -11,10 +11,14 @@ func _ready():
 	add_child(timer)
 
 func open():
-	is_open = true
+	if !is_open:
+		is_open = true
+		$DoorOpen.play()
 
 func close():
-	is_open = false
+	if is_open:
+		is_open = false
+		$DoorClose.play()
 
 
 func _on_actionable_action(message: Dictionary):

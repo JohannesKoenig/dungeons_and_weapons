@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1dt22ggl5lya"]
+
+[ext_resource type="Material" uid="uid://c5c03wq27qba0" path="res://prop/prop.tres" id="1_fc47x"]
+[ext_resource type="Texture2D" uid="uid://byboj50sfqfdi" path="res://art/sprites/SunFlower1.png" id="2_j4cqc"]
+[ext_resource type="Script" path="res://prop/prop.gd" id="3_gp0xr"]
+
+[node name="Prop" type="Sprite2D"]
+y_sort_enabled = true
+material = ExtResource("1_fc47x")
+texture = ExtResource("2_j4cqc")
+script = ExtResource("3_gp0xr")

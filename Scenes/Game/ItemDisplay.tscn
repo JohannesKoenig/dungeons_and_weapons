@@ -19,6 +19,7 @@ script = ExtResource("1_q5mcy")
 tavern_inventory_resource = ExtResource("2_wqxd7")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
+light_mask = 7
 y_sort_enabled = true
 position = Vector2(0, 8)
 offset = Vector2(2.08165e-12, -8)

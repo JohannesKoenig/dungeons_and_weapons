@@ -8,6 +8,8 @@ var dnr: DayNightResource = preload("res://daynight/day_night_resource.tres")
 var menu_save_resource: MenuSaveResource = preload("res://savegame/menu_save_resource.tres")
 
 func _ready():
+	Engine.time_scale = 1
+	_message_dispatcher.speed_up = false
 	$VBoxContainer/Exit.grab_focus()
 	days.text = str(dnr.day_counter) + " days"
 	if dnr.day_counter > menu_save_resource.highscore:

@@ -7,7 +7,7 @@
 script = ExtResource("1_fkfvr")
 id = "cheese"
 name = "Cheese"
-value = 12
+value = 9
 icon_texture = ExtResource("1_y47fp")
 ingame_texture = ExtResource("1_y47fp")
 level = 0

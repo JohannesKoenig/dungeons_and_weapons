@@ -21,9 +21,9 @@ func tween_global_pos(target: Vector2):
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.set_parallel(true)
-	tween.tween_property(self, "global_position:x", target.x, 0.4)
-	tween.tween_property(self, "global_position:y", target.y, 0.4)
-		
+	if tween:
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.set_parallel(true)
+		tween.tween_property(self, "global_position:x", target.x, 0.4)
+		tween.tween_property(self, "global_position:y", target.y, 0.4)
+			

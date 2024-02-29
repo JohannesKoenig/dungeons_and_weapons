@@ -19,6 +19,12 @@ var _message_dispatcher: MessageDispatcher = preload("res://messaging/MessageDis
 var return_strategy:Dictionary
 @onready var ai_path_markers: AiPathMarkers = $"/root/AiPathMarkers"
 
+var despawned_visitors: int = 0:
+	set(value):
+		despawned_visitors = value
+		despawned_visitors_changed.emit()
+signal despawned_visitors_changed
+
 func _ready():
 	timer = Timer.new()
 	timer.one_shot = true
@@ -35,6 +41,7 @@ func _ready():
 	# start_spawning_return(_message_dispatcher.game_state)
 	var resource = FileAccess.open("res://Resources/ai/return_strategy.json", FileAccess.READ)
 	return_strategy = JSON.parse_string(resource.get_as_text())
+	despawned_visitors_changed.connect(_on_all_returned)
 
 
 func _create_time_table(duration: float, nr_of_chunks: int) -> Array:
@@ -63,9 +70,8 @@ func spawn_adventurer() -> Visitor:
 		adventurer.set_strategy(adventurer_strategy_map[resource])
 		add_child(adventurer)
 	adventurer.on_despawn.connect(_drops_item(resource))
-	if index == len(adventurers_to_spawn) - 1:
-		if _message_dispatcher.game_state is ShopState:
-			adventurer.on_despawn.connect(_transition_to_return_state)
+	if _message_dispatcher.game_state is ShopState:
+		adventurer.on_despawn.connect(_transition_to_return_state)
 	index += 1
 	if index < len(time_table):
 		timer.start(time_table[index])
@@ -96,7 +102,7 @@ func set_adventurer_strategy_map(map: Dictionary):
 
 func start_spawning():
 	var current_time = day_night_timer.current_day_time
-	var end_day_time = day_night_timer.sun_down_hour * 60 + day_night_timer.sun_down_minute
+	var end_day_time = (day_night_timer.sun_down_hour - 2) * 60 + day_night_timer.sun_down_minute
 	var diff = end_day_time - current_time
 	spawn_window_duration = (float(diff) / (12 * 60)) * (day_night_timer.day_time_length_in_seconds)
 	time_table = _create_time_table(spawn_window_duration, len(adventurer_strategy_map))
@@ -116,11 +122,16 @@ func start_spawning_return():
 	if len(time_table) > 0:
 		return_timer.start(time_table[return_index])
 
+func _on_all_returned():
+	if despawned_visitors == len(time_table):
+		if day_night_timer.is_day:
+			await day_night_timer.day_ended
+		_message_dispatcher.shoppers_active = false
+		_message_dispatcher.requested_adventurer_return.emit()
+		despawned_visitors = 0
+
 func _transition_to_return_state():
-	if day_night_timer.is_day:
-		await day_night_timer.day_ended
-	_message_dispatcher.shoppers_active = false
-	_message_dispatcher.requested_adventurer_return.emit()
+	despawned_visitors += 1
 
 func _drops_item(resource: AdventurerResource) -> Callable:
 	return func():
