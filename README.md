@@ -23,6 +23,12 @@ For project layout I decided to go with a folder structure based on components -
 - `res://Scenes/tavern_game_scene.tscn`
   - first ingame scene
 
+## Learnings
+- It is possible to finish a game
+- Lean more heavily into HMVC-Pattern (Hierarchical Model View controller) to make components more scalable
+- Use the `AnimationPlayer` as a stateless tool for interpolating properties of nodes
+
 ## Thanks
 Thanks for all the support to my family and friends <3
+
 
