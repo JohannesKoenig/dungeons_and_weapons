@@ -1,4 +1,12 @@
 class_name DungeonGeneratorResource extends Resource
+# This file implements the wave function collapse algorithm https://github.com/mxgmn/WaveFunctionCollapse
+# In general the collapsing of tiles is not decided based on entropy but rather chosen at random.
+
+# Review: A resources main purpose is to store data.
+# This file holds too much logic and should be split into a stateless class and a state (which could be this resource)
+
+# Review: one cannot distinguish between constants and variables in this file. Constants should be in all caps.
+
 # ------------------------------------------------------------------------------
 # Variables ====================================================================
 # ------------------------------------------------------------------------------
@@ -7,6 +15,7 @@ class_name DungeonGeneratorResource extends Resource
 @export var wall_dungeon_piece_resource: DungeonPieceResource
 var dropped_items: Array = []
 signal item_dropped(item: Item)
+# Review: this should be an enum
 var _UNKNOWN = 0
 var _TODO = 1
 var _DONE = 2
@@ -19,6 +28,8 @@ var x_width = 7
 var y_width = 7
 var start_x = 3
 var start_y = 1
+
+# Review: Comment no longer relevant, should be removed
 # ------------------------------------------------------------------------------
 # Class Functions ==============================================================
 # ------------------------------------------------------------------------------
@@ -26,17 +37,31 @@ var start_y = 1
 # Known prblems:
 # processing_guide should be list instead of dict: There shoud be duplicate keys allowed.
 
+# Review: This is the wave function collapse algorithm - This can and should be implemented stateless
 func get_layout() -> Array:
+
+	# Review: remove preparation of data structure from alogrithm
 	# generate "baseline"
+
+	# Review: proccessing_guide is the stack of tasks to work on
 	var processing_guide: Array = []
+
+	# Review: Implement array 2d class to avoid constantly calculating the 1d index
 	var options = []
+
+	# Initialize matrix, allocate memory
 	for x in range(x_width):
 		for y in range(y_width):
 			options.append(null)
+
 	var all_tiles = rules.keys()
 	for x in range(x_width):
+		# Review: should be y_width, only works because I only generate square dungeons
 		for y in range(x_width):
 			options[_to_1D(x, y, x_width)] = all_tiles
+
+
+	# Review: Start algorithm by placing all wall tiles along the edges of the dungeon 
 	for x in range(x_width):
 		for y in [0, y_width-1]:
 			processing_guide.append({
@@ -52,11 +77,16 @@ func get_layout() -> Array:
 				"source": [wall_dungeon_piece_resource]
 			})
 
+
 	processing_guide.append({
 		"index": _to_1D(start_x, start_y, x_width),
 		"status": _TODO,
 		"source": [start_dungeon_piece_resource]
 	})
+
+
+
+	# Review: This is the actual wave function collapse algorithm
 	# propagate(start_x, start_y, x_count, options, processing_guide)
 	while not processing_guide.is_empty():
 		var guide = processing_guide.pop_front()
@@ -64,7 +94,10 @@ func get_layout() -> Array:
 		var y = next_key % x_width
 		var x = (next_key - y)/x_width
 		propagate(x, y, x_width, y_width, options, guide, processing_guide)
+	
 	var dungeon_layout = assemble(options,x_width,y_width)
+
+	# Review: clenup all dungeon islands that are not reachable from the entrance
 	# remove all unconnected dungeon pieces ----------
 	var is_connected = get_connected_indexes(start_x, start_y, dungeon_layout)
 	var is_connected_indexes = is_connected.map(func(x): return x["index"])
