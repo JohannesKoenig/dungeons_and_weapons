@@ -34,7 +34,7 @@ jobs:
         run: sudo snap install godot-4
 
       - name: Build game
-        run: godot-4 --headless --export-release macOS relese.zip
+        run: godot-4 --headless --export-release "Linux/X11" relese.zip
 
       - name: Release
         uses: softprops/action-gh-release@v2
