@@ -41,5 +41,5 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         generateReleaseNotes: true
-        tag: "3"
+        tag: "signed_macos_1"
         artifacts: ${{ steps.export.outputs.archive_directory }}/*
