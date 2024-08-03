@@ -41,5 +41,5 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         generateReleaseNotes: true
-        tag: "2"
+        tag: "3"
         artifacts: ${{ steps.export.outputs.archive_directory }}/*
